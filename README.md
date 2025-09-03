@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/favicon.ico" style="max-width:256px; max-height:256px;" />
+  <img src="public/favicon.ico" style="width:256px; height:256px;" />
 </div>
 
 # VM汉化组官方网站 v4
