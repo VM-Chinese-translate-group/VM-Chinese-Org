@@ -15,9 +15,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
     "vue": "^3.5.18"
   },
   "devDependencies": {
+    "@iconify/vue": "^5.0.0",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.16.5",
     "@vitejs/plugin-vue": "^6.0.1",

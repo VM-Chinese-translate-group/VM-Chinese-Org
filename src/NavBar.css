@@ -1,7 +1,6 @@
 .navbar {
   background: #ffffff;
-  padding: 5px 0;
-  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.12);
+  box-shadow: 0 2px 8px rgba(59, 59, 59, 0.12);
 }
 .navbar-list {
   display: flex;
@@ -18,9 +17,9 @@
 .navbar-title {
   color: #000000;
   font-weight: 500;
-  font-size: clamp(14px, 10vw, 24px);
+  font-size: clamp(16px, 10vw, 20px);
   text-decoration: none;
-  padding: 6px 3vw;
+  padding: 18px 3vw;
   border-radius: 8px;
   transition:
     background 0.2s,
@@ -32,22 +31,22 @@
   padding: 0;
 }
 .navbar-item a:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: #000000;
+  border-bottom: 4px solid #1193e4;
+  color: #1193e4;
 }
 .navbar-icon {
   display: flex;
   align-items: center;
   margin-right: 9vw;
-  margin-left: 4vw;
+  margin-left: 2vw;
 }
 .navbar-logo {
-  width: clamp(40px, 12vw, 80px);
-  height: clamp(40px, 12vw, 80px);
-  max-width: 80px;
-  max-height: 80px;
-  min-width: 40px;
-  min-height: 40px;
+  width: clamp(30px, 12vw, 50px);
+  height: clamp(30px, 12vw, 50px);
+  max-width: 50px;
+  max-height: 50px;
+  min-width: 30px;
+  min-height: 30px;
   object-fit: contain;
   margin-right: 16px;
   transition:
@@ -61,6 +60,9 @@
     width: clamp(16px, 8vw, 24px);
     height: clamp(16px, 8vw, 24px);
     margin-right: 8px;
+  }
+  .navbar-icon {
+    margin-left: 4vw;
   }
 }
 @media (max-width: 600px) {
