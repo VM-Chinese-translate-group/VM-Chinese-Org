@@ -1,0 +1,79 @@
+.navbar {
+  background: #ffffff;
+  padding: 5px 0;
+  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.12);
+}
+.navbar-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.navbar-item {
+  margin: 0 5vw;
+}
+.navbar-item a,
+.navbar-title {
+  color: #000000;
+  font-weight: 500;
+  font-size: clamp(14px, 10vw, 24px);
+  text-decoration: none;
+  padding: 6px 3vw;
+  border-radius: 8px;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  display: inline-block;
+}
+.navbar-title {
+  font-weight: bolder;
+  padding: 0;
+}
+.navbar-item a:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #000000;
+}
+.navbar-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 9vw;
+  margin-left: 4vw;
+}
+.navbar-logo {
+  width: clamp(40px, 12vw, 80px);
+  height: clamp(40px, 12vw, 80px);
+  max-width: 80px;
+  max-height: 80px;
+  min-width: 40px;
+  min-height: 40px;
+  object-fit: contain;
+  margin-right: 16px;
+  transition:
+    width 0.2s,
+    height 0.2s;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .navbar-logo {
+    width: clamp(16px, 8vw, 24px);
+    height: clamp(16px, 8vw, 24px);
+    margin-right: 8px;
+  }
+}
+@media (max-width: 600px) {
+  .navbar-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar-item {
+    margin: 8px 0;
+  }
+  .navbar-item a {
+    font-size: 16px;
+    padding: 10px 0;
+    text-align: center;
+  }
+}

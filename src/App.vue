@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import NavBar from './NavBar.vue'
+import Footer from './components/Footer.vue'
+import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import NavBar from './NavBar.vue'
     Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
     documentation
   </p>
+<Footer />
 </template>
 
 <style scoped></style>
