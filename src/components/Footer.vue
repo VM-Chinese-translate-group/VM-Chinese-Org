@@ -42,7 +42,7 @@
   </footer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const commitId = import.meta.env.VITE_GIT_COMMIT || "未知提交";
 </script>
 
