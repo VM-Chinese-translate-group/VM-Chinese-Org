@@ -1,32 +1,30 @@
-# ./
+<div align="center">
+  <img src="public/favicon.ico" style="max-width:256px; max-height:256px;" />
+</div>
 
-This template should help get you started developing with Vue 3 in Vite.
+# VM汉化组官方网站 v4
 
-## Recommended IDE Setup
+立即访问：<https://v4.vmct-cn.top/>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 📖 使用与部署
 
-## Type Support for `.vue` Imports in TS
+我们推荐使用VSCode编辑器进行开发。
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+在开发前，请先安装[NodeJS](https://nodejs.org/zh-cn/download/prebuilt-installer)，推荐安装 Node22。
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+安装依赖：
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+开发预览：
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+构建：
 
 ```sh
 npm run build
