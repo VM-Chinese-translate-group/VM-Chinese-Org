@@ -7,6 +7,10 @@
       </li>
       <li class="navbar-item"><a href="/modpack">整合包汉化</a></li>
       <li class="navbar-item"><a href="/map">地图汉化</a></li>
+      <li class="navbar-item"><a href="/community">加入社区</a></li>
+      <li class="navbar-item"><a href="/support-us">赞助我们</a></li>
+      <li class="navbar-item"><a href="/tools">汉化工具</a></li>
+      <li class="navbar-item"><a href="/rule">翻译准则</a></li>
     </ul>
   </nav>
 </template>
