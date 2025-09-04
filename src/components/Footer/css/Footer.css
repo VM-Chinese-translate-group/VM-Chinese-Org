@@ -2,7 +2,8 @@
   background-color: #f7f9fc;
   color: #555;
   padding: 40px 20px;
-  background: linear-gradient(to bottom, #f7f9fc 0%, #e8f5e9 100%);
+  background: linear-gradient(to bottom, #eef1f7 0%, #e8f5e9 100%);
+  /* background: linear-gradient(to bottom, rgba(68, 249, 237, 0.455) 0%, rgba(0, 186, 173, 0) 100%); */
 }
 
 .footer-container {

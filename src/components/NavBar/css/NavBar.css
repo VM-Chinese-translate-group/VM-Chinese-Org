@@ -28,12 +28,17 @@
 .navbar-item {
   margin: 0 1rem;
 }
-.navbar-item div {
+.navbar-button {
+  padding-right: 1rem;
+  margin-left: auto;
+}
+.navbar-button div {
   display: flex;
   justify-content: center;
   gap: 0.7rem;
+  margin-left: auto;
 }
-.navbar-item span {
+.navbar-button span {
   display: inline-flex;
   justify-content: center;
   width: 1.8rem;
@@ -112,6 +117,11 @@
     width: var(--logo-size-mobile);
     height: var(--logo-size-mobile);
     margin-right: 0.5rem;
+  }
+  .navbar-button {
+    margin-left: 0;
+    padding-right: 0;
+    width: 100%;
   }
 }
 .navbar-hidden {
