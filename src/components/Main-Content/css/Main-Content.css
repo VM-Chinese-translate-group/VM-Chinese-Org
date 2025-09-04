@@ -73,6 +73,15 @@
   border-radius: 15px;
   background: rgba(250, 250, 250, 1);
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-size: 1.8rem;
+  padding: 4rem;
+  padding-top: 0.7rem;
+}
+.other-content .info-box p {
+  text-align: left;
+  vertical-align: top;
+  font-size: 1.4rem;
 }
 @media (max-width: 430px) {
   .title-content .title-text {
@@ -102,6 +111,10 @@
   .other-content .info-box {
     width: 18rem;
     height: 8rem;
+    font-size: 1.2rem;
+  }
+  .other-content .info-box p {
+    font-size: 0.8rem;
   }
   .other-content {
     gap: 30px;
@@ -159,9 +172,13 @@
   .other-content .info-box {
     width: 60rem;
     height: 30rem;
+    font-size: 3rem;
   }
   .other-content {
     gap: 70px;
     padding: 60px 0;
+  }
+  .other-content .info-box p {
+    font-size: 2.5rem;
   }
 }
