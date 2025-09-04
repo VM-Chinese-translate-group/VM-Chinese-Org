@@ -9,6 +9,7 @@
 <style scoped>
 * {
   font-family: Arial, sans-serif;
+  user-select: none;
 }
 .app-container {
   display: flex;

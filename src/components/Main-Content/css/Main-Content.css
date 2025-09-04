@@ -46,11 +46,15 @@
   font-size: 1.5rem;
   border-radius: 15px;
   color: rgba(255, 255, 255, 1);
-  background: rgba(42, 130, 228, 1);
-  box-shadow: 0px 2px 8px rgba(108, 107, 107, 0.69);
+  background-color: rgba(42, 130, 228, 1);
+  transition: background-color 0.3s ease;
   text-align: center;
-  border-color: rgba(42, 130, 228, 1);
+  border: 0;
   cursor: pointer;
+}
+.title-content .title-text button:active {
+  background-color: #06a3fef0;
+  color: white;
 }
 .title-content .title-text .arrow-icon {
   font-size: 1.5rem;

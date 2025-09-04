@@ -11,7 +11,7 @@
       <li class="navbar-item"><a href="/support-us">赞助我们</a></li>
       <li class="navbar-item"><a href="/tools">汉化工具</a></li>
       <li class="navbar-item"><a href="/rule">翻译准则</a></li>
-      <li class="navbar-button">
+      <li class="navbar-button navbar-item">
         <div>
           <span>
             <Icon icon="fluent-mdl2:locale-language" class="language-icon icon" />
