@@ -22,6 +22,8 @@
     "@types/node": "^22.18.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
+    "eslint": "^9.34.0",
+    "eslint-plugin-vue": "^10.4.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "3.6.2",
     "taze": "^19.4.0",

@@ -34,28 +34,134 @@
 .title-content .title-text .button-div {
   display: flex;
   margin-top: 30px;
-  gap: 1.5rem;
+  gap: 80px;
 }
 .title-content .title-text button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
   width: 13rem;
   height: 4.5rem;
-  font-size: large;
+  font-size: 1.5rem;
   border-radius: 15px;
   color: rgba(255, 255, 255, 1);
   background: rgba(42, 130, 228, 1);
-  box-shadow: 0px 2px 8px rgba(102, 102, 102, 0.25);
+  box-shadow: 0px 2px 8px rgba(108, 107, 107, 0.69);
+  text-align: center;
+  border-color: rgba(42, 130, 228, 1);
+  cursor: pointer;
 }
-@media (max-width: 768px) {
+.title-content .title-text .arrow-icon {
+  font-size: 1.5rem;
+}
+.other-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(172.23deg, rgba(192, 229, 227, 1) 0%, rgba(255, 245, 147, 0.28) 100%);
+  width: 100%;
+  gap: 40px;
+  padding: 60px 0;
+}
+.other-content .info-box {
+  width: 33rem;
+  height: 15rem;
+  opacity: 1;
+  border-radius: 15px;
+  background: rgba(250, 250, 250, 1);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+}
+@media (max-width: 430px) {
   .title-content .title-text {
     font-size: 0.7rem;
     font-weight: 500;
   }
   .title-content .title-text img {
-    margin-bottom: 0;
+    margin-bottom: -2rem;
+    width: 8rem;
+  }
+  .title-content .title-text .button-div {
+    bottom: 1rem;
+    margin-top: 0.5rem;
+    gap: 1rem;
+  }
+  .title-content .title-text p {
+    font-size: 0.6rem;
   }
   .title-content .title-text button {
     width: 7rem;
     height: 2rem;
+    font-size: 0.55rem;
+  }
+  .title-content .title-text .arrow-icon {
+    font-size: 0.8rem;
+  }
+  .other-content .info-box {
+    width: 18rem;
+    height: 8rem;
+  }
+  .other-content {
+    gap: 30px;
+    padding: 20px 0;
+  }
+}
+@media (max-width: 768px) and (min-width: 430px) {
+  .title-content .title-text {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  .title-content .title-text img {
+    margin-bottom: -1rem;
+    width: 14rem;
+  }
+  .title-content .title-text .button-div {
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+  .title-content .title-text p {
+    font-size: 0.95rem;
+  }
+  .title-content .title-text button {
+    width: 8rem;
+    height: 2.5rem;
+    font-size: 0.9rem;
+  }
+  .title-content .title-text .arrow-icon {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 2560px) {
+  .title-content .title-text {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  .title-content .title-text img {
+    width: 50rem;
+  }
+  .title-content .title-text .button-div {
+    margin-top: 8rem;
+    gap: 8rem;
+  }
+  .title-content .title-text p {
+    font-size: 3.2rem;
+  }
+  .title-content .title-text button {
+    width: 35rem;
+    height: 5.5rem;
+    font-size: 3.5rem;
+  }
+  .title-content .title-text .arrow-icon {
+    font-size: 4rem;
+  }
+  .other-content .info-box {
+    width: 60rem;
+    height: 30rem;
+  }
+  .other-content {
+    gap: 70px;
+    padding: 60px 0;
   }
 }
