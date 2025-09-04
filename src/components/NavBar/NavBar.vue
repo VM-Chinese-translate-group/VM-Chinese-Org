@@ -11,12 +11,20 @@
       <li class="navbar-item"><a href="/support-us">赞助我们</a></li>
       <li class="navbar-item"><a href="/tools">汉化工具</a></li>
       <li class="navbar-item"><a href="/rule">翻译准则</a></li>
+      <li class="navbar-item">
+        <div>
+          <span>
+            <Icon icon="fluent-mdl2:locale-language" class="language-icon icon" />
+          </span>
+          <span>
+            <Icon icon="fluent:weather-sunny-32-light" class="light-icon icon" />
+          </span>
+        </div>
+      </li>
     </ul>
   </nav>
 </template>
-
 <script setup lang="ts"></script>
-
 <style lang="css">
-@import './NavBar.css';
+@import './css/NavBar.css';
 </style>
