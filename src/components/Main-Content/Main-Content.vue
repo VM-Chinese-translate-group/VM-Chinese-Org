@@ -1,7 +1,7 @@
 <template>
   <main class="main-container">
     <div class="title-content">
-      <img src="/main.png" />
+      <img src="/main.webp" />
       <div class="title-text">
         <img src="/vmicon.png" alt="" />
         <p>VM汉化组</p>
