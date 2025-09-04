@@ -1,0 +1,61 @@
+.title-content {
+  position: relative;
+  margin-top: 0.5rem;
+}
+.title-content img {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  filter: blur(3px);
+  z-index: -20;
+}
+.title-content .title-text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+.title-content .title-text img {
+  width: 50%;
+  height: auto;
+  filter: none;
+  margin-bottom: -4rem;
+}
+.title-content .title-text p {
+  padding: 0;
+  margin-top: 0;
+}
+.title-content .title-text .button-div {
+  display: flex;
+  margin-top: 30px;
+  gap: 1.5rem;
+}
+.title-content .title-text button {
+  gap: 20px;
+  width: 13rem;
+  height: 4.5rem;
+  font-size: large;
+  border-radius: 15px;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(42, 130, 228, 1);
+  box-shadow: 0px 2px 8px rgba(102, 102, 102, 0.25);
+}
+@media (max-width: 768px) {
+  .title-content .title-text {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  .title-content .title-text img {
+    margin-bottom: 0;
+  }
+  .title-content .title-text button {
+    width: 7rem;
+    height: 2rem;
+  }
+}

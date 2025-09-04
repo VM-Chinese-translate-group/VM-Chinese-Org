@@ -2,8 +2,8 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="logo-section">
-        <img class="logo-icon" src="/favicon.ico" />
-        <span class="logo-text">VM汉化组官网 v4</span>
+        <img class="logo-icon" src="/vmicon.png" />
+        <!-- <span class="logo-text">VM汉化组官网 v4</span> -->
         <p class="copyright">© 2025 VM汉化组官网开发团队</p>
         <p class="build-info">Build: dev@{{ commitId }}</p>
       </div>
