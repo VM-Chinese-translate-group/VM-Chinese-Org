@@ -51,5 +51,5 @@
   </main>
 </template>
 <style lang="css" scoped>
-@import './css/Main-Content.css';
+@import './css/Main.css';
 </style>
