@@ -48,28 +48,24 @@
   margin-left: auto;
   padding-right: 1rem;
 }
-.navbar-button div {
+
+.navbar-button-group {
   display: flex;
   gap: 0.7rem;
+  align-items: center;
   margin: 0.5rem 0;
 }
-.navbar-button span {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 10px;
-  background: #f0f0f0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+
+.dark-mode-button {
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: box-shadow 0.2s;
-}
-.navbar-button span:hover {
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-}
-.icon {
-  font-size: 1.2rem;
+  padding: 0;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
 }
 
 .navbar-title {
@@ -134,5 +130,11 @@
     margin-left: 0;
     padding-right: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+  .navbar-button-group {
+    justify-content: center;
   }
 }

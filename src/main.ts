@@ -8,7 +8,11 @@ import NavBar from './components/NavBar/NavBar.vue'
 import MainContent from './components/Main/Main.vue'
 import Footer from './components/Footer/Footer.vue'
 
+import i18n from './plugins/i18n'
+
 const app = createApp(App)
+
+app.use(i18n)
 
 app.component('Icon', Icon)
 app.component('NavBar', NavBar)
