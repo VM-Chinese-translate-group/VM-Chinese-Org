@@ -1,45 +1,61 @@
 <template>
   <nav class="navbar">
-    <ul class="navbar-list">
-      <li class="navbar-icon">
-        <img src="/favicon.ico" alt="Logo" class="navbar-logo" />
-        <span class="navbar-title">{{ $t('navbar.title') }}</span>
-      </li>
-      <li class="navbar-item">
-        <a href="/modpack">{{ $t('navbar.modpack') }}</a>
-      </li>
-      <li class="navbar-item">
-        <a href="/map">{{ $t('navbar.map') }}</a>
-      </li>
-      <li class="navbar-item">
-        <a href="/community">{{ $t('navbar.community') }}</a>
-      </li>
-      <li class="navbar-item">
-        <a href="/support-us">{{ $t('navbar.supportUs') }}</a>
-      </li>
-      <li class="navbar-item">
-        <a href="/tools">{{ $t('navbar.tools') }}</a>
-      </li>
-      <li class="navbar-item">
-        <a href="/rule">{{ $t('navbar.rule') }}</a>
-      </li>
-      <li class="navbar-button">
-        <div class="navbar-button-group">
-          <LanguageSwitcher />
-          <button class="dark-mode-button">
-            <Icon icon="fluent:weather-sunny-32-light" class="icon" />
-          </button>
-        </div>
-      </li>
-    </ul>
+    <div class="navbar-brand">
+      <img src="/favicon.ico" alt="Logo" class="navbar-logo" />
+      <span class="navbar-title">{{ $t('navbar.title') }}</span>
+    </div>
+
+    <button class="hamburger" @click="toggleMenu" :class="{ 'is-active': isMenuOpen }">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="navbar-collapse" :class="{ 'is-active': isMenuOpen }">
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <a href="/modpack">{{ $t('navbar.modpack') }}</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/map">{{ $t('navbar.map') }}</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/community">{{ $t('navbar.community') }}</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/support-us">{{ $t('navbar.supportUs') }}</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/tools">{{ $t('navbar.tools') }}</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/rule">{{ $t('navbar.rule') }}</a>
+        </li>
+        <li class="navbar-button">
+          <div class="navbar-button-group">
+            <LanguageSwitcher />
+            <button class="dark-mode-button">
+              <Icon icon="fluent:weather-sunny-32-light" class="icon" />
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 
 useI18n()
+
+const isMenuOpen = ref(false)
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 </script>
 
 <style lang="css">
