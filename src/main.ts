@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, watch } from 'vue'
 import App from './App.vue'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
@@ -24,3 +24,13 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 app.mount('#app')
+
+const updateTitle = () => {
+  const t = (i18n as any).global.t as (key: string) => string
+  document.title = `${t('navbar.title')}`
+}
+
+updateTitle()
+
+watch(() => ((i18n as any).global.locale?.value ?? (i18n as any).global.locale), updateTitle)
+

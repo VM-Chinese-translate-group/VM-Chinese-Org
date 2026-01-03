@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/favicon.ico" style="width:256px; height:256px;" />
+  <img src="public/favicon.ico"/>
 </div>
 
 # VM汉化组官方网站 v4
@@ -8,24 +8,24 @@
 
 ## 📖 使用与部署
 
-我们推荐使用VSCode编辑器进行开发。
+我们推荐使用 VSCode 编辑器进行开发。
 
-在开发前，请先安装[NodeJS](https://nodejs.org/zh-cn/download/prebuilt-installer)，推荐安装 Node22。
+在开发前，请先安装 [NodeJS](https://nodejs.org/zh-cn/download/prebuilt-installer)，推荐安装 Node24。
 
 安装依赖：
 
 ```sh
-npm install
+pnpm i
 ```
 
 开发预览：
 
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 构建：
 
 ```sh
-npm run build
+pnpm run build
 ```

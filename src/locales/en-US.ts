@@ -23,10 +23,10 @@ export default {
       "We understand the importance of authors' efforts and intellectual property protection. Most translations are officially authorized by the authors, and we do not distribute the game itself. We only provide translation patches for download to ensure that the authors' rights are protected to the maximum extent.",
     techTitle: 'Technology Driven',
     techDesc:
-      'We know that technology is an essential part of the translation process, so we have created a set of localization tools and a mod for translation update detection.',
+      'We fully understand that technology is an indispensable part of the localization process. To better promote community development, we have made all our original tools, mods, and the entire translation workflow open source.',
   },
   footer: {
-    copyright: '© 2025 VM Translation Group Website Development Team',
+    copyright: '© 2026 VM Translation Group Website Development Team',
     buildInfo: 'Build: dev',
     about: 'About',
     joinUs: 'Join Us',
