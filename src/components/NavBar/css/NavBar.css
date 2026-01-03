@@ -154,7 +154,6 @@
   transform: rotate(-45deg);
 }
 
-
 @media (max-width: 768px) {
   .navbar {
     justify-content: space-between;

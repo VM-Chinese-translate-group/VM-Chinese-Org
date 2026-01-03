@@ -1,95 +1,174 @@
-.title-content {
-  position: relative;
-  margin-top: 0.5rem;
-}
-
-.title-content img {
-  display: block;
+.main-container {
   width: 100%;
-  height: auto;
-  filter: blur(3px);
-  z-index: -20;
+  overflow-x: hidden;
 }
 
-.title-text {
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 80vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.hero-bg-wrapper {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  max-width: 800px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: clamp(0.7rem, 2vw, 1.8rem);
-  font-weight: 500;
-  color: #fff;
-  text-align: center;
 }
 
-.title-text img {
-  width: clamp(8rem, 25vw, 50%);
-  margin-bottom: -2rem;
-  filter: none;
+.hero-logo {
+  width: 256px;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
-.title-text p {
-  margin: 0;
-  font-size: clamp(0.6rem, 1.2vw, 1.8rem);
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
 }
 
-.button-div {
+.hero-slogan {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+.action-buttons {
   display: flex;
-  margin-top: 2rem;
-  gap: clamp(1rem, 8vw, 8rem);
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.button-div button {
-  border: none;
+.primary-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  width: 12rem;
-  height: 4rem;
-  font-size: 1.5rem;
-  border-radius: 15px;
+  gap: 10px;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
   color: #fff;
   background-color: #2a82e4;
-  transition: background-color 0.3s ease;
   cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
 }
 
-.button-div button:active {
+.primary-btn:hover {
+  background-color: #1a6ac4;
+  transform: translateY(-2px);
+}
+
+.primary-btn:active {
   background-color: #06a3fe;
+  transform: translateY(0);
 }
 
-.arrow-icon {
-  font-size: clamp(0.8rem, 2vw, 4rem);
+.btn-icon {
+  font-size: 1.2rem;
 }
 
-.other-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(30px, 5vw, 70px);
-  padding: clamp(20px, 5vw, 60px) 0;
-  width: 100%;
+.info-section {
   background: linear-gradient(172.23deg, rgba(192, 229, 227, 1) 0%, rgba(255, 245, 147, 0.28) 100%);
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
 }
 
-.info-box {
-  width: clamp(18rem, 30vw, 60rem);
-  height: clamp(8rem, 15vw, 30rem);
-  font-size: clamp(0.8rem, 1.5vw, 3rem);
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.info-card {
   background: #fafafa;
   border-radius: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  padding: 0.7rem 4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
   text-align: center;
 }
 
-.info-box p {
-  text-align: left;
-  font-size: clamp(0.8rem, 1.2vw, 2.5rem);
-  margin: 0.5rem 0 0;
+.info-card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .primary-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .info-section {
+    padding: 2rem 1rem;
+  }
 }

@@ -9,6 +9,7 @@ import MainContent from './components/Main/Main.vue'
 import Footer from './components/Footer/Footer.vue'
 
 import i18n from './plugins/i18n'
+import type { I18n } from 'vue-i18n'
 
 const app = createApp(App)
 
@@ -25,12 +26,13 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 app.mount('#app')
 
+const i18nInstance = i18n as unknown as I18n
+
 const updateTitle = () => {
-  const t = (i18n as any).global.t as (key: string) => string
+  const t = i18nInstance.global.t as (key: string) => string
   document.title = `${t('navbar.title')}`
 }
 
 updateTitle()
 
-watch(() => ((i18n as any).global.locale?.value ?? (i18n as any).global.locale), updateTitle)
-
+watch(() => i18nInstance.global.locale, updateTitle)

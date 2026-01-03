@@ -12,4 +12,4 @@
 *.md linguist-documentation=false
 *.md linguist-detectable=true
 
-package-lock generated
+pnpm-lock.yaml generated

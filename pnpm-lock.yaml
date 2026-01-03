@@ -11,6 +11,9 @@ importers:
       '@element-plus/icons-vue':
         specifier: ^2.3.2
         version: 2.3.2(vue@3.5.26(typescript@5.9.3))
+      '@iconify/vue':
+        specifier: ^5.0.0
+        version: 5.0.0(vue@3.5.26(typescript@5.9.3))
       vue:
         specifier: ^3.5.26
         version: 3.5.26(typescript@5.9.3)
@@ -21,9 +24,6 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
     devDependencies:
-      '@iconify/vue':
-        specifier: ^5.0.0
-        version: 5.0.0(vue@3.5.26(typescript@5.9.3))
       '@tsconfig/node24':
         specifier: ^24.0.3
         version: 24.0.3
@@ -36,6 +36,9 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.8.1
         version: 0.8.1(typescript@5.9.3)(vue@3.5.26(typescript@5.9.3))
+      pnpm:
+        specifier: ^10.27.0
+        version: 10.27.0
       prettier:
         specifier: 3.7.4
         version: 3.7.4
@@ -845,6 +848,11 @@ packages:
 
   pnpm-workspace-yaml@1.4.3:
     resolution: {integrity: sha512-Q8B3SWuuISy/Ciag4DFP7MCrJX07wfaekcqD2o/msdIj4x8Ql3bZ/NEKOXV7mTVh7m1YdiFWiMi9xH+0zuEGHw==}
+
+  pnpm@10.27.0:
+    resolution: {integrity: sha512-ctaZ2haxF5wUup5k3HHJpAmIy9xlwmTLDkidt96RfyDc9NZNhyNiXylpulLUt+KhFwaC2awqXcrqq3MrfhbwSg==}
+    engines: {node: '>=18.12'}
+    hasBin: true
 
   postcss@8.5.6:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
@@ -1782,6 +1790,8 @@ snapshots:
   pnpm-workspace-yaml@1.4.3:
     dependencies:
       yaml: 2.8.2
+
+  pnpm@10.27.0: {}
 
   postcss@8.5.6:
     dependencies:
