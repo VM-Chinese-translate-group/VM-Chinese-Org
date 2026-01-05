@@ -3,7 +3,8 @@
     <section class="hero-section">
       <div class="hero-bg-wrapper">
         <img src="/main.png" class="hero-bg-img" alt="background" />
-        <div class="hero-overlay"></div> </div>
+        <div class="hero-overlay"></div>
+      </div>
 
       <div class="hero-content">
         <img src="/vmicon.png" alt="Logo" class="hero-logo" />
