@@ -1,5 +1,5 @@
 <template>
-  <div class="language-switcher">
+  <div class="switcher">
     <div class="language-display" @click="toggleDropdown">
       <Icon icon="fluent-mdl2:locale-language" class="icon" />
       <span>{{ displayLanguage }}</span>
@@ -51,7 +51,8 @@ const selectLanguage = (langCode: string) => {
 </script>
 
 <style scoped>
-.language-switcher {
+.switcher {
+  user-select: none;
   position: relative;
   display: inline-block;
 }

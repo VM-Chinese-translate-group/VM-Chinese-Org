@@ -11,6 +11,9 @@ import Footer from './components/Footer/Footer.vue'
 import i18n from './plugins/i18n'
 import type { I18n } from 'vue-i18n'
 
+import '@/styles/markdown.css'
+import 'github-markdown-css/github-markdown.css'
+
 const app = createApp(App)
 
 app.use(i18n)

@@ -33,7 +33,7 @@
         </li>
         <li class="navbar-button">
           <div class="navbar-button-group">
-            <LanguageSwitcher />
+            <Switcher />
             <button class="dark-mode-button">
               <Icon icon="fluent:weather-sunny-32-light" class="icon" />
             </button>
@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import LanguageSwitcher from './LanguageSwitcher.vue'
+import Switcher from './Switcher.vue'
 
 useI18n()
 

@@ -15,12 +15,12 @@ console.log(hello)
 This is a tip.
 :::
 
-::: warning
-This is a warning.
+::: info
+This is a info.
 :::
 
-::: danger
-This is a danger alert.
+::: warning
+This is a warning.
 :::
 
 ## Tables

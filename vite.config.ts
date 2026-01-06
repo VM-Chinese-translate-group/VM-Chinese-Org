@@ -41,11 +41,12 @@ export default defineConfig({
           themes: {
             light: 'github-light',
             dark: 'github-dark',
-          }
+          },
+          defaultColor: 'light-dark()',
         }))
         md.use(imgSize)
         // Custom containers using @mdit/plugin-container
-        const containers = ['tip', 'warning', 'info', 'danger', 'details']
+        const containers = ['tip', 'warning', 'info', 'details']
         containers.forEach(type => {
           md.use(container, {
             name: type,

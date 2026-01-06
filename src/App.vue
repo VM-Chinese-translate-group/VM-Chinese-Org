@@ -1,9 +1,9 @@
 <template>
-  <div class="app-container">
+  <div>
     <NavBar class="navbar" />
     <MainContent class="main-content" />
 
-    <div class="markdown-container">
+    <div class="markdown-container markdown-body">
       <MarkdownDemo />
     </div>
 
@@ -25,13 +25,3 @@ onMounted(() => {
   }
 })
 </script>
-
-<style scoped>
-* {
-  font-family: Arial, sans-serif;
-}
-.app-container {
-  display: flex;
-  flex-direction: column;
-}
-</style>
