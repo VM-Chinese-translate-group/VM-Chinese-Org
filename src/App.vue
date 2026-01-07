@@ -1,20 +1,10 @@
 <template>
-  <div>
-    <NavBar class="navbar" />
-    <MainContent class="main-content" />
-
-    <div class="markdown-container markdown-body">
-      <MarkdownDemo />
-    </div>
-
-    <Footer class="footer" />
-  </div>
+  <router-view />
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import MarkdownDemo from './markdown-demo.md'
 
 const { locale } = useI18n()
 

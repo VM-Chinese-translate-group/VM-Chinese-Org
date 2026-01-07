@@ -1,8 +1,8 @@
 export default {
   navbar: {
     title: 'VM Translation Group',
-    modpack: 'Modpack Translation',
-    map: 'Map Translation',
+    modpack: 'Modpacks',
+    map: 'Maps',
     community: 'Join Community',
     supportUs: 'Support Us',
     tools: 'Translation Tools',
@@ -36,8 +36,8 @@ export default {
     privacy: 'Privacy Policy',
     agreement: 'User Agreement',
     products: 'Products',
-    modpacks: 'Modpack Translation Patches',
-    maps: 'Map Translation Patches',
+    modpacks: 'Modpack Translation',
+    maps: 'Map Translation',
     vmtu: 'VM Translation Update Mod',
     tools: 'Translation Tools',
     disclaimer:

@@ -26,31 +26,26 @@
 
     <section class="info-section">
       <div class="info-grid">
-        <div class="info-card">
-          <h3>{{ $t('main.qualityTitle') }}</h3>
-          <p>{{ $t('main.qualityDesc') }}</p>
-        </div>
-        <div class="info-card">
-          <h3>{{ $t('main.teamTitle') }}</h3>
-          <p>{{ $t('main.teamDesc') }}</p>
-        </div>
-        <div class="info-card">
-          <h3>{{ $t('main.copyrightTitle') }}</h3>
-          <p>{{ $t('main.copyrightDesc') }}</p>
-        </div>
-        <div class="info-card">
-          <h3>{{ $t('main.techTitle') }}</h3>
-          <p>{{ $t('main.techDesc') }}</p>
+        <div class="info-card" v-for="item in infoItems" :key="item.title">
+          <h3>{{ $t(item.title) }}</h3>
+          <p>{{ $t(item.desc) }}</p>
         </div>
       </div>
     </section>
+
+    <MarkdownDemo />
   </main>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import MarkdownDemo from '@/markdown-demo.md'
 
-useI18n()
+const infoItems = [
+  { title: 'main.qualityTitle', desc: 'main.qualityDesc' },
+  { title: 'main.teamTitle', desc: 'main.teamDesc' },
+  { title: 'main.copyrightTitle', desc: 'main.copyrightDesc' },
+  { title: 'main.techTitle', desc: 'main.techDesc' },
+]
 </script>
 
 <style lang="css" scoped>

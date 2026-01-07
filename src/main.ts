@@ -1,27 +1,22 @@
 import { createApp, watch } from 'vue'
 import App from './App.vue'
+import router from './router'
+
+import i18n from './plugins/i18n'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { Icon } from '@iconify/vue'
 
-import NavBar from './components/NavBar/NavBar.vue'
-import MainContent from './components/Main/Main.vue'
-import Footer from './components/Footer/Footer.vue'
-
-import i18n from './plugins/i18n'
-import type { I18n } from 'vue-i18n'
-
 import '@/styles/markdown.css'
 import 'github-markdown-css/github-markdown.css'
+import type { Composer } from 'vue-i18n'
 
 const app = createApp(App)
 
+app.use(router)
 app.use(i18n)
 
 app.component('Icon', Icon)
-app.component('NavBar', NavBar)
-app.component('MainContent', MainContent)
-app.component('Footer', Footer)
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
@@ -29,13 +24,20 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 app.mount('#app')
 
-const i18nInstance = i18n as unknown as I18n
-
-const updateTitle = () => {
-  const t = i18nInstance.global.t as (key: string) => string
-  document.title = `${t('navbar.title')}`
+const updateHtmlMeta = () => {
+  const i18nGlobal = i18n.global as unknown as Composer
+  const currentLocale = i18nGlobal.locale.value
+  // 更新网页标题
+  document.title = i18nGlobal.t('navbar.title')
+  // 让 html 标签的 lang 属性跟随变化
+  document.documentElement.lang = currentLocale
 }
 
-updateTitle()
+updateHtmlMeta()
 
-watch(() => i18nInstance.global.locale, updateTitle)
+watch(
+  () => (i18n.global as unknown as Composer).locale.value,
+  () => {
+    updateHtmlMeta()
+  },
+)
