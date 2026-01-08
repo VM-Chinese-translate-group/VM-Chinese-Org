@@ -68,5 +68,5 @@ useI18n()
 </script>
 
 <style scoped>
-@import './css/Footer.css';
+@import '@/styles/Footer.css';
 </style>

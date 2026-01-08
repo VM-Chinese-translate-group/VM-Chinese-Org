@@ -34,8 +34,11 @@
         <li class="navbar-button">
           <div class="navbar-button-group">
             <Switcher />
-            <button class="dark-mode-button">
-              <Icon icon="fluent:weather-sunny-32-light" class="icon" />
+            <button class="dark-mode-button" @click="toggleDark()">
+              <Icon 
+                :icon="isDark ? 'fluent:weather-moon-32-regular' : 'fluent:weather-sunny-32-light'" 
+                class="icon" 
+              />
             </button>
           </div>
         </li>
@@ -47,17 +50,26 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useDark, useToggle } from '@vueuse/core'
+import { Icon } from '@iconify/vue'
 import Switcher from './Switcher.vue'
 
 useI18n()
 
-const isMenuOpen = ref(false)
+const isDark = useDark({
+  selector: 'html',
+  attribute: 'class',
+  valueDark: 'dark',
+  valueLight: '',
+})
+const toggleDark = useToggle(isDark)
 
+const isMenuOpen = ref(false)
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 </script>
 
-<style lang="css">
-@import './css/NavBar.css';
+<style scoped>
+@import '@/styles/NavBar.css';
 </style>

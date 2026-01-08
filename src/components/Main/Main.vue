@@ -49,5 +49,5 @@ const infoItems = [
 </script>
 
 <style lang="css" scoped>
-@import './css/Main.css';
+@import '@/styles/Main.css';
 </style>
