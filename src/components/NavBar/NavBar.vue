@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="navbar-brand">
-      <img src="/favicon.ico" alt="Logo" class="navbar-logo" />
+      <img src="/imgs/favicon/favicon.ico" alt="Logo" class="navbar-logo" />
       <span class="navbar-title">{{ $t('navbar.title') }}</span>
     </div>
 

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/favicon.ico"/>
+  <img src="public/imgs/favicon/favicon.ico"/>
 </div>
 
 # VM汉化组官方网站 v4
