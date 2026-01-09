@@ -1,6 +1,8 @@
+@import './variables.css';
+
 .footer {
-  background: linear-gradient(to bottom, #eef1f7 0%, #e8f5e9 100%);
-  color: #555;
+  background: var(--footer-bg-gradient);
+  color: var(--text-medium);
 }
 
 .footer-container {
@@ -28,7 +30,7 @@
 
 .footer-text {
   font-size: 0.8rem;
-  color: #888;
+  color: var(--text-muted);
 }
 
 .links-section {
@@ -41,7 +43,7 @@
 
 .column-title {
   font-weight: bold;
-  color: #333;
+  color: var(--text-dark);
   margin-bottom: 0.8rem;
 }
 
@@ -52,7 +54,7 @@
 }
 
 .link {
-  color: #555;
+  color: var(--text-medium);
   text-decoration: none;
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -67,12 +69,12 @@
   bottom: -2px;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #007bff, #00d4ff);
+  background: var(--footer-underline-gradient);
   transition: width 0.3s ease;
 }
 
 .link:hover {
-  color: #007bff;
+  color: var(--footer-link-hover);
 }
 
 .link:hover::after {
@@ -82,7 +84,7 @@
 .bottom-note {
   text-align: center;
   font-size: 0.85rem;
-  color: #aaa;
+  color: var(--text-medium);
   margin-top: 1rem;
 }
 

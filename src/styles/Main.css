@@ -1,3 +1,5 @@
+@import './variables.css';
+
 .main-container {
   width: 100%;
   overflow-x: hidden;
@@ -37,14 +39,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--hero-overlay);
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
   text-align: center;
-  color: #fff;
+  color: var(--text-white);
   max-width: 800px;
   width: 100%;
   display: flex;
@@ -67,7 +69,7 @@
 .hero-slogan {
   font-size: 1.2rem;
   margin-bottom: 2.5rem;
-  opacity: 0.9;
+  opacity: var(--hero-slogan-opacity);
 }
 
 .action-buttons {
@@ -86,20 +88,20 @@
   font-size: 1.1rem;
   border: none;
   border-radius: 50px;
-  color: #fff;
-  background-color: #2a82e4;
+  color: var(--text-white);
+  background-color: var(--btn-primary-bg);
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 160px;
 }
 
 .primary-btn:hover {
-  background-color: #1a6ac4;
+  background-color: var(--btn-primary-hover);
   transform: translateY(-2px);
 }
 
 .primary-btn:active {
-  background-color: #06a3fe;
+  background-color: var(--btn-primary-active);
   transform: translateY(0);
 }
 
@@ -108,7 +110,7 @@
 }
 
 .info-section {
-  background: linear-gradient(172.23deg, rgba(192, 229, 227, 1) 0%, rgba(255, 245, 147, 0.28) 100%);
+  background: var(--info-bg-gradient);
   padding: 4rem 1rem;
   display: flex;
   justify-content: center;
@@ -123,9 +125,9 @@
 }
 
 .info-card {
-  background: #fafafa;
+  background: var(--bg-off-white);
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   padding: 2rem;
   text-align: left;
   transition: transform 0.3s ease;
@@ -138,13 +140,13 @@
 .info-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text-dark);
   text-align: center;
 }
 
 .info-card p {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-light);
   line-height: 1.6;
 }
 
