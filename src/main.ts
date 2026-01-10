@@ -1,4 +1,4 @@
-import { createApp, watch } from 'vue'
+import { createApp, nextTick, watch } from 'vue'
 import App from './App.vue'
 import router from './router'
 import i18n from './plugins/i18n'
@@ -8,6 +8,12 @@ import '@/styles/markdown.css'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { Icon } from '@iconify/vue'
+
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void
+  }
+}
 
 const app = createApp(App)
 
@@ -29,5 +35,15 @@ const syncHtmlMeta = () => {
 
 syncHtmlMeta()
 watch(() => (i18n.global as any).locale.value, syncHtmlMeta)
+
+if (import.meta.env.PROD) {
+  router.afterEach(async () => {
+    await nextTick()
+    window.gtag?.('event', 'page_view', {
+      page_title: document.title,
+      page_path: location.pathname,
+    })
+  })
+}
 
 app.mount('#app')

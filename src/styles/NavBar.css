@@ -1,14 +1,15 @@
 @import './variables.css';
 
 .navbar {
+  position: sticky;
+  top: 0;
   background: var(--nav-bg);
   box-shadow: 0 2px 8px var(--nav-shadow);
-  padding: 1rem 0;
+  padding: 0.8rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 100;
+  z-index: 3;
 }
 
 .navbar-brand {

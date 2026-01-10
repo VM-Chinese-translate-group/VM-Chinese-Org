@@ -12,14 +12,15 @@
         <p class="hero-slogan">{{ $t('main.slogan') }}</p>
 
         <div class="action-buttons">
-          <button class="primary-btn">
+          <RouterLink to="/modpack" class="primary-btn">
             {{ $t('main.modpackBtn') }}
             <Icon icon="fluent:arrow-right-48-filled" class="btn-icon" />
-          </button>
-          <button class="primary-btn">
+          </RouterLink>
+
+          <RouterLink to="/map" class="primary-btn">
             {{ $t('main.mapBtn') }}
             <Icon icon="fluent:arrow-right-48-filled" class="btn-icon" />
-          </button>
+          </RouterLink>
         </div>
       </div>
     </section>
