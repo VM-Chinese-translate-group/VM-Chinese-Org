@@ -1,5 +1,14 @@
 @import './variables.css';
 
+.markdown-body {
+  background-color: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+}
+
+.markdown-body a {
+  color: var(--nav-primary);
+}
+
 .custom-block {
   margin: 16px 0;
   padding: var(--vp-custom-block-padding);

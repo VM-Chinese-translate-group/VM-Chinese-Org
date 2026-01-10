@@ -42,7 +42,7 @@ export default defineConfig({
             light: 'github-light',
             dark: 'github-dark',
           },
-          defaultColor: 'light-dark()',
+          defaultColor: false,
         }))
         md.use(imgSize)
         // Custom containers using @mdit/plugin-container

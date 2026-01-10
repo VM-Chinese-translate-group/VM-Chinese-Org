@@ -28,6 +28,7 @@
 }
 
 .navbar-title {
+  color: var(--text-dark);
   font-weight: bolder;
   padding: 0;
 }

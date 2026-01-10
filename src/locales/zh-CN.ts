@@ -37,7 +37,7 @@ export default {
     agreement: '用户协议',
     products: '产品',
     modpacks: '整合包汉化',
-    maps: '地图汉化补丁',
+    maps: '地图汉化',
     vmtu: 'VM汉化更新模组',
     tools: '翻译工具',
     disclaimer:
