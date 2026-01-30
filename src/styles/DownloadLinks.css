@@ -1,0 +1,65 @@
+@import './variables.css';
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.Link {
+  width: 160px;
+  height: 140px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.25rem;
+  border-radius: var(--link-radius);
+
+  background-color: var(--link-bg);
+  border: none;
+
+  text-decoration: none !important;
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.Link:hover {
+  background-color: var(--link-bg-hover);
+  transform: translateY(-1px);
+}
+
+.Link img,
+.Link .w-10 {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 10px;
+  object-fit: contain;
+
+  transition: transform 0.25s ease;
+}
+
+.Link:hover img {
+  transform: scale(1.06);
+}
+
+.text-sm {
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--link-title);
+}
+
+.text-xs {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--link-desc);
+}

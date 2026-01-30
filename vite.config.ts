@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import gitCommitPlugin from './src/plugins/git-commit'
 import Markdown from 'unplugin-vue-markdown/vite'
+import Components from 'unplugin-vue-components/vite'
 import { container } from '@mdit/plugin-container'
 import { imgSize } from "@mdit/plugin-img-size";
 import Shiki from '@shikijs/markdown-it'
@@ -67,6 +68,12 @@ export default defineConfig({
           })
         })
       }
+    }),
+    Components({
+      dirs: ['src/components'], 
+      extensions: ['vue', 'md'],
+      include: [/\.vue$/, /\.md$/],
+      dts: false,
     }),
     vue({
       include: [/\.vue$/, /\.md$/],

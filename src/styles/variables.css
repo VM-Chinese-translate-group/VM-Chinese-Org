@@ -85,6 +85,17 @@
   /* warning */
   --vp-c-warning-1: #9f6000;
   --vp-c-warning-soft: rgba(255, 193, 7, 0.18);
+
+   /* ===========================
+   Link Card Component
+   =========================== */
+  --link-bg: #f7f7f8;
+  --link-bg-hover: #ececef;
+
+  --link-title: var(--vp-c-info-1);
+  --link-desc: #8c8c92;
+
+  --link-radius: 18px;
 }
 
 .dark {
@@ -135,6 +146,15 @@
 
   --vp-c-details-1: #9ca3af;
   --vp-c-details-soft: #1f2937;
+
+   /* ===========================
+   Link Card Component
+   =========================== */
+  --link-bg: #1f1f22;
+  --link-bg-hover: #2a2a2e;
+
+  --link-title: #9db2ff;
+  --link-desc: #9a9aa0;
 }
 
 * {
