@@ -12,7 +12,7 @@
         <p class="hero-slogan">{{ $t('main.slogan') }}</p>
 
         <div class="action-buttons">
-          <RouterLink to="/modpack" class="primary-btn">
+          <RouterLink to="/modpacks" class="primary-btn">
             {{ $t('main.modpackBtn') }}
             <Icon icon="fluent:arrow-right-48-filled" class="btn-icon" />
           </RouterLink>

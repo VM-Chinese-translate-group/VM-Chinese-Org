@@ -31,6 +31,12 @@ This is a info.
 This is a warning.
 :::
 
+::: details details
+
+xxxxxxxxx
+
+:::
+
 ## Tables
 
 | Header 1 | Header 2 |

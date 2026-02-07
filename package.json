@@ -13,22 +13,22 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "@iconify/vue": "^5.0.0",
-    "@vueuse/core": "^14.1.0",
-    "github-markdown-css": "^5.8.1",
-    "sweetalert2": "^11.26.17",
+    "@vueuse/core": "^14.2.0",
+    "github-markdown-css": "^5.9.0",
+    "sweetalert2": "^11.26.18",
     "vue": "^3.5.27",
     "vue-i18n": "^11.2.8",
     "vue-lazyload": "^3.0.0",
-    "vue-router": "^5.0.0"
+    "vue-router": "^5.0.2"
   },
   "devDependencies": {
     "@mdit/plugin-container": "^0.22.3",
     "@mdit/plugin-img-size": "^0.22.5",
-    "@shikijs/markdown-it": "^3.21.0",
+    "@shikijs/markdown-it": "^3.22.0",
     "@tsconfig/node24": "^24.0.4",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^25.1.0",
-    "@vitejs/plugin-vue": "^6.0.3",
+    "@types/node": "^25.2.1",
+    "@vitejs/plugin-vue": "^6.0.4",
     "@vue/tsconfig": "^0.8.1",
     "markdown-it": "^14.1.0",
     "pnpm": "^10.28.2",
@@ -38,7 +38,7 @@
     "unplugin-vue-components": "^31.0.0",
     "unplugin-vue-markdown": "^29.2.0",
     "vite": "^7.3.1",
-    "vite-plugin-vue-devtools": "^8.0.5",
+    "vite-plugin-vue-devtools": "^8.0.6",
     "vue-tsc": "^3.2.4"
   },
   "packageManager": "pnpm@10.28.2"

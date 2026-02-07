@@ -14,7 +14,7 @@
     <div class="navbar-collapse" :class="{ 'is-active': isMenuOpen }">
       <ul class="navbar-list">
         <li class="navbar-item">
-          <a href="/modpack">{{ $t('navbar.modpack') }}</a>
+          <a href="/modpacks">{{ $t('navbar.modpack') }}</a>
         </li>
         <li class="navbar-item">
           <a href="/map">{{ $t('navbar.map') }}</a>
