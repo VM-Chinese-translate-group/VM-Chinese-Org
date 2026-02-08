@@ -13,6 +13,7 @@
 }
 
 .navbar-brand {
+  cursor: pointer;
   display: flex;
   align-items: center;
   position: absolute;

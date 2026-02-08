@@ -364,7 +364,7 @@ features:
         link: https://github.com/Clickism/ClickMobs
 ---
 
-<script setup lang="ts">
+<script setup>
 import ModpackCards from '@/components/Modpacks/ModpackCards.vue';
 </script>
 

@@ -65,7 +65,7 @@
      Markdown / VP Theme (Original)
      =========================== */
   --vp-c-bg-soft: #f6f7f8;
-  --vp-c-bg-alt: #f6f6f7;
+  --vp-c-bg-alt: #ffffff;
   --vp-c-text-1: #3c3c43;
   --vp-c-text-2: #67676c;
 
@@ -96,9 +96,27 @@
   --link-desc: #8c8c92;
 
   --link-radius: 18px;
+
+  img[src*='github.svg'],
+  .icon-svg[style*='github.svg'] {
+    filter: invert(0) brightness(1);
+  }
 }
 
 .dark {
+  scrollbar-color: #666 #333;
+  ::-webkit-scrollbar {
+    width: 10px;
+    background: #333;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+  }
+
   /* --- Base Colors --- */
   --bg-white: #1b1b1f;
   --bg-off-white: #202127;
@@ -155,6 +173,11 @@
 
   --link-title: #9db2ff;
   --link-desc: #9a9aa0;
+
+  img[src*='github.svg'],
+  .icon-svg[style*='github.svg'] {
+    filter: invert(1) brightness(2);
+  }
 }
 
 * {
