@@ -9,6 +9,8 @@ import Components from 'unplugin-vue-components/vite'
 import { container } from '@mdit/plugin-container'
 import { imgSize } from "@mdit/plugin-img-size";
 import Shiki from '@shikijs/markdown-it'
+import anchor from 'markdown-it-anchor'
+import toc from 'markdown-it-table-of-contents'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,14 +18,6 @@ export default defineConfig({
     gitCommitPlugin(),
     Markdown({
       async markdownItSetup(md) {
-        md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
-          const token = tokens[idx]
-          const title = tokens[idx + 1].content
-          const slug = encodeURIComponent(String(title).trim().toLowerCase().replace(/\s+/g, '-'))
-          token.attrSet('id', slug)
-          
-          return self.renderToken(tokens, idx, options)
-        }
 
         const defaultLinkOpen = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
           return self.renderToken(tokens, idx, options)
@@ -38,6 +32,17 @@ export default defineConfig({
           return defaultLinkOpen(tokens, idx, options, env, self)
         }
 
+md.use(anchor, {
+    permalink: anchor.permalink.ariaHidden({
+      placement: 'before',
+      symbol: '#',
+      class: 'header-anchor',
+    }),
+  })
+md.use(toc, {
+    includeLevel: [2, 3], // 包含 h2, h3
+    containerClass: 'markdown-toc', // 目录的 CSS 类名
+  })
         md.use(await Shiki({
           themes: {
             light: 'github-light',

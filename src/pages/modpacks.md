@@ -4,6 +4,7 @@ features:
     icon: https://cdn.modrinth.com/data/w7ThoJFB/e2de67a0bfb9e8aa2347982ab3ec5463f26cca31_96.webp
     author: isXander
     description: A zoom mod with infinite customizability.
+    link: https://modrinth.com/mod/zoomify
     sources:
       - icon: modrinth
         link: https://modrinth.com/mod/zoomify

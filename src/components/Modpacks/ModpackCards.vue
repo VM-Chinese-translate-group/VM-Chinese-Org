@@ -15,7 +15,7 @@
       <div class="search-field">
         <input
           v-model="searchQuery"
-          @input="currentPage = 1"
+          @input="handleSearchInput"
           class="search-input"
           :placeholder="$t('modpackCards.searchPlaceholder')"
         />
@@ -26,7 +26,7 @@
         {{
           $t('modpackCards.resultsInfo', {
             total: filteredMods.length,
-            start: startIndex + 1,
+            start: filteredMods.length > 0 ? startIndex + 1 : 0,
             end: endIndex,
           })
         }}
@@ -42,7 +42,13 @@
       </div>
 
       <div class="grid-layout">
-        <div v-for="mod in paginatedMods" :key="mod.name" class="card-item">
+        <div
+          v-for="mod in paginatedMods"
+          :key="mod.name"
+          class="card-item"
+          :class="{ 'is-clickable': mod.link }"
+          @click="handleCardClick(mod.link)"
+        >
           <div class="card-box">
             <figure class="card-icon">
               <img :src="mod.icon" :alt="mod.name" loading="lazy" />
@@ -60,7 +66,8 @@
                 ></span>
               </div>
               <p class="card-desc">{{ mod.description }}</p>
-              <div class="card-links">
+
+              <div class="card-links" @click.stop>
                 <a
                   v-for="source in mod.sources"
                   :key="source.link"
@@ -92,30 +99,24 @@
         @click="goToPage(currentPage - 1)"
         :disabled="currentPage === 1"
         class="pagination-btn"
-        :aria-label="$t('modpackCards.previousPage')"
       >
         ←
       </button>
 
-      <!-- 第一页按钮 -->
       <template v-if="pageNumbers.length > 0 && pageNumbers[0] > 1">
         <button @click="goToPage(1)" class="pagination-btn">1</button>
         <span v-if="pageNumbers[0] > 2" class="pagination-ellipsis">...</span>
       </template>
 
-      <!-- 中间页码 -->
       <button
         v-for="page in pageNumbers"
         :key="page"
         @click="goToPage(page)"
         :class="['pagination-btn', { active: page === currentPage }]"
-        :aria-label="$t('modpackCards.goToPage', { page })"
-        :aria-current="page === currentPage ? 'page' : null"
       >
         {{ page }}
       </button>
 
-      <!-- 最后页按钮 -->
       <template v-if="pageNumbers.length > 0 && pageNumbers[pageNumbers.length - 1] < totalPages">
         <span
           v-if="pageNumbers[pageNumbers.length - 1] < totalPages - 1"
@@ -131,7 +132,6 @@
         @click="goToPage(currentPage + 1)"
         :disabled="currentPage === totalPages"
         class="pagination-btn"
-        :aria-label="$t('modpackCards.nextPage')"
       >
         →
       </button>
@@ -140,10 +140,10 @@
         <input
           type="number"
           v-model="pageInputValue"
-          @keydown.enter="handlePageInput"
+          @blur="handlePageInput"
+          @keydown.enter="($event.target as HTMLInputElement).blur()"
           :placeholder="$t('modpackCards.goToPagePlaceholder')"
           class="page-input"
-          :aria-label="$t('modpackCards.goToPageInput')"
         />
       </div>
     </div>
@@ -151,11 +151,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { renderMarkdown } from '@/utils/markdown'
 
 interface SocialLink {
-  icon: string
+  icon: string | { svg: string }
   link: string
   ariaLabel?: string
 }
@@ -166,6 +166,7 @@ export interface ModCard {
   author: string
   description?: string
   message?: string
+  link?: string // 新增：点击卡片跳转的链接
   sources: SocialLink[]
 }
 
@@ -191,15 +192,23 @@ const itemsPerPage = ref(12)
 const pageInputValue = ref('')
 const pageSizeOptions = [6, 12, 18, 24]
 
-const getIconSrc = (icon: string) => ICON_PATHS[icon] || icon
-const getSourceName = (icon: string) => ICON_NAMES[icon] || icon
+const getIconSrc = (icon: string | { svg: string }) => {
+  if (typeof icon === 'string') return ICON_PATHS[icon] || icon
+  return ''
+}
+
+const getSourceName = (icon: string | { svg: string }) => {
+  if (typeof icon === 'string') return ICON_NAMES[icon] || icon
+  return 'Link'
+}
 
 const isLocalSvg = (icon: any) => {
-  if (typeof icon === 'object' && icon.svg) return true
+  if (typeof icon === 'object' && icon?.svg) return true
   if (typeof icon === 'string') return icon in ICON_PATHS || icon.endsWith('.svg')
   return false
 }
 
+// 模糊搜索逻辑
 const fuzzySearch = (query: string, mod: ModCard) => {
   if (!query.trim()) return { match: true, score: 0 }
   const term = query.toLowerCase().trim()
@@ -239,6 +248,13 @@ const filteredMods = computed(() => {
     .map((res) => res.mod)
 })
 
+// 修正：如果过滤后的结果页数少于当前页，重置到第一页
+watch(filteredMods, () => {
+  if (currentPage.value > totalPages.value) {
+    currentPage.value = 1
+  }
+})
+
 const totalPages = computed(() => Math.ceil(filteredMods.value.length / itemsPerPage.value))
 const startIndex = computed(() => (currentPage.value - 1) * itemsPerPage.value)
 const endIndex = computed(() =>
@@ -260,8 +276,23 @@ const pageNumbers = computed(() => {
 const goToPage = (page: number) => {
   if (page >= 1 && page <= totalPages.value) {
     currentPage.value = page
-    document.querySelector('.ModpackCards')?.scrollIntoView({ behavior: 'smooth' })
+    // 加上偏移量防止被固定导航栏遮挡
+    const element = document.querySelector('.ModpackCards')
+    if (element) {
+      const top = element.getBoundingClientRect().top + window.scrollY - 20
+      window.scrollTo({ top, behavior: 'smooth' })
+    }
   }
+}
+
+const handleCardClick = (link?: string) => {
+  if (link) {
+    window.open(link, '_blank')
+  }
+}
+
+const handleSearchInput = () => {
+  currentPage.value = 1
 }
 
 const clearSearch = () => {
@@ -269,12 +300,18 @@ const clearSearch = () => {
   currentPage.value = 1
 }
 
-const handlePageInput = (e: any) => {
-  const val = parseInt(e.target.value)
-  if (val >= 1 && val <= totalPages.value) {
-    goToPage(val)
-    pageInputValue.value = ''
+const handlePageInput = () => {
+  const val = parseInt(pageInputValue.value)
+  if (!isNaN(val)) {
+    if (val >= 1 && val <= totalPages.value) {
+      goToPage(val)
+    } else if (val > totalPages.value) {
+      goToPage(totalPages.value)
+    } else {
+      goToPage(1)
+    }
   }
+  pageInputValue.value = '' // 自动跳转后清空输入框
 }
 
 const handlePageSizeChange = (event: Event) => {
