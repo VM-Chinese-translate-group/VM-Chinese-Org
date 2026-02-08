@@ -20,7 +20,7 @@ export default {
       'VM Translation Group consists of partners with the same interests. We work together with passion. We support each other and become an unbreakable team.',
     copyrightTitle: 'Respect for Copyright',
     copyrightDesc:
-      "We understand the importance of authors' efforts and intellectual property protection. Most translations are officially authorized by the authors, and we do not distribute the game itself. We only provide translation patches for download to ensure that the authors' rights are protected to the maximum extent.",
+      "We are fully aware of the efforts of the authors and the importance of protecting intellectual property rights. The vast majority of our translation projects have received official authorization from the authors. We promise not to distribute the original games, only to provide Chinese localization patch downloads, in order to maximize the protection of the authors' rights.",
     techTitle: 'Technology Driven',
     techDesc:
       'We fully understand that technology is an indispensable part of the localization process. To better promote community development, we have made all our original tools, mods, and the entire translation workflow open source.',
@@ -42,5 +42,18 @@ export default {
     tools: 'Translation Tools',
     disclaimer:
       'The content provided on this site is not related to official Minecraft and has not been endorsed or authorized by Mojang or Microsoft in any form',
+  },
+  modpackCards: {
+    itemsPerPage: 'Items per page',
+    searchPlaceholder: 'Search...',
+    resultsInfo: '{total} results total ({start}-{end})',
+    noResults: 'No results found for "{query}"',
+    resetSearch: 'Reset search',
+    byAuthor: 'by {author}',
+    previousPage: 'Previous page',
+    nextPage: 'Next page',
+    goToPage: 'Go to page {page}',
+    goToPagePlaceholder: 'Go to...',
+    goToPageInput: 'Go to page number',
   },
 }

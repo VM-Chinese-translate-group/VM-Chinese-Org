@@ -14,13 +14,13 @@ export default {
     mapBtn: '地图汉化',
     qualityTitle: '严格的质量把关',
     qualityDesc:
-      'VM汉化组坚守严格的质量把关，将翻译质量提升至新的高度。我们以精益求精的态度，追求每一个细节的完美。从翻译准确性到文化本土化，每一个环节都经过严密的审查与校对。',
+      'VM 汉化组坚守严格的质量把关，将翻译质量提升至新的高度。我们以精益求精的态度，追求每一个细节的完美。从翻译准确性到文化本土化，每一个环节都经过严密的审查与校对。',
     teamTitle: '热爱与团结',
     teamDesc:
-      'VM汉化组由一群具有相同爱好的小伙伴组成，我们携手并肩，用爱发电。彼此相互支持，建立并成为一个无坚不摧的团队。',
+      'VM 汉化组由一群志同道合的小伙伴组成。我们携手并肩，为爱发电，在相互支持中建立起一个紧密协作的团队。',
     copyrightTitle: '尊重版权️',
     copyrightDesc:
-      '我们深知作者的付出和保护知识产权的重要性。绝大多数翻译都经过作者官方授权，不分发游戏本体。仅提供汉化补丁下载，尽最大化保证作者权益得到保障。',
+      '我们深知作者的付出和保护知识产权的重要性。绝大多数翻译项目均已获得作者官方授权。我们承诺不分发游戏本体，仅提供汉化补丁下载，最大程度保障作者权益。',
     techTitle: '技术驱动',
     techDesc:
       '我们深知技术是汉化环节中必不可少的部分。为更好地推动社区发展，我们公开开源了所有我们原创的工具、模组和整套翻译工作流',
@@ -42,5 +42,18 @@ export default {
     tools: '翻译工具',
     disclaimer:
       '本站所提供内容与 Minecraft 官方无关，未获 Mojang 或 Microsoft 任何形式的认可或授权',
+  },
+  modpackCards: {
+    itemsPerPage: '每页显示',
+    searchPlaceholder: '搜索...',
+    resultsInfo: '共 {total} 个结果 ({start}-{end})',
+    noResults: '未找到与 "{query}" 相关的内容',
+    resetSearch: '重置搜索',
+    byAuthor: '作者：{author}',
+    previousPage: '上一页',
+    nextPage: '下一页',
+    goToPage: '前往第 {page} 页',
+    goToPagePlaceholder: '跳转到...',
+    goToPageInput: '跳转到页码',
   },
 }
