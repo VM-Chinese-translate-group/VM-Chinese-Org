@@ -1,6 +1,6 @@
 ---
 title: FTB石头世界4汉化下载
-icon: https://paratranz.cn/media/c667057fa1b8f8168096c7181d82c855.jpeg
+icon: https://media.forgecdn.net/avatars/thumbnails/1495/561/256/256/638971627504237551.jpg
 description: |
   你在石头的怀抱中醒来。没有天空，没有地平线，只有你，被无尽的岩壁包围。可这一次，石头回应了你的呼唤。
 
@@ -16,6 +16,7 @@ compatibility:
 authors:
   - 'FTB (作者团队)'
   - 'VM汉化组 (翻译)'
+  - '给我带双份老鸭煲 (特别鸣谢)'
 links:
   - id: bilibili
     text: 介绍视频
@@ -56,17 +57,7 @@ import PackLayout from '@/components/Modpacks/PackLayout.vue'
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/sb4' }
 ]" />
 
----
-
-| 整合包下载地址                                                         | 加载器   | 支持整合包版本 | 汉化维护状态 |
-| :--------------------------------------------------------------------- | :------- | :------------- | :----------- |
-| [链接](https://www.curseforge.com/minecraft/modpacks/ftb-stoneblock-4) | Neoforge | mc1.21.1 1.7.3 | 维护中       |
-
-汉化项目：[Paratranz](https://paratranz.cn/projects/16650)
-
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/16650/leaderboard)
-
-特别鸣谢：给我带双份老鸭煲
 
 ## 远古试炼：宝库
 

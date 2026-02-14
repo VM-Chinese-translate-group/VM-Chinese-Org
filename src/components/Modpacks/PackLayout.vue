@@ -100,7 +100,7 @@ const iconMap = {
   bilibili: '/imgs/svg/bilibili.svg',
   curseforge: '/imgs/svg/curseforge.svg',
   github: '/imgs/svg/github.svg',
-  paratranz: 'https://paratranz.cn/favicon.png',
+  paratranz: '/imgs/logo/paratranz.png',
   modrinth: '/imgs/svg/modrinth.svg',
 }
 
