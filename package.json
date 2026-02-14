@@ -13,11 +13,11 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "@iconify/vue": "^5.0.0",
-    "@vueuse/core": "^14.2.0",
+    "@vueuse/core": "^14.2.1",
     "github-markdown-css": "^5.9.0",
-    "markdown-it": "^14.1.0", 
+    "markdown-it": "^14.1.1",
     "sweetalert2": "^11.26.18",
-    "vue": "^3.5.27",
+    "vue": "^3.5.28",
     "vue-i18n": "^11.2.8",
     "vue-lazyload": "^3.0.0",
     "vue-router": "^5.0.2"
@@ -26,14 +26,14 @@
     "@mdit/plugin-container": "^0.22.3",
     "@mdit/plugin-img-size": "^0.22.5",
     "@shikijs/markdown-it": "^3.22.0",
-    "markdown-it-anchor": "^9.2.0",
-    "markdown-it-table-of-contents": "^1.1.0",
     "@tsconfig/node24": "^24.0.4",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^25.2.2",
+    "@types/node": "^25.2.3",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vue/tsconfig": "^0.8.1",
-    "pnpm": "^10.29.1",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-table-of-contents": "^1.1.0",
+    "pnpm": "^10.29.3",
     "prettier": "3.7.4",
     "taze": "^19.9.2",
     "typescript": "^5.9.3",
@@ -43,5 +43,5 @@
     "vite-plugin-vue-devtools": "^8.0.6",
     "vue-tsc": "^3.2.4"
   },
-  "packageManager": "pnpm@10.29.1"
+  "packageManager": "pnpm@10.29.3"
 }

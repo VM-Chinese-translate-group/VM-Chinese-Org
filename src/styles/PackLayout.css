@@ -1,0 +1,256 @@
+@import './variables.css';
+
+.pack-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: var(--text-dark);
+}
+
+.pack-main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+}
+
+.pack-header {
+  margin-bottom: 2rem;
+}
+
+.header-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.pack-icon-wrapper {
+  flex-shrink: 0;
+}
+
+.pack-icon,
+.pack-icon-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: var(--card-shadow);
+}
+
+.pack-icon-placeholder {
+  background: #888;
+}
+
+.pack-title-area {
+  flex: 1;
+  min-width: 280px;
+}
+
+.pack-title-area h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pack-description {
+  margin-bottom: 0.75rem;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.pack-status-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.status-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.status-tag.success { background: var(--vp-c-tip-1); color: white; }
+.status-tag.info    { background: var(--vp-c-info-1); color: white; }
+.status-tag.warning { background: var(--vp-c-warning-1); color: white; }
+.status-tag.danger,
+.status-tag.stopped { background: #ff4d4f; color: white; }
+
+.download-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 220px;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.btn-download-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--btn-primary-bg);
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-download-main:hover {
+  background-color: var(--btn-primary-hover);
+  transform: translateY(-1px);
+}
+
+.update-date {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.pack-content-body {
+  padding: 2rem;
+  background: var(--bg-off-white);
+  border-radius: 12px;
+  line-height: 1.6;
+}
+
+#download-section {
+  scroll-margin-top: 100px;
+}
+
+.sidebar-card {
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  background: var(--bg-off-white);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.sidebar-card h3 {
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--switcher-border);
+  font-size: 1.1rem;
+}
+
+.info-group {
+  margin-bottom: 1rem;
+}
+
+.info-group .label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-tag {
+  padding: 2px 8px;
+  background: var(--switcher-item-hover);
+  border-radius: 4px;
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.85rem;
+}
+
+.version-tag.loader {
+  background: var(--vp-c-info-soft);
+  color: var(--vp-c-info-1);
+}
+
+.author-names {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.link-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  opacity: 0.8;
+}
+
+.sidebar-link:hover {
+  background: var(--switcher-hover);
+  color: var(--btn-primary-bg);
+  padding-left: 16px;
+}
+
+.sidebar-link:hover .link-icon {
+  opacity: 1;
+}
+
+.link-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 960px) {
+  .pack-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-content {
+    gap: 1rem;
+  }
+
+  .pack-icon,
+  .pack-icon-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+
+  .pack-title-area h1 {
+    font-size: 1.5rem;
+  }
+
+  .download-button-wrapper {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .pack-content-body {
+    padding: 1.25rem;
+  }
+}
