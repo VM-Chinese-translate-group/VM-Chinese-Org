@@ -74,11 +74,23 @@
   font-weight: bold;
 }
 
-.status-tag.success { background: var(--vp-c-tip-1); color: white; }
-.status-tag.info    { background: var(--vp-c-info-1); color: white; }
-.status-tag.warning { background: var(--vp-c-warning-1); color: white; }
+.status-tag.success {
+  background: var(--vp-c-tip-1);
+  color: white;
+}
+.status-tag.info {
+  background: var(--vp-c-info-1);
+  color: white;
+}
+.status-tag.warning {
+  background: var(--vp-c-warning-1);
+  color: white;
+}
 .status-tag.danger,
-.status-tag.stopped { background: #ff4d4f; color: white; }
+.status-tag.stopped {
+  background: #ff4d4f;
+  color: white;
+}
 
 .download-button-wrapper {
   display: flex;

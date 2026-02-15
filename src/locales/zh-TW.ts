@@ -56,4 +56,20 @@ export default {
     goToPagePlaceholder: '跳轉到...',
     goToPageInput: '跳轉到頁碼',
   },
+  supportUs: {
+    supportTitle: '支持我們',
+    supportParagraph1:
+      '您的支持與鼓勵是我們前進的動力！如果可以，請您向他人推薦我們的漢化作品，十分感謝！',
+    supportParagraph2:
+      '我們一直在用愛發電。如果在您條件允許的情況下，可以在 {afd} 支持我們！也歡迎在 B 站關注我們的帳號！',
+
+    joinTitle: '加入我們',
+    joinParagraph1: '透過我們的 {community}，可以進一步了解翻譯進度等最新消息。',
+    joinParagraph2:
+      '我們誠邀各位夥伴加入我們一起參與貢獻，您可以透過加入我們的 {review} 並填寫審核表單加入 VM 漢化組！',
+
+    afdText: '愛發電',
+    communityText: 'Discord',
+    reviewText: '審核群',
+  },
 }

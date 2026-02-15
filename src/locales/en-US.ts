@@ -14,10 +14,10 @@ export default {
     mapBtn: 'Map Translation',
     qualityTitle: 'Strict Quality Control',
     qualityDesc:
-      'VM Translation Group adheres to strict quality control, elevating translation quality to new heights. With a meticulous attitude, we pursue perfection in every detail. From translation accuracy to cultural localization, each step undergoes rigorous review and proofreading.',
+      'VM Chinese Translation Group adheres to strict quality control, elevating translation quality to new heights. With a meticulous attitude, we pursue perfection in every detail. From translation accuracy to cultural localization, each step undergoes rigorous review and proofreading.',
     teamTitle: 'Passion and Unity',
     teamDesc:
-      'VM Translation Group consists of partners with the same interests. We work together with passion. We support each other and become an unbreakable team.',
+      'VM Chinese Translation Group consists of partners with the same interests. We work together with passion. We support each other and become an unbreakable team.',
     copyrightTitle: 'Respect for Copyright',
     copyrightDesc:
       "We are fully aware of the efforts of the authors and the importance of protecting intellectual property rights. The vast majority of our translation projects have received official authorization from the authors. We promise not to distribute the original games, only to provide Chinese localization patch downloads, in order to maximize the protection of the authors' rights.",
@@ -26,7 +26,7 @@ export default {
       'We fully understand that technology is an indispensable part of the localization process. To better promote community development, we have made all our original tools, mods, and the entire translation workflow open source.',
   },
   footer: {
-    copyright: '© 2026 VM Translation Group Website Development Team',
+    copyright: '© 2026 VM Chinese Translation Group Website Development Team',
     buildInfo: 'Build: dev',
     about: 'About',
     joinUs: 'Join Us',
@@ -55,5 +55,22 @@ export default {
     goToPage: 'Go to page {page}',
     goToPagePlaceholder: 'Go to...',
     goToPageInput: 'Go to page number',
+  },
+  supportUs: {
+    supportTitle: 'Support Us',
+    supportParagraph1:
+      'Your support and encouragement drive us forward! If possible, please consider recommending our translation projects to others — we truly appreciate it.',
+    supportParagraph2:
+      'We are a community-driven, non-profit team. If you are able, you can support us on {afd}! You can also follow us on Bilibili for updates.',
+
+    joinTitle: 'Join Us',
+    joinParagraph1:
+      'Through our {community}, you can stay updated on translation progress and the latest news.',
+    joinParagraph2:
+      'We warmly welcome contributors to join our team. You can apply by joining our {review} and completing the review form to become part of VM Chinese Translation Group!',
+
+    afdText: 'AFdian',
+    communityText: 'Discord',
+    reviewText: 'Review Group',
   },
 }

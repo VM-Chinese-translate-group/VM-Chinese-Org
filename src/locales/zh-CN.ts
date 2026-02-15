@@ -56,4 +56,20 @@ export default {
     goToPagePlaceholder: '跳转到...',
     goToPageInput: '跳转到页码',
   },
+  supportUs: {
+    supportTitle: '支持我们',
+    supportParagraph1:
+      '您的支持与鼓励是我们前进的动力！如果可以，请您向他人推荐我们的汉化作品，十分感谢！',
+    supportParagraph2:
+      '我们一直在用爱发电。如果在您条件允许的情况下，可以在 {afd} 支持我们！还可以在 B 站关注我们的账号！',
+
+    joinTitle: '加入我们',
+    joinParagraph1: '通过我们的 {community}，可以进一步了解翻译进度等最新消息。',
+    joinParagraph2:
+      '我们诚邀各位小伙伴加入我们一起参与贡献，您可以通过加入我们的 {review} 并填写审核表单加入 VM 汉化组！',
+
+    afdText: '爱发电',
+    communityText: 'QQ交流群',
+    reviewText: '审核群',
+  },
 }
