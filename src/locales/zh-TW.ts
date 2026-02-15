@@ -27,7 +27,7 @@ export default {
   },
   footer: {
     copyright: '© 2026 VM漢化組官網開發團隊',
-    buildInfo: 'Build: dev',
+    buildInfo: '構建號：{branch}',
     about: '關於',
     joinUs: '加入我們',
     supportUs: '贊助我們',

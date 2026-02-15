@@ -4,7 +4,14 @@
       <div class="logo-section">
         <img class="logo-icon" src="/imgs/logo/logo_long.png" />
         <p class="copyright">{{ $t('footer.copyright') }}</p>
-        <p class="build-info">{{ $t('footer.buildInfo') }}@{{ commitId }}</p>
+        <p class="build-info">
+          {{ $t('footer.buildInfo', { branch: branchName }) }}@<a
+            :href="`https://github.com/${repoPath}/commit/${commitId}`"
+            target="_blank"
+            class="commit-link"
+            >{{ commitId }}</a
+          >
+        </p>
       </div>
 
       <div class="links-section">
@@ -63,6 +70,8 @@
 import { useI18n } from 'vue-i18n'
 
 const commitId = import.meta.env.VITE_GIT_COMMIT || 'Unknown'
+const branchName = import.meta.env.VITE_GIT_BRANCH || 'Unknown'
+const repoPath = import.meta.env.VITE_GIT_REPO || 'VM-Chinese-translate-group/VM-Chinese-Org'
 
 useI18n()
 </script>

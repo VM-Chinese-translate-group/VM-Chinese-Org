@@ -27,7 +27,7 @@ export default {
   },
   footer: {
     copyright: '© 2026 VM Chinese Translation Group Website Development Team',
-    buildInfo: 'Build: dev',
+    buildInfo: 'Build: {branch}',
     about: 'About',
     joinUs: 'Join Us',
     supportUs: 'Support Us',
