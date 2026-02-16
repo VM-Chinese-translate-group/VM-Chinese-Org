@@ -201,7 +201,7 @@ function showCorrectAnswersModal(item) {
     focusCancel: true,
     preConfirm: () => {
       if (item.link) {
-        window.open(item.link, '_blank')
+        window.open(item.link)
       }
     },
     didOpen: () => {

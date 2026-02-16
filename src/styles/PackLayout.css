@@ -208,15 +208,7 @@
 .link-icon {
   width: 18px;
   height: 18px;
-  display: inline-block;
-  background-color: currentColor;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-position: center;
-  mask-position: center;
-  opacity: 0.8;
+  object-fit: contain;
 }
 
 .sidebar-link:hover {
@@ -225,7 +217,7 @@
   padding-left: 16px;
 }
 
-.sidebar-link:hover .link-icon {
+.sidebar-link:hover {
   opacity: 1;
 }
 

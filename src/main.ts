@@ -1,14 +1,15 @@
 import { createApp, nextTick, watch } from 'vue'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import { Icon } from '@iconify/vue'
+
 import App from './App.vue'
 import router from './router'
 import i18n from './plugins/i18n'
 
 import 'github-markdown-css/github-markdown.css'
 import '@/styles/markdown.css'
-import DocSupport from '@/components/DocSupport.vue'
 
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import { Icon } from '@iconify/vue'
+import DocSupport from '@/components/DocSupport.vue'
 
 declare global {
   interface Window {
@@ -20,6 +21,7 @@ const app = createApp(App)
 
 app.component('Icon', Icon)
 app.component('DocSupport', DocSupport)
+
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }

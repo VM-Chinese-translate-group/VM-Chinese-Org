@@ -103,9 +103,9 @@
         ←
       </button>
 
-      <template v-if="pageNumbers.length > 0 && pageNumbers[0] > 1">
+      <template v-if="pageNumbers.length > 0 && pageNumbers[0]! > 1">
         <button @click="goToPage(1)" class="pagination-btn">1</button>
-        <span v-if="pageNumbers[0] > 2" class="pagination-ellipsis">...</span>
+        <span v-if="pageNumbers[0]! > 2" class="pagination-ellipsis">...</span>
       </template>
 
       <button
@@ -116,10 +116,9 @@
       >
         {{ page }}
       </button>
-
-      <template v-if="pageNumbers.length > 0 && pageNumbers[pageNumbers.length - 1] < totalPages">
+      <template v-if="pageNumbers.length > 0 && pageNumbers[pageNumbers.length - 1]! < totalPages">
         <span
-          v-if="pageNumbers[pageNumbers.length - 1] < totalPages - 1"
+          v-if="pageNumbers[pageNumbers.length - 1]! < totalPages - 1"
           class="pagination-ellipsis"
           >...</span
         >

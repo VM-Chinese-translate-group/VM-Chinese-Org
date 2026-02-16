@@ -69,9 +69,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-const commitId = import.meta.env.VITE_GIT_COMMIT || 'Unknown'
-const branchName = import.meta.env.VITE_GIT_BRANCH || 'Unknown'
-const repoPath = import.meta.env.VITE_GIT_REPO || 'VM-Chinese-translate-group/VM-Chinese-Org'
+const commitId = import.meta.env.VITE_GIT_COMMIT
+const branchName = import.meta.env.VITE_GIT_BRANCH
+const repoPath = import.meta.env.VITE_GIT_REPO
 
 useI18n()
 </script>

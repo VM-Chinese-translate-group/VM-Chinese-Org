@@ -1,48 +1,64 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
-import gitCommitPlugin from './src/plugins/git-commit'
-import Markdown from 'unplugin-vue-markdown/vite'
-import Components from 'unplugin-vue-components/vite'
+import { imgSize } from "@mdit/plugin-img-size"
 import { container } from '@mdit/plugin-container'
-import { imgSize } from "@mdit/plugin-img-size";
 import Shiki from '@shikijs/markdown-it'
+import vue from '@vitejs/plugin-vue'
 import anchor from 'markdown-it-anchor'
 import toc from 'markdown-it-table-of-contents'
+import { defineConfig } from 'vite'
+import Components from 'unplugin-vue-components/vite'
+import Markdown from 'unplugin-vue-markdown/vite'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
-// https://vite.dev/config/
+import { getGitBranch, getGitCommitHash, getGitEnv } from './src/plugins/git'
+
+const branch = getGitBranch()
+const commit = getGitCommitHash()
+const gitEnv = getGitEnv()
+
+const repoPath = (gitEnv.owner && gitEnv.name) 
+  ? `${gitEnv.owner}/${gitEnv.name}` 
+  : 'VM-Chinese-translate-group/VM-Chinese-Org'
+
 export default defineConfig({
+  define: {
+    'import.meta.env.VITE_GIT_COMMIT': JSON.stringify(commit),
+    'import.meta.env.VITE_GIT_BRANCH': JSON.stringify(branch),
+    'import.meta.env.VITE_GIT_REPO': JSON.stringify(repoPath),
+  },
   plugins: [
-    gitCommitPlugin(),
     Markdown({
       async markdownItSetup(md) {
-
-        const defaultLinkOpen = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+        const defaultLinkOpen = md.renderer.rules.link_open || function (tokens, idx, options, env, self) {
           return self.renderToken(tokens, idx, options)
         }
+
         md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
           const token = tokens[idx]
-          const href = token.attrGet('href')
-          if (href && /^https?:\/\//.test(href)) {
-            token.attrSet('target', '_blank')
-            token.attrSet('rel', 'noopener')
+          if (token) {
+            const href = token.attrGet('href')
+            if (href && /^https?:\/\//.test(href)) {
+              token.attrSet('target', '_blank')
+              token.attrSet('rel', 'noopener')
+            }
           }
           return defaultLinkOpen(tokens, idx, options, env, self)
         }
 
-md.use(anchor, {
-    permalink: anchor.permalink.ariaHidden({
-      placement: 'before',
-      symbol: '#',
-      class: 'header-anchor',
-    }),
-  })
-md.use(toc, {
-    includeLevel: [2, 3], // 包含 h2, h3
-    containerClass: 'markdown-toc', // 目录的 CSS 类名
-  })
+        md.use(anchor, {
+          permalink: anchor.permalink.ariaHidden({
+            placement: 'before',
+            symbol: '#',
+            class: 'header-anchor',
+          }),
+        })
+
+        md.use(toc, {
+          includeLevel: [2, 3],
+          containerClass: 'markdown-toc',
+        })
+
         md.use(await Shiki({
           themes: {
             light: 'github-light',
@@ -50,8 +66,9 @@ md.use(toc, {
           },
           defaultColor: false,
         }))
+
         md.use(imgSize)
-        // Custom containers using @mdit/plugin-container
+
         const containers = ['tip', 'warning', 'info', 'details']
         containers.forEach(type => {
           md.use(container, {
@@ -64,7 +81,7 @@ md.use(toc, {
               }
               return `<div class="custom-block ${type}"><p class="custom-block-title">${title}</p>\n`
             },
-            closeRender: (tokens: any, index: number) => {
+            closeRender: () => {
               if (type === 'details') {
                 return `</details>\n`
               }
@@ -75,7 +92,7 @@ md.use(toc, {
       }
     }),
     Components({
-      dirs: ['src/components'], 
+      dirs: ['src/components'],
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.md$/],
       dts: false,

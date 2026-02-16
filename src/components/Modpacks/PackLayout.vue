@@ -74,14 +74,8 @@
               class="sidebar-link"
               target="_blank"
             >
-              <span
-                v-if="getIcon(item.id)"
-                class="link-icon"
-                :style="{
-                  maskImage: `url(${getIcon(item.id)})`,
-                  webkitMaskImage: `url(${getIcon(item.id)})`,
-                }"
-              ></span>
+              <img v-if="getIcon(item.id)" :src="getIcon(item.id)" class="link-icon" alt="" />
+
               <span class="link-text">{{ item.text }}</span>
             </a>
           </div>
@@ -100,7 +94,7 @@ const iconMap = {
   bilibili: '/imgs/svg/bilibili.svg',
   curseforge: '/imgs/svg/curseforge.svg',
   github: '/imgs/svg/github.svg',
-  paratranz: '/imgs/logo/paratranz.png',
+  paratranz: '/imgs/svg/paratranz.svg',
   modrinth: '/imgs/svg/modrinth.svg',
 }
 
