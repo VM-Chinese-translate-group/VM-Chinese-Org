@@ -34,7 +34,7 @@
     "@vue/tsconfig": "^0.8.1",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-table-of-contents": "^1.1.0",
-    "pnpm": "^10.29.3",
+    "pnpm": "^10.30.0",
     "prettier": "3.7.4",
     "taze": "^19.9.2",
     "typescript": "^5.9.3",
@@ -44,5 +44,5 @@
     "vite-plugin-vue-devtools": "^8.0.6",
     "vue-tsc": "^3.2.4"
   },
-  "packageManager": "pnpm@10.29.3"
+  "packageManager": "pnpm@10.30.0"
 }

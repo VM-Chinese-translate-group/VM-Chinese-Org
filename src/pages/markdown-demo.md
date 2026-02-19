@@ -10,13 +10,6 @@ This is a **markdown** file rendered as a Vue component!
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/sb4' }
 ]" />
 
-## Code Highlighting
-
-```typescript
-const hello = 'world'
-console.log(hello)
-```
-
 ## Custom Containers
 
 ::: tip
@@ -36,10 +29,3 @@ This is a warning.
 xxxxxxxxx
 
 :::
-
-## Tables
-
-| Header 1 | Header 2 |
-| -------- | -------- |
-| Row 1    | Row 1    |
-| Row 2    | Row 2    |

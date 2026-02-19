@@ -1,0 +1,183 @@
+/* --- 1. 基础卡片 (LinkGrid 内部使用) --- */
+.Link {
+  cursor: pointer;
+  border-radius: 12px;
+  text-decoration: none !important;
+  color: inherit !important;
+  background-color: var(--vp-c-bg-soft);
+  transition: all 0.3s ease;
+}
+
+.Link:hover {
+  color: var(--vp-c-brand) !important;
+  transform: translateY(-2px);
+}
+
+/* --- 2. 答题特供文字动画 (懒汉下载) --- */
+.lazy-text .text-sm,
+.lazy-text .text-xs {
+  animation: textFlow 2s linear infinite;
+}
+
+@keyframes textFlow {
+  0%,
+  100% {
+    color: orangered;
+  }
+  25% {
+    color: limegreen;
+  }
+  50% {
+    color: blue;
+  }
+}
+
+/* --- 3. SweetAlert2 弹窗全局适配 (支持暗色模式) --- */
+.vm-swal-popup {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'Helvetica Neue', sans-serif !important;
+  background-color: var(--vp-c-bg-alt) !important;
+  color: var(--vp-c-text-1) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--switcher-shadow) !important;
+}
+
+.vm-swal-html-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 适配暗色模式下的输入框 (懒汉下载答题) */
+.dark .swal2-input {
+  background-color: var(--vp-c-bg-soft) !important;
+  color: var(--vp-c-text-1) !important;
+  border: 1px solid var(--switcher-border) !important;
+}
+
+/* 适配成功图标背景 */
+.dark .swal2-success-circular-line-left,
+.dark .swal2-success-circular-line-right,
+.dark .swal2-success-fix {
+  background-color: var(--vp-c-bg-alt) !important;
+}
+
+/* --- 4. 弹窗内部布局与文字 --- */
+.modal-content-container {
+  padding: 25px 20px 10px;
+  text-align: left;
+  line-height: 1.75;
+}
+
+.intro-text {
+  margin-bottom: 15px;
+  font-size: 0.95em;
+  color: var(--vp-c-text-2);
+}
+
+.important-notice {
+  margin-top: 25px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+
+.important-notice a {
+  color: var(--vp-c-info-1);
+  text-decoration: underline;
+  font-weight: normal !important;
+}
+
+/* --- 5. 下载选项条目 (Option Item) --- */
+.download-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.option-item {
+  margin-bottom: 12px;
+  padding: 15px 20px;
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--switcher-border);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.option-item:hover {
+  border-color: var(--nav-primary);
+  box-shadow: var(--card-shadow);
+  transform: translateY(-2px);
+}
+
+.option-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.option-title strong {
+  color: var(--vp-c-text-1);
+}
+
+.option-desc {
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
+
+/* 特殊边框色 */
+.option-item.recommended {
+  border-left: 4px solid #e74c3c;
+}
+.option-item.lanzou {
+  border-left: 4px solid #3498db;
+}
+.option-item.recommended:hover {
+  border-color: #e74c3c !important;
+}
+.option-item.lanzou:hover {
+  border-color: #3498db !important;
+}
+
+/* --- 6. 交互按钮 (Buttons) --- */
+.btn {
+  margin: 0 8px !important;
+  padding: 10px 24px !important;
+  cursor: pointer !important;
+  border: none !important;
+  border-radius: 6px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
+}
+
+.btn:hover {
+  opacity: 0.85;
+  filter: brightness(1.1);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-quark {
+  background-color: #e74c3c !important;
+  color: #fff !important;
+}
+
+.btn-lanzou {
+  background-color: #3498db !important;
+  color: #fff !important;
+}
+
+.btn-cancel {
+  background-color: var(--switcher-item-hover) !important;
+  color: var(--vp-c-text-2) !important;
+  border: 1px solid var(--switcher-border) !important;
+}
+
+/* 隐藏Swal自带的动作栏间距 */
+.swal2-actions {
+  margin-top: 15px !important;
+}

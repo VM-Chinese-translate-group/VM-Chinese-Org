@@ -1,11 +1,13 @@
 <template>
-   
-  <div>    <LinkGrid :items="downloadMethod" />  </div>
+  <div>
+    <DownloadModal :items="downloadMethod" />
+  </div>
 </template>
 
 <script setup>
 import { useUrlSearchParams } from '@vueuse/core'
 import { onMounted } from 'vue'
+import DownloadModal from './DownloadModal.vue'
 
 function clientLink(method) {
   return {
@@ -21,19 +23,14 @@ function clientLink(method) {
 }
 
 function downloadJump(params, downloadMethod) {
-  if (!params.q) {
-    return
+  if (!params.q) return
+
+  const targetId = Array.isArray(params.q) ? params.q[0].toLowerCase() : params.q.toLowerCase()
+  const target = downloadMethod.find((val) => val.id === targetId)
+
+  if (target && target.link) {
+    location.href = target.link
   }
-
-  const target = Array.isArray(params.q) ? params.q[0].toLowerCase() : params.q.toLowerCase()
-
-  downloadMethod.forEach((val) => {
-    if (val.id === target) {
-      if (val.link) {
-        location.href = val.link
-      }
-    }
-  })
 }
 
 const props = defineProps({
@@ -41,7 +38,6 @@ const props = defineProps({
 })
 
 const params = useUrlSearchParams('history')
-
 const downloadMethod = props.methods.map((method) => clientLink(method))
 
 onMounted(() => {
