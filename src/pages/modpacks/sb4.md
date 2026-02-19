@@ -10,7 +10,7 @@ status:
   text: 维护中
   type: success
 compatibility:
-  loader: Neoforge
+  loader: vanilla
   minecraft: '1.21.1'
   pack: '1.8.0'
 authors:

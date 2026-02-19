@@ -56,6 +56,17 @@ export default {
     goToPagePlaceholder: '跳轉到...',
     goToPageInput: '跳轉到頁碼',
   },
+  pack: {
+    defaultTitle: '未命名模組包',
+    downloadPatch: '下載中文更新檔',
+    updateDate: '更新日期：{date}',
+    compatibilityTitle: '版本相容性',
+    minecraftVersion: 'Minecraft 版本',
+    loader: '載入器',
+    packVersion: '模組包版本',
+    authorsTitle: '作者',
+    relatedLinks: '相關連結',
+  },
   supportUs: {
     supportTitle: '支持我們',
     supportParagraph1:
@@ -71,5 +82,11 @@ export default {
     afdText: '愛發電',
     communityText: 'Discord',
     reviewText: '審核群',
+  },
+  loader: {
+    neoforge: 'Neoforge',
+    fabric: 'Fabric',
+    forge: 'Forge',
+    vanilla: '原版',
   },
 }

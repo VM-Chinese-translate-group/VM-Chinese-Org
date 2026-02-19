@@ -165,7 +165,7 @@ export interface ModCard {
   author: string
   description?: string
   message?: string
-  link?: string // 新增：点击卡片跳转的链接
+  link?: string
   sources: SocialLink[]
 }
 

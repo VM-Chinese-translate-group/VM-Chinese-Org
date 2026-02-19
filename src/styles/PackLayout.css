@@ -171,15 +171,8 @@
 
 .version-tag {
   padding: 2px 8px;
-  background: var(--switcher-item-hover);
   border-radius: 4px;
-  font-family: var(--vp-font-family-mono, monospace);
   font-size: 0.85rem;
-}
-
-.version-tag.loader {
-  background: var(--vp-c-info-soft);
-  color: var(--vp-c-info-1);
 }
 
 .author-names {
@@ -257,4 +250,28 @@
   .pack-content-body {
     padding: 1.25rem;
   }
+}
+
+.loader-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: middle;
+  fill: currentColor;
+}
+.loader-neoforge {
+  background: #dc895c22;
+  color: #dc895c;
+}
+.loader-forge {
+  background: #5b619722;
+  color: #5b6197;
+}
+.loader-fabric {
+  background: #8a7b7122;
+  color: #8a7b71;
+}
+.loader-vanilla {
+  background: #6a737d22;
+  color: #6a737d;
 }

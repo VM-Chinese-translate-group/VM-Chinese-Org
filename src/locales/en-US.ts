@@ -56,6 +56,17 @@ export default {
     goToPagePlaceholder: 'Go to...',
     goToPageInput: 'Go to page number',
   },
+  pack: {
+    defaultTitle: 'Unnamed Modpack',
+    downloadPatch: 'Download Localization Patch',
+    updateDate: 'Updated: {date}',
+    compatibilityTitle: 'Version Compatibility',
+    minecraftVersion: 'Minecraft Version',
+    loader: 'Loader',
+    packVersion: 'Modpack Version',
+    authorsTitle: 'Authors',
+    relatedLinks: 'Related Links',
+  },
   supportUs: {
     supportTitle: 'Support Us',
     supportParagraph1:
@@ -72,5 +83,11 @@ export default {
     afdText: 'AFdian',
     communityText: 'Discord',
     reviewText: 'Review Group',
+  },
+  loader: {
+    neoforge: 'Neoforge',
+    fabric: 'Fabric',
+    forge: 'Forge',
+    vanilla: 'Vanilla',
   },
 }

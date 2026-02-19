@@ -56,6 +56,17 @@ export default {
     goToPagePlaceholder: '跳转到...',
     goToPageInput: '跳转到页码',
   },
+  pack: {
+    defaultTitle: '未命名整合包',
+    downloadPatch: '下载汉化',
+    updateDate: '更新日期：{date}',
+    compatibilityTitle: '版本兼容性',
+    minecraftVersion: 'Minecraft 版本',
+    loader: '加载器',
+    packVersion: '整合包版本',
+    authorsTitle: '作者',
+    relatedLinks: '相关链接',
+  },
   supportUs: {
     supportTitle: '支持我们',
     supportParagraph1:
@@ -71,5 +82,11 @@ export default {
     afdText: '爱发电',
     communityText: 'QQ交流群',
     reviewText: '审核群',
+  },
+  loader: {
+    neoforge: 'Neoforge',
+    fabric: 'Fabric',
+    forge: 'Forge',
+    vanilla: '原版',
   },
 }

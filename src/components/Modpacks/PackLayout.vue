@@ -9,9 +9,11 @@
 
         <div class="pack-title-area">
           <h1>{{ meta.title || '未命名整合包' }}</h1>
+
           <p class="pack-description" v-if="meta.description" style="white-space: pre-wrap">
             {{ meta.description }}
           </p>
+
           <div class="pack-status-tags" v-if="meta.status">
             <span :class="['status-tag', meta.status.type || 'info']">
               {{ meta.status.text }}
@@ -37,22 +39,37 @@
       <aside class="pack-sidebar">
         <div class="sidebar-card" v-if="meta.compatibility">
           <h3>版本兼容性</h3>
+
           <div class="info-group" v-if="meta.compatibility.minecraft">
             <span class="label">Minecraft 版本</span>
             <div class="tag-list">
-              <span class="version-tag">{{ meta.compatibility.minecraft }}</span>
+              <span>
+                {{ meta.compatibility.minecraft }}
+              </span>
             </div>
           </div>
+
           <div class="info-group" v-if="meta.compatibility.loader">
             <span class="label">加载器</span>
             <div class="tag-list">
-              <span class="version-tag loader">{{ meta.compatibility.loader }}</span>
+              <span :class="['version-tag', 'loader', getLoaderClass(meta.compatibility.loader)]">
+                <img
+                  v-if="getLoaderIcon(meta.compatibility.loader)"
+                  :src="getLoaderIcon(meta.compatibility.loader)"
+                  class="loader-icon"
+                  alt=""
+                />
+                {{ getLoaderText(meta.compatibility.loader) }}
+              </span>
             </div>
           </div>
+
           <div class="info-group" v-if="meta.compatibility.pack">
             <span class="label">整合包版本</span>
             <div class="tag-list">
-              <span class="version-tag">{{ meta.compatibility.pack }}</span>
+              <span class="version-tag">
+                {{ meta.compatibility.pack }}
+              </span>
             </div>
           </div>
         </div>
@@ -60,7 +77,9 @@
         <div class="sidebar-card" v-if="meta.authors && meta.authors.length">
           <h3>作者</h3>
           <div class="info-group">
-            <p class="author-names" v-for="author in meta.authors" :key="author">{{ author }}</p>
+            <p class="author-names" v-for="author in meta.authors" :key="author">
+              {{ author }}
+            </p>
           </div>
         </div>
 
@@ -75,8 +94,9 @@
               target="_blank"
             >
               <img v-if="getIcon(item.id)" :src="getIcon(item.id)" class="link-icon" alt="" />
-
-              <span class="link-text">{{ item.text }}</span>
+              <span class="link-text">
+                {{ item.text }}
+              </span>
             </a>
           </div>
         </div>
@@ -85,12 +105,16 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   meta: { type: Object, default: () => ({}) },
 })
 
-const iconMap = {
+interface IconMap {
+  [key: string]: string
+}
+
+const iconMap: IconMap = {
   bilibili: '/imgs/svg/bilibili.svg',
   curseforge: '/imgs/svg/curseforge.svg',
   github: '/imgs/svg/github.svg',
@@ -98,9 +122,25 @@ const iconMap = {
   modrinth: '/imgs/svg/modrinth.svg',
 }
 
-const getIcon = (id) => iconMap[id?.toLowerCase()] || null
+const getIcon = (id: string): string | null => iconMap[id?.toLowerCase()] || null
 
-const scrollToDownload = () => {
+const loaderIconMap: IconMap = {
+  neoforge: '/imgs/svg/neoforge.svg',
+  fabric: '/imgs/svg/fabric.svg',
+  forge: '/imgs/svg/forge.svg',
+  vanilla: '/imgs/svg/vanilla.svg',
+}
+
+const getLoaderIcon = (loader: string): string | null => loaderIconMap[loader?.toLowerCase()] || null
+
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
+const getLoaderText = (loader: string): string => t(`loader.${loader?.toLowerCase()}`)
+
+const getLoaderClass = (loader: string): string => `loader-${loader?.toLowerCase()}`
+
+const scrollToDownload = (): void => {
   const el = document.getElementById('download-section')
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
