@@ -29,7 +29,7 @@
     "@shikijs/markdown-it": "^3.22.0",
     "@tsconfig/node24": "^24.0.4",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^25.2.3",
+    "@types/node": "^25.3.0",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vue/tsconfig": "^0.8.1",
     "markdown-it-anchor": "^9.2.0",

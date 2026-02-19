@@ -196,7 +196,6 @@
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--text-medium);
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 

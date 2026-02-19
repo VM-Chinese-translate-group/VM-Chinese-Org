@@ -1,104 +1,12 @@
 @import './variables.css';
 
-.pack-page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  color: var(--text-dark);
+#download-section {
+  scroll-margin-top: 100px;
 }
 
-.pack-main {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 2rem;
-}
-
-.pack-header {
-  margin-bottom: 2rem;
-}
-
-.header-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-
-.pack-icon-wrapper {
-  flex-shrink: 0;
-}
-
-.pack-icon,
-.pack-icon-placeholder {
-  width: 120px;
-  height: 120px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: var(--card-shadow);
-}
-
-.pack-icon-placeholder {
-  background: #888;
-}
-
-.pack-title-area {
-  flex: 1;
-  min-width: 280px;
-}
-
-.pack-title-area h1 {
-  margin: 0 0 0.5rem 0;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.pack-description {
-  margin-bottom: 0.75rem;
-  color: var(--text-light);
+.author-names {
+  margin: 0;
   font-size: 0.95rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-}
-
-.pack-status-tags {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.status-tag {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: bold;
-}
-
-.status-tag.success {
-  background: var(--vp-c-tip-1);
-  color: white;
-}
-.status-tag.info {
-  background: var(--vp-c-info-1);
-  color: white;
-}
-.status-tag.warning {
-  background: var(--vp-c-warning-1);
-  color: white;
-}
-.status-tag.danger,
-.status-tag.stopped {
-  background: #ff4d4f;
-  color: white;
-}
-
-.download-button-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  width: 220px;
-  gap: 0.5rem;
-  text-align: center;
 }
 
 .btn-download-main {
@@ -120,10 +28,78 @@
   transform: translateY(-1px);
 }
 
-.update-date {
+.download-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 220px;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.info-group {
+  margin-bottom: 1rem;
+}
+
+.info-group .label {
   display: block;
-  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
   color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.link-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.link-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.loader-fabric {
+  background: #8a7b7122;
+  color: #8a7b71;
+}
+
+.loader-forge {
+  background: #5b619722;
+  color: #5b6197;
+}
+
+.loader-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: middle;
+  fill: currentColor;
+}
+
+.loader-neoforge {
+  background: #dc895c22;
+  color: #dc895c;
+}
+
+.loader-vanilla {
+  background: #6a737d22;
+  color: #6a737d;
 }
 
 .pack-content-body {
@@ -133,8 +109,64 @@
   line-height: 1.6;
 }
 
-#download-section {
-  scroll-margin-top: 100px;
+.pack-description {
+  margin-bottom: 0.75rem;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.pack-header {
+  margin-bottom: 2rem;
+}
+
+.pack-icon,
+.pack-icon-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: var(--card-shadow);
+}
+
+.pack-icon-placeholder {
+  background: #888;
+}
+
+.pack-icon-wrapper {
+  flex-shrink: 0;
+}
+
+.pack-main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+}
+
+.pack-page-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: var(--text-dark);
+}
+
+.pack-status-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.pack-title-area {
+  flex: 1;
+  min-width: 280px;
+}
+
+.pack-title-area h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .sidebar-card {
@@ -152,40 +184,6 @@
   font-size: 1.1rem;
 }
 
-.info-group {
-  margin-bottom: 1rem;
-}
-
-.info-group .label {
-  display: block;
-  margin-bottom: 0.4rem;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.version-tag {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-
-.author-names {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.link-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
 .sidebar-link {
   display: flex;
   align-items: center;
@@ -198,27 +196,57 @@
   transition: all 0.2s ease;
 }
 
-.link-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-
 .sidebar-link:hover {
   background: var(--switcher-hover);
   color: var(--btn-primary-bg);
   padding-left: 16px;
-}
-
-.sidebar-link:hover {
   opacity: 1;
 }
 
-.link-text {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.status-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.status-tag.danger,
+.status-tag.stopped {
+  background: #ff4d4f;
+  color: white;
+}
+
+.status-tag.info {
+  background: var(--vp-c-info-1);
+  color: white;
+}
+
+.status-tag.success {
+  background: var(--vp-c-tip-1);
+  color: white;
+}
+
+.status-tag.warning {
+  background: var(--vp-c-warning-1);
+  color: white;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.update-date {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.version-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
 }
 
 @media (max-width: 960px) {
@@ -228,8 +256,17 @@
 }
 
 @media (max-width: 640px) {
+  .download-button-wrapper {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
   .header-content {
     gap: 1rem;
+  }
+
+  .pack-content-body {
+    padding: 1.25rem;
   }
 
   .pack-icon,
@@ -241,37 +278,4 @@
   .pack-title-area h1 {
     font-size: 1.5rem;
   }
-
-  .download-button-wrapper {
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-
-  .pack-content-body {
-    padding: 1.25rem;
-  }
-}
-
-.loader-icon {
-  width: 14px;
-  height: 14px;
-  margin-right: 6px;
-  vertical-align: middle;
-  fill: currentColor;
-}
-.loader-neoforge {
-  background: #dc895c22;
-  color: #dc895c;
-}
-.loader-forge {
-  background: #5b619722;
-  color: #5b6197;
-}
-.loader-fabric {
-  background: #8a7b7122;
-  color: #8a7b71;
-}
-.loader-vanilla {
-  background: #6a737d22;
-  color: #6a737d;
 }

@@ -8,7 +8,7 @@
         </div>
 
         <div class="pack-title-area">
-          <h1>{{ meta.title || '未命名整合包' }}</h1>
+          <h1>{{ meta.title || t('pack.defaultTitle') }}</h1>
 
           <p class="pack-description" v-if="meta.description" style="white-space: pre-wrap">
             {{ meta.description }}
@@ -23,9 +23,9 @@
 
         <div class="download-button-wrapper">
           <a href="#download-section" class="btn-download-main" @click.prevent="scrollToDownload">
-            <i class="icon-download"></i> 下载汉化补丁
+            <i class="icon-download"></i> {{ t('pack.downloadPatch') }}
           </a>
-          <span class="update-date" v-if="meta.updateDate"> 更新日期：{{ meta.updateDate }} </span>
+          <span class="update-date" v-if="meta.updateDate">{{ t('pack.updateDate', { date: meta.updateDate }) }}</span>
         </div>
       </div>
     </header>
@@ -38,10 +38,10 @@
 
       <aside class="pack-sidebar">
         <div class="sidebar-card" v-if="meta.compatibility">
-          <h3>版本兼容性</h3>
+          <h3>{{ t('pack.compatibilityTitle') }}</h3>
 
           <div class="info-group" v-if="meta.compatibility.minecraft">
-            <span class="label">Minecraft 版本</span>
+            <span class="label">{{ t('pack.minecraftVersion') }}</span>
             <div class="tag-list">
               <span>
                 {{ meta.compatibility.minecraft }}
@@ -50,7 +50,7 @@
           </div>
 
           <div class="info-group" v-if="meta.compatibility.loader">
-            <span class="label">加载器</span>
+            <span class="label">{{ t('pack.loader') }}</span>
             <div class="tag-list">
               <span :class="['version-tag', 'loader', getLoaderClass(meta.compatibility.loader)]">
                 <img
@@ -65,7 +65,7 @@
           </div>
 
           <div class="info-group" v-if="meta.compatibility.pack">
-            <span class="label">整合包版本</span>
+            <span class="label">{{ t('pack.packVersion') }}</span>
             <div class="tag-list">
               <span class="version-tag">
                 {{ meta.compatibility.pack }}
@@ -75,7 +75,7 @@
         </div>
 
         <div class="sidebar-card" v-if="meta.authors && meta.authors.length">
-          <h3>作者</h3>
+          <h3>{{ t('pack.authorsTitle') }}</h3>
           <div class="info-group">
             <p class="author-names" v-for="author in meta.authors" :key="author">
               {{ author }}
@@ -84,7 +84,7 @@
         </div>
 
         <div class="sidebar-card" v-if="meta.links && meta.links.length">
-          <h3>相关链接</h3>
+          <h3>{{ t('pack.relatedLinks') }}</h3>
           <div class="link-list">
             <a
               v-for="(item, index) in meta.links"
@@ -122,7 +122,7 @@ const iconMap: IconMap = {
   modrinth: '/imgs/svg/modrinth.svg',
 }
 
-const getIcon = (id: string): string | null => iconMap[id?.toLowerCase()] || null
+const getIcon = (id: string): string | undefined => iconMap[id?.toLowerCase()]
 
 const loaderIconMap: IconMap = {
   neoforge: '/imgs/svg/neoforge.svg',
@@ -131,7 +131,7 @@ const loaderIconMap: IconMap = {
   vanilla: '/imgs/svg/vanilla.svg',
 }
 
-const getLoaderIcon = (loader: string): string | null => loaderIconMap[loader?.toLowerCase()] || null
+const getLoaderIcon = (loader: string): string | undefined => loaderIconMap[loader?.toLowerCase()]
 
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()

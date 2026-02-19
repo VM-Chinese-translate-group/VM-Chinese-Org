@@ -264,55 +264,18 @@ function handleClick(item) {
       v-for="item in items"
       :key="item.name"
       :class="['Link', { 'lazy-text': item.id === 'lazy' }]"
-      class="w-30 h-30 text-center text-inherit flex flex-col items-center justify-center"
       @click="handleClick(item)"
     >
       <div
         v-if="item.icon && typeof item.icon === 'string' && item.icon.startsWith('i')"
         :class="item.icon"
-        class="w-10 h-10 mb2"
       />
-      <img v-else :src="item.icon" class="w-10 h-10 mb-2 no-zoomable" />
+      <img v-else :src="item.icon" />
       <span class="text-sm">{{ item.name }}</span>
       <span class="text-xs opacity-50">{{ item.secondary }}</span>
     </div>
   </div>
 </template>
-
-<style scoped>
-.Link {
-  color: inherit !important;
-  text-decoration: none !important;
-  border-radius: 12px;
-  background-color: var(--vp-c-bg-soft);
-  transition: background-color 0.25s;
-  cursor: pointer;
-}
-
-.Link:hover {
-  color: var(--vp-c-brand) !important;
-}
-
-.lazy-text .text-sm,
-.lazy-text .text-xs {
-  animation: textFlow 2s linear infinite;
-}
-
-@keyframes textFlow {
-  0% {
-    color: orangered;
-  }
-  25% {
-    color: limegreen;
-  }
-  50% {
-    color: blue;
-  }
-  100% {
-    color: orangered;
-  }
-}
-</style>
 
 <style>
 @import '@/styles/DownloadModal.css';
