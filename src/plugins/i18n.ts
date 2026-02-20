@@ -51,8 +51,7 @@ function getSavedLocale(): AvailableLocales | null {
   return null
 }
 
-const locale: AvailableLocales =
-  getSavedLocale() ?? getSystemLocale()
+const locale: AvailableLocales = getSavedLocale() ?? getSystemLocale()
 
 const i18n = createI18n<[MessageSchema], AvailableLocales>({
   legacy: false,

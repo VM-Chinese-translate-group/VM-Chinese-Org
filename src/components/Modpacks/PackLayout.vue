@@ -25,7 +25,9 @@
           <a href="#download-section" class="btn-download-main" @click.prevent="scrollToDownload">
             <i class="icon-download"></i> {{ t('pack.downloadPatch') }}
           </a>
-          <span class="update-date" v-if="meta.updateDate">{{ t('pack.updateDate', { date: meta.updateDate }) }}</span>
+          <span class="update-date" v-if="meta.updateDate">{{
+            t('pack.updateDate', { date: meta.updateDate })
+          }}</span>
         </div>
       </div>
     </header>

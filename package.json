@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
+    "build": "vite build && node ./scripts/generate-sitemap.js build",
+    "dev": "node ./scripts/generate-sitemap.js dev && vite",
     "format": "prettier --write src/",
     "preview": "vite preview",
     "type-check": "vue-tsc --build",
@@ -17,11 +17,11 @@
     "git-url-parse": "^16.1.0",
     "github-markdown-css": "^5.9.0",
     "markdown-it": "^14.1.1",
-    "sweetalert2": "^11.26.18",
+    "sweetalert2": "^11.26.19",
     "vue": "^3.5.28",
     "vue-i18n": "^11.2.8",
     "vue-lazyload": "^3.0.0",
-    "vue-router": "^5.0.2"
+    "vue-router": "^5.0.3"
   },
   "devDependencies": {
     "@mdit/plugin-container": "^0.22.3",
