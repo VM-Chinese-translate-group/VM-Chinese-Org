@@ -1,4 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
+import fs from 'node:fs'
+import path from 'node:path'
 
 import { imgSize } from "@mdit/plugin-img-size"
 import { container } from '@mdit/plugin-container'
@@ -9,6 +11,7 @@ import toc from 'markdown-it-table-of-contents'
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import Markdown from 'unplugin-vue-markdown/vite'
+import Sitemap from 'vite-plugin-sitemap'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 import { getGitBranch, getGitCommitHash, getGitEnv } from './src/plugins/git'
@@ -20,6 +23,19 @@ const gitEnv = getGitEnv()
 const repoPath = (gitEnv.owner && gitEnv.name) 
   ? `${gitEnv.owner}/${gitEnv.name}` 
   : 'VM-Chinese-translate-group/VM-Chinese-Org'
+
+
+// 自动获取所有 md 路由
+const getMdRoutes = () => {
+  const pagesDir = path.resolve(__dirname, 'src/pages')
+  const files = fs.readdirSync(pagesDir, { recursive: true }) as string[]
+  return files
+    .filter(f => f.endsWith('.md'))
+    .map(f => {
+      const route = f.replace(/\.md$/, '').replace(/index$/, '')
+      return route.startsWith('/') ? route : `/${route}`
+    })
+}
 
 export default defineConfig({
   define: {
@@ -99,6 +115,10 @@ export default defineConfig({
     }),
     vue({
       include: [/\.vue$/, /\.md$/],
+    }),
+    Sitemap({
+      hostname: 'https://v4.vmct-cn.top',
+      dynamicRoutes: getMdRoutes(),
     }),
     vueDevTools(),
   ],
