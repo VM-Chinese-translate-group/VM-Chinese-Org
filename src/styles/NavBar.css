@@ -12,14 +12,19 @@
   z-index: 3;
 }
 
-.navbar-brand {
-  cursor: pointer;
+.navbar-left {
   display: flex;
   align-items: center;
   position: absolute;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.navbar-brand {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-logo {
@@ -33,6 +38,52 @@
   color: var(--text-dark);
   font-weight: bolder;
   padding: 0;
+}
+
+.navbar-search-container {
+  margin-left: 2rem;
+}
+
+.search-box-trigger {
+  display: flex;
+  align-items: center;
+  background-color: var(--search-trigger-bg, rgba(0, 0, 0, 0.05));
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  min-width: 150px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-box-trigger:hover {
+  background-color: var(--search-trigger-hover, rgba(0, 0, 0, 0.08));
+  border-color: var(--nav-primary);
+}
+
+.search-icon {
+  color: var(--nav-text);
+  opacity: 0.7;
+}
+
+.search-text {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--nav-text);
+  opacity: 0.6;
+  flex: 1;
+}
+
+.search-shortcut {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  opacity: 0.5;
+  margin-left: 8px;
 }
 
 .navbar-collapse {
@@ -84,18 +135,14 @@
   width: 100%;
 }
 
-.navbar-button {
+.navbar-right {
   position: absolute;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.navbar-button-group {
   display: flex;
-  gap: 0.7rem;
   align-items: center;
-  margin: 0.5rem 0;
+  gap: 1rem;
 }
 
 .hamburger {
@@ -107,11 +154,6 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
-}
-
-.hamburger:focus {
-  outline: none;
 }
 
 .hamburger span {
@@ -120,42 +162,35 @@
   background: var(--nav-text);
   border-radius: 10px;
   transition: all 0.3s linear;
-  position: relative;
   transform-origin: 1px;
 }
 
-.hamburger.is-active span:nth-child(1) {
-  transform: rotate(45deg);
-}
-
-.hamburger.is-active span:nth-child(2) {
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-.hamburger.is-active span:nth-child(3) {
-  transform: rotate(-45deg);
+@media (max-width: 1024px) {
+  .search-box-trigger {
+    min-width: auto;
+  }
+  .search-text, .search-shortcut {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
   .navbar {
     justify-content: space-between;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0.8rem 1rem;
   }
 
-  .navbar-brand {
+  .navbar-left, .navbar-right {
     position: static;
     transform: none;
   }
 
-  .hamburger {
-    display: flex;
+  .navbar-search-container {
+    margin-left: 0.8rem;
   }
 
-  .navbar-logo {
-    width: var(--nav-logo-mobile);
-    height: var(--nav-logo-mobile);
+  .hamburger {
+    display: flex;
   }
 
   .navbar-collapse {
@@ -167,7 +202,6 @@
     background-color: var(--nav-bg);
     box-shadow: 0 8px 16px var(--nav-shadow);
     padding: 1rem 0;
-    z-index: 999;
   }
 
   .navbar-collapse.is-active {
@@ -176,32 +210,10 @@
 
   .navbar-list {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .navbar-item {
-    width: 100%;
-    margin: 0;
-    text-align: center;
   }
 
   .navbar-item a {
     display: block;
     padding: 1rem 0;
-    font-size: 1.1rem;
-    width: 100%;
-  }
-
-  .navbar-item a:hover::after {
-    width: 50%;
-  }
-
-  .navbar-button {
-    position: static;
-    transform: none;
-    margin-top: 1rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
   }
 }

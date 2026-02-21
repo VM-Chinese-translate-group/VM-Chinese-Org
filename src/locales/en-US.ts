@@ -8,6 +8,12 @@ export default {
     tools: 'Translation Tools',
     rule: 'Translation Guidelines',
   },
+  search: {
+    placeholder: 'Search...',
+    empty: 'No results found for "{query}"',
+    startSearch: 'Type keywords to start searching...',
+    esc: 'ESC'
+  },
   main: {
     slogan: 'A non-profit organization dedicated to translating Minecraft modpacks and maps',
     modpackBtn: 'Modpack Translation',
