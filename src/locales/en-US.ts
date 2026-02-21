@@ -12,7 +12,7 @@ export default {
     placeholder: 'Search...',
     empty: 'No results found for "{query}"',
     startSearch: 'Type keywords to start searching...',
-    esc: 'ESC'
+    esc: 'ESC',
   },
   main: {
     slogan: 'A non-profit organization dedicated to translating Minecraft modpacks and maps',

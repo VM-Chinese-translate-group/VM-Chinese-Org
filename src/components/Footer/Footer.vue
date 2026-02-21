@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="logo-section">
-        <img class="logo-icon" src="/imgs/logo/logo_long.png" />
+        <img class="logo-icon" v-lazy="'/imgs/logo/logo_long.png'" />
         <p class="copyright">{{ $t('footer.copyright') }}</p>
         <p class="build-info">
           {{ $t('footer.buildInfo', { branch: branchName }) }}@<a

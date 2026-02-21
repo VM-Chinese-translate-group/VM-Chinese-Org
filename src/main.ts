@@ -5,6 +5,7 @@ import { Icon } from '@iconify/vue'
 import App from './App.vue'
 import router from './router'
 import i18n from './plugins/i18n'
+import VueLazyload from 'vue-lazyload'
 
 import 'github-markdown-css/github-markdown.css'
 import '@/styles/markdown.css'
@@ -28,6 +29,13 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 app.use(router)
 app.use(i18n)
+app.use(VueLazyload as any, {
+  preLoad: 1.3,
+  error: '/imgs/missing.png',
+  attempt: 3,
+  observer: true,
+  observerOptions: { rootMargin: '0px', threshold: 0.1 },
+})
 
 const syncHtmlMeta = () => {
   const { locale, t } = i18n.global as any

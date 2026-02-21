@@ -12,7 +12,7 @@ export default {
     placeholder: '搜索...',
     empty: '未找到关于 "{query}" 的结果',
     startSearch: '输入关键词开始搜索...',
-    esc: 'ESC'
+    esc: 'ESC',
   },
   main: {
     slogan: '一个用爱发电专注于汉化MC整合包与地图的非盈利组织',

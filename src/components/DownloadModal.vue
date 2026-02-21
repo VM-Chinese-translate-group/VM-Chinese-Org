@@ -139,8 +139,8 @@ function showQuestionModal(item) {
       confirmButton: 'btn btn-quark',
     },
     html: `
-      <div class="modal-content-container">
-        ${q.content}<br>${q.imageUrl ? `<img src="${q.imageUrl}" style="max-width:100%;height:auto;margin-top:10px;border-radius:8px;"/>` : ''}
+        <div class="modal-content-container">
+          ${q.content}<br>${q.imageUrl ? `<img loading="lazy" src="${q.imageUrl}" style="max-width:100%;height:auto;margin-top:10px;border-radius:8px;"/>` : ''}
         <div style="margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center;">
           ${
             q.isInput
@@ -270,7 +270,7 @@ function handleClick(item) {
         v-if="item.icon && typeof item.icon === 'string' && item.icon.startsWith('i')"
         :class="item.icon"
       />
-      <img v-else :src="item.icon" />
+      <img v-else v-lazy="item.icon" />
       <span class="text-sm">{{ item.name }}</span>
       <span class="text-xs opacity-50">{{ item.secondary }}</span>
     </div>

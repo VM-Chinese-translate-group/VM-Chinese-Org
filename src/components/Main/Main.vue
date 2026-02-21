@@ -2,12 +2,12 @@
   <main class="main-container">
     <section class="hero-section">
       <div class="hero-bg-wrapper">
-        <img src="/imgs/home.png" class="hero-bg-img" alt="background" />
+        <img v-lazy="'/imgs/home.png'" class="hero-bg-img" alt="background" />
         <div class="hero-overlay"></div>
       </div>
 
       <div class="hero-content">
-        <img src="/imgs/logo/logo_long.png" alt="Logo" class="hero-logo" />
+        <img v-lazy="'/imgs/logo/logo_long.png'" alt="Logo" class="hero-logo" />
         <h1 class="hero-title">{{ $t('navbar.title') }}</h1>
         <p class="hero-slogan">{{ $t('main.slogan') }}</p>
 

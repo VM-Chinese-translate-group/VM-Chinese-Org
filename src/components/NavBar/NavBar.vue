@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="navbar-left">
       <div class="navbar-brand" @click="goToHome">
-        <img src="/imgs/logo/logo_128.png" alt="Logo" class="navbar-logo" />
+        <img v-lazy="'/imgs/logo/logo_128.png'" alt="Logo" class="navbar-logo" />
         <span class="navbar-title">
           {{ $t('navbar.title') }}
         </span>

@@ -2,17 +2,21 @@ import { fileURLToPath, URL } from 'node:url'
 import fs from 'node:fs'
 import path from 'node:path'
 
-import { imgSize } from "@mdit/plugin-img-size"
-import { container } from '@mdit/plugin-container'
-import Shiki from '@shikijs/markdown-it'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
+
+import Markdown from 'unplugin-vue-markdown/vite'
+import Components from 'unplugin-vue-components/vite'
+
+import { imgSize } from '@mdit/plugin-img-size'
+import { container } from '@mdit/plugin-container'
 import anchor from 'markdown-it-anchor'
 import toc from 'markdown-it-table-of-contents'
-import { defineConfig } from 'vite'
-import Components from 'unplugin-vue-components/vite'
-import Markdown from 'unplugin-vue-markdown/vite'
+import Shiki from '@shikijs/markdown-it'
+
 import Sitemap from 'vite-plugin-sitemap'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import compression from 'vite-plugin-compression2'
 
 import { getGitBranch, getGitCommitHash, getGitEnv } from './src/plugins/git'
 
@@ -81,6 +85,7 @@ export default defineConfig({
             dark: 'github-dark',
           },
           defaultColor: false,
+          langs: ['json', 'toml'],
         }))
 
         md.use(imgSize)
@@ -121,6 +126,10 @@ export default defineConfig({
       dynamicRoutes: getMdRoutes(),
     }),
     vueDevTools(),
+    compression({
+      algorithms: ['gzip', 'brotliCompress'],
+      threshold: 10240,
+    }),
   ],
   resolve: {
     alias: {
@@ -131,15 +140,13 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('vue') || id.includes('@vue')) {
-              return 'vue-vendor'
-            }
-            if (id.includes('sweetalert2')) {
-              return 'sweetalert2'
-            }
-            return 'vendor'
-          }
+          if (!id.includes('node_modules')) return
+
+          if (id.includes('vue')) return 'vue'
+          if (id.includes('shiki')) return 'shiki'
+          if (id.includes('sweetalert2')) return 'sweetalert2'
+          if (id.includes('markdown-it')) return 'markdown'
+          return 'vendor'
         }
       }
     }

@@ -51,7 +51,7 @@
         >
           <div class="card-box">
             <figure class="card-icon">
-              <img :src="mod.icon" :alt="mod.name" loading="lazy" />
+              <img v-lazy="mod.icon" :alt="mod.name" />
             </figure>
             <div class="card-content">
               <div class="card-header">

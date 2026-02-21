@@ -12,7 +12,7 @@ export default {
     placeholder: '搜尋...',
     empty: '未找到關於 "{query}" 的結果',
     startSearch: '輸入關鍵字開始搜尋...',
-    esc: 'ESC'
+    esc: 'ESC',
   },
   main: {
     slogan: '一個用愛發電、專注於中文化 MC 模組包與地圖的非營利組織',

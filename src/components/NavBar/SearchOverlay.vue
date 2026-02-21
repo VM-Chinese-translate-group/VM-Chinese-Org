@@ -82,7 +82,7 @@ let index: any[] = []
 
 onMounted(async () => {
   try {
-    const res = await fetch('/search-index.json')
+    const res = await fetch(`${import.meta.env.BASE_URL}search-index.json`)
     index = await res.json()
   } catch (e) {
     console.error('Search index failed to load')

@@ -3,7 +3,7 @@
     <header class="pack-header">
       <div class="header-content">
         <div class="pack-icon-wrapper">
-          <img v-if="meta.icon" :src="meta.icon" :alt="meta.title" class="pack-icon" />
+          <img v-if="meta.icon" v-lazy="meta.icon" :alt="meta.title" class="pack-icon" />
           <div v-else class="pack-icon-placeholder"></div>
         </div>
 
@@ -57,7 +57,7 @@
               <span :class="['version-tag', 'loader', getLoaderClass(meta.compatibility.loader)]">
                 <img
                   v-if="getLoaderIcon(meta.compatibility.loader)"
-                  :src="getLoaderIcon(meta.compatibility.loader)"
+                  v-lazy="getLoaderIcon(meta.compatibility.loader)"
                   class="loader-icon"
                   alt=""
                 />
@@ -95,7 +95,7 @@
               class="sidebar-link"
               target="_blank"
             >
-              <img v-if="getIcon(item.id)" :src="getIcon(item.id)" class="link-icon" alt="" />
+              <img v-if="getIcon(item.id)" v-lazy="getIcon(item.id)" class="link-icon" alt="" />
               <span class="link-text">
                 {{ item.text }}
               </span>

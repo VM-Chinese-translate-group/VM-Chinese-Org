@@ -169,7 +169,8 @@
   .search-box-trigger {
     min-width: auto;
   }
-  .search-text, .search-shortcut {
+  .search-text,
+  .search-shortcut {
     display: none;
   }
 }
@@ -180,7 +181,8 @@
     padding: 0.8rem 1rem;
   }
 
-  .navbar-left, .navbar-right {
+  .navbar-left,
+  .navbar-right {
     position: static;
     transform: none;
   }
