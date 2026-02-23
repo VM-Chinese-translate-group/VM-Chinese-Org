@@ -7,7 +7,6 @@ layout: doc
 [[toc]]
 
 <script setup>
-import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
 # 模组翻译工具

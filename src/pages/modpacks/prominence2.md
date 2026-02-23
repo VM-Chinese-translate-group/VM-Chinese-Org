@@ -31,7 +31,6 @@ links:
 
 <script setup>
 import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
 <DownloadLayout :meta="frontmatter">

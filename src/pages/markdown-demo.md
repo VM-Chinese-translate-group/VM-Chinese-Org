@@ -3,7 +3,6 @@
 This is a **markdown** file rendered as a Vue component!
 
 <script setup>
-import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
 <DownloadLinks :methods="[
