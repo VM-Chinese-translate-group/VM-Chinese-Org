@@ -23,10 +23,6 @@ links:
     link: https://paratranz.cn/projects/14287/leaderboard
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片](https://media.forgecdn.net/attachments/description/null/description_973d4137-c897-4749-a023-6a81edb8f0ae.png)

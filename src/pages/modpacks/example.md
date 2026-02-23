@@ -12,10 +12,6 @@ links:
     link: https://github.com/VM-Chinese-translate-group/VMTUCore
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ::: warning 重要提示

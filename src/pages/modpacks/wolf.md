@@ -22,10 +22,6 @@ links:
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://dist.creeper.host/FTB2/cdn/packs/ftb-direwolf20-119/img1.png)

@@ -26,10 +26,6 @@ links:
     link: https://paratranz.cn/projects/11377
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 本整合包旨在融合机械动力与通用机械。玩家将从零开始，逐步实现游戏核心部分的自动化生产，最终突破太阳系的束缚，

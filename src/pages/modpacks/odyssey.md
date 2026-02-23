@@ -23,10 +23,6 @@ links:
     link: https://github.com/VM-Chinese-translate-group/FTB-Sky-Odyssey/
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 天空奥德赛是一个独特的空岛整合包。它拥有几个新的自定义模组。你的目标是打开奥德赛维度的传送门。

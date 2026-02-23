@@ -20,10 +20,6 @@ links:
     link: https://www.curseforge.com/minecraft/modpacks/decursio-project
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![](/imgs/decursio.png)

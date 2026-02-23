@@ -23,10 +23,6 @@ links:
     link: https://paratranz.cn/projects/13356
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =500x](https://media.forgecdn.net/attachments/812/397/3cf.png)

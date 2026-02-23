@@ -20,10 +20,6 @@ links:
     link: https://github.com/VM-Chinese-translate-group/Roguelike-Adventures-and-Dungeons-2
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 Roguelike冒险与地牢2作为经典模组RAD1的官方精神续作，汲取了大量RPG、Roguelike、

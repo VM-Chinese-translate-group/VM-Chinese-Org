@@ -23,10 +23,6 @@ links:
     link: https://paratranz.cn/projects/15860
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 在这里，你将会研究最前沿的科技，钻研最神秘的魔法，探索最深的洞穴，翻越最险的高山，涉足最深处的地牢，

@@ -25,10 +25,6 @@ links:
     link: https://paratranz.cn/projects/15786
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 当你发现自己置身于那无尽变幻、不断进化的后室之中——

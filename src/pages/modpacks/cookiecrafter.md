@@ -23,10 +23,6 @@ links:
     link: https://paratranz.cn/projects/12150
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 这是一款颠覆经典空岛主题的整合包，将带你踏上一场甜蜜的饼干制作艺术之旅。通过“机械动力”模组，你可以亲手打造专属的饼干工厂！

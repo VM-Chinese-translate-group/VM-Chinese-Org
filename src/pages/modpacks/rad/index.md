@@ -25,10 +25,6 @@ links:
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/267/833/2019-09-30_23.png)

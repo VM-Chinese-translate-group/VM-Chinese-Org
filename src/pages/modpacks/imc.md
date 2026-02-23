@@ -26,10 +26,6 @@ links:
     link: https://paratranz.cn/projects/13091
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 Integrated MC 是[地牢建筑统合（IDAS）系列](https://www.mcmod.cn/class/6142.html)模组的官方整合包，专注于打造最出色的探索体验。

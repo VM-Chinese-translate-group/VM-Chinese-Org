@@ -28,10 +28,6 @@ links:
     link: https://cdn.modrinth.com/data/AqeDdB2c/versions/msizLmQ2/PRP-Arch-Forge-1.0.1-Hotfix-1.18.x.jar
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 血魔法手册汉化由繁体中文转换为简体中文，由于两岸名词叫法有所不同，部分用词较为别扭，请见谅

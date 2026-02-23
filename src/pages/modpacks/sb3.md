@@ -20,10 +20,6 @@ links:
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![](https://dist.creeper.host/FTB2/cdn/packs/ftb-stoneblock-3/title.png)

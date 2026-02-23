@@ -23,10 +23,6 @@ links:
     link: https://github.com/PigeonFish
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =200x](https://media.forgecdn.net/avatars/thumbnails/904/711/256/256/638355105225386236.png)

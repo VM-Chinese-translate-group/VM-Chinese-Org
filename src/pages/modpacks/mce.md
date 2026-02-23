@@ -23,10 +23,6 @@ links:
     link: https://www.curseforge.com/minecraft/modpacks/minecraft-eternal/files
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/266/930/2019-10-27_01.png)

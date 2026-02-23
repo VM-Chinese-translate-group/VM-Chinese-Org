@@ -25,10 +25,6 @@ links:
     link: https://github.com/VM-Chinese-translate-group/Cottage-Witch
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![](https://media.forgecdn.net/attachments/507/514/2022-10-18_16.png)

@@ -20,10 +20,6 @@ links:
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 **本整合包可在空岛游玩或正常世界，若要游玩空岛需在创建世界时更改世界类型为空岛**

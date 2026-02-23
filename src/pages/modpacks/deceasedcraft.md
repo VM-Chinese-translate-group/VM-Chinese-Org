@@ -26,10 +26,6 @@ links:
     link: https://paratranz.cn/projects/15705/leaderboard
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 **DeceasedCraft** 是一款风格现代、画面精美的僵尸末日整合包，专为热衷刺激探索、

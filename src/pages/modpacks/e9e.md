@@ -19,10 +19,6 @@ links:
     link: https://github.com/RCqaq/Enigmatica-9-Expert-E9E-Translation
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 <DownloadLinks :methods="[

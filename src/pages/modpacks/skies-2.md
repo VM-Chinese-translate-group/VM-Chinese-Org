@@ -26,10 +26,6 @@ links:
     link: https://paratranz.cn/projects/15051/
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 **在全新的进阶冒险中，翱翔天际——由 Feed The Beast 倾力打造！**

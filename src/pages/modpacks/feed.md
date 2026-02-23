@@ -20,10 +20,6 @@ links:
     link: https://www.curseforge.com/minecraft/modpacks/feed-the-singularity
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![](https://media.forgecdn.net/attachments/376/106/knipsel7.PNG)

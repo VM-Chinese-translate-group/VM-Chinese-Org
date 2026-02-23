@@ -20,10 +20,6 @@ links:
     link: https://www.curseforge.com/minecraft/modpacks/the-nuclear-wasteland
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/310/897/2020-09-01_22.png)

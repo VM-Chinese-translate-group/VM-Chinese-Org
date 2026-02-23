@@ -20,10 +20,6 @@ links:
     link: https://github.com/VM-Chinese-translate-group/create_astral_translation_zhcn
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/613/543/astralpromo.png)

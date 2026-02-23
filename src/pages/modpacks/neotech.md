@@ -26,10 +26,6 @@ links:
     link: https://paratranz.cn/projects/10719/
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![](https://feed-the-beast.com/_next/image?url=https%3A%2F%2Fcdn.feed-the-beast.com%2Fblob%2Fc8%2Fc853e9a0534b3e83a2b2dc90fd439db77b8094c5f6b06e92d8e0072212d89bb6.png&w=256&q=75)

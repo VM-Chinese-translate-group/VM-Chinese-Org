@@ -23,10 +23,6 @@ links:
     link: https://paratranz.cn/projects/17732
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 **Submerged 2** 将你带入一个绝美的、完全自定义的水下世界。这里充满了全新的挑战、独特的地形和重重惊喜。

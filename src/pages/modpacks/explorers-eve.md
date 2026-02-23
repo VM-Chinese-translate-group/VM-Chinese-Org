@@ -20,10 +20,6 @@ links:
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 准备好迎接一场宏大的冒险，去挑战一个更为可怕的敌人吧。

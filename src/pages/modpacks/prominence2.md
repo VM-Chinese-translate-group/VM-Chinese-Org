@@ -29,10 +29,6 @@ links:
     link: https://paratranz.cn/projects/13782
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 🔥 **全面强化的整合包，战斗、探索、魔法与科技的完美平衡，还有丰富的自定义内容！**

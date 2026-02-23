@@ -23,10 +23,6 @@ links:
     link: https://github.com/VM-Chinese-translate-group/SkyFactory-5
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](/imgs/sf5.png)

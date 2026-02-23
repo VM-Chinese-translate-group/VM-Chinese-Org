@@ -29,10 +29,6 @@ links:
     link: https://paratranz.cn/projects/14073
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 这只是一个 Minecraft 1.20.1 整合包而已，但它的主题是科幻，还有魔法！

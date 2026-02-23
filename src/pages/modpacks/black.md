@@ -22,10 +22,6 @@ links:
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 **不要安装高清修复（Optifine）！不兼容！不支持最新版，汉化对应1.0.4**

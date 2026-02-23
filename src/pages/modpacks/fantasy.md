@@ -23,10 +23,6 @@ links:
     link: https://www.curseforge.com/minecraft/modpacks/fantasy-realm
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/471/884/fantasy-realm-2.png)

@@ -20,10 +20,6 @@ links:
     link: https://www.curseforge.com/minecraft/modpacks/caveopolis
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =300x](/imgs/cave.jpg)

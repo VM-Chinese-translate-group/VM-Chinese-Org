@@ -25,10 +25,6 @@ links:
     link: https://paratranz.cn/projects/12144
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 **冒险启程！**

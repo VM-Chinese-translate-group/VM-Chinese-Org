@@ -23,10 +23,6 @@ links:
     link: https://paratranz.cn/projects/17669
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 **灵感源自 Project Ozone。极致合成、技术、魔法与自动化！Ozone Skyblock Reborn正统续作。**

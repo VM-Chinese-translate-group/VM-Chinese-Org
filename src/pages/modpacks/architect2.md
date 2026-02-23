@@ -23,10 +23,6 @@ links:
     link: https://paratranz.cn/projects/13302
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 沉浸于精心打造的整合包，专注于自动化与 EMC 优化。借助等价交换的强大力量，掌握 EMC 管理之道，轻松将原材料转化为珍贵资源。

@@ -26,10 +26,6 @@ links:
     link: https://www.curseforge.com/api/v1/mods/967052/files/5824540/download
 ---
 
-<script setup>
-import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
-</script>
-
 <DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/634/417/fire-giant.png)
