@@ -27,7 +27,7 @@
           </div>
 
           <div class="results-area">
-            <div v-if="results.length > 0" class="results-list">
+            <div v-if="results.length" class="results-list">
               <div
                 v-for="item in results"
                 :key="item.url"
@@ -68,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const props = defineProps<{ visible: boolean }>()
@@ -78,61 +78,42 @@ const router = useRouter()
 const keyword = ref('')
 const results = ref<any[]>([])
 const inputRef = ref<HTMLInputElement | null>(null)
-let index: any[] = []
+let index: any[] | null = null
 
-onMounted(async () => {
-  try {
-    const res = await fetch(`${import.meta.env.BASE_URL}search-index.json`)
-    index = await res.json()
-  } catch (e) {
-    console.error('Search index failed to load')
+const loadIndex = async () => {
+  if (!index) {
+    try {
+      const res = await fetch(`${import.meta.env.BASE_URL}search-index.json`)
+      index = await res.json()
+    } catch {
+      console.error('Search index failed to load')
+      index = []
+    }
   }
-  window.addEventListener('keydown', onKeyDown)
-})
-
-onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
-
-const onKeyDown = (e: KeyboardEvent) => {
-  if (e.key === 'Escape') close()
 }
 
-watch(
-  () => props.visible,
-  async (val) => {
-    if (val) {
-      await nextTick()
-      inputRef.value?.focus()
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-      keyword.value = ''
-      results.value = []
-    }
-  },
-)
-
-const handleSearch = () => {
+const handleSearch = async () => {
   const term = keyword.value.trim().toLowerCase()
   if (!term) {
     results.value = []
     return
   }
 
-  results.value = index
+  await loadIndex()
+
+  results.value = index!
+    .filter(
+      (i) => i.title.toLowerCase().includes(term) || (i.text || '').toLowerCase().includes(term),
+    )
     .map((i) => {
       const text = i.text || ''
       const pos = text.toLowerCase().indexOf(term)
-      const titleMatch = i.title.toLowerCase().includes(term)
-
-      if (pos === -1 && !titleMatch) return null
-
-      return {
-        url: i.url,
-        title: i.title,
-        snippet: text.slice(Math.max(0, pos - 40), pos + 60) + (text.length > 60 ? '...' : ''),
-      }
+      const snippet =
+        pos >= 0
+          ? text.slice(Math.max(0, pos - 40), pos + 60) + (text.length > 60 ? '...' : '')
+          : ''
+      return { url: i.url, title: i.title, snippet }
     })
-    .filter(Boolean)
     .slice(0, 10)
 }
 
@@ -148,6 +129,16 @@ const goTo = (url: string) => {
 }
 
 const close = () => emit('close')
+
+const onKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') close()
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', onKeyDown)
+})
+
+onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
 </script>
 
 <style scoped>

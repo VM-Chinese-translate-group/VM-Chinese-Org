@@ -47,7 +47,7 @@ import PackLayout from '@/components/Modpacks/PackLayout.vue'
 在石之深处，开启你的新纪元。
 
 ::: warning 重要提示
-完整汉化体验请下载下方的下载i18n模组，并放在`mods`文件夹！
+完整汉化体验请下载i18n模组，并放在`mods`文件夹！
 
 记得在覆盖文件后进入游戏的资源包管理页面，把VM汉化资源包启用并拖到最上方！
 :::
