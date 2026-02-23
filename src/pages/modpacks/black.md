@@ -23,10 +23,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 **不要安装高清修复（Optifine）！不兼容！不支持最新版，汉化对应1.0.4**
 
@@ -47,4 +48,4 @@ import PackLayout from "@/components/Modpacks/PackLayout.vue"
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

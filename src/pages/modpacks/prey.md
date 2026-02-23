@@ -21,10 +21,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/759/889/2023-11-15_22.png)
 
@@ -105,4 +106,4 @@ cat酱、荔枝、冰琳、虚空、kressety、luyixs、X209、Ircno6
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

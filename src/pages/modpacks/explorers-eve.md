@@ -21,10 +21,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 准备好迎接一场宏大的冒险，去挑战一个更为可怕的敌人吧。
 你将在暮色森林中开启旅程，一边逃离凶恶的凋灵风暴，一边搜集关键补给和独特装备，而那头怪物将无情地摧毁它所经过的一切。
@@ -66,4 +67,4 @@ import PackLayout from "@/components/Modpacks/PackLayout.vue"
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

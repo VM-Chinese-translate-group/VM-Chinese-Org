@@ -26,10 +26,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 **冒险启程！**
 
@@ -80,4 +81,4 @@ Just Dire Things 让你打造奇妙机械与装置，甚至利用奇特资源如
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

@@ -21,10 +21,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ![图片 =500x](/imgs/paradise2.png)
 
@@ -60,4 +61,4 @@ FTB建筑师天堂2延续了前代的传统，与近期以科技导向、目标�
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

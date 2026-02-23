@@ -30,10 +30,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 这只是一个 Minecraft 1.20.1 整合包而已，但它的主题是科幻，还有魔法！
 
@@ -69,4 +70,4 @@ import PackLayout from "@/components/Modpacks/PackLayout.vue"
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

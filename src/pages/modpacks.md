@@ -366,7 +366,7 @@ features:
 ---
 
 <script setup>
-import ModpackCards from '@/components/Modpacks/ModpackCards.vue';
+import DownloadCards from '@/components/DownloadPage/DownloadCards.vue';
 </script>
 
 ## 整合包汉化补丁安装教程
@@ -377,4 +377,4 @@ import ModpackCards from '@/components/Modpacks/ModpackCards.vue';
 
 一个你喜欢的最新版的Minecraft启动器，推荐使用HMCL和PCL2。
 
-<ModpackCards :mods="frontmatter.features"/>
+<DownloadCards :mods="frontmatter.features"/>

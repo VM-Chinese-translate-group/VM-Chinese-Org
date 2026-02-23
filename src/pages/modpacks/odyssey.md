@@ -24,10 +24,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 天空奥德赛是一个独特的空岛整合包。它拥有几个新的自定义模组。你的目标是打开奥德赛维度的传送门。
 
@@ -66,4 +67,4 @@ import PackLayout from "@/components/Modpacks/PackLayout.vue"
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

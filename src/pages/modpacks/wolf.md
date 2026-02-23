@@ -23,10 +23,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://dist.creeper.host/FTB2/cdn/packs/ftb-direwolf20-119/img1.png)
 
@@ -68,4 +69,4 @@ FTB和Direwolf20将带来一场新的刺激冒险！自2011年以来，FTB和Dir
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

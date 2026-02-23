@@ -21,10 +21,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ![图片 =300x](/imgs/cave.jpg)
 
@@ -49,4 +50,4 @@ import PackLayout from "@/components/Modpacks/PackLayout.vue"
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

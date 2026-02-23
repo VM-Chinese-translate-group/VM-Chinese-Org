@@ -7,7 +7,7 @@
 <script setup>
 import { useUrlSearchParams } from '@vueuse/core'
 import { onMounted } from 'vue'
-import DownloadModal from './DownloadModal.vue'
+import DownloadModal from '@/components/DownloadPage/DownloadModal.vue'
 
 function clientLink(method) {
   return {

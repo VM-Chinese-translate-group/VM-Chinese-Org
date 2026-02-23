@@ -149,5 +149,5 @@ const scrollToDownload = (): void => {
 </script>
 
 <style scoped>
-@import '@/styles/PackLayout.css';
+@import '@/styles/DownloadLayout.css';
 </style>

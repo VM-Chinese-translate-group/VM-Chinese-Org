@@ -24,10 +24,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/471/884/fantasy-realm-2.png)
 
@@ -86,4 +87,4 @@ Fantasy Realm是一个注重质量的RPG冒险和探索整合包!
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

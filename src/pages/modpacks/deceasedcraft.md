@@ -27,10 +27,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 **DeceasedCraft** 是一款风格现代、画面精美的僵尸末日整合包，专为热衷刺激探索、
 挑战性生存玩法、以及挥刀砍杀、枪击僵尸的玩家量身打造。
@@ -117,4 +118,4 @@ import PackLayout from "@/components/Modpacks/PackLayout.vue"
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

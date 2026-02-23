@@ -27,10 +27,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 这是一款为非专家设计的整合包，游戏开始时你会处于一个16x16方块的区块中，周围是一片虚空！在这个整合包中，你唯一的目标是重建你失去的世界，并在过程中享受乐趣！
 
@@ -83,4 +84,4 @@ import PackLayout from "@/components/Modpacks/PackLayout.vue"
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

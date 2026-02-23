@@ -21,10 +21,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ![](https://media.forgecdn.net/attachments/465/302/2022-05-28_22.png)
 
@@ -69,4 +70,4 @@ Vazkii继Crucial 2后的又一力作！Bliss是一款精心打造的和平向整
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

@@ -13,10 +13,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ::: warning 重要提示
 你不应该看到这个页面！这个模组仅为VM汉化组内部设计，个人玩家不应该安装此模组，
@@ -37,4 +38,4 @@ VM汉化更新模组是一个为 Minecraft 整合包汉化补丁设计的自动�
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

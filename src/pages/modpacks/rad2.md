@@ -21,10 +21,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 Roguelike冒险与地牢2作为经典模组RAD1的官方精神续作，汲取了大量RPG、Roguelike、
 Roguelite及地城探索类游戏与模组的精华。这款以探索为核心的综合模组包含250多个子模组、
@@ -115,4 +116,4 @@ Roguelite及地城探索类游戏与模组的精华。这款以探索为核心�
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

@@ -27,10 +27,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 Integrated MC 是[地牢建筑统合（IDAS）系列](https://www.mcmod.cn/class/6142.html)模组的官方整合包，专注于打造最出色的探索体验。
 通过任务、配方、背景故事、战利品以及各种精心设计的建筑，本整合包将每一个模组巧妙融合在一起，不再让模组显得像单独的支线任务，
@@ -84,4 +85,4 @@ Integrated MC 是[地牢建筑统合（IDAS）系列](https://www.mcmod.cn/class
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

@@ -20,10 +20,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 <DownloadLinks :methods="[
   { id: 'weiyun', text: '下载汉化', icon: '/imgs/svg/weiyun.svg', link: 'https://share.weiyun.com/4N6KKIcN' },
@@ -68,4 +69,4 @@ Enigmatica 9: Expert（简称 E9E）是一款 Minecraft 1.19.2 下的任务引�
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

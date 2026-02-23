@@ -21,10 +21,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 在永恒的 MC 中，你将踏上一段充满惊奇™的冒险之旅：魔法、科技、任务、战斗、首领、自动化、探索——还有那些**依然能用大炮发射奶酪的老鼠**？
 
@@ -153,4 +154,4 @@ MCE2 提供了海量魔法与科技模组，助你打造独一无二的游戏风
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

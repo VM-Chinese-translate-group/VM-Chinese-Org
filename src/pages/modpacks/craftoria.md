@@ -24,10 +24,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 在这里，你将会研究最前沿的科技，钻研最神秘的魔法，探索最深的洞穴，翻越最险的高山，涉足最深处的地牢，
 走遍最独特的群系，潜入最不寻常的维度，前往最遥远的行星。
@@ -59,4 +60,4 @@ import PackLayout from "@/components/Modpacks/PackLayout.vue"
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

@@ -24,10 +24,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 沉浸于精心打造的整合包，专注于自动化与 EMC 优化。借助等价交换的强大力量，掌握 EMC 管理之道，轻松将原材料转化为珍贵资源。
 在任务的引导下，通过工业先锋、龙之进化、热力系列、通用机械和 RF 工具：维度自动化资源采集、加工与合成，减少枯燥刷取，提升游戏体验。
@@ -80,4 +81,4 @@ RF工具：维度：探索和利用自定义维度以获得独特的资源和机
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

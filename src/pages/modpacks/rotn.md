@@ -24,10 +24,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ![图片 =400x](https://media.forgecdn.net/attachments/849/572/2021-03-10_12.png)
 
@@ -69,4 +70,4 @@ RotN的一个反复出现的主题是：你的行为会带来后果；你正在�
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

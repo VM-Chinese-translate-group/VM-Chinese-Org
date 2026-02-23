@@ -24,10 +24,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 ![图片 =200x](https://media.forgecdn.net/avatars/thumbnails/904/711/256/256/638355105225386236.png)
 
@@ -158,4 +159,4 @@ Litchiiiiiii、PigeonFish、Cactusstudent、Wulian233、冰琳、3093FengMing、
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

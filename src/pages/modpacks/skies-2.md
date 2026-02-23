@@ -27,10 +27,11 @@ links:
 ---
 
 <script setup>
-import PackLayout from "@/components/Modpacks/PackLayout.vue"
+import DownloadLayout from "@/components/DownloadPage/DownloadLayout.vue"
+import DownloadLinks from "@/components/DownloadPage/DownloadLinks.vue"
 </script>
 
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 **在全新的进阶冒险中，翱翔天际——由 Feed The Beast 倾力打造！**
 
@@ -123,4 +124,4 @@ FTB Skies 2 并非硬核专家包，却毫无疑问是一场以渐进成长、�
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>
