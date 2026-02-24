@@ -3,7 +3,7 @@ title: Submerged 2汉化下载
 icon:
 description: |
   **Submerged 2** 将你带入一个绝美的、完全自定义的水下世界。这里充满了全新的挑战、独特的地形和重重惊喜。
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 维护中
   type: success
@@ -11,6 +11,9 @@ compatibility:
   loader: neoforge
   minecraft: '1.21.1'
   pack: 'B9.0'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组

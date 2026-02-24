@@ -3,7 +3,7 @@ title: FTB Skies 2汉化下载
 icon:
 description: |
   **在全新的进阶冒险中，翱翔天际——由 Feed The Beast 倾力打造！**
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 维护中
   type: success
@@ -11,6 +11,9 @@ compatibility:
   loader: neoforge
   minecraft: '1.21.1'
   pack: '1.13.1'
+authors:
+  - 'FTB (作者团队)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频

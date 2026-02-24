@@ -2,8 +2,8 @@
 title: 永恒的MC 2汉化下载
 icon:
 description: |
-  在永恒的 MC 中，你将踏上一段充满惊奇™的冒险之旅：魔法、科技、任务、战斗、首领、自动化、探索——还有那些**依然能用大炮发射奶酪的老鼠**？
-updateDate: 2026年02月21日
+  在永恒的 MC 中，你将踏上一段充满惊奇™的冒险之旅：魔法、科技、任务、战斗、首领、自动化、探索——还有那些依然能用大炮发射奶酪的老鼠？
+updateDate: 2025年2月21日
 status:
   text: 维护中
   type: success
@@ -11,10 +11,13 @@ compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '1.2.0.3'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组
-    link: https://www.curseforge.com/minecraft/modpacks/mc-eternal-2
+    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/MCE2

@@ -5,14 +5,17 @@ description: |
   FTB Evolution 将你带入一个无限的 Minecraft 世界，在这里，先进科技、深奥魔法与沉浸式探险交织在每一个角落。
 
   这款整合包融合了科技与幻想的精华，以极致的自由度鼓励玩家在多个领域中施展创意、磨砺技艺。
-updateDate: 2026年02月21日
+updateDate: 2026年3月21日
 status:
   text: 维护中
   type: success
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '1.28.0'
+  pack: '1.29.1'
+authors:
+  - 'FTB (作者团队)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组
@@ -41,12 +44,6 @@ FTB Evolution 将你带入一个无限的 Minecraft 世界，在这里，先进�
 { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: '/doing', quarkLink: '/doing' },
 { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: '/doing' }
 ]" />
-
-| FTB官网                                                     | 加载器   | 支持整合包版本  | 汉化维护状态 |
-| :---------------------------------------------------------- | :------- | :-------------- | :----------- |
-| <https://www.feed-the-beast.com/modpacks/125-ftb-evolution> | Neoforge | mc1.21.1 1.28.0 | 翻译中       |
-
-译者：[查看贡献人员排行榜](https://paratranz.cn/projects/12144)
 
 ## 特色
 

@@ -3,7 +3,7 @@ title: 农业森友会5汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1101/154/256/256/638648783830413955.jpeg
 description: |
   耕种、烹饪、钓鱼收集，加上受《动物森友会》启发的创意建造玩法！
-updateDate: 2026年02月21日
+updateDate: 2025年1月
 status:
   text: 停止维护
   type: stopped
@@ -11,6 +11,9 @@ compatibility:
   loader: neoforge
   minecraft: '1.21.1'
   pack: '2.1.5'
+authors:
+  - 'Khazenor (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组
@@ -33,8 +36,6 @@ links:
   { id: 'vm', text: '整合包wiki（英文）', icon: '/imgs/logo/logo_64.png', link: '/modpacks/fc5-wiki/' },
   { id: 'curseforge', text: 'i18n自动汉化更新模组', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/api/v1/mods/297404/files/7173159/download' }
 ]" />
-
-译者：CartQwQ、cat酱、琪露诺
 
 ## 特色
 
@@ -65,11 +66,7 @@ links:
 
 ## 整合包下载
 
-你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order)或启动器内下载整合包。
-
-## 支持版本
-
-支持整合包最新版本。
+你可以在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order)或启动器内下载整合包。
 
 <DocSupport />
 

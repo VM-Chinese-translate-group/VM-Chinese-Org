@@ -2,8 +2,8 @@
 title: 中世纪的MC 1.19.2 Fabric汉化下载
 icon:
 description: |
-  加载器  汉化维护状态 |
-updateDate: 2026年02月21日
+  
+updateDate: 2025年2月21日
 status:
   text: 停止维护
   type: stopped
@@ -11,6 +11,9 @@ compatibility:
   loader: fabric
   minecraft: '1.19.2'
   pack: 'v23'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频

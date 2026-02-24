@@ -3,7 +3,7 @@ title: 天空奥德赛汉化下载
 icon:
 description: |
   天空奥德赛是一个独特的空岛整合包。它拥有几个新的自定义模组。你的目标是打开奥德赛维度的传送门。
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 停止维护
   type: stopped
@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.12.2'
   pack: '1.5.2'
+authors:
+  - 'FTB (作者团队)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频

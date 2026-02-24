@@ -3,7 +3,7 @@ title: FTB Neotech汉化下载
 icon:
 description: |
   进入一个以科技为主宰的世界，体验精心设计的FTB Neotech整合包。无论你是经验丰富的工程师、足智多谋的冒险者，还是富有创意的建筑师，FTB Neotech都能为你带来数小时的模组娱乐时光。
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 维护中
   type: success
@@ -11,6 +11,9 @@ compatibility:
   loader: neoforge
   minecraft: '1.20.4'
   pack: '1.10.2'
+authors:
+  - 'FTB (作者团队)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 汉化教程

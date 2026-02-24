@@ -3,7 +3,7 @@ title: 亡者世界汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1577/605/256/256/639022081315858417.png
 description: |
   DeceasedCraft 是一款风格现代、画面精美的僵尸末日整合包，专为热衷刺激探索、挑战性生存玩法、以及挥刀砍杀、枪击僵尸的玩家量身打造。
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 维护中
   type: success

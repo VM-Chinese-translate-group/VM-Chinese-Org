@@ -3,7 +3,7 @@ title: Muskteer汉化下载
 icon:
 description: |
   Muskteer是一个围绕小型多人游戏社区设计的整合包，玩家生活在一个普通的世界中，并且摒弃了原版Minecraft的一些玩法，更具创新。
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 停止维护
   type: stopped
@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.19.2'
   pack: 'beta7'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频

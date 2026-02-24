@@ -3,7 +3,7 @@ title: 地狱起源汉化下载
 icon:
 description: |
   这是一个极具挑战性的整合包，从MMO游戏玩法中汲取了大量灵感。这里有大量的自定义起源、具有突袭机制的 Boss 和快节奏。还有大量专门为这个包定制的内容，你在其他任何地方都找不到。
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 维护中
   type: success
@@ -11,13 +11,16 @@ compatibility:
   loader: forge
   minecraft: '1.16.5'
   pack: 'v2.0.0-Patch 2'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频
     link: https://www.bilibili.com/video/BV1tx4y1s7E8/
   - id: curseforge
     text: 下载i18n模组
-    link: https://www.curseforge.com/minecraft/modpacks/infernal-rpg
+    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
   - id: github
     text: GitHub仓库
     link: https://github.com/PigeonFish

@@ -11,6 +11,9 @@ compatibility:
   loader: fabric
   minecraft: '1.20.1'
   pack: '3.9.0'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍与汉化安装教程

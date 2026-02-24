@@ -3,7 +3,7 @@ title: Prey汉化下载
 icon:
 description: |
   起初，你会死而往复。在黑暗中被追逐所造成的恐惧不容小觑，毫无疑问：你是猎物。磨练你的技能，获取新的能力，锻造强大的装备来扭转局势，成为掠食者。
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 停止维护
   type: stopped
@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.19.2'
   pack: '1.14（最新版）'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍

@@ -13,6 +13,9 @@ compatibility:
   loader: forge
   minecraft: '1.18.2'
   pack: '最新版'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍

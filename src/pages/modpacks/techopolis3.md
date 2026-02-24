@@ -11,6 +11,9 @@ compatibility:
   loader: neoforge
   minecraft: '1.21.1'
   pack: '11.0'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组

@@ -9,8 +9,11 @@ status:
   type: stopped
 compatibility:
   loader: forge
-  pack: ' 1.19.2'
-  minecraft: '1.0'
+  pack: ' 1.0'
+  minecraft: '1.19.2'
+authors:
+  - 'CryptIX (作者)'
+  - 'VM汉化组-捂脸 (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍
@@ -57,10 +60,6 @@ links:
 ## 整合包下载
 
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/frozenopolis) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
-
-## 贡献人员
-
-特别感谢捂脸个人汉化。
 
 <DocSupport />
 

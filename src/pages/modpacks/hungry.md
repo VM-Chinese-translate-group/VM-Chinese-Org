@@ -2,7 +2,7 @@
 title: 渴望科技2汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1061/916/64/64/638594251476755622.png
 description: |
-
+  这是一个半专家级的整合包，专注于通过不同的技术阶段进行进阶，例如通用机械、热力膨胀、极端反应堆、powah和龙之进化等不同阶段的科技mod的发展，以实现最终游戏目标：制作创造物品并最终制作一个三明治。
 updateDate: 2024年9月1日
 status:
   text: 维护中
@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '最新版'
+authors:
+  - '0nce56 (作者)'
+  - 'VM汉化组-自尊寺 (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍
@@ -44,10 +47,6 @@ links:
 ## 整合包下载
 
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/hungry-for-tech-2) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
-
-## 贡献人员
-
-特别感谢自尊寺个人汉化。
 
 <DocSupport />
 

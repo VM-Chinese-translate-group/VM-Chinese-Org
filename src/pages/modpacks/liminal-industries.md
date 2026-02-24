@@ -13,6 +13,9 @@ compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '1.18'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组

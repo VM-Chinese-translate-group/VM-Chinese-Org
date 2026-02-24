@@ -13,6 +13,9 @@ compatibility:
   loader: neoforge
   minecraft: '1.21.1'
   pack: '1.16.0'
+authors:
+  - 'FTB (作者团队)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 安装教程视频

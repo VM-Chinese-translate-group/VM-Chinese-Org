@@ -3,7 +3,7 @@ title: 星辰工厂汉化下载
 icon:
 description: |
   欢迎来到星辰工厂！在这个无尽虚空的世界里，你将面临一个艰巨的任务——从零开始创造整颗恒星！
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 停止维护
   type: stopped
@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.12.2'
   pack: '最新版'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍

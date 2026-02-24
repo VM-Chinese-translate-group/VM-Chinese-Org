@@ -1,9 +1,9 @@
 ---
 title: 天空工厂5汉化下载
-icon:
+icon: https://media.forgecdn.net/avatars/thumbnails/1146/284/64/64/638712506299204333_animated.gif
 description: |
-  **SkyFactory® 5：创意的重塑，迎来第五次飞跃！**
-updateDate: 2026年02月21日
+  SkyFactory® 5：创意的重塑，迎来第五次飞跃！
+updateDate: 2025年8月20日
 status:
   text: 维护中
   type: success
@@ -11,9 +11,13 @@ compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '5.0.8'
+authors:
+  - ' (作者)'
+  - '给我带双份老鸭煲 (初版翻译)'
+  - 'VM汉化组 (后续维护)'
 links:
   - id: bilibili
-    text: 介绍视频
+    text: 安装教程视频
     link: https://www.bilibili.com/video/BV1m4rsYdEu1/
   - id: curseforge
     text: 下载i18n模组
@@ -31,14 +35,8 @@ links:
 
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/sf5', quarkLink: 'https://pan.quark.cn/s/b1e58afaac74' },
-{ id: 'bilibili', text: '安装教程视频', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV1m4rsYdEu1/' },
-{ id: 'github', text: 'GitHub仓库', icon: '/imgs/svg/github.svg', link: 'https://github.com/VM-Chinese-translate-group/SkyFactory-5' },
 { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/sf5' }
 ]" />
-
-| 整合包下载地址                                                     | 加载器 | 支持整合包版本 | 汉化维护状态 |
-| :----------------------------------------------------------------- | :----- | :------------- | :----------- |
-| [链接](https://www.curseforge.com/minecraft/modpacks/skyfactory-5) | Forge  | mc1.20.1 5.0.8 | 维护中       |
 
 **“猜猜谁回来了？！”** 是的，你没看错，天空工厂5来了！
 
@@ -65,12 +63,6 @@ links:
 **天空工厂5：创意，重构……第五次革新。**
 
 **最低推荐客户端内存：6GB**
-
-## 贡献人员
-
-[给我带双份老鸭煲](https://space.bilibili.com/10068010)：初版翻译
-
-VM汉化组：校对及后续更新维护
 
 ## 整合包下载
 

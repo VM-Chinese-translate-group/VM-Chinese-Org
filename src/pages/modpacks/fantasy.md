@@ -11,13 +11,16 @@ compatibility:
   loader: forge
   minecraft: '1.16.5 1.18.2'
   pack: 'v3'
+authors:
+  - 'LunaPixelStudios (作者团队)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍
     link: https://www.bilibili.com/read/cv26403091/
   - id: curseforge
     text: 下载i18n模组
-    link: https://www.curseforge.com/minecraft/modpacks/fantasy-realm/
+    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
   - id: curseforge
     text: CurseForge
     link: https://www.curseforge.com/minecraft/modpacks/fantasy-realm
@@ -61,10 +64,6 @@ Fantasy Realm是一个注重质量的RPG冒险和探索整合包!
 🍀 用模拟殖民地建造一个繁华的幻想王国！
 
 🍀 250+ 模组
-
-## 支持版本
-
-支持最新版本v3
 
 ## 翻译贡献
 

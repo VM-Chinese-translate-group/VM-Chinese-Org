@@ -3,7 +3,7 @@ title: 机械动力：星辰汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/768/269/256/256/638104922297531668.png
 description: |
   一觉醒来，你发现自己躺在一个奇怪的星球，它的卫星已经破碎，一切都是那样的不同。
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 维护中
   type: success

@@ -3,7 +3,7 @@ title: FTB建筑师天堂2汉化下载
 icon:
 description: |
   FTB建筑师天堂2延续了前代的传统，与近期以科技导向、目标明确的空岛包形成鲜明对比。FTB自豪地呈现了一个美丽、自由与宏伟的小型整合包。
-updateDate: 2026年02月21日
+updateDate: 2024年4月27日
 status:
   text: 维护中
   type: success
@@ -11,10 +11,13 @@ compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '最新版'
+authors:
+  - 'FTB (作者团队)'
+  - 'VM汉化组-捂脸 (翻译)'
 links:
   - id: bilibili
-    text: 介绍视频
-    link: https://www.bilibili.com/read/cv24344019
+    text: 专栏介绍
+    link: https://www.bilibili.com/read/cv34152267
   - id: curseforge
     text: 下载i18n模组
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
@@ -30,7 +33,6 @@ FTB建筑师天堂2延续了前代的传统，与近期以科技导向、目标�
 
 <DownloadLinks :methods="[
   { id: 'lanzou', text: '下载汉化', icon: '/imgs/svg/lanzou.svg', link: 'https://wulian233.lanzouj.com/ib5G81wnrpwb' },
-  { id: 'bilibili', text: '专栏介绍', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/read/cv34152267' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://wulian233.lanzouj.com/ib5G81wnrpwb' }
 ]" />
 

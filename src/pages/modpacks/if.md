@@ -3,7 +3,7 @@ title: 无限协会汉化下载
 icon:
 description: |
   **创建世界时，请将世界类型设为SKYBLOCK**
-updateDate: 2026年02月21日
+updateDate: 2025年2月21日
 status:
   text: 停止维护
   type: stopped
@@ -11,13 +11,16 @@ compatibility:
   loader: forge
   minecraft: '1.18.2'
   pack: '最新版'
+authors:
+  - ' (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频
     link: https://www.bilibili.com/read/cv18916475/
   - id: curseforge
     text: 下载i18n模组
-    link: https://www.curseforge.com/minecraft/modpacks/infinity-foundation/
+    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
 ---
 
 <DownloadLayout :meta="frontmatter">
