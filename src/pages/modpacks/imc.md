@@ -1,9 +1,9 @@
 ---
 title: Integrated MC汉化下载
-icon:
+icon: https://media.forgecdn.net/avatars/thumbnails/959/574/256/256/638454692108164316.png
 description: |
-  Integrated MC 是[地牢建筑统合（IDAS）系列](https://www.mcmod.cn/class/6142.html)模组的官方整合包，专注于打造最出色的探索体验。
-updateDate: 2025年2月21日
+  Integrated MC 是地牢建筑统合（IDAS）系列模组的官方整合包，专注于打造最出色的探索体验。
+updateDate: 2026年2月1日
 status:
   text: 维护中
   type: success
@@ -12,11 +12,11 @@ compatibility:
   minecraft: '1.20.1'
   pack: '1.6.1'
 authors:
-  - ' (作者)'
+  - 'CraisinLord (作者)'
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
-    text: 介绍视频
+    text: 宣传片
     link: https://www.bilibili.com/video/BV16uKNzVEMA/
   - id: curseforge
     text: 下载i18n模组
@@ -39,17 +39,8 @@ Integrated MC 是[地牢建筑统合（IDAS）系列](https://www.mcmod.cn/class
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/imc', quarkLink: 'https://pan.quark.cn/s/2d7a269c94de' },
-  { id: 'bilibili', text: '宣传片', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV16uKNzVEMA/' },
-  { id: 'curseforge', text: 'i18n自动汉化更新模组', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/api/v1/mods/297404/files/7173159/download' },
-  { id: 'github', text: 'GitHub仓库', icon: '/imgs/svg/github.svg', link: 'https://github.com/VM-Chinese-translate-group/Integrated-MC' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/imc' }
 ]" />
-
-## 更多信息
-
-| 整合包下载地址                                                             | 加载器 | 支持整合包版本 | 汉化维护状态 |
-| :------------------------------------------------------------------------- | :----- | :------------- | :----------- |
-| [链接](https://www.curseforge.com/minecraft/modpacks/integrated-minecraft) | Forge  | mc1.20.1 1.6.1 | 维护中       |
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/13091/leaderboard)
 
@@ -76,10 +67,6 @@ Integrated MC 是[地牢建筑统合（IDAS）系列](https://www.mcmod.cn/class
 ## 整合包下载
 
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/integrated-minecraft) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
-
-## 支持版本
-
-支持整合包版本1.5.9最新版
 
 <DocSupport />
 

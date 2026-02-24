@@ -1,6 +1,6 @@
 ---
 title: 异域征途汉化下载
-icon:
+icon: 
 description: |
   受《泰拉瑞亚》深度启发，体验一套独特的成长系统：击败Boss以解锁新的矿物、新的怪物，甚至是新的NPC！
 updateDate: 2025年2月21日

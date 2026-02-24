@@ -5,8 +5,8 @@ description: |
   这是一个半专家级的整合包，专注于通过不同的技术阶段进行进阶，例如通用机械、热力膨胀、极端反应堆、powah和龙之进化等不同阶段的科技mod的发展，以实现最终游戏目标：制作创造物品并最终制作一个三明治。
 updateDate: 2024年9月1日
 status:
-  text: 维护中
-  type: success
+  text: 停止维护
+  type: stopped
 compatibility:
   loader: forge
   minecraft: '1.20.1'

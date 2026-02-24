@@ -1,6 +1,6 @@
 ---
 title: 星辰工厂汉化下载
-icon:
+icon: 
 description: |
   欢迎来到星辰工厂！在这个无尽虚空的世界里，你将面临一个艰巨的任务——从零开始创造整颗恒星！
 updateDate: 2025年2月21日
@@ -13,7 +13,7 @@ compatibility:
   pack: '最新版'
 authors:
   - ' (作者)'
-  - 'VM汉化组 (翻译)'
+  - 'VM汉化组-自尊寺 (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍
@@ -47,10 +47,6 @@ links:
 ## 整合包下载
 
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/star-factory) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
-
-## 贡献人员
-
-特别感谢自尊寺个人汉化。
 
 <DocSupport />
 

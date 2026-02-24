@@ -1,6 +1,6 @@
 ---
 title: 永恒的MC汉化下载
-icon:
+icon: 
 description: |
   欢迎来到永恒的安慕希！这里是麦块福特颇负盛名的水槽整合包！
 updateDate: 2025年2月21日

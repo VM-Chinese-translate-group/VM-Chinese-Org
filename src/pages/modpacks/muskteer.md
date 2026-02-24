@@ -1,6 +1,6 @@
 ---
 title: Muskteer汉化下载
-icon:
+icon: 
 description: |
   Muskteer是一个围绕小型多人游戏社区设计的整合包，玩家生活在一个普通的世界中，并且摒弃了原版Minecraft的一些玩法，更具创新。
 updateDate: 2025年2月21日

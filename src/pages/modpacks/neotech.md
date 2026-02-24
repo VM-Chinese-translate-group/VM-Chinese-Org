@@ -1,9 +1,9 @@
 ---
 title: FTB Neotech汉化下载
-icon:
+icon: 
 description: |
   进入一个以科技为主宰的世界，体验精心设计的FTB Neotech整合包。无论你是经验丰富的工程师、足智多谋的冒险者，还是富有创意的建筑师，FTB Neotech都能为你带来数小时的模组娱乐时光。
-updateDate: 2025年2月21日
+updateDate: 2025年6月6日
 status:
   text: 维护中
   type: success
@@ -20,7 +20,10 @@ links:
     link: https://www.bilibili.com/video/BV1xgsuesEEi
   - id: curseforge
     text: 下载i18n模组
-    link: https://www.curseforge.com/api/v1/mods/967052/files/5824540/download
+    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+  - id: curseforge
+    text: 下载硬编码汉化VP模组
+    link: https://mediafilez.forgecdn.net/files/7146/784/vaultpatcher-all-1.4.6.jar
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/FTB-Neotech/
@@ -38,16 +41,11 @@ links:
 ::: warning 重要提示
 完整汉化体验请下载i18n和VP模组，并放在`mods`文件夹！推荐加入拼音搜索模组。
 :::
+
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/neotech', quarkLink: 'https://pan.quark.cn/s/e74bd572a6fe' },
-{ id: 'bilibili', text: '汉化教程', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV1xgsuesEEi/' },
-{ id: 'github', text: 'GitHub仓库', icon: '/imgs/svg/github.svg', link: 'https://github.com/VM-Chinese-translate-group/FTB-Neotech/' },
-{ id: 'curseforge', text: '下载VP模组', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/api/v1/mods/967052/files/5824540/download' },
-{ id: 'modrinth', text: '下载拼音搜索模组', icon: '/imgs/svg/modrinth.svg', link: 'https://modrinth.com/mod/jechunofficial/version/1.20.4-0.1.2' },
 { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/neotech' }
 ]" />
-
----
 
 | FTB官网                                                     | 加载器   | 支持整合包版本            | 汉化维护状态 |
 | :---------------------------------------------------------- | :------- | :------------------------ | :----------- |

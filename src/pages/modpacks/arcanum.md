@@ -22,10 +22,10 @@ links:
     link: https://www.bilibili.com/video/BV1UT4m1S7rg
   - id: curseforge
     text: 下载i18n模组
-    link: https://www.curseforge.com/api/v1/mods/967052/files/5824540/download
+    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
   - id: curseforge
     text: 下载硬编码汉化VP模组
-    link: https://www.curseforge.com/api/v1/mods/967052/files/5824540/download
+    link: https://mediafilez.forgecdn.net/files/7146/784/vaultpatcher-all-1.4.6.jar
   - id: modrinth
     text: 下载帕秋莉手册翻译PRP-Arch模组
     link: https://cdn.modrinth.com/data/AqeDdB2c/versions/msizLmQ2/PRP-Arch-Forge-1.0.1-Hotfix-1.18.x.jar

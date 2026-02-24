@@ -1,29 +1,38 @@
 ---
 title: 地狱起源汉化下载
-icon:
+icon: https://media.forgecdn.net/avatars/thumbnails/904/711/64/64/638355105225386236.png
 description: |
   这是一个极具挑战性的整合包，从MMO游戏玩法中汲取了大量灵感。这里有大量的自定义起源、具有突袭机制的 Boss 和快节奏。还有大量专门为这个包定制的内容，你在其他任何地方都找不到。
-updateDate: 2025年2月21日
+updateDate: 2024年7月18日
 status:
-  text: 维护中
-  type: success
+  text: 停止维护
+  type: stopped
 compatibility:
   loader: forge
   minecraft: '1.16.5'
   pack: 'v2.0.0-Patch 2'
 authors:
-  - ' (作者)'
+  - 'DaddyUnion (作者)'
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
-    text: 介绍视频
+    text: 宣传片
     link: https://www.bilibili.com/video/BV1tx4y1s7E8/
+  - id: bilibili
+    text: 汉化教程
+    link: https://www.bilibili.com/video/BV1nH4y1w7CQ
   - id: curseforge
     text: 下载i18n模组
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+  - id: curseforge
+    text: 下载硬编码汉化VP模组
+    link: https://mediafilez.forgecdn.net/files/7146/784/vaultpatcher-all-1.4.6.jar
   - id: github
     text: GitHub仓库
-    link: https://github.com/PigeonFish
+    link: https://github.com/VM-Chinese-translate-group/Infernal-Origins
+  - id: paratranz
+    text: Paratranz
+    link: https://paratranz.cn/projects/10136
 ---
 
 <DownloadLayout :meta="frontmatter">
@@ -34,27 +43,16 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/infernalorigin', quarkLink: 'https://pan.quark.cn/s/b2becfd4faaa' },
-  { id: 'bilibili', text: '宣传片', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV1tx4y1s7E8/' },
-  { id: 'bilibili', text: '汉化教程', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV1nH4y1w7CQ' },
-  { id: 'curseforge', text: '硬编码汉化VP模组', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/api/v1/mods/967052/files/5824540/download' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/infernalorigin' }
 ]" />
 
-## 整合包介绍
-
-| 整合包下载地址                                                         | 加载器 | 支持整合包版本 | MC版本 | 汉化维护状态 |
-| :--------------------------------------------------------------------- | :----- | :------------- | :----- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/infernal-rpg) | Forge  | v2.0.0-Patch 2 | 1.16.5 | _维护中_     |
+译者：[查看贡献人员排行榜](https://paratranz.cn/projects/10136/leaderboard)
 
 项目主管 [@Litchiiiiii](https://github.com/Litchiiiiii) [@PigeonFish](https://github.com/PigeonFish)
 
 技术规范修正：[@Wulian233](https://github.com/Wulian233)
 
 审核：[@Cactusstudent](https://github.com/Cactusstudent)
-
----
-
-这是一个极具挑战性的整合包，从MMO游戏玩法中汲取了大量灵感。这里有大量的自定义起源、具有突袭机制的 Boss 和快节奏。还有大量专门为这个包定制的内容，你在其他任何地方都找不到。
 
 ## ⭐动态难度的Rogue-like整合包体验
 
@@ -80,9 +78,9 @@ links:
 
 - ⚡预防即死机制，添加了一个倒地系统，允许你的朋友把你救起来。
 
-- ⚡墓碑mod，防止死亡时物品丢失。
+- ⚡墓碑模组，防止死亡时物品丢失。
 
-- ⚡对几乎所有非战斗游戏部分的改进，如受Terraria启发的自定义钓鱼、农业和烹饪模组，以及大量可用于建造的方块。
+- ⚡对几乎所有非战斗游戏部分的改进，如受泰拉瑞亚启发的自定义钓鱼、农业和烹饪模组，以及大量可用于建造的方块。
 
 - ⚡彻底改变的世界生成，带来极其独特的洞穴体验。
 
@@ -136,20 +134,6 @@ links:
 - 龙降落：X键
 - 龙击：B键
 - 龙息：V键
-
-## 汉化教程
-
-把该CNPack文件夹下的所有文件复制于游戏.minecraft文件夹（未启用版本隔离）或version文件夹下的infernal Origins文件夹内（启用版本隔离）
-
-若出现是否替换选项框请选择是（代表汉化成功）
-
-若未出现请认真按上述操作执行直至出现替换选项框
-
-注：若需完全汉化请下载i18n自动汉化更新模组、硬编码汉化VP模组补全汉化
-
-## 译者名单
-
-Litchiiiiiii、PigeonFish、Cactusstudent、Wulian233、冰琳、3093FengMing、Crimvael、WsLhh、Cat酱、luyixs、望、kressety、Jh0v0、yinzi
 
 ## 整合包下载
 
