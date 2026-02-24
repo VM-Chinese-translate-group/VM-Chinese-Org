@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '0.7.3'
+authors:
+  - 'Ghostipedia (作者)'
+  - 'VM汉化组-琪露诺 (翻译)'
 links:
   - id: bilibili
     text: 汉化教程
@@ -44,8 +47,6 @@ links:
 
 原名：Cosmic Frontiers
 
-译者：琪露诺
-
 ## 特色
 
 1. 有一本无微不至的任务书指导你的游玩旅途。
@@ -58,10 +59,6 @@ links:
 ## 整合包下载
 
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/cosmic-frontiers) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
-
-## 支持版本
-
-支持整合包最新版本。
 
 <DocSupport />
 

@@ -1,6 +1,6 @@
 ---
 title: FTB石头世界3汉化下载
-icon: 
+icon:
 description: |
   🔥 在一个被石头包围的世界中，建造你真正硬核的地下王国！
 updateDate: 2026年02月21日

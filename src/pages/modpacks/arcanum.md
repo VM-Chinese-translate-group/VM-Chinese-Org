@@ -13,6 +13,9 @@ compatibility:
   loader: forge
   minecraft: '1.18.2'
   pack: '1.4.0'
+authors:
+  - 'FTB (作者团队)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频

@@ -1,6 +1,6 @@
 ---
 title: 无限协会汉化下载
-icon: 
+icon:
 description: |
   **创建世界时，请将世界类型设为SKYBLOCK**
 updateDate: 2026年02月21日

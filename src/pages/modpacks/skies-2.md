@@ -1,6 +1,6 @@
 ---
 title: FTB Skies 2汉化下载
-icon: 
+icon:
 description: |
   **在全新的进阶冒险中，翱翔天际——由 Feed The Beast 倾力打造！**
 updateDate: 2026年02月21日

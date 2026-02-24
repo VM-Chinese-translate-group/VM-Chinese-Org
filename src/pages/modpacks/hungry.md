@@ -2,7 +2,7 @@
 title: 渴望科技2汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1061/916/64/64/638594251476755622.png
 description: |
-  
+
 updateDate: 2024年9月1日
 status:
   text: 维护中

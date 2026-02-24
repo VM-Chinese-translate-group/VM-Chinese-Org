@@ -1,6 +1,6 @@
 ---
 title: 天空工厂5汉化下载
-icon: 
+icon:
 description: |
   **SkyFactory® 5：创意的重塑，迎来第五次飞跃！**
 updateDate: 2026年02月21日

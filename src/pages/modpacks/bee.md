@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.16.5'
   pack: '1.4.1'
+authors:
+  - 'Valdan (作者)'
+  - 'VM汉化组-自尊寺 (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍
@@ -47,10 +50,6 @@ links:
 
 以及22个章节 -> 750多个任务、60只资源蜜蜂、150+模组、更改的配方等
 
-## 支持版本
-
-支持最新版本，即1.4.1版本。
-
 ## 整合包下载与授权
 
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/sky-bees-2) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
@@ -58,10 +57,6 @@ links:
 本整合包汉化已获得作者授权。本汉化补丁不违反任何社区规则。
 
 ![授权 =500x](/imgs/authorization/bee.jpg)
-
-## 贡献人员
-
-特别感谢自尊寺个人汉化。
 
 <DocSupport />
 

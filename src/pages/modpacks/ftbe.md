@@ -1,6 +1,6 @@
 ---
 title: FTB Evolution汉化下载
-icon: 
+icon:
 description: |
   FTB Evolution 将你带入一个无限的 Minecraft 世界，在这里，先进科技、深奥魔法与沉浸式探险交织在每一个角落。
 

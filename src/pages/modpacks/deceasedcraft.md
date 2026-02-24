@@ -1,8 +1,8 @@
 ---
 title: 亡者世界汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/1577/605/256/256/639022081315858417.png
 description: |
-  **DeceasedCraft** 是一款风格现代、画面精美的僵尸末日整合包，专为热衷刺激探索、
+  DeceasedCraft 是一款风格现代、画面精美的僵尸末日整合包，专为热衷刺激探索、挑战性生存玩法、以及挥刀砍杀、枪击僵尸的玩家量身打造。
 updateDate: 2026年02月21日
 status:
   text: 维护中
@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '5.10.15'
+authors:
+  - 'TqLxQuanZ (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频
@@ -23,7 +26,7 @@ links:
     link: https://github.com/VM-Chinese-translate-group/DeceasedCraft-Chinese
   - id: paratranz
     text: Paratranz
-    link: https://paratranz.cn/projects/15705/leaderboard
+    link: https://paratranz.cn/projects/15705/
 ---
 
 <DownloadLayout :meta="frontmatter">
@@ -44,15 +47,11 @@ links:
 
 💀 **推荐多人合作**：建议 2 人以上游玩，部分挑战设计具有较高难度。
 :::
+
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/dece', quarkLink: 'https://pan.quark.cn/s/4f8d739dbaa0' },
-{ id: 'github', text: 'GitHub仓库', icon: '/imgs/svg/github.svg', link: 'https://github.com/VM-Chinese-translate-group/DeceasedCraft-Chinese' },
 { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/dece' }
 ]" />
-
-| 整合包下载地址                                                          | 加载器 | 支持整合包版本 | MC版本 | 汉化维护状态 |
-| :---------------------------------------------------------------------- | :----- | :------------- | :----- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/deceasedcraft) | Forge  | 5.10.15        | 1.20.1 | 维护中       |
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/15705/leaderboard)
 

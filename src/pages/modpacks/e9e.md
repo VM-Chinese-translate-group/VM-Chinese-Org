@@ -1,19 +1,28 @@
 ---
 title: Enigmatica 9：Expert E9E汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/844/83/64/64/638240908112377505.jpeg
 description: |
-  整合包最新版本：1.20.1
-updateDate: 2026年02月21日
+  来体验 Enigmatica 团队精心打造的下一代专家整合包吧——在那里，科技与魔法的界限将变得模糊。
+
+  你将在暮色森林、蜜蜂领域以及经典的原版维度开启一场传奇的旅途，设法复苏神秘枯萎的生命之树。记载详细的任务书将会指引你完成这场冒险！
+updateDate: 2025年2月3日
 status:
-  text: 维护中
-  type: success
+  text: 停止维护
+  type: stopped
+compatibility:
+  loader: forge
+  minecraft: '1.19.2'
+  pack: '1.26.0（通用）'
+authors:
+  - 'NillerMedDild (作者)'
+  - 'VM汉化组-RCqaq (翻译)'
 links:
   - id: bilibili
-    text: 介绍视频
+    text: 专栏介绍
     link: https://www.bilibili.com/opus/889340731749040214
   - id: curseforge
     text: 下载i18n模组
-    link: https://www.curseforge.com/minecraft/modpacks/enigmatica9expert
+    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
   - id: github
     text: GitHub仓库
     link: https://github.com/RCqaq/Enigmatica-9-Expert-E9E-Translation
@@ -23,20 +32,8 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'weiyun', text: '下载汉化', icon: '/imgs/svg/weiyun.svg', link: 'https://share.weiyun.com/4N6KKIcN' },
-  { id: 'github', text: 'GitHub', icon: '/imgs/svg/github.svg', link: 'https://github.com/RCqaq/Enigmatica-9-Expert-E9E-Translation' },
-  { id: 'bilibili', text: '专栏介绍', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/opus/889340731749040214' },
-  { id: 'curseforge', text: '整合包链接', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/minecraft/modpacks/enigmatica9expert' },
-  { id: 'curseforge', text: '自动汉化更新模组', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://share.weiyun.com/4N6KKIcN' }
 ]" />
-
-## 支持版本
-
-整合包最新版本：1.20.1
-
-整合包最新稳定版本：1.20.1
-
-汉化版本：1.20.0 ~ 1.20.1
 
 ## 整合包介绍
 
@@ -52,11 +49,7 @@ Enigmatica 9: Expert（简称 E9E）是一款 Minecraft 1.19.2 下的任务引�
 
 ---
 
-更多请见作者专栏：<https://www.bilibili.com/read/cv29907734>
-
-## 翻译贡献
-
-由RCqaq\_ 个人汉化
+更多请见作者专栏：<https://www.bilibili.com/opus/889340731749040214>
 
 ## 使用协议
 

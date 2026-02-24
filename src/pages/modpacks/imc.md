@@ -1,6 +1,6 @@
 ---
 title: Integrated MC汉化下载
-icon: 
+icon:
 description: |
   Integrated MC 是[地牢建筑统合（IDAS）系列](https://www.mcmod.cn/class/6142.html)模组的官方整合包，专注于打造最出色的探索体验。
 updateDate: 2026年02月21日

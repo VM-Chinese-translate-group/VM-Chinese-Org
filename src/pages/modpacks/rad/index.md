@@ -13,6 +13,9 @@ compatibility:
   loader: forge
   minecraft: '1.12.2'
   pack: '1.55'
+authors:
+  - 'dreams01 (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频（新版）

@@ -13,6 +13,10 @@ compatibility:
   loader: forge
   minecraft: '1.16.5'
   pack: '1.0.4'
+authors:
+  - 'MLDEG (作者)'
+  - 'VM汉化组-自尊寺 (翻译)'
+  - 'VM汉化组-cat (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍
@@ -38,8 +42,6 @@ links:
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/blackstone-block) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
 
 本整合包汉化已获得作者授权。本汉化补丁不违反任何社区规则。
-
-特别感谢自尊寺和cat酱汉化该整合包！
 
 <DocSupport />
 

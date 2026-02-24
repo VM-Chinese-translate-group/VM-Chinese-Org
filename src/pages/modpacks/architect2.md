@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '5.1'
+authors:
+  - 'ChosenArchitect (作者)'
+  - 'VM汉化组-琪露诺 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频
@@ -35,8 +38,6 @@ links:
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/pa2', quarkLink: 'https://pan.quark.cn/s/9c7ff45c84b1' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/pa2' }
 ]" />
-
-译者：琪露诺
 
 ## 特色
 
@@ -69,10 +70,6 @@ RF工具：维度：探索和利用自定义维度以获得独特的资源和机
 **本次汉化已取得官方授权，不违反任何社区规则**
 
 ![](/imgs/authorization/architect2.png)
-
-## 支持版本
-
-支持整合包最新版本。
 
 <DocSupport />
 

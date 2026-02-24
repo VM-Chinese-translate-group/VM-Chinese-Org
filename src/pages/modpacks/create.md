@@ -1,6 +1,6 @@
 ---
 title: 机械动力：星辰汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/768/269/256/256/638104922297531668.png
 description: |
   一觉醒来，你发现自己躺在一个奇怪的星球，它的卫星已经破碎，一切都是那样的不同。
 updateDate: 2026年02月21日
@@ -9,8 +9,11 @@ status:
   type: success
 compatibility:
   loader: fabric
-  minecraft: '最新版'
-  pack: '1.18.2'
+  minecraft: '1.18.2'
+  pack: '2.1.4c'
+authors:
+  - 'Laskyyy_ (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组
@@ -18,6 +21,9 @@ links:
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/create_astral_translation_zhcn
+  - id: paratranz
+    text: Paratranz
+    link: https://paratranz.cn/projects/11990
 ---
 
 <DownloadLayout :meta="frontmatter">
@@ -31,17 +37,12 @@ links:
 
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/astral', quarkLink: 'https://pan.quark.cn/s/50cdb3071277' },
-{ id: 'github', text: 'GitHub仓库', icon: '/imgs/svg/github.svg', link: 'https://github.com/VM-Chinese-translate-group/create_astral_translation_zhcn' },
 { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouv.com/s/astral' }
 ]" />
 
-| 整合包下载地址                                                          | 加载器 | MC版本 | 支持版本 | 汉化维护状态 |
-| :---------------------------------------------------------------------- | :----- | :----- | :------- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/create-astral) | Fabric | 1.18.2 | 最新版   | 维护中       |
-
 ## 注意事项
 
-本整合包是Fabric端整合包，辅助向模组较为欠缺。为了更好的游玩体验，可以选择自行提升游玩体验的模组。
+本整合包是 Fabric 端整合包，辅助向模组较为欠缺。为了更好的游玩体验，可以选择自行提升游玩体验的模组。
 
 整合包没有树叶掉落或砍树模组，前期砍树可以手动进行，发展出动力锯之后请使用动力锯+手摇曲柄砍树并尽快发展树场。
 当然也可以自行实现燃料、铁、金自由（地毯机、铁轨机）。

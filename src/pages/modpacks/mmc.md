@@ -1,6 +1,6 @@
 ---
 title: 中世纪的MC 1.19.2 Fabric汉化下载
-icon: 
+icon:
 description: |
   加载器  汉化维护状态 |
 updateDate: 2026年02月21日

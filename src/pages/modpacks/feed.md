@@ -1,6 +1,6 @@
 ---
 title: 喂养奇点生存汉化下载
-icon: 
+icon:
 description: |
   加载器  MC版本
 updateDate: 2026年02月21日

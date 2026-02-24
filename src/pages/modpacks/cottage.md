@@ -13,6 +13,10 @@ compatibility:
   loader: forge
   minecraft: '1.19.2'
   pack: '1.16.10'
+authors:
+  - 'HeyKatu (作者)'
+  - 'VM汉化组 (翻译)'
+  - '墨白，Enzo_Xcaesar (测试)'
 links:
   - id: bilibili
     text: 宣传片
@@ -50,7 +54,7 @@ links:
 
 ## 整合包下载与授权
 
-你可以在CurseForge或启动器内下载整合包，并下载汉化补丁安装程序，通过exe安装指引的方法完成汉化。
+你可以在 CurseForge 或启动器内下载整合包，并下载汉化补丁安装程序，通过exe安装指引的方法完成汉化。
 
 本整合包汉化已获得作者授权。本汉化补丁不违反任何社区规则。
 

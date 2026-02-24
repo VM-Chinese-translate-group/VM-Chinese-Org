@@ -1,23 +1,26 @@
 ---
 title: The Decursio Project Expert汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/553/92/256/256/637893326243672364.png
 description: |
   这个整合包为各种各样的玩家提供了机会。新玩家将一直受到任务的帮助，而高玩将面临大量魔改合成表和机制的挑战。
-updateDate: 2026年02月21日
+updateDate: 2023年9月28日
 status:
-  text: 维护中
-  type: success
+  text: 停止维护
+  type: stopped
 compatibility:
   loader: forge
   minecraft: '1.16.5'
-  pack: '最新版r1.0.9'
+  pack: 'r1.0.9'
+authors:
+  - 'Me_Rey100 (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
-    text: 介绍视频
+    text: 专栏介绍
     link: https://www.bilibili.com/read/cv26789658/
   - id: curseforge
     text: 下载i18n模组
-    link: https://www.curseforge.com/minecraft/modpacks/decursio-project
+    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
 ---
 
 <DownloadLayout :meta="frontmatter">
@@ -28,15 +31,8 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/Decursio-Projectt-VMTT-1165', quarkLink: 'https://pan.quark.cn/s/7bf1b90bc4bf' },
-  { id: 'bilibili', text: '专栏介绍', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/read/cv26789658/' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/Decursio-Projectt-VMTT-1165' }
 ]" />
-
-## 更多信息
-
-| 整合包下载地址                                                             | 加载器 | 支持整合包版本 | MC版本 | 汉化维护状态 |
-| :------------------------------------------------------------------------- | :----- | :------------- | :----- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/decursio-project) | Forge  | 最新版r1.0.9   | 1.16.5 | 维护完成     |
 
 ## 整合包介绍
 
@@ -47,10 +43,10 @@ links:
 - 基于与赛文科技类似的进度系统
 - 任务书能指导你完成这个整合包的四个主要“纪元”
 - 配置过的饮食多样性系统，旨在奖励保持饮食多样性的人，而不是惩罚饮食简单的人
-- 通过Oh, The Biomes You'll Go与其他各种模组修改的世界生成
+- 通过 Oh, The Biomes You'll Go 与其他各种模组修改的世界生成
 - 可以找到多种多样的结构以及独特的遗物与饰品，鼓励并奖励探险，但同时并不强求探险
 - 为真正尽心的玩家准备的可选挑战
-- 需要发展太空探险科技树才能发展AE2与新生魔艺
+- 需要发展太空探险科技树才能发展 AE2 与新生魔艺
 - 跨越阿图姆和暮色森林的阶段化维度探索。
 
 ## 整合包下载与授权

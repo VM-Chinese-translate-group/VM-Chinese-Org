@@ -2,7 +2,7 @@
 title: Bliss汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/588/681/256/256/637958998429262283.png
 description: |
-  Vazkii继Crucial 2后的又一力作！Bliss是一款精心打造的和平向整合包，正如其名字一样旨在营造一种轻松舒适、幸福快乐的和平游戏模式。
+  Vazkii 继 Crucial 2 后的又一力作！Bliss 是一款精心打造的和平向整合包，正如其名字一样旨在营造一种轻松舒适、幸福快乐的和平游戏模式。
 updateDate: 2022年10月11日
 status:
   text: 停止维护
@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.18.2'
   pack: '1.0.7'
+authors:
+  - 'Vazkii (作者)'
+  - 'VM汉化组-cat (翻译)'
 links:
   - id: bilibili
     text: 专栏介绍
@@ -24,8 +27,6 @@ links:
 
 ![](https://media.forgecdn.net/attachments/465/302/2022-05-28_22.png)
 
-Vazkii继Crucial 2后的又一力作！Bliss是一款精心打造的和平向整合包，正如其名字一样旨在营造一种轻松舒适、幸福快乐的和平游戏模式。
-
 <DownloadLinks :methods="[
   { id: 'lanzou', text: '下载汉化', icon: '/imgs/svg/lanzou.svg', link: 'https://wwn.lanzoux.com/ic4Kx0dmof2h' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://wwn.lanzoux.com/ic4Kx0dmof2h' }
@@ -33,7 +34,8 @@ Vazkii继Crucial 2后的又一力作！Bliss是一款精心打造的和平向整
 
 ## 整合包介绍
 
-Vazkii继Crucial 2后的又一力作！Bliss是一款精心打造的和平向整合包，正如其名字一样旨在营造一种轻松舒适、幸福快乐的和平游戏模式。常见的怪物，如僵尸、骷髅和苦力怕等都被设定为了中立生物，只有玩家攻击时才会发起反击，战斗完全取决于玩家的选择。
+Vazkii 继 Crucial 2 后的又一力作！Bliss 是一款精心打造的和平向整合包，正如其名字一样旨在营造一种轻松舒适、幸福快乐的和平游戏模式。
+常见的怪物，如僵尸、骷髅和苦力怕等都被设定为了中立生物，只有玩家攻击时才会发起反击，战斗完全取决于玩家的选择。
 
 常见的怪物，如僵尸、骷髅和苦力怕等都被设定为了中立生物，只有玩家攻击时才会发起反击，战斗完全取决于玩家的选择。
 
@@ -58,10 +60,6 @@ Vazkii继Crucial 2后的又一力作！Bliss是一款精心打造的和平向整
 本整合包汉化已获得作者授权。本汉化补丁不违反任何社区规则。
 
 ![图片 =450x](/imgs/authorization/bliss.jpg)
-
-## 贡献人员
-
-特别感谢Cat酱个人汉化。
 
 <DocSupport />
 

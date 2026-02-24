@@ -1,6 +1,6 @@
 ---
 title: 卓越2汉化下载
-icon: 
+icon:
 description: |
   🔥 全面强化的整合包，战斗、探索、魔法与科技的完美平衡，还有丰富的自定义内容！
 updateDate: 2025年9月14日

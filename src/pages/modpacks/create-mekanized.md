@@ -11,6 +11,9 @@ compatibility:
   loader: forge
   minecraft: '1.19.2'
   pack: '1.6.3'
+authors:
+  - 'bogdanasaurus (作者)'
+  - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频

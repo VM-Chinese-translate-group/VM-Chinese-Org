@@ -1,19 +1,25 @@
 ---
 title: 探索者前夜凋灵风暴汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/807/783/256/256/638177271925773405.png
 description: |
   准备好迎接一场宏大的冒险，去挑战一个更为可怕的敌人吧。
-updateDate: 2026年02月21日
+updateDate: 2025年6月21日
 status:
-  text: 维护中
-  type: success
+  text: 停止维护
+  type: stopped
 compatibility:
   loader: forge
   minecraft: '1.19.4'
   pack: '1.6.3'
+authors:
+  - 'sm644me (作者)'
+  - '老本願 (翻译)'
 links:
   - id: bilibili
     text: 介绍视频
+    link: https://www.bilibili.com/video/BV14jNoziEoS/
+  - id: bilibili
+    text: 整合包总览
     link: https://www.bilibili.com/video/BV12LNCzfEBS/
   - id: curseforge
     text: 下载i18n模组
@@ -31,14 +37,8 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'lanzou', text: '下载汉化', icon: '/imgs/quark.jpg', link: 'https://pan.quark.cn/s/37de6b2d081e' },
-  { id: 'bilibili', text: '老本願的整合包介绍', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV14jNoziEoS' },
-  { id: 'bilibili2', text: '整合包总览', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV12LNCzfEBS/' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://pan.quark.cn/s/37de6b2d081e' }
 ]" />
-
-| 整合包下载地址                                                          | 加载器 | 支持整合包版本 | MC版本 | 汉化维护状态 |
-| :---------------------------------------------------------------------- | :----- | :------------- | :----- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/explorers-eve) | Forge  | 1.6.3          | 1.19.4 | 维护中       |
 
 ## 特色
 
