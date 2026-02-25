@@ -1,9 +1,9 @@
 ---
 title: 永恒的MC汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/388/926/64/64/637581040113975390.png
 description: |
   欢迎来到永恒的安慕希！这里是麦块福特颇负盛名的水槽整合包！
-updateDate: 2025年2月21日
+updateDate: 2023年7月1日
 status:
   text: 停止维护
   type: stopped
@@ -12,7 +12,7 @@ compatibility:
   minecraft: '1.12.2'
   pack: '1.6.1'
 authors:
-  - ' (作者)'
+  - 'adam98991 (作者)'
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
@@ -38,10 +38,6 @@ links:
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/MCE-VMCT', quarkLink: 'https://pan.quark.cn/s/30dbcf069bae' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/MCE-VMCT' }
 ]" />
-
-| 整合包下载地址                                                                    | 加载器 | 支持整合包版本 | MC版本 | 汉化维护状态 |
-| :-------------------------------------------------------------------------------- | :----- | :------------- | :----- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/minecraft-eternal/files) | Forge  | 1.6.1          | 1.12.2 | 停止维护     |
 
 ## 整合包介绍
 

@@ -12,7 +12,7 @@ compatibility:
   minecraft: '1.21.1'
   pack: '11.0'
 authors:
-  - ' (作者)'
+  - 'benbenlaw (作者)'
   - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
@@ -57,10 +57,6 @@ links:
 ## 整合包下载
 
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/techopolis-3) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
-
-## 支持版本
-
-支持整合包最新版本。
 
 <DocSupport />
 

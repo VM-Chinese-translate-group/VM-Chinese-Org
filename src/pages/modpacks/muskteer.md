@@ -3,7 +3,7 @@ title: Muskteer汉化下载
 icon: 
 description: |
   Muskteer是一个围绕小型多人游戏社区设计的整合包，玩家生活在一个普通的世界中，并且摒弃了原版Minecraft的一些玩法，更具创新。
-updateDate: 2025年2月21日
+updateDate: 2023年7月20日
 status:
   text: 停止维护
   type: stopped
@@ -13,10 +13,10 @@ compatibility:
   pack: 'beta7'
 authors:
   - ' (作者)'
-  - 'VM汉化组 (翻译)'
+  - 'VM汉化组-仙人掌 (翻译)'
 links:
   - id: bilibili
-    text: 介绍视频
+    text: 专栏介绍
     link: https://www.bilibili.com/read/cv25168595/
   - id: curseforge
     text: 下载i18n模组
@@ -33,7 +33,6 @@ Muskteer是一个围绕小型多人游戏社区设计的整合包，玩家生活
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/Muskteer-vmct-cn', quarkLink: 'https://pan.quark.cn/s/05136ba14348' },
-  { id: 'bilibili', text: '专栏介绍', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/read/cv18890616/' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/Muskteer-vmct-cn' }
 ]" />
 
@@ -74,10 +73,6 @@ Muskteer整合包中：
 注：因为是公共聊天区，无关信息多，所以授权图经过裁剪。
 
 ![图片 =450x](/imgs/authorization/muskteer.jpg)
-
-## 贡献人员
-
-特别感谢仙人掌个人汉化。
 
 <DocSupport />
 

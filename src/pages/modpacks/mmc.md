@@ -16,7 +16,7 @@ authors:
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
-    text: 介绍视频
+    text: 专栏介绍
     link: https://www.bilibili.com/read/cv26040553
   - id: curseforge
     text: 下载i18n模组
@@ -28,9 +28,9 @@ links:
 ::: warning 重要提示
 汉化支持整合包版本v23，不支持最新版v24，请留意下载的支持整合包版本！
 :::
+
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/mmc1-19-2-fabric-vmct', quarkLink: 'https://pan.quark.cn/s/c90aab011784' },
-  { id: 'bilibili', text: '专栏介绍', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/read/cv26040553' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/mmc1-19-2-fabric-vmct' }
 ]" />
 
@@ -40,37 +40,33 @@ links:
 
 ## 整合包介绍
 
-:crossed_swords: 被完全改造的游戏地形（Oh The Biomes You'll Go, Geophilic, Ecologics）
+⚔️ 被完全改造的游戏地形（Oh The Biomes You'll Go, Geophilic, Ecologics）
 
-:crossed_swords: 通过着色器支持进行了充足的优化
+⚔️ 通过着色器支持进行了充足的优化
 
-:crossed_swords: 拥有150多个任务
+⚔️ 拥有150多个任务
 
-:crossed_swords: 30多种起源
+⚔️ 30多种起源
 
-:crossed_swords: 6个新维度
+⚔️ 6个新维度
 
-:crossed_swords: RPG元素：受玩家等级和血量影响的怪物
+⚔️ RPG元素：受玩家等级和血量影响的怪物
 
-:crossed_swords: 独特且具有挑战性的Boss（AdventureZ, Bosses of Mass Destruction, Soulslike Weaponry）
+⚔️ 独特且具有挑战性的Boss（AdventureZ, Bosses of Mass Destruction, Soulslike Weaponry）
 
-:crossed_swords: 为模组，平衡性，兼容性进行了大量魔改
+⚔️ 为模组，平衡性，兼容性进行了大量魔改
 
-:crossed_swords: 口渴和温度系统
+⚔️ 口渴和温度系统
 
-:crossed_swords: 数以千计的地牢和建筑（地牢浮现之时、结构变体等）
+⚔️ 数以千计的地牢和建筑（地牢浮现之时、结构变体等）
 
-:crossed_swords: 身临其境的角色扮演
+⚔️ 身临其境的角色扮演
 
-:crossed_swords: 指路石和经验方尖碑
+⚔️ 指路石和经验方尖碑
 
-:crossed_swords: 多功能的旅行地图（JourneyMap Integration, Map Frontiers）
+⚔️ 多功能的旅行地图（JourneyMap Integration, Map Frontiers）
 
-:crossed_swords: 330多个模组
-
-## 支持版本
-
-支持v23，不支持最新版v24！
+⚔️ 330多个模组
 
 ## 整合包下载与授权
 

@@ -17,9 +17,6 @@ authors:
   - 'FTB (作者团队)'
   - 'VM汉化组 (翻译)'
 links:
-  - id: bilibili
-    text: 专栏介绍
-    link: https://www.bilibili.com/read/cv21772959/
   - id: curseforge
     text: 下载i18n模组
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
@@ -36,6 +33,8 @@ FTB和Direwolf20将带来一场新的刺激冒险！自2011年以来，FTB和Dir
   { id: 'gitee', text: 'FTB整合包下载工具', icon: '/imgs/svg/gitee.svg', link: 'https://gitee.com/flrscn/curse-the-beast/releases' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://wulian233.lanzouu.com/isX0E27rys7g' }
 ]" />
+
+译者：捂脸，sine，X209，虚空，Chark_TSC
 
 ## 整合包介绍
 
@@ -60,14 +59,6 @@ FTB和Direwolf20将带来一场新的刺激冒险！自2011年以来，FTB和Dir
 ![图片 =400x](/imgs/authorization/direwolf.png)
 
 由于FTB的整合包没有上CurseForge，整合包一般只能通过他们的App或使用下载工具下载。
-
-## 支持版本
-
-支持整合包最新版本。
-
-## 贡献名单
-
-捂脸，sine，X209，虚空，Chark_TSC
 
 <DocSupport />
 

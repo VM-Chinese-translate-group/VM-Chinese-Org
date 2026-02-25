@@ -5,8 +5,8 @@ description: |
   🔥 在一个被石头包围的世界中，建造你真正硬核的地下王国！
 updateDate: 2025年10月19日
 status:
-  text: 维护中
-  type: success
+  text: 停止维护
+  type: stopped
 compatibility:
   loader: forge
   minecraft: '1.18.2'

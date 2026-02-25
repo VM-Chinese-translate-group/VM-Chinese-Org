@@ -1,6 +1,6 @@
 ---
 title: Ozone Skyblock Reborn 2汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/1465/394/256/256/638951227846325037.png
 description: |
   灵感源自 Project Ozone。极致合成、技术、魔法与自动化！Ozone Skyblock Reborn正统续作。
 updateDate: 2026年3月21日
@@ -10,10 +10,10 @@ status:
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '1.3.4'
+  pack: '1.4.1'
 authors:
-  - ' (作者)'
-  - 'VM汉化组 (翻译)'
+  - 'MuggleOrWizard (作者)'
+  - 'VM汉化组-七羽Kiyo (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组
@@ -41,14 +41,6 @@ links:
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: '/doing' }
 ]" />
 
-## 更多信息
-
-| 整合包下载地址                                                                | 加载器   | 支持整合包版本 | 汉化状态 |
-| :---------------------------------------------------------------------------- | :------- | :------------- | :------- |
-| [链接](https://www.curseforge.com/minecraft/modpacks/ozone-skyblock-reborn-2) | Neoforge | mc1.21.1 1.3.4 | 翻译中   |
-
-译者：[查看贡献人员排行榜](https://paratranz.cn/projects/17669/leaderboard)
-
 ### 模式设置
 
 本整合包包含两种难度等级：
@@ -63,19 +55,15 @@ links:
 
 **注意事项：**
 
-- **默认设置**：模组包默认开启普通模式。
+- **默认设置**：整合包默认开启普通模式。
 - **生效范围**：难度设置将应用于存档或服务器中的所有玩家。
 - **权限要求**：你需要开启作弊功能（开启对局域网开放 -> 允许作弊 -> 输入指令 -> 重启世界以关闭作弊）或拥有服务器管理员 (OP) 权限。
 - **手动修改**：如果你不想使用指令，也可以通过修改文件 `/kubejs/config/common.json` 来更改模式。请务必在**加载世界前**完成编辑。
-- **更新说明**：由于整合包更新后会自动恢复默认的普通模式，如果你想玩专家模式，每次更新模组包后都需要重新执行上述操作（指令或修改文件）。
+- **更新说明**：由于整合包更新后会自动恢复默认的普通模式，如果你想玩专家模式，每次更新整合包后都需要重新执行上述操作（指令或修改文件）。
 
 ## 整合包下载
 
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/ozone-skyblock-reborn-2) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
-
-## 支持版本
-
-支持整合包最新版本。
 
 <DocSupport />
 

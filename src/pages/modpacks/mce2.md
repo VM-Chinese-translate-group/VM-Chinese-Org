@@ -37,12 +37,8 @@ links:
 
 ✨ **每个人都能在这里找到属于自己的乐趣！**
 
-::: warning 重要提示
-完整汉化体验请下载i18n模组，并放在`mods`文件夹！
-:::
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: '/doing', quarkLink: '/doing' },
-{ id: 'github', text: 'GitHub仓库', icon: '/imgs/svg/github.svg', link: 'https://github.com/VM-Chinese-translate-group/MCE2' },
 { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: '/doing' }
 ]" />
 

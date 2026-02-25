@@ -1,6 +1,6 @@
 ---
 title: FTB建筑师天堂2汉化下载
-icon: 
+icon: https://cdn.feed-the-beast.com/blob/0f/0f2ab1c6477005accb3d6a3ba18b94ae15f3c352385a880ec5e25c367f275c34.png
 description: |
   FTB建筑师天堂2延续了前代的传统，与近期以科技导向、目标明确的空岛包形成鲜明对比。FTB自豪地呈现了一个美丽、自由与宏伟的小型整合包。
 updateDate: 2024年4月27日
@@ -10,7 +10,7 @@ status:
 compatibility:
   loader: forge
   minecraft: '1.20.1'
-  pack: '最新版'
+  pack: '1.4.0'
 authors:
   - 'FTB (作者团队)'
   - 'VM汉化组-捂脸 (翻译)'

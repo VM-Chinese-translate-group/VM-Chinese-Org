@@ -14,7 +14,7 @@ compatibility:
   minecraft: '1.18.2'
   pack: '最新版'
 authors:
-  - ' (作者)'
+  - 'Iskall85Team (作者团队)'
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
