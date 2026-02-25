@@ -3,7 +3,6 @@ title: FTB石头世界4汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1495/561/256/256/638971627504237551.jpg
 description: |
   你在石头的怀抱中醒来。没有天空，没有地平线，只有你，被无尽的岩壁包围。可这一次，石头回应了你的呼唤。
-
   石头世界4是这款经典系列的全新篇章。它从零重制，带来你熟悉又陌生的地下生存体验。
 updateDate: 2026年02月14日
 status:
@@ -32,11 +31,7 @@ links:
     link: https://paratranz.cn/projects/16650
 ---
 
-<script setup>
-import PackLayout from '@/components/Modpacks/PackLayout.vue'
-</script>
-
-<PackLayout :meta="frontmatter">
+<DownloadLayout :meta="frontmatter">
 
 你在石头的怀抱中醒来。没有天空，没有地平线，只有你，被无尽的岩壁包围。可这一次，石头回应了你的呼唤。
 
@@ -47,7 +42,7 @@ import PackLayout from '@/components/Modpacks/PackLayout.vue'
 在石之深处，开启你的新纪元。
 
 ::: warning 重要提示
-完整汉化体验请下载下方的下载i18n模组，并放在`mods`文件夹！
+完整汉化体验请下载i18n模组，并放在`mods`文件夹！
 
 记得在覆盖文件后进入游戏的资源包管理页面，把VM汉化资源包启用并拖到最上方！
 :::
@@ -143,4 +138,4 @@ import PackLayout from '@/components/Modpacks/PackLayout.vue'
 
 <DocSupport />
 
-</PackLayout>
+</DownloadLayout>

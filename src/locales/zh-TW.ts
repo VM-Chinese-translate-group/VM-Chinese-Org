@@ -49,7 +49,7 @@ export default {
     disclaimer:
       '本站所提供內容與 Minecraft 官方無關，未獲得 Mojang 或 Microsoft 任何形式的認可或授權',
   },
-  modpackCards: {
+  DownloadCards: {
     itemsPerPage: '每頁顯示',
     searchPlaceholder: '搜尋...',
     resultsInfo: '共 {total} 個結果 ({start}-{end})',

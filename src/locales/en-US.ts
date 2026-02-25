@@ -49,7 +49,7 @@ export default {
     disclaimer:
       'The content provided on this site is not related to official Minecraft and has not been endorsed or authorized by Mojang or Microsoft in any form',
   },
-  modpackCards: {
+  DownloadCards: {
     itemsPerPage: 'Items per page',
     searchPlaceholder: 'Search...',
     resultsInfo: '{total} results total ({start}-{end})',

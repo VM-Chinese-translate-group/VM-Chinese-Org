@@ -1,8 +1,8 @@
 <template>
-  <div v-if="mods" class="ModpackCards">
+  <div v-if="mods" class="DownloadCards">
     <div class="controls-bar">
       <div class="items-per-page">
-        <span>{{ $t('modpackCards.itemsPerPage') }}:</span>
+        <span>{{ $t('DownloadCards.itemsPerPage') }}:</span>
         <select
           :value="itemsPerPage"
           @change="handlePageSizeChange($event)"
@@ -17,14 +17,14 @@
           v-model="searchQuery"
           @input="handleSearchInput"
           class="search-input"
-          :placeholder="$t('modpackCards.searchPlaceholder')"
+          :placeholder="$t('DownloadCards.searchPlaceholder')"
         />
         <button v-if="searchQuery" @click="clearSearch" class="search-clear">×</button>
       </div>
 
       <div class="results-info">
         {{
-          $t('modpackCards.resultsInfo', {
+          $t('DownloadCards.resultsInfo', {
             total: filteredMods.length,
             start: filteredMods.length > 0 ? startIndex + 1 : 0,
             end: endIndex,
@@ -35,9 +35,9 @@
 
     <div class="container">
       <div v-if="filteredMods.length === 0" class="no-results">
-        <p>{{ $t('modpackCards.noResults', { query: searchQuery }) }}</p>
+        <p>{{ $t('DownloadCards.noResults', { query: searchQuery }) }}</p>
         <button @click="clearSearch" class="clear-search-btn">
-          {{ $t('modpackCards.resetSearch') }}
+          {{ $t('DownloadCards.resetSearch') }}
         </button>
       </div>
 
@@ -57,7 +57,7 @@
               <div class="card-header">
                 <span class="card-name">{{ mod.name }}</span>
                 <span class="card-author">{{
-                  $t('modpackCards.byAuthor', { author: mod.author })
+                  $t('DownloadCards.byAuthor', { author: mod.author })
                 }}</span>
                 <span
                   v-if="mod.message"
@@ -141,7 +141,7 @@
           v-model="pageInputValue"
           @blur="handlePageInput"
           @keydown.enter="($event.target as HTMLInputElement).blur()"
-          :placeholder="$t('modpackCards.goToPagePlaceholder')"
+          :placeholder="$t('DownloadCards.goToPagePlaceholder')"
           class="page-input"
         />
       </div>
@@ -276,7 +276,7 @@ const goToPage = (page: number) => {
   if (page >= 1 && page <= totalPages.value) {
     currentPage.value = page
     // 加上偏移量防止被固定导航栏遮挡
-    const element = document.querySelector('.ModpackCards')
+    const element = document.querySelector('.DownloadCards')
     if (element) {
       const top = element.getBoundingClientRect().top + window.scrollY - 20
       window.scrollTo({ top, behavior: 'smooth' })
@@ -320,5 +320,5 @@ const handlePageSizeChange = (event: Event) => {
 </script>
 
 <style scoped>
-@import '@/styles/ModpackCards.css';
+@import '@/styles/DownloadCards.css';
 </style>
