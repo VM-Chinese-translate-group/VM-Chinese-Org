@@ -3,8 +3,7 @@ title: 无限协会汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/564/314/256/256/637920478481541062.png
 description: |
   无限协会是一款轻量的空岛整合包，它是一个1.18.2“任务”整合包，在很大程度上受到类似整合包的启发，
-
-  列如：终极炼金（Ultimate Alchemy）和星辰工厂，在这个意义上，你被授予无限的特定资源。
+  列如：终极炼金和星辰工厂，在这个意义上，你被授予无限的特定资源。
 updateDate: 2023年5月20日
 status:
   text: 停止维护

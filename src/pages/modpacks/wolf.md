@@ -3,7 +3,6 @@ title: FTB Direwolf20 1.19汉化下载
 icon: https://cdn.feed-the-beast.com/blob/e8/e846e5c8f32c16bc4203dde90745168f78fe906cdb0d658293a8e7517f4913fc.png
 description: |
   FTB和Direwolf20将带来一场新的刺激冒险！自2011年以来，FTB和Direwolf20提供了简单而独特的水槽类整合包，适合各种技能水平的玩家。
-
   现在，1.19 版本来袭，游戏变得更棒了！
 updateDate: 2024年8月18日
 status:

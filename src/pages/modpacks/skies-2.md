@@ -3,7 +3,6 @@ title: FTB Skies 2汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1330/290/64/64/638864696329087018.png
 description: |
   FTB Skies 是一款构建于 Minecraft 1.21.1 的次世代空岛整合包，主打奖励驱动的玩法机制、深度定制的内容逻辑，以及以玩家为核心的成长路径。
-
   在这里，数百小时的内容等待你探索，热门模组与定制内容深度融合，助你直达星辰大海。
 updateDate: 2026年2月16日
 status:

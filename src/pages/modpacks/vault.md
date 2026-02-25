@@ -3,7 +3,6 @@ title: 宝箱猎人3汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1559/129/256/256/639011733813077828.png
 description: |
   宝藏猎人3是一个基于RPG的整合包，讲述了一个名为宝库的维度的神秘和危险
-
   玩家可以发展自己的天赋和能力，同时努力实现收集所有25件独特文物以解锁最终挑战的目标！你有能力吗？
 updateDate: 2025年12月25日
 status:

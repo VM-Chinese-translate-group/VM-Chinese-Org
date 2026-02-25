@@ -3,7 +3,6 @@ title: 阈限工业汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1295/534/256/256/638842116030409548_animated.gif
 description: |
   当你发现自己置身于那无尽变幻、不断进化的后室之中——你会意识到，阻隔你与自由之间的唯一屏障，
-
   便是在这片似真似幻的空间中心，亲手建造属于你的自动化工厂。
 updateDate: 2026年1月1日
 status:
