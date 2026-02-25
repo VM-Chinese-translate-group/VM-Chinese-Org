@@ -1,18 +1,18 @@
 ---
 title: 卓越2汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/1112/755/64/64/638665111298705796_animated.gif
 description: |
   🔥 全面强化的整合包，战斗、探索、魔法与科技的完美平衡，还有丰富的自定义内容！
-updateDate: 2025年9月14日
+updateDate: 2025年9月14日????????????
 status:
   text: 维护中
   type: success
 compatibility:
   loader: fabric
   minecraft: '1.20.1'
-  pack: '3.9.0'
+  pack: '3.9.0???????????????????????//'
 authors:
-  - ' (作者)'
+  - 'ElocinDev (作者)'
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
@@ -40,20 +40,10 @@ links:
 
 ![图片 =500x](https://github.com/nvb-uy/cdn/blob/f70cba5260e5a833994bc0d849025df91893f26e/desc/prominence/rpg/promlogo.webp?raw=true)
 
-::: warning 重要提示
-汉化支持整合包版本3.9.0，不支持最新版，请留意下载的支持整合包版本！
-:::
-
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/prominence2', quarkLink: 'https://pan.quark.cn/s/29e3994b9d1d' },,
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/prominence2' }
 ]" />
-
-## 更多信息
-
-| 整合包下载地址                                                                   | 加载器 | 支持整合包版本 | 汉化维护状态 |
-| :------------------------------------------------------------------------------- | :----- | :------------- | :----------- |
-| [链接](https://www.curseforge.com/minecraft/modpacks/prominence-2-hasturian-era) | Fabric | mc1.20.1 3.9.0 | 维护中       |
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/13782/leaderboard)
 
@@ -106,10 +96,6 @@ links:
 你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/prominence-2-hasturian-era) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
 
 本整合包汉化已获得作者授权。本汉化补丁不违反任何社区规则。
-
-## 支持版本
-
-支持整合包最新版本。
 
 <DocSupport />
 

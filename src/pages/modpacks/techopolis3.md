@@ -15,6 +15,9 @@ authors:
   - 'benbenlaw (作者)'
   - 'VM汉化组 (翻译)'
 links:
+  - id: bilibili
+    text: 安装教程视频
+    link: https://www.bilibili.com/video/BV1NDFSzaENL
   - id: curseforge
     text: 下载i18n模组
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download

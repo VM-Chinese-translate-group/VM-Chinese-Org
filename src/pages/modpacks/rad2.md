@@ -13,7 +13,7 @@ compatibility:
   pack: '1.17'
 authors:
   - 'dreams01 (作者)'
-  - 'VM汉化组 (翻译)'
+  - 'VM汉化组-choco_takey (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组
@@ -37,8 +37,6 @@ Roguelite及地城探索类游戏与模组的精华。这款以探索为核心�
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: '/doing', quarkLink: '/doing' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: '/doing' }
 ]" />
-
-译者：choco_takey
 
 原名：Roguelike Adventures and Dungeons 2
 

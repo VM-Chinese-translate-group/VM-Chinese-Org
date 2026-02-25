@@ -16,8 +16,8 @@ authors:
   - 'VM汉化组-捂脸 (翻译)'
 links:
   - id: bilibili
-    text: 介绍视频
-    link: https://www.bilibili.com/read/cv24344019
+    text: 安装教程视频
+    link: https://www.bilibili.com/video/BV1NWFvz9Ec5/
   - id: curseforge
     text: 下载i18n模组
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
@@ -46,7 +46,8 @@ links:
 
 天空奥德赛是一个独特的空岛整合包。它拥有几个新的自定义模组。你的目标是打开奥德赛维度的传送门。
 
-围绕等价交换进行的魔改之旅，让本因枯燥无味的制作机器之旅更加丰富多彩。配合上魔改，让ProjectE不再成为偷懒神器，同时又能很好的缓解合成中过于繁杂的步骤。
+围绕等价交换进行的魔改之旅，让本因枯燥无味的制作机器之旅更加丰富多彩。
+配合上魔改，让等价交换不再成为偷懒神器，同时又能很好的缓解合成中过于繁杂的步骤。
 
 除此之外，你可以使用货币矿机将多余的RF能源转换为FTB金币。还添加了一个全新的多方块机器，它可以帮助你产生以前无法想象的力量。
 

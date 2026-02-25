@@ -1,9 +1,9 @@
 ---
 title: 中世纪的MC 1.19.2 Fabric汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/594/10/64/64/637967185605583019.png
 description: |
-  
-updateDate: 2025年2月21日
+  人人都想要的中世纪奇幻RPG冒险与探索整合包！
+updateDate: 2023年9月1日
 status:
   text: 停止维护
   type: stopped
@@ -12,7 +12,7 @@ compatibility:
   minecraft: '1.19.2'
   pack: 'v23'
 authors:
-  - ' (作者)'
+  - 'LunaPixelStudios (作者团队)'
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
@@ -33,10 +33,6 @@ links:
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/mmc1-19-2-fabric-vmct', quarkLink: 'https://pan.quark.cn/s/c90aab011784' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/mmc1-19-2-fabric-vmct' }
 ]" />
-
-| 整合包下载地址                                                                    | 加载器 | 支持整合包版本 | 汉化维护状态 |
-| :-------------------------------------------------------------------------------- | :----- | :------------- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/medieval-mc-fabric-mmc1) | Fabric | 1.19.2 v23     | **停止维护** |
 
 ## 整合包介绍
 

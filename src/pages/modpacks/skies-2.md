@@ -39,14 +39,8 @@ links:
 主打奖励驱动的玩法机制、深度定制的内容逻辑，以及以玩家为核心的成长路径。
 在这里，数百小时的内容等待你探索，热门模组与定制内容深度融合，助你直达星辰大海。
 
-::: warning 重要提示
-完整汉化体验请下载i18n模组，并放在`mods`文件夹！
-:::
-
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/skies2', quarkLink: 'https://pan.quark.cn/s/5d8815be19ab' },
-{ id: 'bilibili', text: '介绍视频', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV1U2hwzmESy' },
-{ id: 'github', text: 'GitHub仓库', icon: '/imgs/svg/github.svg', link: 'https://github.com/VM-Chinese-translate-group/FTB-Skies-2-Chinese' },
 { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/skies2' }
 ]" />
 

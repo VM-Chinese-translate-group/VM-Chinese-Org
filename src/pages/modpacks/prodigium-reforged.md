@@ -1,6 +1,6 @@
 ---
 title: 异域征途汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/1364/439/256/256/638886190322728774.png
 description: |
   受《泰拉瑞亚》深度启发，体验一套独特的成长系统：击败Boss以解锁新的矿物、新的怪物，甚至是新的NPC！
 updateDate: 2025年2月21日
@@ -12,8 +12,8 @@ compatibility:
   minecraft: '1.20.1'
   pack: '4.1.201'
 authors:
-  - ' (作者)'
-  - 'VM汉化组 (翻译)'
+  - 'DenLille_ (作者)'
+  - 'VM汉化组-琪露诺 (翻译)'
 links:
   - id: curseforge
     text: 下载i18n模组
@@ -38,18 +38,8 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: '/doing', quarkLink: '/doing' },
-  { id: 'curseforge', text: 'i18n自动汉化更新模组', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/api/v1/mods/297404/files/7173159/download' },
-  { id: 'github', text: 'GitHub仓库', icon: '/imgs/svg/github.svg', link: 'https://github.com/VM-Chinese-translate-group/Prodigium-Reforged-Chinese' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: '/doing' }
 ]" />
-
-## 更多信息
-
-| 整合包下载地址                                                           | 加载器 | 支持整合包版本   | 汉化维护状态 |
-| :----------------------------------------------------------------------- | :----- | :--------------- | :----------- |
-| [链接](https://www.curseforge.com/minecraft/modpacks/prodigium-reforged) | Forge  | mc1.20.1 4.1.201 | 翻译中       |
-
-译者：琪露诺
 
 ## 🌱 成长系统
 

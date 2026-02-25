@@ -1,19 +1,20 @@
 ---
 title: Prey汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/861/833/64/64/638269815319567383.png
 description: |
-  起初，你会死而往复。在黑暗中被追逐所造成的恐惧不容小觑，毫无疑问：你是猎物。磨练你的技能，获取新的能力，锻造强大的装备来扭转局势，成为掠食者。
-updateDate: 2025年2月21日
+  在这个高度自定义的独特RPG整合包中，探索5个维度和19个Boss
+updateDate: 2024年5月2日
 status:
   text: 停止维护
   type: stopped
 compatibility:
   loader: forge
   minecraft: '1.19.2'
-  pack: '1.14（最新版）'
+  pack: '1.14'
 authors:
-  - ' (作者)'
+  - 'Chummycho (作者)'
   - 'VM汉化组 (翻译)'
+  - 'ChuijkYahus、Kasualix、老本願 (外部贡献)'
 links:
   - id: bilibili
     text: 专栏介绍
@@ -30,10 +31,6 @@ links:
 起初，你会死而往复。在黑暗中被追逐所造成的恐惧不容小觑，毫无疑问：你是猎物。磨练你的技能，获取新的能力，锻造强大的装备来扭转局势，成为掠食者。
 
 **“死亡是我们的债，不得不偿还的债”**
-
-| 整合包下载地址                                                      | 加载器 | 支持整合包版本          | 汉化维护状态 |
-| :------------------------------------------------------------------ | :----- | :---------------------- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/prey-beta) | Forge  | mc1.19.2 1.14（最新版） | 停止维护     |
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouy.com/s/prey-vmct', quarkLink: 'https://pan.quark.cn/s/8dbc98d8e0b5' },

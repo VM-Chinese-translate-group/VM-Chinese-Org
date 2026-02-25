@@ -1,6 +1,6 @@
 ---
 title: Muskteer汉化下载
-icon: 
+icon: https://media.forgecdn.net/avatars/thumbnails/832/652/256/256/638223740395411694.png
 description: |
   Muskteer是一个围绕小型多人游戏社区设计的整合包，玩家生活在一个普通的世界中，并且摒弃了原版Minecraft的一些玩法，更具创新。
 updateDate: 2023年7月20日
@@ -12,7 +12,7 @@ compatibility:
   minecraft: '1.19.2'
   pack: 'beta7'
 authors:
-  - ' (作者)'
+  - 'Vazkii (作者)'
   - 'VM汉化组-仙人掌 (翻译)'
 links:
   - id: bilibili
@@ -29,20 +29,14 @@ links:
 
 Muskteer是一个围绕小型多人游戏社区设计的整合包，玩家生活在一个普通的世界中，并且摒弃了原版Minecraft的一些玩法，更具创新。
 
-不支持最新版本，支持beta7版本。
+::: warning 重要提示
+汉化支持整合包版本beta7，不支持最新版，请留意下载的支持整合包版本！
+:::
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/Muskteer-vmct-cn', quarkLink: 'https://pan.quark.cn/s/05136ba14348' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/Muskteer-vmct-cn' }
 ]" />
-
-| 整合包下载地址                                                      | 加载器 | 支持整合包版本 | MC版本 | 汉化维护状态 |
-| :------------------------------------------------------------------ | :----- | :------------- | :----- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/musketeer) | Forge  | beta7          | 1.19.2 | **停止维护** |
-
-## 整合包下载
-
-你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/musketeer) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
 
 ## 整合包介绍
 
@@ -66,7 +60,7 @@ Muskteer整合包中：
 
 ## 整合包下载与授权
 
-你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/musketeer/files) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
+你可以先在 [CurseForge](https://www.curseforge.com/minecraft/modpacks/musketeer/) 或启动器内下载整合包，然后下载汉化补丁，最后将补丁解压并覆盖相应文件，即可完成汉化。
 
 本整合包汉化已获得作者授权。本汉化补丁不违反任何社区规则。
 

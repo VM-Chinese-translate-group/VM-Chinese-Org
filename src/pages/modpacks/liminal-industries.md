@@ -17,6 +17,9 @@ authors:
   - 'Appocryptha (作者)'
   - 'VM汉化组-七羽Kiyo (翻译)'
 links:
+  - id: bilibili
+    text: 介绍视频
+    link: https://www.bilibili.com/video/BV1KyYYzMEkP/
   - id: curseforge
     text: 下载i18n模组
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
