@@ -6,9 +6,6 @@ layout: doc
 
 [[toc]]
 
-<script setup>
-</script>
-
 # 模组翻译工具
 
 ## MC模组翻译参考词典
