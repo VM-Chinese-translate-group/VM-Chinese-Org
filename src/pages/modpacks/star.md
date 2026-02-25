@@ -1,18 +1,18 @@
 ---
 title: 星辰工厂汉化下载
-icon:
+icon: https://media.forgecdn.net/avatars/thumbnails/314/391/256/256/637412276959625556.png
 description: |
   欢迎来到星辰工厂！在这个无尽虚空的世界里，你将面临一个艰巨的任务——从零开始创造整颗恒星！
-updateDate: 2025年2月21日
+updateDate: 2023年5月20日
 status:
   text: 停止维护
   type: stopped
 compatibility:
   loader: forge
   minecraft: '1.12.2'
-  pack: '最新版'
+  pack: '1.1.0'
 authors:
-  - ' (作者)'
+  - 'Replication (作者)'
   - 'VM汉化组-自尊寺 (翻译)'
 links:
   - id: bilibili
@@ -29,13 +29,9 @@ links:
 
 欢迎来到星辰工厂！在这个无尽虚空的世界里，你将面临一个艰巨的任务——从零开始创造整颗恒星！
 
-| 整合包下载地址                                                         | 加载器 | 支持整合包版本  | 汉化维护状态 |
-| :--------------------------------------------------------------------- | :----- | :-------------- | :----------- |
-| [下载链接](https://www.curseforge.com/minecraft/modpacks/star-factory) | Forge  | mc1.12.2 最新版 | **停止维护** |
-
 <DownloadLinks :methods="[
-  { id: 'baidu-drive', text: '下载汉化', icon: '/imgs/svg/baidu-drive.svg', link: 'https://pan.baidu.com/s/1wpDS3eh67MspYFSjp6Mw1w&pwd=1234' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://pan.baidu.com/s/1wpDS3eh67MspYFSjp6Mw1w&pwd=1234' }
+  { id: 'baidu-drive', text: '下载汉化', icon: '/imgs/svg/baidu-drive.svg', link: 'https://pan.baidu.com/s/1OI533N2IMHssFsoGm5o0lg?pwd=x068#list/path=%2F%E8%87%AA%E5%B0%8A%E5%AF%BA%E6%B1%89%E5%8C%96%E5%85%A8%E9%9B%86%2F1.12.x%2FStar%20Factory' },
+  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://pan.baidu.com/s/1OI533N2IMHssFsoGm5o0lg?pwd=x068#list/path=%2F%E8%87%AA%E5%B0%8A%E5%AF%BA%E6%B1%89%E5%8C%96%E5%85%A8%E9%9B%86%2F1.12.x%2FStar%20Factory' }
 ]" />
 
 ## 整合包介绍

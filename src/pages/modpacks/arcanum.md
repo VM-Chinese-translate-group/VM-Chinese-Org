@@ -29,6 +29,9 @@ links:
   - id: modrinth
     text: 下载帕秋莉手册翻译PRP-Arch模组
     link: https://cdn.modrinth.com/data/AqeDdB2c/versions/msizLmQ2/PRP-Arch-Forge-1.0.1-Hotfix-1.18.x.jar
+  - id: github
+    text: GitHub仓库
+    link: https://github.com/VM-Chinese-translate-group/FTB-Arcanum-Institute-Chinese
 ---
 
 <DownloadLayout :meta="frontmatter">

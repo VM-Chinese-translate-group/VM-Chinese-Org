@@ -24,6 +24,9 @@ links:
   - id: curseforge
     text: 下载i18n模组
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+  - id: github
+    text: GitHub仓库
+    link: https://github.com/VM-Chinese-translate-group/MC-Eternal
 ---
 
 <DownloadLayout :meta="frontmatter">
@@ -38,6 +41,8 @@ links:
   { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/MCE-VMCT', quarkLink: 'https://pan.quark.cn/s/30dbcf069bae' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/MCE-VMCT' }
 ]" />
+
+译者：虚空、橡树树苗、曲逸、喵呜、X209、cat酱、贪婪、茫氪、自尊寺、逸晨、sine、阿鹉、捂脸、Clark
 
 ## 整合包介绍
 
@@ -89,9 +94,9 @@ links:
 
 总而言之，让你在整合包内获得更多的快乐！不会让你感到无所事事或者无聊！
 
-感谢所有的mod作者，如果没有他们，这个整合包将会胎死腹中，一辈子无法和各位见面了！
+感谢所有的模组作者，如果没有他们，这个整合包将会胎死腹中，一辈子无法和各位见面了！
 
-请至少分配8G内存游玩哦！（10G更好）
+请至少分配8G内存游玩哦！
 
 ## 汉化琐事
 
@@ -102,10 +107,6 @@ links:
 我们找了作者们好多次问题，每次基本都是秒回。在这里非常感谢作者们！这是我们遇到最好的作者！他们甚至在群发公告，在CurseForge为我们宣传。还在汉化仓库Github点了第一颗星！
 
 We have asked the authors many questions, and every time it is basically a second. Thank you very much to the authors here! This is the first time! The best! Author! They even announced in the group and mark at Curseforge.
-
-## 贡献名单
-
-虚空，橡树树苗，曲逸，喵呜，x209，cat酱，贪婪，茫氪，自尊寺，逸晨，sine，阿鹉，捂脸，Clark_TSC
 
 ## 整合包下载与授权
 

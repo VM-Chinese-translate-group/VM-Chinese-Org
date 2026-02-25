@@ -5,14 +5,14 @@ description: |
   SkyFactory® 5：创意的重塑，迎来第五次飞跃！
 updateDate: 2025年8月20日
 status:
-  text: 维护中
-  type: success
+  text: 停止维护
+  type: stopped
 compatibility:
   loader: forge
   minecraft: '1.20.1'
   pack: '5.0.8'
 authors:
-  - ' (作者)'
+  - 'darkosto (作者)'
   - '给我带双份老鸭煲 (初版翻译)'
   - 'VM汉化组 (后续维护)'
 links:

@@ -28,6 +28,9 @@ links:
   - id: curseforge
     text: 下载VP模组
     link: https://mediafilez.forgecdn.net/files/7146/784/vaultpatcher-all-1.4.6.jar
+  - id: github
+    text: GitHub仓库
+    link: https://github.com/VM-Chinese-translate-group/dawncraft-Chinese-patch-Pack
 ---
 
 <DownloadLayout :meta="frontmatter">

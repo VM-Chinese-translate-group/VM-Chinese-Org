@@ -20,6 +20,9 @@ links:
   - id: curseforge
     text: 下载i18n模组
     link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+  - id: github
+    text: GitHub仓库
+    link: https://github.com/VM-Chinese-translate-group/direwolf20-1.19.2
 ---
 
 <DownloadLayout :meta="frontmatter">
