@@ -7,7 +7,7 @@ description: |
 updateDate: 2026年02月14日
 status:
   text: 维护中
-  type: success
+  type: maintaining
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'

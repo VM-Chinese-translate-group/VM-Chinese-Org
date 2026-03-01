@@ -6,7 +6,7 @@ description: |
 updateDate: 2026年2月8日
 status:
   text: 维护中
-  type: success
+  type: maintaining
 compatibility:
   loader: fabric
   minecraft: '1.18.2'

@@ -12,9 +12,12 @@ compatibility:
   minecraft: '1.21.8'
   pack: '1.0'
 authors:
-  - 'MiraMappa (作者)'
+  - 'MiraMappa (作者团队)'
   - 'VM汉化组 (翻译)'
 links:
+  - id: bilibili
+    text: 介绍视频
+    link: https://www.bilibili.com/video/BV1QuByBBE8G
   - id: planetminecraft
     text: 地图原帖
     link: https://www.planetminecraft.com/project/yoodexy-s-mod/
@@ -33,7 +36,7 @@ links:
 - 💥 **仅支持 Java 版 Minecraft 1.21.8！**
 - **汉化状态**：当前分发版本已获作者授权，后续更新汉化可能会内置到原地图中！
 - **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
-:::
+  :::
 
 <DownloadLinks :methods="[
   { id: 'lanzou-quark-mapdl', text: '下载地图和汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/yoodexy', quarkLink: 'https://pan.quark.cn/s/70e76ea75729' },

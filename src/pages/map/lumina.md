@@ -19,7 +19,7 @@ links:
     text: 宣传片
     link: https://www.bilibili.com/video/BV1dW421X7Xo/
   - id: ctmrepository
-    text: 地图下载
+    text: 地图原帖
     link: https://ctmrepository.com/index.php?action=viewMap&id=619
 ---
 
@@ -37,21 +37,12 @@ links:
 
 - **汉化已内置**：地图**自带简体中文等七种语言**，无需额外安装汉化补丁，开箱即玩！
 - **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
-:::
+  :::
 
 <DownloadLinks :methods="[
-  { id: 'bilibili', text: '宣传片', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV1dW421X7Xo/' },
-  { id: 'ctmrepository', text: '下载地图', icon: 'https://ctmrepository.com/favicon.png', link: 'https://ctmrepository.com/index.php?action=viewMap&id=619' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://ctmrepository.com/index.php?action=viewMap&id=619' }
+  { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/6jsa2peu3o34pop/Lumina_Complex.zip' },
+  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://www.mediafire.com/file/6jsa2peu3o34pop/Lumina_Complex.zip' }
 ]" />
-
-## 要求：
-
-- **MC版本：1.20.2**（原版）
-- 难度：中等
-- 游戏时长：3-5小时
-- 游玩人数：建议1-2人，最多支持4人
-- 地图类型：冒险、CTM、类银河恶魔城
 
 <DocSupport />
 

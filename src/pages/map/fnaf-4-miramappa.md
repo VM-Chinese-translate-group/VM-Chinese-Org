@@ -3,7 +3,7 @@ title: 玩具熊的五夜后宫4汉化下载
 icon: /imgs/maps/fnaf-4-miramappa.webp
 description: |
   基于经典恐怖游戏玩具熊的五夜后宫4制作的Minecraft地图。午夜，黑暗，空荡荡的房子——一只手电筒和几扇普通的门，能帮你活下来吗？
-updateDate: 2025年7月17日
+updateDate: 2025年8月13日
 status:
   text: 停止维护
   type: stopped
@@ -12,7 +12,7 @@ compatibility:
   minecraft: '1.21.4'
   pack: '1.0'
 authors:
-  - 'MiraMappa Studio, XeKyT, VladislavvC, Bobicraft (作者)'
+  - 'MiraMappa (作者团队)'
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
@@ -47,18 +47,12 @@ links:
 - **切换语言**：进入游戏后，**右击右侧地球图标**，在弹出的菜单中选择“`中国人`”选项即可切换至中文（这是作者的一个翻译错译，实际对应简体中文，作者暂未修改）。
 - **游戏操作**：根据作者回复，**手电筒开启键为键盘上的 `Ctrl` 键**（左Ctrl）。
 - **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
-:::
+  :::
 
 <DownloadLinks :methods="[
   { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/ilku2vvh3gigi1i/FNaF_4_v1.0.zip/file' },
   { id: 'planetminecraft', text: '地图原帖', icon: '/imgs/svg/planetminecraft.svg', link: 'https://www.planetminecraft.com/project/fnaf-4-miramappa/' }
 ]" />
-
-## 要求：
-
-- MC版本：**1.21.4**（强制要求）
-- 游玩人数：单人
-- 主题类型：挑战冒险、恐怖、惊悚
 
 <DocSupport />
 

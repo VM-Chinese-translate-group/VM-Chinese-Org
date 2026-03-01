@@ -4,7 +4,7 @@ icon: /imgs/maps/detective-stories.webp
 description: |
   侦探故事集是一个以解密为主题的恐怖地图。
   你被困在一家公路边的咖啡馆中，外面正下着暴雪。探索环境，寻找钥匙、阅读笔记、搬动箱子。每走一步，这家咖啡馆就变得越来越不真实……
-updateDate: 2025年5月1日
+updateDate: 2025年5月21日
 status:
   text: 停止维护
   type: stopped
@@ -13,7 +13,7 @@ compatibility:
   minecraft: '1.21.4'
   pack: '1.0.1'
 authors:
-  - 'Ivan_Mc_Gamer (作者)'
+  - 'MiraMappa (作者团队)'
   - 'VM汉化组 (翻译)'
 links:
   - id: planetminecraft
@@ -43,15 +43,8 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/gvlmv0ynnvcafqt/Detective_Stories_1.0.1_2.zip' },
-  { id: 'planetminecraft', text: '地图原帖', icon: '/imgs/svg/planetminecraft.svg', link: 'https://www.planetminecraft.com/project/detective-stories-chapter-1-case-cafe/' }
+  { id: 'lazy', text: '懒汉下载汉化', icon: '/imgs/lazydl.png', link: 'https://www.mediafire.com/file/gvlmv0ynnvcafqt/Detective_Stories_1.0.1_2.zip' }
 ]" />
-
-## 要求：
-
-- MC版本：1.21.4
-- 内存：至少2GB
-- 玩家：1名
-- 主题类型：解密、恐怖地图、挑战冒险、复杂
 
 <DocSupport />
 

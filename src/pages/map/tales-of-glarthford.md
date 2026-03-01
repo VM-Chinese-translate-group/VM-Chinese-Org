@@ -6,13 +6,12 @@ description: |
 updateDate: 2026年3月21日
 status:
   text: 维护中
-  type: success
+  type: maintaining
 compatibility:
   loader: vanilla
   minecraft: '1.19.4'
   pack: '最新版本'
 authors:
-  - 'Crowdford (作者)'
   - 'VM汉化组 (翻译)'
 links:
   - id: curseforge

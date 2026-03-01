@@ -1,6 +1,6 @@
 ---
 title: 枢机汉化下载
-icon: /imgs/maps/the-machine.jpg
+icon: /imgs/maps/machine.webp
 description: |
   枢机是一张历时三年打磨的Minecraft解谜地图，拥有超过100个关卡、30首原创音乐。全新编程机制、丰富的解谜系统、三种结局，构成史上最宏大的解谜平台冒险。
 updateDate: 2025年6月11日
@@ -12,7 +12,7 @@ compatibility:
   minecraft: '1.18.1'
   pack: '1.0.1'
 authors:
-  - 'SpielmitStil (作者)'
+  - 'SpielmitStil (主作者)'
   - 'VM汉化组 (翻译)'
 links:
   - id: bilibili
@@ -43,7 +43,7 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: '123pan', text: '下载地图与汉化', icon: '/imgs/svg/123.svg', link: 'https://www.123684.com/s/99kKVv-0JdEh' },
+  { id: '123pan', text: '下载地图和汉化', icon: '/imgs/svg/123.svg', link: 'https://www.123684.com/s/99kKVv-0JdEh' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://www.123684.com/s/99kKVv-0JdEh' }
 ]" />
 

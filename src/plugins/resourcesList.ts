@@ -10,7 +10,7 @@ const RESOLVED_VIRTUAL_MODULE_ID = '\0' + VIRTUAL_MODULE_ID
 export function resourcesPlugin() {
   function scanDirectory(baseDir: string, rootDir: string) {
     const results: any[] = []
-    
+
     const scan = (dir: string) => {
       if (!fs.existsSync(dir)) return
       const files = fs.readdirSync(dir)
@@ -40,7 +40,10 @@ export function resourcesPlugin() {
 
         // 日期处理
         const dateStr = getYamlVal('updateDate')
-        const cleanDate = dateStr.replace(/[年月]/g, '-').replace('日', '').trim()
+        const cleanDate = dateStr
+          .replace(/[年月]/g, '-')
+          .replace('日', '')
+          .trim()
         const date = isNaN(Date.parse(cleanDate)) ? new Date(0) : new Date(cleanDate)
 
         // 作者处理
@@ -49,19 +52,24 @@ export function resourcesPlugin() {
 
         // 描述处理
         const descMatch = yamlRaw.match(/description:\s*(?:\||>|-)?\s*(.*?)(?=\n\S+:|$)/s)
-        const description = descMatch && descMatch[1] ? descMatch[1].replace(/\r?\n/g, ' ').trim() : ''
+        const description =
+          descMatch && descMatch[1] ? descMatch[1].replace(/\r?\n/g, ' ').trim() : ''
 
         // 来源链接
         const sources = []
         const cfMatch = body.match(/\[CurseForge\]\((https:\/\/www\.curseforge\.com\/[^\)]+)\)/)
-        const ghMatch = yamlRaw.match(/id: github\s+text:.*?\s+link: (https:\/\/github\.com\/[^\s\n]+)/s)
+        const ghMatch = yamlRaw.match(
+          /id: github\s+text:.*?\s+link: (https:\/\/github\.com\/[^\s\n]+)/s,
+        )
         if (cfMatch) sources.push({ icon: 'curseforge', link: cfMatch[1] })
         if (ghMatch) sources.push({ icon: 'github', link: ghMatch[1] })
 
         const relPath = path.relative(rootDir, fullPath)
         const routePrefix = rootDir.endsWith('map') ? '/map/' : '/modpacks/'
-        
-        const link = routePrefix + relPath
+
+        const link =
+          routePrefix +
+          relPath
             .replace(/\.md$/, '')
             .replace(/\\/g, '/')
             .replace(/\/index$/, '')
@@ -102,7 +110,10 @@ export function resourcesPlugin() {
     },
 
     handleHotUpdate({ file, server }: any) {
-      if ((file.includes('/pages/modpacks/') || file.includes('/pages/map/')) && file.endsWith('.md')) {
+      if (
+        (file.includes('/pages/modpacks/') || file.includes('/pages/map/')) &&
+        file.endsWith('.md')
+      ) {
         const mod = server.moduleGraph.getModuleById(RESOLVED_VIRTUAL_MODULE_ID)
         if (mod) {
           server.moduleGraph.invalidateModule(mod)

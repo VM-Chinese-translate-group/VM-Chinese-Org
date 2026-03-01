@@ -1,6 +1,6 @@
 ---
 title: 贝维尔小镇汉化下载
-icon: https://static.planetminecraft.com/files/avatar/2592048_4.png
+icon: https://static.planetminecraft.com/files/image/minecraft/project/2025/875/19213657_l.webp
 description: |
   贝维尔是完美的角色扮演地图。参与工作，然后买房子，汽车，食物（甚至还有一些定制食品）等等。还包含120多座独特的建筑和5个城镇/村庄。
 updateDate: 2023年8月28日
@@ -40,7 +40,7 @@ links:
 <DownloadLinks :methods="[
   { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/w9gwytz72hbtdyf/Bayville_-_realistic_roleplay_town_v7.2.zip/file' },
   { id: 'lanzou-quark-mapdl', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/vmct-Bayville-mapt-cn', quarkLink: 'https://pan.quark.cn/s/e1378993a57f' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/vmct-Bayville-mapt-cn' }
+  { id: 'lazy', text: '懒汉下载汉化', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/vmct-Bayville-mapt-cn' }
 ]" />
 
 ## 要求：

@@ -3,7 +3,7 @@ title: 狂乱之境4汉化下载
 icon: /imgs/maps/rc4.jpg
 description: |
   这张大型的半开放世界CTM地图提供了超过50小时的游戏时间。与独特攻击的定制怪物搏斗，打造强大的物品，并深入至暗深渊以获取16颗水晶。
-updateDate: 2024年8月20日
+updateDate: 2025年1月3日
 status:
   text: 停止维护
   type: stopped
@@ -31,21 +31,22 @@ links:
 
 这张大型的半开放世界CTM地图提供了超过50小时的游戏时间。与拥有独特攻击方式的定制怪物搏斗，打造强大的物品，并深入至暗深渊以获取16颗水晶。
 
-游戏版本：MC原版 1.20.1
-玩家数量：1-3名（推荐）
+- 游戏版本：MC原版 1.20.1
+- 游戏时长：50小时以上
+- 地图类型：半开放世界 CTM
+- 目标数量：16个必需 + 12个奖励
+- 难度：困难
+- 玩家数量：1-3名（推荐）
 
-::: warning 重要注意事项
+::: warning ⚙️ 安装教程
 
-### ⚙️ 安装教程
-
-- **单人游玩**：将下载好的地图压缩包解压，把名为 `[1.20.1] Ragecraft IV - by heliceo & Suso - v1.1.0` 的文件夹复制到对应游戏版本的 `.minecraft\saves` 目录下，启动游戏并在单人模式下选择该地图即可。
 - **联机游玩**：
   1. 服务端正常安装地图。
   2. 将地图文件夹中的 `resources.zip` **取出并删除**（地图文件夹内不要保留此文件）。
   3. 将此zip文件分发给所有玩家，放入各自游戏版本的 `.minecraft\resourcepacks` 文件夹。
   4. 玩家进入游戏后，在“选项”→“资源包”中启用该资源包。
      **请不要让玩家连接服务器时自动下载资源包，这会导致部分翻译不加载！**
-:::
+     :::
 
 <DownloadLinks :methods="[
   { id: '123pan', text: '下载汉化', icon: '/imgs/svg/123.svg', link: 'https://www.123pan.com/s/99kKVv-zYVQh.html' },
@@ -66,17 +67,10 @@ links:
 
 **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
 
-## 要求：
-
-- MC版本：**1.20.1**
-- 游戏时长：50小时以上
-- 地图类型：半开放世界 CTM
-- 目标数量：16个必需 + 12个奖励
-- 难度：困难
-
 ## 汉化贡献（排名不分先后）
 
-X209，ChuijkYahus，RCqaq，yinzi，Kzlw5qf，Catcatpigeon，Cat酱，TianxinGstar，咕咕鱼，阿鹉，醉冰茶，望，Lims，McCutcheon10，FridayAnubis，荔枝，xhchi，wandouWD，冰琳，祝明宇，champsing
+X209，ChuijkYahus，RCqaq，yinzi，Kzlw5qf，Catcatpigeon，Cat酱，TianxinGstar，咕咕鱼，阿鹉，醉冰茶，
+望，Lims，McCutcheon10，FridayAnubis，荔枝，xhchi，wandouWD，冰琳，祝明宇，champsing
 
 **特别鸣谢**：天佑，China_Danndy，1639，zhvsjia，doom，黑茶，云零
 
