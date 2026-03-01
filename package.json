@@ -43,7 +43,7 @@
     "vite": "^7.3.1",
     "vite-plugin-compression2": "^2.4.0",
     "vite-plugin-sitemap": "^0.8.2",
-    "vite-plugin-vue-devtools": "^8.0.6",
+    "vite-plugin-vue-devtools": "^8.0.7",
     "vue-tsc": "^3.2.5"
   },
   "packageManager": "pnpm@10.30.3"

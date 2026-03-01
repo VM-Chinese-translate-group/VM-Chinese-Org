@@ -7,7 +7,7 @@ description: |
 updateDate: 2026年1月1日
 status:
   text: 维护中
-  type: success
+  type: maintaining
 compatibility:
   loader: forge
   minecraft: '1.20.1'

@@ -12,6 +12,5 @@
 </template>
 
 <script setup>
-import { modpacks } from 'virtual:modpacks'
-import DownloadCards from '@/components/DownloadPage/DownloadCards.vue'
+import { modpacks } from 'virtual:resources'
 </script>

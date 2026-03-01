@@ -177,19 +177,23 @@ const ICON_PATHS: Record<string, string> = {
   modrinth: '/imgs/svg/modrinth.svg',
   curseforge: '/imgs/svg/curseforge.svg',
   github: '/imgs/svg/github.svg',
+  planetminecraft: '/imgs/svg/planetminecraft.svg',
+  ctmrepository: 'https://ctmrepository.com/favicon.png',
 }
 
 const ICON_NAMES: Record<string, string> = {
   modrinth: 'Modrinth',
   curseforge: 'CurseForge',
   github: 'GitHub',
+  planetminecraft: 'Planet Minecraft',
+  ctmrepository: 'CTM Repository',
 }
 
 const searchQuery = ref('')
 const currentPage = ref(1)
 const itemsPerPage = ref(12)
 const pageInputValue = ref('')
-const pageSizeOptions = [6, 12, 18, 24]
+const pageSizeOptions = [6, 12, 18]
 
 const getIconSrc = (icon: string | { svg: string }) => {
   if (typeof icon === 'string') return ICON_PATHS[icon] || icon

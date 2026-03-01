@@ -7,7 +7,7 @@ description: |
 updateDate: 2024年9月6日
 status:
   text: 维护中
-  type: success
+  type: maintaining
 compatibility:
   loader: forge
   minecraft: '1.18.2'

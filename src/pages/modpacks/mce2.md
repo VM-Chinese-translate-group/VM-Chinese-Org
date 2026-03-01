@@ -6,7 +6,7 @@ description: |
 updateDate: 待定
 status:
   text: 维护中
-  type: success
+  type: maintaining
 compatibility:
   loader: forge
   minecraft: '1.20.1'

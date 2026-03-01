@@ -22,15 +22,15 @@ export function searchIndexPlugin() {
 
         const content = fs.readFileSync(fullPath, 'utf-8')
         const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-        const yamlRaw = (match && match[1]) ? match[1] : ''
+        const yamlRaw = match && match[1] ? match[1] : ''
         const body = match ? content.slice(match[0].length) : content
 
         const titleMatch = yamlRaw.match(/^title:\s*(.*)$/m)
         const h1Match = body.match(/^#\s+(.+)$/m)
 
-        const title = (
-          (titleMatch ? titleMatch[1] : (h1Match ? h1Match[1] : '')) ?? ''
-        ).replace(/['"]/g, '').trim()
+        const title = ((titleMatch ? titleMatch[1] : h1Match ? h1Match[1] : '') ?? '')
+          .replace(/['"]/g, '')
+          .trim()
 
         // 提取路由
         let route = path.relative(PAGES_DIR, fullPath).replace(/\\/g, '/').replace(/\.md$/, '')
@@ -74,6 +74,6 @@ export function searchIndexPlugin() {
           server.moduleGraph.invalidateModule(mod)
         }
       }
-    }
+    },
   }
 }

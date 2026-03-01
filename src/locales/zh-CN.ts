@@ -69,7 +69,7 @@ export default {
     compatibilityTitle: '版本兼容性',
     minecraftVersion: 'Minecraft 版本',
     loader: '加载器',
-    packVersion: '整合包版本',
+    packVersion: '适配版本',
     authorsTitle: '作者',
     relatedLinks: '相关链接',
   },

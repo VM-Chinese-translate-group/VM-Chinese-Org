@@ -19,7 +19,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import compression from 'vite-plugin-compression2'
 
 import { getGitBranch, getGitCommitHash, getGitEnv } from './src/plugins/git'
-import { modpacksPlugin } from './src/plugins/modpacks'
+import { resourcesPlugin } from './src/plugins/resourcesList'
 import { searchIndexPlugin } from './src/plugins/searchIndex'
 
 const branch = getGitBranch()
@@ -124,7 +124,7 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
-    modpacksPlugin(),
+    resourcesPlugin(),
     searchIndexPlugin(),
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',

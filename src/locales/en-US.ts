@@ -69,7 +69,7 @@ export default {
     compatibilityTitle: 'Version Compatibility',
     minecraftVersion: 'Minecraft Version',
     loader: 'Loader',
-    packVersion: 'Modpack Version',
+    packVersion: 'Compatible Version',
     authorsTitle: 'Authors',
     relatedLinks: 'Related Links',
   },

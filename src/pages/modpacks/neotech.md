@@ -6,7 +6,7 @@ description: |
 updateDate: 2025年6月6日
 status:
   text: 维护中
-  type: success
+  type: maintaining
 compatibility:
   loader: neoforge
   minecraft: '1.20.4'
