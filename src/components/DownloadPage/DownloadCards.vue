@@ -177,12 +177,14 @@ const ICON_PATHS: Record<string, string> = {
   modrinth: '/imgs/svg/modrinth.svg',
   curseforge: '/imgs/svg/curseforge.svg',
   github: '/imgs/svg/github.svg',
+  planetminecraft: '/imgs/svg/planetminecraft.svg',
 }
 
 const ICON_NAMES: Record<string, string> = {
   modrinth: 'Modrinth',
   curseforge: 'CurseForge',
   github: 'GitHub',
+  planetminecraft: 'Planet Minecraft',
 }
 
 const searchQuery = ref('')

@@ -82,14 +82,17 @@ const results = ref<any[]>([])
 const inputRef = ref<HTMLInputElement | null>(null)
 
 // 自动聚焦输入框
-watch(() => props.visible, (newVal) => {
-  if (newVal) {
-    nextTick(() => inputRef.value?.focus())
-  } else {
-    keyword.value = ''
-    results.value = []
-  }
-})
+watch(
+  () => props.visible,
+  (newVal) => {
+    if (newVal) {
+      nextTick(() => inputRef.value?.focus())
+    } else {
+      keyword.value = ''
+      results.value = []
+    }
+  },
+)
 
 const handleSearch = () => {
   const term = keyword.value.trim().toLowerCase()
@@ -99,25 +102,25 @@ const handleSearch = () => {
   }
 
   results.value = searchIndex
-    .filter((i: any) => 
-      (i.title || '').toLowerCase().includes(term) || 
-      (i.text || '').toLowerCase().includes(term)
+    .filter(
+      (i: any) =>
+        (i.title || '').toLowerCase().includes(term) || (i.text || '').toLowerCase().includes(term),
     )
     .map((i: any) => {
       const text = i.text || ''
       const pos = text.toLowerCase().indexOf(term)
-      
+
       // 生成预览片段
       const start = Math.max(0, pos - 40)
       const end = pos + 60
       let snippet = text.slice(start, end)
       if (start > 0) snippet = '...' + snippet
       if (end < text.length) snippet = snippet + '...'
-      
-      return { 
-        url: i.url, 
-        title: i.title || 'Untitled', 
-        snippet 
+
+      return {
+        url: i.url,
+        title: i.title || 'Untitled',
+        snippet,
       }
     })
 }

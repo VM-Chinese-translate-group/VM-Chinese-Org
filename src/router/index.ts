@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import DefaultLayout from '@/Layout.vue'
 import Main from '@/components/Main/Main.vue'
+import Maps from '@/pages/map.vue'
 import Modpacks from '@/pages/modpacks.vue'
 
 // 将 src/pages 下的 .md 文件作为 Vue 组件，并自动生成路由
@@ -42,6 +43,11 @@ const routes: RouteRecordRaw[] = [
         path: '/modpacks',
         name: 'modpacks-list',
         component: Modpacks,
+      },
+      {
+        path: '/map',
+        name: 'map-list',
+        component: Maps,
       },
       ...mdRoutesFiltered,
     ],
