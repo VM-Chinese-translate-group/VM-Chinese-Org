@@ -1,6 +1,6 @@
 ---
 title: FTB Evolution汉化下载
-icon:
+icon: https://media.forgecdn.net/avatars/thumbnails/1109/243/256/256/638659911848580763.png
 description: |
   FTB Evolution 将你带入一个无限的 Minecraft 世界，在这里，先进科技、深奥魔法与沉浸式探险交织在每一个角落。
   这款整合包融合了科技与幻想的精华，以极致的自由度鼓励玩家在多个领域中施展创意、磨砺技艺。

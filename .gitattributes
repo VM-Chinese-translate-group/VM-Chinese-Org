@@ -7,9 +7,4 @@
 *.webp binary
 *.ico binary
 
-*.md linguist-vendored=false
-*.md linguist-generated=false
-*.md linguist-documentation=false
-*.md linguist-detectable=true
-
 pnpm-lock.yaml generated

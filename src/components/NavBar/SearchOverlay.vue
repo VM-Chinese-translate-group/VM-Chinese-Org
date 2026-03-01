@@ -22,6 +22,7 @@
               class="search-input"
               :placeholder="$t('search.placeholder')"
               ref="inputRef"
+              autofocus
             />
             <div class="search-kbd" @click="close">{{ $t('search.esc') }}</div>
           </div>
@@ -68,8 +69,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
+import { searchIndex } from 'virtual:search-index'
 
 const props = defineProps<{ visible: boolean }>()
 const emit = defineEmits(['close'])
@@ -78,43 +80,46 @@ const router = useRouter()
 const keyword = ref('')
 const results = ref<any[]>([])
 const inputRef = ref<HTMLInputElement | null>(null)
-let index: any[] | null = null
 
-const loadIndex = async () => {
-  if (!index) {
-    try {
-      const res = await fetch(`${import.meta.env.BASE_URL}search-index.json`)
-      index = await res.json()
-    } catch {
-      console.error('Search index failed to load')
-      index = []
-    }
+// 自动聚焦输入框
+watch(() => props.visible, (newVal) => {
+  if (newVal) {
+    nextTick(() => inputRef.value?.focus())
+  } else {
+    keyword.value = ''
+    results.value = []
   }
-}
+})
 
-const handleSearch = async () => {
+const handleSearch = () => {
   const term = keyword.value.trim().toLowerCase()
   if (!term) {
     results.value = []
     return
   }
 
-  await loadIndex()
-
-  results.value = index!
-    .filter(
-      (i) => i.title.toLowerCase().includes(term) || (i.text || '').toLowerCase().includes(term),
+  results.value = searchIndex
+    .filter((i: any) => 
+      (i.title || '').toLowerCase().includes(term) || 
+      (i.text || '').toLowerCase().includes(term)
     )
-    .map((i) => {
+    .map((i: any) => {
       const text = i.text || ''
       const pos = text.toLowerCase().indexOf(term)
-      const snippet =
-        pos >= 0
-          ? text.slice(Math.max(0, pos - 40), pos + 60) + (text.length > 60 ? '...' : '')
-          : ''
-      return { url: i.url, title: i.title, snippet }
+      
+      // 生成预览片段
+      const start = Math.max(0, pos - 40)
+      const end = pos + 60
+      let snippet = text.slice(start, end)
+      if (start > 0) snippet = '...' + snippet
+      if (end < text.length) snippet = snippet + '...'
+      
+      return { 
+        url: i.url, 
+        title: i.title || 'Untitled', 
+        snippet 
+      }
     })
-    .slice(0, 10)
 }
 
 const highlight = (text: string) => {

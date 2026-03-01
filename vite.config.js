@@ -19,6 +19,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import compression from 'vite-plugin-compression2'
 
 import { getGitBranch, getGitCommitHash, getGitEnv } from './src/plugins/git'
+import { modpacksPlugin } from './src/plugins/modpacks'
+import { searchIndexPlugin } from './src/plugins/searchIndex'
 
 const branch = getGitBranch()
 const commit = getGitCommitHash()
@@ -32,7 +34,7 @@ const repoPath = (gitEnv.owner && gitEnv.name)
 // 自动获取所有 md 路由
 const getMdRoutes = () => {
   const pagesDir = path.resolve(__dirname, 'src/pages')
-  const files = fs.readdirSync(pagesDir, { recursive: true }) as string[]
+  const files = fs.readdirSync(pagesDir, { recursive: true })
   return files
     .filter(f => f.endsWith('.md'))
     .map(f => {
@@ -94,7 +96,8 @@ export default defineConfig({
         containers.forEach(type => {
           md.use(container, {
             name: type,
-            openRender: (tokens: any, index: number) => {
+            // 移除了这里的 : any 和 : number 类型标注
+            openRender: (tokens, index) => {
               const info = tokens[index].info.trim().slice(type.length).trim()
               const title = info || type.toUpperCase()
               if (type === 'details') {
@@ -121,6 +124,8 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
+    modpacksPlugin(),
+    searchIndexPlugin(),
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',
       dynamicRoutes: getMdRoutes(),
