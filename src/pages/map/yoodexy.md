@@ -33,7 +33,7 @@ links:
 - 💥 **仅支持 Java 版 Minecraft 1.21.8！**
 - **汉化状态**：当前分发版本已获作者授权，后续更新汉化可能会内置到原地图中！
 - **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
-  :::
+:::
 
 <DownloadLinks :methods="[
   { id: 'lanzou-quark-mapdl', text: '下载地图和汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/yoodexy', quarkLink: 'https://pan.quark.cn/s/70e76ea75729' },

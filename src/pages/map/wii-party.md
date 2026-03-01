@@ -42,7 +42,7 @@ links:
 - **汉化已内置**：我们和作者一拍即合，汉化已在地图中内置，开箱即玩！
 - **多人游玩**：地图文件中有一个名为 `resources.zip` 的压缩包，这是地图的资源包。你需要将这个文件发送给你的朋友，并让他们在游戏中加载此资源包。
 - **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
-  :::
+:::
 
 <DownloadLinks :methods="[
   { id: 'curseforge', text: '下载地图与汉化', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/minecraft/worlds/wii-party-in-mc/files/all' },

@@ -45,7 +45,7 @@ links:
   3. 将此zip文件分发给所有玩家，放入各自游戏版本的 `.minecraft\resourcepacks` 文件夹。
   4. 玩家进入游戏后，在“选项”→“资源包”中启用该资源包。
      **请不要让玩家连接服务器时自动下载资源包，这会导致部分翻译不加载！**
-     :::
+:::
 
 <DownloadLinks :methods="[
   { id: '123pan', text: '下载汉化', icon: '/imgs/svg/123.svg', link: 'https://www.123pan.com/s/99kKVv-zYVQh.html' },

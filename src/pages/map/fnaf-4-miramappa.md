@@ -47,7 +47,7 @@ links:
 - **切换语言**：进入游戏后，**右击右侧地球图标**，在弹出的菜单中选择“`中国人`”选项即可切换至中文（这是作者的一个翻译错译，实际对应简体中文，作者暂未修改）。
 - **游戏操作**：根据作者回复，**手电筒开启键为键盘上的 `Ctrl` 键**（左Ctrl）。
 - **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
-  :::
+:::
 
 <DownloadLinks :methods="[
   { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/ilku2vvh3gigi1i/FNaF_4_v1.0.zip/file' },

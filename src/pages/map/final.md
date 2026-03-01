@@ -42,7 +42,7 @@ links:
   3. 玩家需将此zip文件放入自己游戏版本的 `.minecraft\resourcepacks` 文件夹。
   4. 进入游戏后，在“选项”→“资源包”中，找到并启用该资源包。
      **请不要让玩家连接服务器时自动下载资源包，这会导致进入游戏时部分翻译不加载！**
-     :::
+:::
 
 <DownloadLinks :methods="[
   { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/lej6nls9cj1kha6/Final_Paradox_v1.1.15.zip/file' },

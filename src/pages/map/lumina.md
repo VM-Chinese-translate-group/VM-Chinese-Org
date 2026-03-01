@@ -37,7 +37,7 @@ links:
 
 - **汉化已内置**：地图**自带简体中文等七种语言**，无需额外安装汉化补丁，开箱即玩！
 - **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
-  :::
+:::
 
 <DownloadLinks :methods="[
   { id: 'bilibili', text: '宣传片', icon: '/imgs/svg/bilibili.svg', link: 'https://www.bilibili.com/video/BV1dW421X7Xo/' },
