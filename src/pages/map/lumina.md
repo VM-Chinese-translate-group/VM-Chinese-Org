@@ -34,10 +34,10 @@ links:
 在类银河恶魔城风格的冒险CTM地图中，探索二十世纪初的蒸汽朋克设施，揭秘流明综合体没落的原因。
 
 ::: warning 重要提示
+**汉化已内置**：地图**自带简体中文等七种语言**，无需额外安装汉化补丁，开箱即玩！
 
-- **汉化已内置**：地图**自带简体中文等七种语言**，无需额外安装汉化补丁，开箱即玩！
-- **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
-  :::
+**地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
+:::
 
 <DownloadLinks :methods="[
   { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/6jsa2peu3o34pop/Lumina_Complex.zip' },

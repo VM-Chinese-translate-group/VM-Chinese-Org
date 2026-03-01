@@ -35,7 +35,6 @@ links:
 游玩人数：不限（推荐3-10人）
 
 ::: warning 汉化安装教程
-
 **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
 
 - **单人游玩**：请将下载好的地图压缩包解压，把得到的地图文件夹放入游戏的 `.minecraft\saves` 目录下。启动游戏，在单人模式下选择该地图即可游玩。
@@ -44,8 +43,9 @@ links:
   2. 将地图文件夹中的 `resources.zip` 复制出来，分发给**所有**一起游玩的玩家。
   3. 玩家需将此zip文件放入自己游戏版本的 `.minecraft\resourcepacks` 文件夹。
   4. 进入游戏后，在“选项”→“资源包”中，找到并启用该资源包。
-     **请不要让玩家连接服务器时自动下载资源包，这会导致进入游戏时部分翻译不加载！**
-     :::
+
+**请不要让玩家连接服务器时自动下载资源包，这会导致进入游戏时部分翻译不加载！**
+:::
 
 <DownloadLinks :methods="[
   { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/lej6nls9cj1kha6/Final_Paradox_v1.1.15.zip/file' },
