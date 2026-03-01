@@ -1,6 +1,6 @@
 ---
 title: Yoodexy's Mod汉化下载
-icon: /imgs/maps/yoodexys-mod.jpg
+icon: /imgs/maps/yoodexy.webp
 description: |
   这是一款非对称玩法的多人恐怖地图。你将体验独特的逃生路线、爬行能力，使用监控摄像头、装饰外观，以及可以操控时间的秘密神器。你能活下来吗？
 updateDate: 2025年12月27日
@@ -33,9 +33,7 @@ links:
 
 ::: warning 重要提示
 💥 **仅支持 Java 版 Minecraft 1.21.8！**
-
-- **汉化状态**：当前分发版本已获作者授权，后续更新汉化可能会内置到原地图中！
-
+**汉化状态**：当前分发版本已获作者授权，后续更新汉化可能会内置到原地图中！
 **地图是原版MC的！无需模组，请把地图放进存档（saves）文件夹！**
 :::
 
