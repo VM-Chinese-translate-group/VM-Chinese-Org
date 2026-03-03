@@ -6,6 +6,12 @@ declare module '*.vue' {
   export default component
 }
 
+declare module '*.md' {
+  import type { ComponentOptions } from 'vue'
+  const Component: ComponentOptions
+  export default Component
+}
+
 declare module 'virtual:modpacks' {
   export const modpacks: any[]
 }
@@ -16,4 +22,13 @@ declare module 'virtual:search-index' {
     title: string
     text: string
   }>
+}
+
+declare module 'opencc-js/core' {
+  export function ConverterFactory(from: any, to: any): (text: string) => string;
+}
+
+declare module 'opencc-js/preset' {
+  export const from: { cn: any; tw: any; hk: any; [key: string]: any };
+  export const to: { cn: any; tw: any; hk: any; [key: string]: any };
 }

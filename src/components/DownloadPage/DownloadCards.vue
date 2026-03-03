@@ -62,8 +62,9 @@
                 <span
                   v-if="mod.message"
                   class="card-msg"
-                  v-html="renderMarkdown(mod.message)"
-                ></span>
+                  v-html="convertedMessages[mod.name] || renderMarkdownSync(mod.message)"
+                >
+                </span>
               </div>
               <p class="card-desc">{{ mod.description }}</p>
 
@@ -150,8 +151,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
-import { renderMarkdown } from '@/utils/markdown'
+import { ref, computed, watch, reactive, onMounted } from 'vue'
+import { renderMarkdown, renderMarkdownSync } from '@/utils/markdown'
+import i18n from '@/plugins/i18n'
 
 interface SocialLink {
   icon: string | { svg: string }
@@ -172,6 +174,39 @@ export interface ModCard {
 const props = defineProps<{
   mods: ModCard[]
 }>()
+
+const convertedMessages = reactive<Record<string, string>>({})
+
+async function updateConvertedMessages() {
+  for (const mod of props.mods || []) {
+    if (mod.message) {
+      try {
+        const html = await renderMarkdown(mod.message)
+        convertedMessages[mod.name] = html
+      } catch (e) {
+        convertedMessages[mod.name] = renderMarkdownSync(mod.message || '')
+      }
+    }
+  }
+}
+
+onMounted(() => {
+  updateConvertedMessages()
+})
+
+watch(
+  () => (i18n.global as any).locale.value,
+  () => {
+    updateConvertedMessages()
+  },
+)
+
+watch(
+  () => props.mods,
+  () => {
+    updateConvertedMessages()
+  },
+)
 
 const ICON_PATHS: Record<string, string> = {
   modrinth: '/imgs/svg/modrinth.svg',

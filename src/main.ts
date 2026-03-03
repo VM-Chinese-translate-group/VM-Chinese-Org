@@ -5,6 +5,7 @@ import { Icon } from '@iconify/vue'
 import App from './App.vue'
 import router from './router'
 import i18n from './plugins/i18n'
+import { convertMarkdownContainers } from '@/utils/zhconv'
 import VueLazyload from 'vue-lazyload'
 
 import 'github-markdown-css/github-markdown.css'
@@ -46,7 +47,13 @@ const syncHtmlMeta = () => {
 }
 
 syncHtmlMeta()
-watch(() => (i18n.global as any).locale.value, syncHtmlMeta)
+watch(
+  () => (i18n.global as any).locale.value,
+  (val) => {
+    syncHtmlMeta()
+    convertMarkdownContainers(val)
+  },
+)
 
 if (import.meta.env.PROD) {
   router.afterEach(async () => {
