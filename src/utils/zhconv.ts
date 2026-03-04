@@ -1,7 +1,31 @@
 import { ConverterFactory } from 'opencc-js/core'
 import { from, to } from 'opencc-js/preset'
 
-const converter = ConverterFactory(from.cn, to.tw)
+const customTerms: Record<string, string> = {
+  整合包: '模組包',
+  文件夹: '資料夾',
+  软件: '軟體',
+  程序: '程式',
+  代码: '程式碼',
+  配置: '設定',
+  服务端: '伺服端',
+  服务器: '伺服器',
+}
+
+const termConverter = (text: string) => {
+  let result = text
+  for (const [key, value] of Object.entries(customTerms)) {
+    result = result.replaceAll(key, value)
+  }
+  return result
+}
+
+const standardConverter = ConverterFactory(from.cn, to.tw)
+
+const converter = (text: string) => {
+  if (!text) return text
+  return standardConverter(termConverter(text))
+}
 
 const originalMap = new WeakMap<Element, string>()
 
@@ -9,7 +33,6 @@ function walkAndConvert(root: Element) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null)
   let node: Node | null
 
-  // 边遍历边转换，减少中间数组 [nodesToChange] 的内存占用
   while ((node = walker.nextNode())) {
     const textNode = node as Text
     const val = textNode.nodeValue
@@ -29,14 +52,12 @@ export function convertMarkdownContainers(targetLocale: string) {
 
   if (targetLocale === 'zh-TW') {
     containers.forEach((el) => {
-      // 仅在首次转换前备份
       if (!originalMap.has(el)) {
         originalMap.set(el, el.innerHTML)
       }
       walkAndConvert(el)
     })
   } else {
-    // 恢复原始内容并清理内存
     containers.forEach((el) => {
       const original = originalMap.get(el)
       if (original !== undefined) {

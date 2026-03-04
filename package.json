@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@mdit/plugin-container": "^0.23.1",
-    "@mdit/plugin-img-size": "^0.23.0",
-    "@shikijs/markdown-it": "^4.0.0",
+    "@mdit/plugin-img-size": "^0.23.1",
+    "@shikijs/markdown-it": "^4.0.1",
     "@tsconfig/node24": "^24.0.4",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.3.3",
