@@ -181,7 +181,6 @@
 .card-author {
   font-size: 0.9rem;
   color: var(--text-light);
-  text-decoration: underline;
 }
 
 .card-msg {
@@ -202,31 +201,7 @@
 
 .card-links {
   display: flex;
-  gap: 8px;
   margin-top: auto;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  color: var(--text-light);
-  border-radius: 6px;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-
-.social-link:hover {
-  background: var(--switcher-item-hover);
-}
-
-.icon-svg {
-  width: 20px;
-  height: 20px;
-  background-color: currentColor;
 }
 
 .no-results {

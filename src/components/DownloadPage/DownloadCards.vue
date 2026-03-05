@@ -68,27 +68,7 @@
               </div>
               <p class="card-desc">{{ mod.description }}</p>
 
-              <div class="card-links" @click.stop>
-                <a
-                  v-for="source in mod.sources"
-                  :key="source.link"
-                  :href="source.link"
-                  target="_blank"
-                  :aria-label="source.ariaLabel || getSourceName(source.icon)"
-                  class="social-link"
-                >
-                  <span
-                    v-if="isLocalSvg(source.icon)"
-                    class="icon-svg"
-                    :style="{
-                      mask: `url(${getIconSrc(source.icon)}) center/contain no-repeat`,
-                      WebkitMask: `url(${getIconSrc(source.icon)}) center/contain no-repeat`,
-                    }"
-                  >
-                  </span>
-                  <Icon v-else :icon="source.icon" class="icon-component" />
-                </a>
-              </div>
+              <div class="card-links" @click.stop></div>
             </div>
           </div>
         </div>
@@ -155,12 +135,6 @@ import { ref, computed, watch, reactive, onMounted } from 'vue'
 import { renderMarkdown, renderMarkdownSync } from '@/utils/markdown'
 import i18n from '@/plugins/i18n'
 
-interface SocialLink {
-  icon: string | { svg: string }
-  link: string
-  ariaLabel?: string
-}
-
 export interface ModCard {
   icon: string
   name: string
@@ -168,7 +142,6 @@ export interface ModCard {
   description?: string
   message?: string
   link?: string
-  sources: SocialLink[]
 }
 
 const props = defineProps<{

@@ -1,16 +1,16 @@
 @import 'variables.css';
 
+.switcher-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .switcher {
   user-select: none;
   position: relative;
   display: inline-block;
   color: var(--text-dark);
-}
-
-.switcher-container {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
 .theme-toggle-btn {
@@ -31,8 +31,9 @@
 .language-display {
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: 5px;
+  padding: 6px;
   border-radius: 4px;
   transition: background-color 0.3s;
 }
@@ -42,11 +43,12 @@
 }
 
 .language-display .icon {
-  margin-right: 5px;
+  font-size: 1.2rem;
 }
 
 .dropdown-arrow {
-  margin-left: 5px;
+  margin-left: 4px;
+  font-size: 0.7rem;
   transition: transform 0.3s ease;
 }
 
@@ -65,7 +67,7 @@
   padding: 5px 0;
   margin: 5px 0 0 0;
   box-shadow: var(--switcher-shadow);
-  min-width: 100px;
+  min-width: 110px;
   z-index: 1000;
 }
 

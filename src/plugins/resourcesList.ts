@@ -31,7 +31,6 @@ export function resourcesPlugin() {
         if (parts.length < 3) continue
 
         const yamlRaw = parts[1] || ''
-        const body = parts[2] || ''
 
         const getYamlVal = (key: string) => {
           const m = yamlRaw.match(new RegExp(`^${key}:\\s*(.*)`, 'm'))
@@ -55,15 +54,6 @@ export function resourcesPlugin() {
         const description =
           descMatch && descMatch[1] ? descMatch[1].replace(/\r?\n/g, ' ').trim() : ''
 
-        // 来源链接
-        const sources = []
-        const cfMatch = body.match(/\[CurseForge\]\((https:\/\/www\.curseforge\.com\/[^\)]+)\)/)
-        const ghMatch = yamlRaw.match(
-          /id: github\s+text:.*?\s+link: (https:\/\/github\.com\/[^\s\n]+)/s,
-        )
-        if (cfMatch) sources.push({ icon: 'curseforge', link: cfMatch[1] })
-        if (ghMatch) sources.push({ icon: 'github', link: ghMatch[1] })
-
         const relPath = path.relative(rootDir, fullPath)
         const routePrefix = rootDir.endsWith('map') ? '/map/' : '/modpacks/'
 
@@ -80,7 +70,6 @@ export function resourcesPlugin() {
           author,
           description,
           link,
-          sources,
           date: date.getTime(),
         })
       }

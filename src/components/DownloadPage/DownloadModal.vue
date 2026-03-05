@@ -10,14 +10,14 @@ const QUESTIONS = [
     title: '语文题',
     content: '2023北京中考语文2、3。请用连续不加空格的字母作答，忽略大小写。比如AB。',
     correctAnswer: 'DB',
-    imageUrl: 'imgs/questions/chinese.png',
+    imageUrl: '/imgs/questions/chinese.png',
     isInput: true,
   },
   {
     title: '数学题',
     content: '2023北京中考数学8',
     correctAnswer: 'D',
-    imageUrl: 'imgs/questions/math.jpg',
+    imageUrl: '/imgs/questions/math.jpg',
   },
   {
     title: '物理题',

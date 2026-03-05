@@ -3,9 +3,7 @@
     <div class="navbar-left">
       <div class="navbar-brand" @click="goToHome">
         <img v-lazy="'/imgs/logo/logo_128.png'" alt="Logo" class="navbar-logo" />
-        <span class="navbar-title">
-          {{ $t('navbar.title') }}
-        </span>
+        <span class="navbar-title">{{ $t('navbar.title') }}</span>
       </div>
 
       <div class="navbar-search-container" @click="openSearch">
@@ -51,11 +49,8 @@
 
     <div class="navbar-right">
       <Switcher />
-
       <button class="hamburger" @click="toggleMenu" :class="{ 'is-active': isMenuOpen }">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
 

@@ -1,30 +1,31 @@
+/* 导入变量 */
 @import './variables.css';
 
 .navbar {
   position: sticky;
   top: 0;
+  display: flex;
+  align-items: center;
+  /* 关键：将内容推向右侧 */
+  justify-content: flex-end;
   background: var(--nav-bg);
   box-shadow: 0 2px 8px var(--nav-shadow);
-  padding: 0.8rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
+  padding: 0.8rem 2rem;
+  z-index: 1000;
 }
 
+/* 左侧容器：Logo + 搜索框 */
 .navbar-left {
+  position: absolute;
+  left: 2rem;
   display: flex;
   align-items: center;
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .navbar-brand {
-  cursor: pointer;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .navbar-logo {
@@ -40,6 +41,7 @@
   padding: 0;
 }
 
+/* 搜索框样式 */
 .navbar-search-container {
   margin-left: 2rem;
 }
@@ -86,85 +88,82 @@
   margin-left: 8px;
 }
 
+/* 中间导航链接容器 */
 .navbar-collapse {
   display: flex;
   align-items: center;
+  margin-right: 1.5rem;
 }
 
 .navbar-list {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 .navbar-item {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 
 .navbar-item a {
-  position: relative;
   color: var(--nav-text);
   font-size: var(--nav-font-size-link);
   font-weight: 500;
   text-decoration: none;
-  padding: 0 0.5rem;
-  transition: color 0.2s ease-in-out;
-}
-
-.navbar-item a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 3px;
-  background-color: var(--nav-primary);
-  transition: width 0.3s ease-in-out;
+  padding: 0.5rem 0.8rem;
+  transition: color 0.2s ease;
+  /* 已删除 ::after 动画相关属性 */
 }
 
 .navbar-item a:hover {
   color: var(--nav-primary);
 }
 
-.navbar-item a:hover::after {
-  width: 100%;
-}
-
+/* 右侧工具栏：暗色切换 + 竖线 */
 .navbar-right {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* 在切换器左侧添加竖线 */
+.navbar-right::before {
+  content: '';
+  width: 1px;
+  height: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.15); /* 默认模式颜色 */
+  margin-right: 0.5rem;
+}
+
+/* 如果你的项目有暗色模式类名（例如 .dark-theme 或 .dark） */
+:global(.dark) .navbar-right::before {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 汉堡菜单（移动端） */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .hamburger span {
-  width: 2rem;
-  height: 0.25rem;
+  width: 1.5rem;
+  height: 2px;
   background: var(--nav-text);
   border-radius: 10px;
-  transition: all 0.3s linear;
-  transform-origin: 1px;
+  transition: all 0.3s ease;
 }
 
+/* 响应式适配 */
 @media (max-width: 1024px) {
   .search-box-trigger {
     min-width: auto;
@@ -181,14 +180,12 @@
     padding: 0.8rem 1rem;
   }
 
-  .navbar-left,
-  .navbar-right {
+  .navbar-left {
     position: static;
-    transform: none;
   }
 
-  .navbar-search-container {
-    margin-left: 0.8rem;
+  .navbar-right::before {
+    display: none; /* 移动端隐藏竖线 */
   }
 
   .hamburger {
@@ -204,6 +201,7 @@
     background-color: var(--nav-bg);
     box-shadow: 0 8px 16px var(--nav-shadow);
     padding: 1rem 0;
+    margin-right: 0;
   }
 
   .navbar-collapse.is-active {
@@ -214,8 +212,13 @@
     flex-direction: column;
   }
 
+  .navbar-item {
+    margin: 0;
+    text-align: center;
+  }
+
   .navbar-item a {
     display: block;
-    padding: 1rem 0;
+    padding: 1rem;
   }
 }

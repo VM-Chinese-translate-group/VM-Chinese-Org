@@ -1,14 +1,9 @@
 <template>
   <div class="switcher-container">
-    <button @click="toggleTheme" class="theme-toggle-btn">
-      <Icon :icon="isDark ? 'solar:sun-bold' : 'solar:moon-bold'" />
-    </button>
-
     <div class="switcher">
       <div class="language-display" @click="toggleDropdown">
         <Icon icon="fluent-mdl2:locale-language" class="icon" />
-        <span>{{ displayLanguage }}</span>
-        <span class="dropdown-arrow" :class="{ rotate: dropdownOpen }">&#9660;</span>
+        <span class="dropdown-arrow" :class="{ rotate: dropdownOpen }"> &#9660; </span>
       </div>
 
       <ul v-if="dropdownOpen" class="language-dropdown">
@@ -23,15 +18,20 @@
         </li>
       </ul>
     </div>
+
+    <button @click="toggleTheme" class="theme-toggle-btn">
+      <Icon :icon="isDark ? 'solar:sun-bold' : 'solar:moon-bold'" />
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 
 const { locale } = useI18n()
+
 const dropdownOpen = ref(false)
 const isDark = ref(false)
 
@@ -40,11 +40,6 @@ const availableLanguages = [
   { code: 'zh-TW', name: '繁體中文' },
   { code: 'en-US', name: 'English' },
 ]
-
-const displayLanguage = computed(() => {
-  const currentLang = availableLanguages.find((lang) => lang.code === locale.value)
-  return currentLang ? currentLang.name : 'Unknown'
-})
 
 const toggleDropdown = () => {
   dropdownOpen.value = !dropdownOpen.value
