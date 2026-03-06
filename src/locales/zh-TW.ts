@@ -58,9 +58,6 @@ export default {
     byAuthor: '作者：{author}',
     previousPage: '上一頁',
     nextPage: '下一頁',
-    goToPage: '前往第 {page} 頁',
-    goToPagePlaceholder: '跳轉到...',
-    goToPageInput: '跳轉到頁碼',
   },
   pack: {
     defaultTitle: '未命名模組包',

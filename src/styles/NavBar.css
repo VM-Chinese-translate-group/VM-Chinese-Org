@@ -1,4 +1,3 @@
-/* 导入变量 */
 @import './variables.css';
 
 .navbar {
@@ -6,7 +5,6 @@
   top: 0;
   display: flex;
   align-items: center;
-  /* 关键：将内容推向右侧 */
   justify-content: flex-end;
   background: var(--nav-bg);
   box-shadow: 0 2px 8px var(--nav-shadow);
@@ -14,7 +12,6 @@
   z-index: 1000;
 }
 
-/* 左侧容器：Logo + 搜索框 */
 .navbar-left {
   position: absolute;
   left: 2rem;
@@ -41,7 +38,6 @@
   padding: 0;
 }
 
-/* 搜索框样式 */
 .navbar-search-container {
   margin-left: 2rem;
 }
@@ -88,7 +84,6 @@
   margin-left: 8px;
 }
 
-/* 中间导航链接容器 */
 .navbar-collapse {
   display: flex;
   align-items: center;
@@ -114,35 +109,27 @@
   text-decoration: none;
   padding: 0.5rem 0.8rem;
   transition: color 0.2s ease;
-  /* 已删除 ::after 动画相关属性 */
 }
 
 .navbar-item a:hover {
   color: var(--nav-primary);
 }
 
-/* 右侧工具栏：暗色切换 + 竖线 */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-/* 在切换器左侧添加竖线 */
 .navbar-right::before {
   content: '';
   width: 1px;
   height: 1.2rem;
-  background-color: rgba(0, 0, 0, 0.15); /* 默认模式颜色 */
+  background-color: rgba(0, 0, 0, 0.15);
   margin-right: 0.5rem;
 }
 
-/* 如果你的项目有暗色模式类名（例如 .dark-theme 或 .dark） */
-:global(.dark) .navbar-right::before {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* 汉堡菜单（移动端） */
+/* --- 基础样式 --- */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -157,13 +144,26 @@
 
 .hamburger span {
   width: 1.5rem;
-  height: 2px;
+  height: 0.2rem;
   background: var(--nav-text);
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
+  transform-origin: 1px;
 }
 
-/* 响应式适配 */
+.hamburger.is-active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.hamburger.is-active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
 @media (max-width: 1024px) {
   .search-box-trigger {
     min-width: auto;
@@ -185,7 +185,7 @@
   }
 
   .navbar-right::before {
-    display: none; /* 移动端隐藏竖线 */
+    display: none;
   }
 
   .hamburger {
@@ -201,7 +201,6 @@
     background-color: var(--nav-bg);
     box-shadow: 0 8px 16px var(--nav-shadow);
     padding: 1rem 0;
-    margin-right: 0;
   }
 
   .navbar-collapse.is-active {

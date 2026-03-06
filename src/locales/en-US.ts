@@ -58,9 +58,6 @@ export default {
     byAuthor: 'by {author}',
     previousPage: 'Previous page',
     nextPage: 'Next page',
-    goToPage: 'Go to page {page}',
-    goToPagePlaceholder: 'Go to...',
-    goToPageInput: 'Go to page number',
   },
   pack: {
     defaultTitle: 'Unnamed Modpack',

@@ -34,13 +34,6 @@
     </div>
 
     <div class="container">
-      <div v-if="filteredMods.length === 0" class="no-results">
-        <p>{{ $t('DownloadCards.noResults', { query: searchQuery }) }}</p>
-        <button @click="clearSearch" class="clear-search-btn">
-          {{ $t('DownloadCards.resetSearch') }}
-        </button>
-      </div>
-
       <div class="grid-layout">
         <div
           v-for="mod in paginatedMods"
@@ -54,21 +47,30 @@
               <img v-lazy="mod.icon" :alt="mod.name" />
             </figure>
             <div class="card-content">
-              <div class="card-header">
-                <span class="card-name">{{ mod.name }}</span>
-                <span class="card-author">{{
-                  $t('DownloadCards.byAuthor', { author: mod.author })
-                }}</span>
-                <span
-                  v-if="mod.message"
-                  class="card-msg"
-                  v-html="convertedMessages[mod.name] || renderMarkdownSync(mod.message)"
-                >
-                </span>
+              <div class="card-top">
+                <div class="card-header">
+                  <span class="card-name">{{ mod.name }}</span>
+                </div>
+                <p class="card-desc">{{ mod.description }}</p>
               </div>
-              <p class="card-desc">{{ mod.description }}</p>
 
-              <div class="card-links" @click.stop></div>
+              <div class="card-footer">
+                <div class="tag-group">
+                  <span v-if="mod.status?.text" :class="['status-badge', mod.status.type]">
+                    {{ mod.status.text }}
+                  </span>
+                  <span v-if="mod.versions?.mc" class="version-badge mc"
+                    >MC {{ mod.versions.mc }}</span
+                  >
+                  <span v-if="mod.versions?.pack" class="version-badge pack"
+                    >整合包 {{ mod.versions.pack }}</span
+                  >
+                </div>
+
+                <div class="update-info" v-if="mod.displayDate">
+                  <span>{{ $t('pack.updateDate', { date: mod.displayDate }) }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -81,14 +83,8 @@
         :disabled="currentPage === 1"
         class="pagination-btn"
       >
-        ←
+        <el-icon><ArrowLeft /></el-icon>
       </button>
-
-      <template v-if="pageNumbers.length > 0 && pageNumbers[0]! > 1">
-        <button @click="goToPage(1)" class="pagination-btn">1</button>
-        <span v-if="pageNumbers[0]! > 2" class="pagination-ellipsis">...</span>
-      </template>
-
       <button
         v-for="page in pageNumbers"
         :key="page"
@@ -97,40 +93,19 @@
       >
         {{ page }}
       </button>
-      <template v-if="pageNumbers.length > 0 && pageNumbers[pageNumbers.length - 1]! < totalPages">
-        <span
-          v-if="pageNumbers[pageNumbers.length - 1]! < totalPages - 1"
-          class="pagination-ellipsis"
-          >...</span
-        >
-        <button @click="goToPage(totalPages)" class="pagination-btn">
-          {{ totalPages }}
-        </button>
-      </template>
-
       <button
         @click="goToPage(currentPage + 1)"
         :disabled="currentPage === totalPages"
         class="pagination-btn"
       >
-        →
+        <el-icon><ArrowRight /></el-icon>
       </button>
-
-      <div class="page-navigation">
-        <input
-          type="number"
-          v-model="pageInputValue"
-          @blur="handlePageInput"
-          @keydown.enter="($event.target as HTMLInputElement).blur()"
-          :placeholder="$t('DownloadCards.goToPagePlaceholder')"
-          class="page-input"
-        />
-      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { Search, Calendar, ArrowLeft, ArrowRight, PriceTag } from '@element-plus/icons-vue'
 import { ref, computed, watch, reactive, onMounted } from 'vue'
 import { renderMarkdown, renderMarkdownSync } from '@/utils/markdown'
 import i18n from '@/plugins/i18n'
@@ -142,6 +117,9 @@ export interface ModCard {
   description?: string
   message?: string
   link?: string
+  displayDate?: string
+  status?: { text: string; type: string }
+  versions?: { mc: string; pack: string }
 }
 
 const props = defineProps<{
@@ -181,43 +159,10 @@ watch(
   },
 )
 
-const ICON_PATHS: Record<string, string> = {
-  modrinth: '/imgs/svg/modrinth.svg',
-  curseforge: '/imgs/svg/curseforge.svg',
-  github: '/imgs/svg/github.svg',
-  planetminecraft: '/imgs/svg/planetminecraft.svg',
-  ctmrepository: 'https://ctmrepository.com/favicon.png',
-}
-
-const ICON_NAMES: Record<string, string> = {
-  modrinth: 'Modrinth',
-  curseforge: 'CurseForge',
-  github: 'GitHub',
-  planetminecraft: 'Planet Minecraft',
-  ctmrepository: 'CTM Repository',
-}
-
 const searchQuery = ref('')
 const currentPage = ref(1)
 const itemsPerPage = ref(12)
-const pageInputValue = ref('')
 const pageSizeOptions = [6, 12, 18]
-
-const getIconSrc = (icon: string | { svg: string }) => {
-  if (typeof icon === 'string') return ICON_PATHS[icon] || icon
-  return ''
-}
-
-const getSourceName = (icon: string | { svg: string }) => {
-  if (typeof icon === 'string') return ICON_NAMES[icon] || icon
-  return 'Link'
-}
-
-const isLocalSvg = (icon: any) => {
-  if (typeof icon === 'object' && icon?.svg) return true
-  if (typeof icon === 'string') return icon in ICON_PATHS || icon.endsWith('.svg')
-  return false
-}
 
 // 模糊搜索逻辑
 const fuzzySearch = (query: string, mod: ModCard) => {
@@ -259,7 +204,7 @@ const filteredMods = computed(() => {
     .map((res) => res.mod)
 })
 
-// 修正：如果过滤后的结果页数少于当前页，重置到第一页
+// 如果过滤后的结果页数少于当前页，重置到第一页
 watch(filteredMods, () => {
   if (currentPage.value > totalPages.value) {
     currentPage.value = 1
@@ -309,20 +254,6 @@ const handleSearchInput = () => {
 const clearSearch = () => {
   searchQuery.value = ''
   currentPage.value = 1
-}
-
-const handlePageInput = () => {
-  const val = parseInt(pageInputValue.value)
-  if (!isNaN(val)) {
-    if (val >= 1 && val <= totalPages.value) {
-      goToPage(val)
-    } else if (val > totalPages.value) {
-      goToPage(totalPages.value)
-    } else {
-      goToPage(1)
-    }
-  }
-  pageInputValue.value = '' // 自动跳转后清空输入框
 }
 
 const handlePageSizeChange = (event: Event) => {

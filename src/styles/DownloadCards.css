@@ -13,12 +13,6 @@
   gap: 20px;
 }
 
-.card-item {
-  display: flex;
-  width: calc(50% - 10px);
-  min-width: 300px;
-}
-
 .controls-bar {
   display: flex;
   align-items: center;
@@ -26,30 +20,6 @@
   margin-bottom: 16px;
   padding: 0 8px;
   gap: 16px;
-}
-
-.items-per-page {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--vp-c-text-1);
-}
-
-.page-size-select {
-  padding: 4px 8px;
-  font-size: 14px;
-  color: var(--vp-c-text-1);
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--switcher-border);
-  border-radius: 4px;
-  transition: border-color 0.2s;
-}
-
-.page-size-select:focus {
-  outline: 2px solid var(--btn-primary-bg);
-  outline-offset: 2px;
 }
 
 .search-field {
@@ -108,11 +78,28 @@
   background: rgba(0, 0, 0, 0.05);
 }
 
-.is-clickable {
-  cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+.items-per-page {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+}
+
+.page-size-select {
+  padding: 4px 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--switcher-border);
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.page-size-select:focus {
+  outline: 2px solid var(--btn-primary-bg);
+  outline-offset: 2px;
 }
 
 .results-info {
@@ -121,11 +108,17 @@
   color: var(--vp-c-text-2);
 }
 
+.card-item {
+  display: flex;
+  width: calc(50% - 10px);
+  min-width: 300px;
+}
+
 .card-box {
   display: flex;
   flex-direction: row;
   width: 100%;
-  min-height: 160px;
+  min-height: 150px;
   padding: 20px;
   background-color: var(--vp-c-bg-soft);
   border: 1px solid var(--switcher-border);
@@ -137,6 +130,13 @@
   border-color: var(--btn-primary-bg);
   box-shadow: var(--card-shadow);
   transform: translateY(-2px);
+}
+
+.is-clickable {
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .card-icon {
@@ -166,16 +166,19 @@
 
 .card-header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: baseline;
-  margin-bottom: 4px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .card-name {
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--vp-c-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-author {
@@ -199,9 +202,60 @@
   -webkit-box-orient: vertical;
 }
 
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 12px;
+}
+
 .card-links {
   display: flex;
   margin-top: auto;
+}
+
+.update-info {
+  display: block;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  white-space: nowrap;
+}
+
+.tag-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.status-badge.maintaining {
+  background-color: #007bff;
+}
+.status-badge.stopped {
+  background-color: #ef4444;
+}
+
+.version-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.version-badge.mc {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.version-badge.pack {
+  background-color: #ffedd5;
+  color: #9a3412;
 }
 
 .no-results {
@@ -289,29 +343,6 @@
   white-space: nowrap;
 }
 
-.page-input {
-  width: 80px;
-  padding: 6px 8px;
-  font-size: 14px;
-  color: var(--vp-c-text-1);
-  text-align: center;
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--switcher-border);
-  border-radius: 4px;
-}
-
-.page-input:focus {
-  border-color: var(--btn-primary-bg);
-  outline: 2px solid var(--btn-primary-bg);
-  outline-offset: 2px;
-}
-
-.page-input::-webkit-inner-spin-button,
-.page-input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 @media (max-width: 900px) {
   .controls-bar {
     flex-direction: column;
@@ -341,6 +372,16 @@
     padding: 16px;
   }
 
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .card-divider {
+    display: none;
+  }
+
   .pagination-controls {
     gap: 4px;
   }
@@ -359,10 +400,5 @@
     margin-left: 0;
     border-top: 1px solid var(--switcher-border);
     border-left: none;
-  }
-
-  .page-input {
-    max-width: 120px;
-    width: 100%;
   }
 }
