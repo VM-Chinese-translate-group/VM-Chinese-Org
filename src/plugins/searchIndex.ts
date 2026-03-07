@@ -1,5 +1,9 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { ConverterFactory } from 'opencc-js/core'
+import { from, to } from 'opencc-js/preset'
+
+const convertToTW = ConverterFactory(from.cn, to.twp)
 
 const PAGES_DIR = path.resolve(process.cwd(), 'src/pages')
 const VIRTUAL_MODULE_ID = 'virtual:search-index'
@@ -8,7 +12,6 @@ const RESOLVED_VIRTUAL_MODULE_ID = '\0' + VIRTUAL_MODULE_ID
 export function searchIndexPlugin() {
   function getSearchIndex() {
     const items: any[] = []
-
     const walk = (dir: string) => {
       if (!fs.existsSync(dir)) return
       const files = fs.readdirSync(dir)
@@ -28,16 +31,15 @@ export function searchIndexPlugin() {
         const titleMatch = yamlRaw.match(/^title:\s*(.*)$/m)
         const h1Match = body.match(/^#\s+(.+)$/m)
 
-        const title = ((titleMatch ? titleMatch[1] : h1Match ? h1Match[1] : '') ?? '')
+        const titleRaw = ((titleMatch ? titleMatch[1] : h1Match ? h1Match[1] : '') ?? '')
           .replace(/['"]/g, '')
           .trim()
 
-        // 提取路由
         let route = path.relative(PAGES_DIR, fullPath).replace(/\\/g, '/').replace(/\.md$/, '')
         route = route.endsWith('/index') ? route.replace(/\/index$/, '') : route
         route = route.startsWith('/') ? route : '/' + route
 
-        const text = body
+        const textRaw = body
           .replace(/<[^>]+>/g, '') // 去 HTML
           .replace(/:::[\s\S]*?:::/g, '') // 去 Container
           .replace(/```[\s\S]*?```/g, '') // 去代码块
@@ -46,12 +48,17 @@ export function searchIndexPlugin() {
           .trim()
           .slice(0, 500)
 
-        if (title || text) {
-          items.push({ url: route, title, text })
+        if (titleRaw || textRaw) {
+          items.push({
+            url: route,
+            title: titleRaw,
+            titleTW: convertToTW(titleRaw),
+            text: textRaw,
+            textTW: convertToTW(textRaw),
+          })
         }
       }
     }
-
     walk(PAGES_DIR)
     return items
   }
@@ -63,8 +70,7 @@ export function searchIndexPlugin() {
     },
     load(id: string) {
       if (id === RESOLVED_VIRTUAL_MODULE_ID) {
-        const data = getSearchIndex()
-        return `export const searchIndex = ${JSON.stringify(data)};`
+        return `export const searchIndex = ${JSON.stringify(getSearchIndex())};`
       }
     },
     handleHotUpdate({ file, server }: any) {

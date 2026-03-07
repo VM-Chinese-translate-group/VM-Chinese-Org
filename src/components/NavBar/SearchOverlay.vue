@@ -18,7 +18,7 @@
             </div>
             <input
               v-model="keyword"
-              @input="handleSearch"
+              @input="onInput"
               class="search-input"
               :placeholder="$t('search.placeholder')"
               ref="inputRef"
@@ -69,60 +69,66 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { searchIndex } from 'virtual:search-index'
+import { convertInlineText } from '@/utils/zhconv'
 
 const props = defineProps<{ visible: boolean }>()
 const emit = defineEmits(['close'])
 const router = useRouter()
+const { locale } = useI18n()
 
 const keyword = ref('')
 const results = ref<any[]>([])
 const inputRef = ref<HTMLInputElement | null>(null)
+let timer: any = null
 
-// 自动聚焦输入框
-watch(
-  () => props.visible,
-  (newVal) => {
-    if (newVal) {
-      nextTick(() => inputRef.value?.focus())
-    } else {
-      keyword.value = ''
-      results.value = []
-    }
-  },
-)
+const currentLocale = computed(() => locale.value)
 
-const handleSearch = () => {
+const performSearch = async () => {
   const term = keyword.value.trim().toLowerCase()
   if (!term) {
     results.value = []
     return
   }
 
-  results.value = searchIndex
-    .filter(
-      (i: any) =>
-        (i.title || '').toLowerCase().includes(term) || (i.text || '').toLowerCase().includes(term),
+  const rawResults = searchIndex.filter((i: any) => {
+    return (
+      (i.title || '').toLowerCase().includes(term) ||
+      (i.text || '').toLowerCase().includes(term) ||
+      (i.titleTW || '').toLowerCase().includes(term) ||
+      (i.textTW || '').toLowerCase().includes(term)
     )
-    .map((i: any) => {
-      const text = i.text || ''
-      const pos = text.toLowerCase().indexOf(term)
+  })
 
-      // 生成预览片段
+  const translatedResults = await Promise.all(
+    rawResults.slice(0, 15).map(async (i: any) => {
+      const displayTitle = await convertInlineText(i.title, currentLocale.value)
+      const displayText = await convertInlineText(i.text, currentLocale.value)
+
+      const pos = displayText.toLowerCase().indexOf(term)
       const start = Math.max(0, pos - 40)
       const end = pos + 60
-      let snippet = text.slice(start, end)
+      let snippet = displayText.slice(start, end)
       if (start > 0) snippet = '...' + snippet
-      if (end < text.length) snippet = snippet + '...'
+      if (end < displayText.length) snippet = snippet + '...'
 
       return {
         url: i.url,
-        title: i.title || 'Untitled',
+        title: displayTitle || 'Untitled',
         snippet,
       }
-    })
+    }),
+  )
+
+  results.value = translatedResults
+}
+
+const onInput = () => {
+  clearTimeout(timer)
+  timer = setTimeout(performSearch, 150)
 }
 
 const highlight = (text: string) => {
@@ -142,11 +148,30 @@ const onKeyDown = (e: KeyboardEvent) => {
   if (e.key === 'Escape') close()
 }
 
+watch(
+  () => props.visible,
+  (newVal) => {
+    if (newVal) {
+      nextTick(() => inputRef.value?.focus())
+    } else {
+      keyword.value = ''
+      results.value = []
+    }
+  },
+)
+
+watch(currentLocale, () => {
+  if (keyword.value) performSearch()
+})
+
 onMounted(() => {
   window.addEventListener('keydown', onKeyDown)
 })
 
-onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
+onUnmounted(() => {
+  window.removeEventListener('keydown', onKeyDown)
+  clearTimeout(timer)
+})
 </script>
 
 <style scoped>

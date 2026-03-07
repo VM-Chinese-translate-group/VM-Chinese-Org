@@ -6,7 +6,6 @@
     "build": "vite build",
     "dev": "vite",
     "format": "prettier --write src/",
-    "preview": "vite preview",
     "type-check": "vue-tsc --build",
     "upgrade-deps": "taze patch -I"
   },

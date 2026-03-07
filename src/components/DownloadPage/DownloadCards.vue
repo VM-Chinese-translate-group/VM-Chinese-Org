@@ -13,13 +13,16 @@
       </div>
 
       <div class="search-field">
+        <Icon icon="lucide:search" class="search-field-icon" />
         <input
           v-model="searchQuery"
           @input="handleSearchInput"
           class="search-input"
           :placeholder="$t('DownloadCards.searchPlaceholder')"
         />
-        <button v-if="searchQuery" @click="clearSearch" class="search-clear">×</button>
+        <button v-if="searchQuery" @click="clearSearch" class="search-clear">
+          <Icon icon="lucide:x" />
+        </button>
       </div>
 
       <div class="results-info">
@@ -37,7 +40,7 @@
       <div class="grid-layout">
         <div
           v-for="mod in displayMods"
-          :key="mod.id || mod.name"
+          :key="mod.name"
           class="card-item"
           :class="{ 'is-clickable': mod.link }"
           @click="handleCardClick(mod.link)"
@@ -59,15 +62,16 @@
                   <span v-if="mod.status?.text" :class="['status-badge', mod.status.type]">
                     {{ mod.displayStatus }}
                   </span>
-                  <span v-if="mod.versions?.mc" class="version-badge mc"
-                    >MC {{ mod.versions.mc }}</span
-                  >
+                  <span v-if="mod.versions?.mc" class="version-badge mc">
+                    MC {{ mod.versions.mc }}
+                  </span>
                   <span v-if="mod.versions?.pack" class="version-badge pack">
                     {{ $t('pack.packVersion') }} {{ mod.versions.pack }}
                   </span>
                 </div>
 
                 <div class="update-info" v-if="mod.displayDate">
+                  <Icon icon="lucide:calendar-days" class="update-icon" />
                   <span>{{ $t('pack.updateDate', { date: mod.displayDate }) }}</span>
                 </div>
               </div>
@@ -83,7 +87,7 @@
         :disabled="currentPage === 1"
         class="pagination-btn"
       >
-        <Icon icon="ep:arrow-left" />
+        <Icon icon="lucide:chevron-left" />
       </button>
       <button
         v-for="page in pageNumbers"
@@ -98,19 +102,19 @@
         :disabled="currentPage === totalPages"
         class="pagination-btn"
       >
-        <Icon icon="ep:arrow-right" />
+        <Icon icon="lucide:chevron-right" />
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { Icon } from '@iconify/vue'
 import { convertInlineText } from '@/utils/zhconv'
 
 export interface ModCard {
-  id?: string
   icon: string
   name: string
   author: string
@@ -133,9 +137,21 @@ const currentPage = ref(1)
 const itemsPerPage = ref(12)
 const pageSizeOptions = [6, 12, 18]
 
-const convertedData = ref<Record<string, { name: string; desc: string; status: string }>>({})
+const searchIndexTW = ref<Record<string, { name: string; desc: string }>>({})
+const convertedDisplayData = ref<Record<string, { name: string; desc: string; status: string }>>({})
 
-async function refreshTranslations() {
+async function initSearchIndex() {
+  for (const mod of props.mods) {
+    if (searchIndexTW.value[mod.name]) continue
+    const [nameTW, descTW] = await Promise.all([
+      convertInlineText(mod.name, 'zh-TW'),
+      convertInlineText(mod.description || '', 'zh-TW'),
+    ])
+    searchIndexTW.value[mod.name] = { name: nameTW, desc: descTW }
+  }
+}
+
+async function refreshDisplayTranslations() {
   const targetLocale = currentLocale.value
   const tasks = paginatedMods.value.map(async (mod) => {
     const [name, desc, status] = await Promise.all([
@@ -148,11 +164,7 @@ async function refreshTranslations() {
 
   const results = await Promise.all(tasks)
   results.forEach((item) => {
-    convertedData.value[item.id] = {
-      name: item.name,
-      desc: item.desc,
-      status: item.status,
-    }
+    convertedDisplayData.value[item.id] = { name: item.name, desc: item.desc, status: item.status }
   })
 }
 
@@ -160,12 +172,20 @@ const filteredMods = computed(() => {
   if (!searchQuery.value.trim()) return props.mods
   const term = searchQuery.value.toLowerCase().trim()
 
-  return props.mods.filter(
-    (mod) =>
+  return props.mods.filter((mod) => {
+    const tw = searchIndexTW.value[mod.name]
+
+    const matchOriginal =
       mod.name.toLowerCase().includes(term) ||
-      mod.author.toLowerCase().includes(term) ||
-      (mod.description || '').toLowerCase().includes(term),
-  )
+      (mod.description || '').toLowerCase().includes(term) ||
+      mod.author.toLowerCase().includes(term)
+
+    const matchTW = tw
+      ? tw.name.toLowerCase().includes(term) || tw.desc.toLowerCase().includes(term)
+      : false
+
+    return matchOriginal || matchTW
+  })
 })
 
 const totalPages = computed(() => Math.ceil(filteredMods.value.length / itemsPerPage.value))
@@ -178,14 +198,13 @@ const paginatedMods = computed(() => filteredMods.value.slice(startIndex.value, 
 const displayMods = computed(() => {
   return paginatedMods.value.map((mod) => ({
     ...mod,
-    displayName: convertedData.value[mod.name]?.name || mod.name,
-    displayDesc: convertedData.value[mod.name]?.desc || mod.description,
-    displayStatus: convertedData.value[mod.name]?.status || mod.status?.text,
+    displayName: convertedDisplayData.value[mod.name]?.name || mod.name,
+    displayDesc: convertedDisplayData.value[mod.name]?.desc || mod.description,
+    displayStatus: convertedDisplayData.value[mod.name]?.status || mod.status?.text,
   }))
 })
 
 const pageNumbers = computed(() => {
-  if (totalPages.value <= 0) return []
   const pages = []
   const max = 5
   let start = Math.max(1, currentPage.value - 2)
@@ -195,10 +214,22 @@ const pageNumbers = computed(() => {
   return pages
 })
 
+onMounted(() => {
+  initSearchIndex()
+})
+
+watch(
+  () => props.mods,
+  () => {
+    initSearchIndex()
+  },
+  { deep: true },
+)
+
 watch(
   [paginatedMods, currentLocale],
   () => {
-    refreshTranslations()
+    refreshDisplayTranslations()
   },
   { immediate: true },
 )
