@@ -1,66 +1,55 @@
-import { ConverterFactory } from 'opencc-js/core'
-import { from, to } from 'opencc-js/preset'
+const customDict: [string, string][] = [
+  ['整合包', '模組包'],
+  ['文件夹', '資料夾'],
+  ['软件', '軟體'],
+  ['程序', '程式'],
+  ['代码', '程式碼'],
+  ['配置', '設定'],
+  ['服务端', '伺服端'],
+  ['服务器', '伺服器'],
+]
 
-const customTerms: Record<string, string> = {
-  整合包: '模組包',
-  文件夹: '資料夾',
-  软件: '軟體',
-  程序: '程式',
-  代码: '程式碼',
-  配置: '設定',
-  服务端: '伺服端',
-  服务器: '伺服器',
-}
+let cachedConverter: ((text: string) => string) | null = null
 
-const termConverter = (text: string) => {
-  let result = text
-  for (const [key, value] of Object.entries(customTerms)) {
-    result = result.replaceAll(key, value)
-  }
-  return result
-}
+async function getConverter() {
+  if (cachedConverter) return cachedConverter
 
-const standardConverter = ConverterFactory(from.cn, to.tw)
+  const { ConverterFactory } = await import('opencc-js/core')
+  const { from, to } = await import('opencc-js/preset')
 
-const converter = (text: string) => {
-  if (!text) return text
-  return standardConverter(termConverter(text))
+  cachedConverter = ConverterFactory(from.cn, to.twp.concat([customDict]))
+
+  return cachedConverter
 }
 
 const originalMap = new WeakMap<Element, string>()
 
-function walkAndConvert(root: Element) {
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null)
-  let node: Node | null
-
-  while ((node = walker.nextNode())) {
-    const textNode = node as Text
-    const val = textNode.nodeValue
-    if (val && val.trim()) {
-      try {
-        textNode.nodeValue = converter(val)
-      } catch (e) {
-        // 转换失败则保持原样
-      }
-    }
-  }
-}
-
-export function convertMarkdownContainers(targetLocale: string) {
+export async function convertMarkdownContainers(targetLocale: string) {
   const containers = document.querySelectorAll('.markdown-body')
   if (!containers.length) return
 
   if (targetLocale === 'zh-TW') {
+    const converter = await getConverter()
+
     containers.forEach((el) => {
       if (!originalMap.has(el)) {
         originalMap.set(el, el.innerHTML)
       }
-      walkAndConvert(el)
+
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null)
+      let node: Node | null
+      while ((node = walker.nextNode())) {
+        const textNode = node as Text
+        if (textNode.nodeValue?.trim()) {
+          textNode.nodeValue = converter(textNode.nodeValue)
+        }
+      }
     })
   } else {
+    // 恢复简体
     containers.forEach((el) => {
       const original = originalMap.get(el)
-      if (original !== undefined) {
+      if (original) {
         el.innerHTML = original
         originalMap.delete(el)
       }
@@ -68,16 +57,8 @@ export function convertMarkdownContainers(targetLocale: string) {
   }
 }
 
-export function convertInlineTextIfNeeded(text: string, targetLocale: string): string {
+export async function convertInlineText(text: string, targetLocale: string): Promise<string> {
   if (targetLocale !== 'zh-TW' || !text) return text
-  try {
-    return converter(text)
-  } catch (e) {
-    return text
-  }
-}
-
-export default {
-  convertMarkdownContainers,
-  convertInlineTextIfNeeded,
+  const converter = await getConverter()
+  return converter(text)
 }

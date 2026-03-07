@@ -67,7 +67,7 @@ export default defineConfig({
         md.use(await Shiki({
           themes: { light: 'github-light', dark: 'github-dark' },
           defaultColor: false,
-          langs: ['json', 'toml', 'yaml', 'bash'],
+          langs: ['json', 'toml'],
         }))
         md.use(imgSize)
 

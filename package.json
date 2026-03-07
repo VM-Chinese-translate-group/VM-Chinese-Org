@@ -11,7 +11,6 @@
     "upgrade-deps": "taze patch -I"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.3.2",
     "@iconify/vue": "^5.0.0",
     "@vueuse/core": "^14.2.1",
     "git-url-parse": "^16.1.0",
@@ -28,7 +27,6 @@
     "@mdit/plugin-container": "^0.23.1",
     "@mdit/plugin-img-size": "^0.23.1",
     "@shikijs/markdown-it": "^4.0.1",
-    "@tsconfig/node24": "^24.0.4",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.3.3",
     "@vitejs/plugin-vue": "^6.0.4",

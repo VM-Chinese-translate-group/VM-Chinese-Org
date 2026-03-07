@@ -1,5 +1,4 @@
 import { createApp, nextTick, watch } from 'vue'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { Icon } from '@iconify/vue'
 
 import App from './App.vue'
@@ -23,10 +22,6 @@ const app = createApp(App)
 
 app.component('Icon', Icon)
 app.component('DocSupport', DocSupport)
-
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
 
 app.use(router)
 app.use(i18n)
