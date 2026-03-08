@@ -23,7 +23,8 @@
 
         <div class="download-button-wrapper">
           <a href="#download-section" class="btn-download-main" @click.prevent="scrollToDownload">
-            <i class="icon-download"></i> {{ t('pack.downloadPatch') }}
+            <Icon icon="mdi:download" />
+            {{ t('pack.downloadPatch') }}
           </a>
           <span class="update-date" v-if="meta.updateDate">{{
             t('pack.updateDate', { date: meta.updateDate })
@@ -127,9 +128,13 @@ onMounted(() => {
   handleConvert()
 })
 
-watch(() => props.meta, () => {
-  handleConvert()
-}, { deep: true })
+watch(
+  () => props.meta,
+  () => {
+    handleConvert()
+  },
+  { deep: true },
+)
 
 watch(locale, () => {
   handleConvert()

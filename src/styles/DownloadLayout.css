@@ -13,19 +13,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.5rem;
-  background-color: var(--btn-primary-bg);
+  padding: 0.85rem 1.8rem;
+  background: var(--btn-primary-bg);
   color: white !important;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  font-size: 1.15rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
 }
 
 .btn-download-main:hover {
   background-color: var(--btn-primary-hover);
   transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .download-button-wrapper {
@@ -153,8 +154,9 @@
 
 .pack-status-tags {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
 }
 
 .pack-title-area {
@@ -190,24 +192,25 @@
   gap: 8px;
   padding: 8px 12px;
   color: var(--text-dark);
-  text-decoration: none;
   font-size: 0.9rem;
   border-radius: 8px;
   transition: all 0.2s ease;
 }
 
 .sidebar-link:hover {
-  background: var(--switcher-hover);
+  background: var(--link-bg-hover);
   color: var(--btn-primary-bg);
   padding-left: 16px;
   opacity: 1;
+  text-decoration: none;
 }
 
 .status-tag {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .status-tag.stopped {
