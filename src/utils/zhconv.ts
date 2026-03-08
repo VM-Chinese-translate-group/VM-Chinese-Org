@@ -18,8 +18,21 @@ async function getConverter() {
   const { from, to } = await import('opencc-js/preset')
 
   cachedConverter = ConverterFactory(from.cn, to.twp.concat([customDict]))
-
   return cachedConverter
+}
+
+const cache = new Map<string, string>()
+
+export async function convertInlineText(text: string, locale: string): Promise<string> {
+  if (!text || locale !== 'zh-TW') return text
+
+  const key = locale + text
+  if (cache.has(key)) return cache.get(key)!
+
+  const converter = await getConverter()
+  const result = converter(text)
+  cache.set(key, result)
+  return result
 }
 
 const originalMap = new WeakMap<Element, string>()
@@ -28,25 +41,23 @@ export async function convertMarkdownContainers(targetLocale: string) {
   const containers = document.querySelectorAll('.markdown-body')
   if (!containers.length) return
 
-  if (targetLocale === 'zh-TW') {
-    const converter = await getConverter()
+  const converter = await getConverter()
 
+  if (targetLocale === 'zh-TW') {
     containers.forEach((el) => {
-      if (!originalMap.has(el)) {
-        originalMap.set(el, el.innerHTML)
-      }
+      if (!originalMap.has(el)) originalMap.set(el, el.innerHTML)
 
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null)
       let node: Node | null
       while ((node = walker.nextNode())) {
         const textNode = node as Text
-        if (textNode.nodeValue?.trim()) {
-          textNode.nodeValue = converter(textNode.nodeValue)
+        const rawText = textNode.nodeValue?.trim()
+        if (rawText) {
+          textNode.nodeValue = converter(textNode.nodeValue!)
         }
       }
     })
   } else {
-    // 恢复简体
     containers.forEach((el) => {
       const original = originalMap.get(el)
       if (original) {
@@ -55,10 +66,4 @@ export async function convertMarkdownContainers(targetLocale: string) {
       }
     })
   }
-}
-
-export async function convertInlineText(text: string, targetLocale: string): Promise<string> {
-  if (targetLocale !== 'zh-TW' || !text) return text
-  const converter = await getConverter()
-  return converter(text)
 }

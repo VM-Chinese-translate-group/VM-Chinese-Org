@@ -108,8 +108,31 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
+import { onMounted, watch, nextTick } from 'vue'
+import { convertMarkdownContainers } from '@/utils/zhconv'
+import { useI18n } from 'vue-i18n'
+
+const props = defineProps({
   meta: { type: Object, default: () => ({}) },
+})
+
+const { t, locale } = useI18n()
+
+const handleConvert = async () => {
+  await nextTick()
+  await convertMarkdownContainers(locale.value)
+}
+
+onMounted(() => {
+  handleConvert()
+})
+
+watch(() => props.meta, () => {
+  handleConvert()
+}, { deep: true })
+
+watch(locale, () => {
+  handleConvert()
 })
 
 interface IconMap {
@@ -134,9 +157,6 @@ const loaderIconMap: IconMap = {
 }
 
 const getLoaderIcon = (loader: string): string | undefined => loaderIconMap[loader?.toLowerCase()]
-
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
 
 const getLoaderText = (loader: string): string => t(`loader.${loader?.toLowerCase()}`)
 

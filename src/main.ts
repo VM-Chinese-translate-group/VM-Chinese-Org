@@ -42,10 +42,15 @@ const syncHtmlMeta = () => {
 }
 
 syncHtmlMeta()
+
+convertMarkdownContainers((i18n.global as any).locale.value)
+
 watch(
   () => (i18n.global as any).locale.value,
-  (val) => {
+  async (val) => {
     syncHtmlMeta()
+
+    await nextTick()
     convertMarkdownContainers(val)
   },
 )
@@ -53,6 +58,7 @@ watch(
 if (import.meta.env.PROD) {
   router.afterEach(async () => {
     await nextTick()
+
     window.gtag?.('event', 'page_view', {
       page_title: document.title,
       page_path: location.pathname,

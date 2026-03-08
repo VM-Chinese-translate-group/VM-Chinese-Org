@@ -49,11 +49,13 @@
             <figure class="card-icon">
               <img v-lazy="mod.icon" :alt="mod.name" />
             </figure>
+
             <div class="card-content">
               <div class="card-top">
                 <div class="card-header">
                   <span class="card-name">{{ mod.displayName }}</span>
                 </div>
+
                 <p class="card-desc">{{ mod.displayDesc }}</p>
               </div>
 
@@ -62,9 +64,11 @@
                   <span v-if="mod.status?.text" :class="['status-badge', mod.status.type]">
                     {{ mod.displayStatus }}
                   </span>
+
                   <span v-if="mod.versions?.mc" class="version-badge mc">
                     MC {{ mod.versions.mc }}
                   </span>
+
                   <span v-if="mod.versions?.pack" class="version-badge pack">
                     {{ $t('pack.packVersion') }} {{ mod.versions.pack }}
                   </span>
@@ -89,6 +93,7 @@
       >
         <Icon icon="lucide:chevron-left" />
       </button>
+
       <button
         v-for="page in pageNumbers"
         :key="page"
@@ -97,6 +102,7 @@
       >
         {{ page }}
       </button>
+
       <button
         @click="goToPage(currentPage + 1)"
         :disabled="currentPage === totalPages"
@@ -143,33 +149,43 @@ const convertedDisplayData = ref<Record<string, { name: string; desc: string; st
 async function initSearchIndex() {
   for (const mod of props.mods) {
     if (searchIndexTW.value[mod.name]) continue
+
     const [nameTW, descTW] = await Promise.all([
       convertInlineText(mod.name, 'zh-TW'),
       convertInlineText(mod.description || '', 'zh-TW'),
     ])
+
     searchIndexTW.value[mod.name] = { name: nameTW, desc: descTW }
   }
 }
 
 async function refreshDisplayTranslations() {
   const targetLocale = currentLocale.value
+
   const tasks = paginatedMods.value.map(async (mod) => {
     const [name, desc, status] = await Promise.all([
       convertInlineText(mod.name, targetLocale),
       convertInlineText(mod.description || '', targetLocale),
       convertInlineText(mod.status?.text || '', targetLocale),
     ])
+
     return { id: mod.name, name, desc, status }
   })
 
   const results = await Promise.all(tasks)
+
   results.forEach((item) => {
-    convertedDisplayData.value[item.id] = { name: item.name, desc: item.desc, status: item.status }
+    convertedDisplayData.value[item.id] = {
+      name: item.name,
+      desc: item.desc,
+      status: item.status,
+    }
   })
 }
 
 const filteredMods = computed(() => {
   if (!searchQuery.value.trim()) return props.mods
+
   const term = searchQuery.value.toLowerCase().trim()
 
   return props.mods.filter((mod) => {
@@ -193,24 +209,29 @@ const startIndex = computed(() => (currentPage.value - 1) * itemsPerPage.value)
 const endIndex = computed(() =>
   Math.min(startIndex.value + itemsPerPage.value, filteredMods.value.length),
 )
+
 const paginatedMods = computed(() => filteredMods.value.slice(startIndex.value, endIndex.value))
 
-const displayMods = computed(() => {
-  return paginatedMods.value.map((mod) => ({
+const displayMods = computed(() =>
+  paginatedMods.value.map((mod) => ({
     ...mod,
     displayName: convertedDisplayData.value[mod.name]?.name || mod.name,
     displayDesc: convertedDisplayData.value[mod.name]?.desc || mod.description,
     displayStatus: convertedDisplayData.value[mod.name]?.status || mod.status?.text,
-  }))
-})
+  })),
+)
 
 const pageNumbers = computed(() => {
   const pages = []
   const max = 5
+
   let start = Math.max(1, currentPage.value - 2)
   let end = Math.min(totalPages.value, start + max - 1)
+
   if (end - start < max - 1) start = Math.max(1, end - max + 1)
+
   for (let i = start; i <= end; i++) pages.push(i)
+
   return pages
 })
 
@@ -241,7 +262,9 @@ watch(searchQuery, () => {
 const goToPage = (page: number) => {
   if (page >= 1 && page <= totalPages.value) {
     currentPage.value = page
+
     const element = document.querySelector('.DownloadCards')
+
     if (element) {
       window.scrollTo({
         top: element.getBoundingClientRect().top + window.scrollY - 20,
