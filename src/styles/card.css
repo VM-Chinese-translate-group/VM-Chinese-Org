@@ -1,0 +1,107 @@
+@import './variables.css';
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  margin: 0.75rem 0;
+}
+
+.card:hover {
+  background-color: var(--link-bg-hover);
+  text-decoration: none;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.card-footer.no-logo {
+  padding-left: 1.5rem;
+}
+
+.card-logo {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 1.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: transparent;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--vp-c-info-1);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card-theme-medium::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--text-muted);
+  opacity: 0.4;
+  --card-icon: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 7c0 .55.45 1 1 1h7.59l-8.88 8.88a.996.996 0 1 0 1.41 1.41L16 9.41V17c0 .55.45 1 1 1s1-.45 1-1V7c0-.55-.45-1-1-1H7c-.55 0-1 .45-1 1z'/%3E%3C/svg%3E");
+  -webkit-mask: var(--card-icon) no-repeat center / contain;
+  mask: var(--card-icon) no-repeat center / contain;
+}
+
+[card-grid] {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  width: 100%;
+}
+
+@media (min-width: 960px) {
+  [card-grid] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

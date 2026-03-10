@@ -16,8 +16,8 @@
     "github-markdown-css": "^5.9.0",
     "markdown-it": "^14.1.1",
     "opencc-js": "^1.0.5",
-    "sweetalert2": "^11.26.21",
-    "vue": "^3.5.29",
+    "sweetalert2": "^11.26.22",
+    "vue": "^3.5.30",
     "vue-i18n": "^11.3.0",
     "vue-lazyload": "^3.0.0",
     "vue-router": "^5.0.3"
@@ -25,14 +25,14 @@
   "devDependencies": {
     "@mdit/plugin-container": "^0.23.1",
     "@mdit/plugin-img-size": "^0.23.1",
-    "@shikijs/markdown-it": "^4.0.1",
+    "@shikijs/markdown-it": "^4.0.2",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^25.3.5",
+    "@types/node": "^25.4.0",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vue/tsconfig": "^0.9.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-table-of-contents": "^1.1.0",
-    "pnpm": "^10.31.0",
+    "pnpm": "^10.32.0",
     "prettier": "3.7.4",
     "taze": "^19.10.0",
     "typescript": "^5.9.3",
@@ -44,5 +44,5 @@
     "vite-plugin-vue-devtools": "^8.0.7",
     "vue-tsc": "^3.2.5"
   },
-  "packageManager": "pnpm@10.31.0"
+  "packageManager": "pnpm@10.32.0"
 }

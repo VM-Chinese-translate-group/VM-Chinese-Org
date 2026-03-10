@@ -10,6 +10,7 @@ import VueLazyload from 'vue-lazyload'
 import 'github-markdown-css/github-markdown.css'
 import '@/styles/markdown.css'
 
+import Card from '@/components/Card/Card.vue'
 import DocSupport from '@/components/DocSupport.vue'
 
 declare global {
@@ -21,6 +22,7 @@ declare global {
 const app = createApp(App)
 
 app.component('Icon', Icon)
+app.component('Card', Card)
 app.component('DocSupport', DocSupport)
 
 app.use(router)

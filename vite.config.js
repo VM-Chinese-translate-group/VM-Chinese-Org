@@ -13,6 +13,8 @@ import anchor from 'markdown-it-anchor'
 import toc from 'markdown-it-table-of-contents'
 import Shiki from '@shikijs/markdown-it'
 
+import Card from './src/components/Card/card.js'
+
 import { getGitBranch, getGitCommitHash, getGitEnv } from './src/plugins/git'
 import { resourcesPlugin } from './src/plugins/resourcesList'
 import { searchIndexPlugin } from './src/plugins/searchIndex'
@@ -69,6 +71,7 @@ export default defineConfig({
           defaultColor: false,
           langs: ['json', 'toml'],
         }))
+        md.use(Card)
         md.use(imgSize)
 
         const types = ['tip', 'warning', 'info', 'details']
