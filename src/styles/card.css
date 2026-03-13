@@ -68,17 +68,17 @@
   margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
-  text-decoration: none;
+  text-overflow: ellipsis;
 }
 
 .card-desc {
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.4;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 .card-theme-medium::after {
   content: '';
   position: absolute;
