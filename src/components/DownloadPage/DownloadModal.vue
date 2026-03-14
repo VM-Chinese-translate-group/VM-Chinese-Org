@@ -259,7 +259,7 @@ function handleClick(item) {
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-4 slide-enter">
+  <div>
     <div
       v-for="item in items"
       :key="item.name"
@@ -271,8 +271,8 @@ function handleClick(item) {
         :class="item.icon"
       />
       <img v-else v-lazy="item.icon" />
-      <span class="text-sm">{{ item.name }}</span>
-      <span class="text-xs opacity-50">{{ item.secondary }}</span>
+      <span>{{ item.name }}</span>
+      <span>{{ item.secondary }}</span>
     </div>
   </div>
 </template>
