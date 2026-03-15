@@ -1,14 +1,17 @@
 import { defineConfig } from 'vite'
 import path from 'node:path'
 import fs from 'node:fs'
+
 import vue from '@vitejs/plugin-vue'
 import Markdown from 'unplugin-vue-markdown/vite'
 import Components from 'unplugin-vue-components/vite'
+
 import Sitemap from 'vite-plugin-sitemap'
 import compression from 'vite-plugin-compression2'
 
 import { imgSize } from '@mdit/plugin-img-size'
 import { container } from '@mdit/plugin-container'
+
 import anchor from 'markdown-it-anchor'
 import toc from 'markdown-it-table-of-contents'
 import Shiki from '@shikijs/markdown-it'
@@ -21,9 +24,10 @@ import { searchIndexPlugin } from './src/plugins/searchIndex'
 
 const gitEnv = getGitEnv()
 
-const repoPath = (gitEnv.owner && gitEnv.name) 
-  ? `${gitEnv.owner}/${gitEnv.name}` 
-  : 'VM-Chinese-translate-group/VM-Chinese-Org'
+const repoPath =
+  gitEnv.owner && gitEnv.name
+    ? `${gitEnv.owner}/${gitEnv.name}`
+    : 'VM-Chinese-translate-group/VM-Chinese-Org'
 
 // 自动获取所有 md 路由
 const getMdRoutes = () => {
@@ -40,9 +44,13 @@ export default defineConfig({
     'import.meta.env.VITE_GIT_BRANCH': JSON.stringify(getGitBranch()),
     'import.meta.env.VITE_GIT_REPO': JSON.stringify(repoPath),
   },
+
   resolve: {
-    alias: { '@': path.resolve(__dirname, 'src') },
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
+
   plugins: [
     Markdown({
       async markdownItSetup(md) {
@@ -53,6 +61,7 @@ export default defineConfig({
 
           if (aIndex >= 0 && token.attrs) {
             const href = token.attrs[aIndex]?.[1]
+
             if (href && /^https?:\/\//.test(href)) {
               token.attrSet('target', '_blank')
               token.attrSet('rel', 'noopener')
@@ -63,60 +72,94 @@ export default defineConfig({
         }
 
         md.use(anchor, {
-          permalink: anchor.permalink.ariaHidden({ placement: 'before', symbol: '#', class: 'header-anchor' }),
+          permalink: anchor.permalink.ariaHidden({
+            placement: 'before',
+            symbol: '#',
+            class: 'header-anchor',
+          }),
         })
-        md.use(toc, { includeLevel: [2, 3], containerClass: 'markdown-toc' })
-        md.use(await Shiki({
-          themes: { light: 'github-light', dark: 'github-dark' },
-          defaultColor: false,
-          langs: ['json', 'toml'],
-        }))
+
+        md.use(toc, {
+          includeLevel: [2, 3],
+          containerClass: 'markdown-toc',
+        })
+
+        md.use(
+          await Shiki({
+            themes: {
+              light: 'github-light',
+              dark: 'github-dark',
+            },
+            defaultColor: false,
+            langs: ['json', 'toml'],
+          }),
+        )
+
         md.use(Card)
         md.use(imgSize)
 
         const types = ['tip', 'warning', 'info', 'details']
-        types.forEach(type => {
+
+        types.forEach((type) => {
           md.use(container, {
             name: type,
+
             openRender: (tokens, index) => {
-              const title = tokens[index].info.trim().slice(type.length).trim() || type.toUpperCase()
-              return type === 'details' 
-                ? `<details class="custom-block details"><summary>${title}</summary>\n`
-                : `<div class="custom-block ${type}"><p class="custom-block-title">${title}</p>\n`
+              const title =
+                tokens[index].info.trim().slice(type.length).trim() ||
+                type.toUpperCase()
+
+              if (type === 'details') {
+                return `<details class="custom-block details"><summary>${title}</summary>\n`
+              }
+
+              return `<div class="custom-block ${type}"><p class="custom-block-title">${title}</p>\n`
             },
-            closeRender: () => type === 'details' ? '</details>\n' : '</div>\n'
+
+            closeRender: () =>
+              type === 'details' ? '</details>\n' : '</div>\n',
           })
         })
-      }
+      },
     }),
-    vue({ include: [/\.vue$/, /\.md$/] }),
+
+    vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+
     Components({
       dirs: ['src/components'],
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.md$/],
       dts: false,
     }),
+
     resourcesPlugin(),
+
     searchIndexPlugin(),
+
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',
       dynamicRoutes: getMdRoutes(),
     }),
-    compression({ threshold: 10240 }),
+
+    compression({
+      threshold: 10240,
+    }),
   ],
+
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('shiki') || id.includes('shikijs')) return 'shiki'
-            if (id.includes('opencc-js')) return 'opencc'
-            if (id.includes('markdown-it')) return 'md-it'
-            if (id.includes('vue')) return 'vue-core'
-            return 'vendor'
-          }
-        }
-      }
-    }
-  }
+        manualChunks(id) {
+          if (id.includes('vue')) return 'vue'
+          if (id.includes('markdown-it')) return 'markdown'
+          if (id.includes('shiki')) return 'shiki'
+          if (id.includes('opencc')) return 'opencc'
+
+          return 'vendor'
+        },
+      },
+    },
+  },
 })

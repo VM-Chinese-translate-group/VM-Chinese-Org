@@ -1,12 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
+
 import DefaultLayout from '@/Layout.vue'
+import DocLayout from '@/components/DocLayout.vue'
 import Main from '@/components/Main/Main.vue'
 import Maps from '@/pages/map.vue'
 import Modpacks from '@/pages/modpacks.vue'
 
-// 将 src/pages 下的 .md 文件作为 Vue 组件，并自动生成路由
 const mdModules = import.meta.glob('../pages/**/*.md', { eager: true }) as Record<string, any>
+
+const DOC_LIST = [
+  '/tools',
+  '/support-us',
+  '/community',
+  '/rule',
+  '/friends-links',
+  '/privacy',
+  '/agreement',
+]
 
 function fileToRoutePath(file: string) {
   let p = file.replace('../pages', '').replace(/\.md$/, '')
@@ -15,41 +26,45 @@ function fileToRoutePath(file: string) {
   return p.startsWith('/') ? p : `/${p}`
 }
 
-const mdRoutes: RouteRecordRaw[] = Object.keys(mdModules).map((file) => {
+const docRoutes: RouteRecordRaw[] = []
+const plainMdRoutes: RouteRecordRaw[] = []
+
+Object.keys(mdModules).forEach((file) => {
   const module = mdModules[file]
   const routePath = fileToRoutePath(file)
-  const name = routePath === '/' ? 'home' : routePath.replace(/^\//, '').replace(/\//g, '-')
-  return {
-    path: routePath,
-    name,
-    component: module.default || module,
-    meta: module.frontmatter || module.meta || {},
-  } as RouteRecordRaw
-})
 
-const mdRoutesFiltered = mdRoutes.filter((r) => r.path !== '/' && r.path !== '/modpacks')
+  if (['/', '/modpacks', '/map'].includes(routePath)) return
+
+  const routeRecord: RouteRecordRaw = {
+    path: routePath,
+    name: routePath.replace(/^\//, '').replace(/\//g, '-') || `md-${Math.random()}`,
+    component: module.default,
+    meta: module.frontmatter || {},
+  }
+
+  if (DOC_LIST.includes(routePath)) {
+    docRoutes.push(routeRecord)
+  } else {
+    plainMdRoutes.push(routeRecord)
+  }
+})
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: DefaultLayout,
     children: [
+      { path: '', name: 'Main', component: Main },
+      { path: 'modpacks', name: 'modpacks-list', component: Modpacks },
+      { path: 'map', name: 'map-list', component: Maps },
+
+      ...plainMdRoutes,
+
       {
         path: '',
-        name: 'Main',
-        component: Main,
+        component: DocLayout,
+        children: docRoutes,
       },
-      {
-        path: '/modpacks',
-        name: 'modpacks-list',
-        component: Modpacks,
-      },
-      {
-        path: '/map',
-        name: 'map-list',
-        component: Maps,
-      },
-      ...mdRoutesFiltered,
     ],
   },
 ]
@@ -57,13 +72,11 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  // 添加以下滚动行为配置
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {
         el: to.hash,
         behavior: 'smooth',
-        // 如果你有顶部导航栏（假设高度为 70px），可以添加偏移量
         top: 80,
       }
     }

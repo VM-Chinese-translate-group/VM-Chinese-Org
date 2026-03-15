@@ -79,6 +79,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .card-theme-medium::after {
   content: '';
   position: absolute;

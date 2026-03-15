@@ -1,0 +1,79 @@
+@import './variables.css';
+
+.doc-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-white);
+  padding: 0 32px;
+}
+
+.doc-header {
+  max-width: 85%;
+  width: 100%;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+
+.doc-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  letter-spacing: -0.02em;
+}
+
+.doc-main {
+  display: flex;
+  width: 100%;
+  max-width: 85%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.doc-content {
+  max-width: 85%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.doc-sidebar {
+  position: sticky;
+  top: 80px;
+  width: 256px;
+  height: calc(100vh - 80px);
+  padding-left: 32px;
+  margin-top: 32px;
+  display: none;
+  overflow-y: auto;
+}
+
+@media (min-width: 1200px) {
+  .doc-sidebar {
+    display: block;
+  }
+}
+
+.doc-toc {
+  border-left: 1px solid var(--switcher-border);
+  padding-left: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .doc-page-container {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  .doc-header {
+    max-width: 100%;
+    margin-top: 24px;
+    padding: 0;
+  }
+
+  .doc-content {
+    max-width: 100%;
+    padding: 24px 0 64px;
+  }
+}

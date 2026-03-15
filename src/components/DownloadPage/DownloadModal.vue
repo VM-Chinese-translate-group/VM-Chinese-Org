@@ -52,7 +52,7 @@ const QUESTIONS = [
     content:
       '漂附在液体中的物体,在自身重力不变的情况下，外来的压力加重力小于浮力时，就会上浮，反之则会下沉。下面与图二的外力有关的史实是<br><br>',
     correctAnswer: 'A',
-    imageUrl: 'https://vmct-cn.top/imgs/questions/history.jpg',
+    imageUrl: '/imgs/questions/history.jpg',
   },
   {
     title: 'MC原版题',
@@ -259,7 +259,7 @@ function handleClick(item) {
 </script>
 
 <template>
-  <div>
+  <div class="flex">
     <div
       v-for="item in items"
       :key="item.name"
@@ -271,8 +271,8 @@ function handleClick(item) {
         :class="item.icon"
       />
       <img v-else v-lazy="item.icon" />
-      <span>{{ item.name }}</span>
-      <span>{{ item.secondary }}</span>
+      <span class="text-sm">{{ item.name }}</span>
+      <span class="text-xs">{{ item.secondary }}</span>
     </div>
   </div>
 </template>
