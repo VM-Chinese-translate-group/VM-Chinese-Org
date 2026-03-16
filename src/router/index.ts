@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
-import DefaultLayout from '@/Layout.vue'
-import DocLayout from '@/components/DocLayout.vue'
+import DefaultLayout from '@/layout/DefaultLayout.vue'
+import DocLayout from '@/layout/DocLayout.vue'
 import Main from '@/components/Main/Main.vue'
 import Maps from '@/pages/map.vue'
 import Modpacks from '@/pages/modpacks.vue'

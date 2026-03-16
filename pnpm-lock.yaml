@@ -33,8 +33,8 @@ importers:
         specifier: ^1.5.4
         version: 1.5.4
       sweetalert2:
-        specifier: ^11.26.22
-        version: 11.26.22
+        specifier: ^11.26.23
+        version: 11.26.23
       vue:
         specifier: ^3.5.30
         version: 3.5.30(typescript@5.9.3)
@@ -97,8 +97,8 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0(@types/node@25.5.0)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2)
       vite-plugin-compression2:
-        specifier: ^2.5.1
-        version: 2.5.1(rollup@4.54.0)
+        specifier: ^2.5.2
+        version: 2.5.2(rollup@4.54.0)
       vite-plugin-sitemap:
         specifier: ^0.8.2
         version: 0.8.2
@@ -1686,8 +1686,8 @@ packages:
     resolution: {integrity: sha512-H+ue8Zo4vJmV2nRjpx86P35lzwDT3nItnIsocgumgr0hHMQ+ZGq5vrERg9kJBo5AWGmxZDhzDo+WVIJqkB0cGA==}
     engines: {node: '>=16'}
 
-  sweetalert2@11.26.22:
-    resolution: {integrity: sha512-UtfV5j7gXBRLm0+6Vm+MqIpsMA7CF7lOGeBj1sc8YSb2Q2xKT6mkSV63b4kFUGNs4vYa+Nd7ufZ97ZX9hNfqsA==}
+  sweetalert2@11.26.23:
+    resolution: {integrity: sha512-6Y6Auvk/gLUcVtPHWhDkJs+JCDraxAWNdITdIbOqeo3mZthVZT3XfDjrxcSHtElUz7DmF21oEqUCW2eWR15eDA==}
 
   tar-mini@0.2.0:
     resolution: {integrity: sha512-+qfUHz700DWnRutdUsxRRVZ38G1Qr27OetwaMYTdg8hcPxf46U0S1Zf76dQMWRBmusOt2ZCK5kbIaiLkoGO7WQ==}
@@ -1799,8 +1799,8 @@ packages:
     peerDependencies:
       vite: ^2.6.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-0 || ^6.0.0-0 || ^7.0.0-0
 
-  vite-plugin-compression2@2.5.1:
-    resolution: {integrity: sha512-2YpLZWs1ZRo9XwtSFA6/NVuBgOR+kvFk8M0HNDsP7Wu7OfJDOKT6fHB8kzuvw6jhgC9KYgDOttfaG2qC0wE9AQ==}
+  vite-plugin-compression2@2.5.2:
+    resolution: {integrity: sha512-a1eAY2Ux5JrflaWStWUa7yoMnjhw3tx7y6vQIp20QZ9K57wcKxYT+DUJiAG4VSEvmFMjeo9a5R2phdBriOJ/1A==}
 
   vite-plugin-inspect@11.3.3:
     resolution: {integrity: sha512-u2eV5La99oHoYPHE6UvbwgEqKKOQGz86wMg40CCosP6q8BkB6e5xPneZfYagK4ojPJSj5anHCrnvC20DpwVdRA==}
@@ -3425,7 +3425,7 @@ snapshots:
     dependencies:
       copy-anything: 4.0.5
 
-  sweetalert2@11.26.22: {}
+  sweetalert2@11.26.23: {}
 
   tar-mini@0.2.0: {}
 
@@ -3570,7 +3570,7 @@ snapshots:
     dependencies:
       vite: 8.0.0(@types/node@25.5.0)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2)
 
-  vite-plugin-compression2@2.5.1(rollup@4.54.0):
+  vite-plugin-compression2@2.5.2(rollup@4.54.0):
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.54.0)
       tar-mini: 0.2.0

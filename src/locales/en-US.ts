@@ -87,6 +87,9 @@ export default {
     communityText: 'Discord',
     reviewText: 'Review Group',
   },
+  toc: {
+    title: 'On this page',
+  },
   loader: {
     neoforge: 'Neoforge',
     fabric: 'Fabric',

@@ -86,6 +86,9 @@ export default {
     communityText: 'Discord',
     reviewText: '審核群',
   },
+  toc: {
+    title: '頁面導覽',
+  },
   loader: {
     neoforge: 'Neoforge',
     fabric: 'Fabric',

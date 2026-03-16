@@ -86,6 +86,9 @@ export default {
     communityText: 'QQ交流群',
     reviewText: '审核群',
   },
+  toc: {
+    title: '页面导航',
+  },
   loader: {
     neoforge: 'Neoforge',
     fabric: 'Fabric',
