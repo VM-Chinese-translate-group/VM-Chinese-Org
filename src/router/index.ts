@@ -9,7 +9,7 @@ import Modpacks from '@/pages/modpacks.vue'
 
 const mdModules = import.meta.glob('../pages/**/*.md', { eager: true }) as Record<string, any>
 
-const DOC_LIST = [
+const STATIC_DOCS = [
   '/tools',
   '/support-us',
   '/community',
@@ -18,6 +18,13 @@ const DOC_LIST = [
   '/privacy',
   '/agreement',
 ]
+
+function isDocRoute(routePath: string): boolean {
+  if (STATIC_DOCS.includes(routePath)) return true
+  if (routePath.startsWith('/modpacks/fc5-wiki')) return true
+  if (routePath.endsWith('/secret')) return true
+  return false
+}
 
 function fileToRoutePath(file: string) {
   let p = file.replace('../pages', '').replace(/\.md$/, '')
@@ -42,7 +49,7 @@ Object.keys(mdModules).forEach((file) => {
     meta: module.frontmatter || {},
   }
 
-  if (DOC_LIST.includes(routePath)) {
+  if (isDocRoute(routePath)) {
     docRoutes.push(routeRecord)
   } else {
     plainMdRoutes.push(routeRecord)

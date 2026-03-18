@@ -1,7 +1,7 @@
 <template>
   <div class="doc-page-container">
     <header class="doc-header" v-if="pageTitle">
-      <h1>{{ pageTitle }}</h1>
+      <h1 ref="titleRef">{{ convertedPageTitle }}</h1>
     </header>
 
     <main class="doc-main">
@@ -37,13 +37,15 @@
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { convertMarkdownContainers, convertInlineText } from '@/utils/zhconv'
 
 const route = useRoute()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const contentRef = ref<HTMLElement | null>(null)
 
 const pageTitle = computed(() => (route.meta.title as string) || '')
+const convertedPageTitle = ref('')
 
 interface Heading {
   id: string
@@ -56,53 +58,57 @@ const headers = ref<Heading[]>([])
 const activeId = ref<string>('')
 
 const showSidebar = computed(() => {
-  if (route.meta.sidebar === false) {
-    return false
-  }
+  if (route.meta.sidebar === false) return false
   return headers.value.length > 0
 })
 
-const extractHeaders = async () => {
+const handleConversion = async () => {
   await nextTick()
+  await convertMarkdownContainers(locale.value)
+
+  convertedPageTitle.value = await convertInlineText(pageTitle.value, locale.value)
+
+  await extractHeaders()
+}
+
+const extractHeaders = async () => {
   if (!contentRef.value) return
 
   const headingElements = Array.from(contentRef.value.querySelectorAll('h2, h3'))
 
-  headers.value = headingElements.map((el) => {
-    let rawText = el.textContent || ''
+  headers.value = await Promise.all(
+    headingElements.map(async (el) => {
+      let rawText = el.textContent || ''
+      let cleanText = rawText
+        .replace(/^#+\s*/, '')
+        .replace(/#\s*$/, '')
+        .replace(/\{#.*?\}/g, '')
+        .trim()
 
-    let cleanText = rawText
-      .replace(/^#+\s*/, '')
-      .replace(/#\s*$/, '')
-      .replace(/\{#.*?\}/g, '')
-      .trim()
+      const translatedText = await convertInlineText(cleanText, locale.value)
 
-    if (!el.id) {
-      const customIdMatch = rawText.match(/\{#([^}]+)\}/)
-      if (customIdMatch) {
-        el.id = customIdMatch[1].trim()
-      } else {
-        el.id = cleanText.replace(/\s+/g, '-').toLowerCase()
+      if (!el.id) {
+        const customIdMatch = rawText.match(/\{#([^}]+)\}/)
+        el.id = customIdMatch
+          ? customIdMatch[1].trim()
+          : cleanText.replace(/\s+/g, '-').toLowerCase()
       }
-    }
 
-    return {
-      id: el.id,
-      text: cleanText,
-      level: Number(el.tagName.charAt(1)),
-      top: (el as HTMLElement).offsetTop,
-    }
-  })
+      return {
+        id: el.id,
+        text: translatedText,
+        level: Number(el.tagName.charAt(1)),
+        top: (el as HTMLElement).offsetTop,
+      }
+    }),
+  )
 }
 
 const onScroll = () => {
   if (headers.value.length === 0 || !showSidebar.value) return
-
   const scrollTop = window.scrollY || document.documentElement.scrollTop
   const offset = 100
-
   let currentId = headers.value[0]?.id
-
   for (let i = 0; i < headers.value.length; i++) {
     if (scrollTop >= headers.value[i].top - offset) {
       currentId = headers.value[i].id
@@ -126,13 +132,14 @@ const scrollToHeading = (id: string) => {
 watch(
   () => route.path,
   () => {
-    setTimeout(() => {
-      extractHeaders()
-      onScroll()
-    }, 100)
+    handleConversion()
   },
   { immediate: true },
 )
+
+watch(locale, () => {
+  handleConversion()
+})
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll)
