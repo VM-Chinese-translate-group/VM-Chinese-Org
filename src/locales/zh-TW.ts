@@ -95,4 +95,10 @@ export default {
     forge: 'Forge',
     vanilla: '原版',
   },
+  notFound: {
+    title: '頁面不存在',
+    desc: '您訪問的頁面不存在，可能已被移動或刪除。',
+    hint: '如果你是複製網址進來的，很可能是複製錯了，請檢查一下瀏覽器上方的網址列吧～',
+    backHome: '返回首頁',
+  },
 }

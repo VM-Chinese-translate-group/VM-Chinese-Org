@@ -95,4 +95,10 @@ export default {
     forge: 'Forge',
     vanilla: '原版',
   },
+  notFound: {
+    title: '页面不存在',
+    desc: '您访问的页面不存在，可能被移动或删除。',
+    hint: '如果你是复制网址进来的，多半是复制错了，检查一下浏览器上方的地址栏吧~',
+    backHome: '返回主页',
+  },
 }

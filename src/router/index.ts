@@ -6,6 +6,7 @@ import DocLayout from '@/layout/DocLayout.vue'
 import Main from '@/components/Main/Main.vue'
 import Maps from '@/pages/map.vue'
 import Modpacks from '@/pages/modpacks.vue'
+import NotFound from '@/pages/NotFound.vue'
 
 const mdModules = import.meta.glob('../pages/**/*.md', { eager: true }) as Record<string, any>
 
@@ -73,6 +74,12 @@ const routes: RouteRecordRaw[] = [
         children: docRoutes,
       },
     ],
+  },
+
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFound,
   },
 ]
 

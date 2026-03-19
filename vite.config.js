@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'node:path'
 import fs from 'node:fs'
 
+import { DevTools } from '@vitejs/devtools'
 import vue from '@vitejs/plugin-vue'
 import Markdown from 'unplugin-vue-markdown/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -52,6 +53,8 @@ export default defineConfig({
   },
 
   plugins: [
+    process.env.NODE_ENV === 'development' && DevTools(),
+
     Markdown({
       async markdownItSetup(md) {
         // 链接优化
@@ -141,6 +144,7 @@ export default defineConfig({
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',
       dynamicRoutes: getMdRoutes(),
+      generateRobotsTxt: false,
     }),
 
     compression({
@@ -150,6 +154,7 @@ export default defineConfig({
 
   build: {
     rolldownOptions: {
+      devtools: true,
       output: {
         manualChunks(id) {
           if (id.includes('vue')) return 'vue'

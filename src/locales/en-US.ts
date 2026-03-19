@@ -32,7 +32,7 @@ export default {
       'We fully understand that technology is an indispensable part of the localization process. To better promote community development, we have made all our original tools, mods, and the entire translation workflow open source.',
   },
   footer: {
-    copyright: '© 2026 VM Chinese Translation Group Website Development Team',
+    copyright: '© 2026 VM Chinese Translation Group Web Dev Team',
     buildInfo: 'Build: {branch}',
     about: 'About',
     joinUs: 'Join Us',
@@ -95,5 +95,11 @@ export default {
     fabric: 'Fabric',
     forge: 'Forge',
     vanilla: 'Vanilla',
+  },
+  notFound: {
+    title: 'Page Not Found',
+    desc: 'The page you are looking for does not exist or may have been moved.',
+    hint: 'If you arrived here by copying a URL, it might be incorrect. Please check the address bar in your browser.',
+    backHome: 'Back to Home',
   },
 }
