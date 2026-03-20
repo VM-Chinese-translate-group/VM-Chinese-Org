@@ -37,8 +37,9 @@ export async function convertInlineText(text: string, locale: string): Promise<s
 
 const originalMap = new WeakMap<Element, string>()
 
-export async function convertMarkdownContainers(targetLocale: string) {
-  const containers = document.querySelectorAll('.markdown-body')
+export async function convertMarkdownContainers(targetLocale: string, root?: HTMLElement) {
+  const containers = root ? [root] : document.querySelectorAll('.markdown-body')
+
   if (!containers.length) return
 
   const converter = await getConverter()
@@ -49,9 +50,11 @@ export async function convertMarkdownContainers(targetLocale: string) {
 
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null)
       let node: Node | null
+
       while ((node = walker.nextNode())) {
         const textNode = node as Text
         const rawText = textNode.nodeValue?.trim()
+
         if (rawText) {
           textNode.nodeValue = converter(textNode.nodeValue!)
         }
@@ -60,6 +63,7 @@ export async function convertMarkdownContainers(targetLocale: string) {
   } else {
     containers.forEach((el) => {
       const original = originalMap.get(el)
+
       if (original) {
         el.innerHTML = original
         originalMap.delete(el)

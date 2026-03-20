@@ -39,7 +39,7 @@ const getMdRoutes = () => {
     .map(f => `/${f.replace(/\.md$/, '').replace(/index$/, '')}`)
 }
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   define: {
     'import.meta.env.VITE_GIT_COMMIT': JSON.stringify(getGitCommitHash()),
     'import.meta.env.VITE_GIT_BRANCH': JSON.stringify(getGitBranch()),
@@ -53,7 +53,7 @@ export default defineConfig({
   },
 
   plugins: [
-    process.env.NODE_ENV === 'development' && DevTools(),
+    command === 'serve' && DevTools(),
 
     Markdown({
       async markdownItSetup(md) {
@@ -108,9 +108,11 @@ export default defineConfig({
             name: type,
 
             openRender: (tokens, index) => {
+              const info = tokens[index].info
               const title =
-                tokens[index].info.trim().slice(type.length).trim() ||
-                type.toUpperCase()
+                info.length > type.length
+                  ? info.slice(type.length + 1)
+                  : type.toUpperCase()
 
               if (type === 'details') {
                 return `<details class="custom-block details"><summary>${title}</summary>\n`
@@ -144,7 +146,7 @@ export default defineConfig({
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',
       dynamicRoutes: getMdRoutes(),
-      generateRobotsTxt: false,
+      outDir: 'dist',
     }),
 
     compression({
@@ -154,17 +156,14 @@ export default defineConfig({
 
   build: {
     rolldownOptions: {
-      devtools: true,
       output: {
         manualChunks(id) {
-          if (id.includes('vue')) return 'vue'
+          if (id.includes('node_modules/vue')) return 'vue'
           if (id.includes('markdown-it')) return 'markdown'
-          if (id.includes('shiki')) return 'shiki'
+          if (id.includes('@shikijs')) return 'shiki'
           if (id.includes('opencc')) return 'opencc'
-
-          return 'vendor'
-        },
+        }
       },
     },
   },
-})
+}))

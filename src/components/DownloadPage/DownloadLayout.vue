@@ -34,7 +34,7 @@
     </header>
 
     <main class="pack-main">
-      <section class="pack-content-body markdown-body">
+      <section class="pack-content-body markdown-body" ref="contentRef">
         <div id="download-section"></div>
         <slot />
       </section>
@@ -109,7 +109,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch, nextTick } from 'vue'
+import { ref, onMounted, watch, nextTick } from 'vue'
 import { convertMarkdownContainers } from '@/utils/zhconv'
 import { useI18n } from 'vue-i18n'
 
@@ -119,9 +119,14 @@ const props = defineProps({
 
 const { t, locale } = useI18n()
 
+const contentRef = ref<HTMLElement | null>(null)
+
 const handleConvert = async () => {
   await nextTick()
-  await convertMarkdownContainers(locale.value)
+
+  if (!contentRef.value) return
+
+  await convertMarkdownContainers(locale.value, contentRef.value)
 }
 
 onMounted(() => {
