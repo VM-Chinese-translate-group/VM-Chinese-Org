@@ -54,6 +54,16 @@ export default defineConfig(({ command }) => ({
 
   plugins: [
     command === 'serve' && DevTools(),
+    
+    {
+      name: 'fix-dist-missing',
+      buildStart() {
+        const distPath = path.resolve(__dirname, 'dist')
+        if (!fs.existsSync(distPath)) {
+          fs.mkdirSync(distPath, { recursive: true })
+        }
+      }
+    },
 
     Markdown({
       async markdownItSetup(md) {
@@ -146,7 +156,6 @@ export default defineConfig(({ command }) => ({
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',
       dynamicRoutes: getMdRoutes(),
-      outDir: 'dist',
     }),
 
     compression({
