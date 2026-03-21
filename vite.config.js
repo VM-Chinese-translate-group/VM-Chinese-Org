@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'node:path'
 import fs from 'node:fs'
 
+import { DevTools } from '@vitejs/devtools'
 import vue from '@vitejs/plugin-vue'
 import Markdown from 'unplugin-vue-markdown/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -52,6 +53,18 @@ export default defineConfig(({ command }) => ({
   },
 
   plugins: [
+    command === 'serve' && DevTools(),
+    
+    {
+      name: 'fix-dist-missing',
+      buildStart() {
+        const distPath = path.resolve(__dirname, 'dist')
+        if (!fs.existsSync(distPath)) {
+          fs.mkdirSync(distPath, { recursive: true })
+        }
+      }
+    },
+
     Markdown({
       async markdownItSetup(md) {
         // 链接优化
@@ -151,7 +164,7 @@ export default defineConfig(({ command }) => ({
   ],
 
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules/vue')) return 'vue'
