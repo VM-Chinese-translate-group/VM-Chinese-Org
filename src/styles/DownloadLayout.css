@@ -1,5 +1,9 @@
 @import './variables.css';
 
+.author-name, .link-pill, .btn-download-main {
+  text-decoration: none !important;
+}
+
 .pack-page-container {
   margin: 0 auto;
   padding: 40px 20px;
@@ -167,8 +171,8 @@
 }
 
 .loader-fabric {
-  background: var(--vp-c-bg-soft);
-  color: var(--text-medium);
+  background: var(--vp-c-warning-soft);
+  color: #8A7B71;
 }
 
 .loader-forge {
@@ -179,6 +183,11 @@
 .loader-neoforge {
   background: var(--vp-c-warning-soft);
   color: var(--vp-c-warning-1);
+}
+
+.loader-vanilla {
+  background: var(--vp-c-tip-soft);
+  color: var(--vp-c-tip-1);
 }
 
 .pill-icon {

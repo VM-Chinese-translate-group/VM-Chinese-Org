@@ -4,14 +4,14 @@ icon: https://media.forgecdn.net/avatars/thumbnails/1330/290/256/256/63886469632
 description: |
   FTB Skies 是一款构建于 Minecraft 1.21.1 的次世代空岛整合包，主打奖励驱动的玩法机制、深度定制的内容逻辑，以及以玩家为核心的成长路径。
   在这里，数百小时的内容等待你探索，热门模组与定制内容深度融合，助你直达星辰大海。
-updateDate: 2026年2月16日
+updateDate: 2026年3月21日
 status:
   text: 维护中
   type: maintaining
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '1.13.4'
+  pack: '1.14.0'
 authors:
   - 'FTB (作者团队)'
   - 'VM汉化组 (翻译)'
