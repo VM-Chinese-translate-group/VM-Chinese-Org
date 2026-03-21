@@ -8,16 +8,24 @@
         </div>
 
         <div class="pack-title-area">
-          <h1>{{ meta.title || t('pack.defaultTitle') }}</h1>
+          <div class="title-row">
+            <h1>{{ meta.title || t('pack.defaultTitle') }}</h1>
+            <div class="pack-status-tags" v-if="meta.status">
+              <span :class="['status-tag', meta.status.type || 'info']">
+                {{ meta.status.text }}
+              </span>
+            </div>
+          </div>
 
-          <p class="pack-description" v-if="meta.description" style="white-space: pre-wrap">
+          <p class="pack-description" v-if="meta.description">
             {{ meta.description }}
           </p>
 
-          <div class="pack-status-tags" v-if="meta.status">
-            <span :class="['status-tag', meta.status.type || 'info']">
-              {{ meta.status.text }}
-            </span>
+          <div class="author-row" v-if="meta.authors">
+            <span class="by-text">by</span>
+            <span class="author-name" v-for="author in meta.authors" :key="author">{{
+              author
+            }}</span>
           </div>
         </div>
 
@@ -26,9 +34,10 @@
             <Icon icon="mdi:download" />
             {{ t('pack.downloadPatch') }}
           </a>
-          <span class="update-date" v-if="meta.updateDate">{{
-            t('pack.updateDate', { date: meta.updateDate })
-          }}</span>
+          <span class="update-date" v-if="meta.updateDate">
+            <Icon icon="mdi:clock-outline" />
+            {{ t('pack.updateDate', { date: meta.updateDate }) }}
+          </span>
         </div>
       </div>
     </header>
@@ -40,66 +49,56 @@
       </section>
 
       <aside class="pack-sidebar">
-        <div class="sidebar-card" v-if="meta.compatibility">
-          <h3>{{ t('pack.compatibilityTitle') }}</h3>
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">{{ t('pack.compatibilityTitle') }}</h3>
 
-          <div class="info-group" v-if="meta.compatibility.minecraft">
-            <span class="label">{{ t('pack.minecraftVersion') }}</span>
-            <div class="tag-list">
-              <span>
-                {{ meta.compatibility.minecraft }}
-              </span>
+          <div class="info-item" v-if="meta.compatibility?.minecraft">
+            <div class="info-label">
+              <Icon icon="mdi:microsoft-minecraft" />
+              {{ t('pack.minecraftVersion') }}
             </div>
+            <div class="info-value">{{ meta.compatibility.minecraft }}</div>
           </div>
 
-          <div class="info-group" v-if="meta.compatibility.loader">
-            <span class="label">{{ t('pack.loader') }}</span>
-            <div class="tag-list">
-              <span :class="['version-tag', 'loader', getLoaderClass(meta.compatibility.loader)]">
+          <div class="info-item" v-if="meta.compatibility?.loader">
+            <div class="info-label">
+              <Icon icon="mdi:engine" />
+              {{ t('pack.loader') }}
+            </div>
+            <div class="info-value">
+              <span :class="['loader-pill', getLoaderClass(meta.compatibility.loader)]">
                 <img
                   v-if="getLoaderIcon(meta.compatibility.loader)"
                   v-lazy="getLoaderIcon(meta.compatibility.loader)"
-                  class="loader-icon"
-                  alt=""
+                  class="pill-icon"
                 />
                 {{ getLoaderText(meta.compatibility.loader) }}
               </span>
             </div>
           </div>
 
-          <div class="info-group" v-if="meta.compatibility.pack">
-            <span class="label">{{ t('pack.packVersion') }}</span>
-            <div class="tag-list">
-              <span class="version-tag">
-                {{ meta.compatibility.pack }}
-              </span>
+          <div class="info-item" v-if="meta.compatibility?.pack">
+            <div class="info-label">
+              <Icon icon="mdi:tag-outline" />
+              {{ t('pack.packVersion') }}
             </div>
-          </div>
-        </div>
-
-        <div class="sidebar-card" v-if="meta.authors && meta.authors.length">
-          <h3>{{ t('pack.authorsTitle') }}</h3>
-          <div class="info-group">
-            <p class="author-names" v-for="author in meta.authors" :key="author">
-              {{ author }}
-            </p>
+            <div class="info-value">{{ meta.compatibility.pack }}</div>
           </div>
         </div>
 
         <div class="sidebar-card" v-if="meta.links && meta.links.length">
-          <h3>{{ t('pack.relatedLinks') }}</h3>
-          <div class="link-list">
+          <h3 class="sidebar-title">{{ t('pack.relatedLinks') }}</h3>
+          <div class="external-links">
             <a
               v-for="(item, index) in meta.links"
               :key="index"
               :href="item.link"
-              class="sidebar-link"
+              class="link-pill"
               target="_blank"
             >
-              <img v-if="getIcon(item.id)" v-lazy="getIcon(item.id)" class="link-icon" alt="" />
-              <span class="link-text">
-                {{ item.text }}
-              </span>
+              <img v-if="getIcon(item.id)" v-lazy="getIcon(item.id)" class="pill-icon" />
+              <span>{{ item.text }}</span>
+              <Icon icon="mdi:open-in-new" class="external-icon" />
             </a>
           </div>
         </div>
@@ -118,32 +117,21 @@ const props = defineProps({
 })
 
 const { t, locale } = useI18n()
-
 const contentRef = ref<HTMLElement | null>(null)
 
 const handleConvert = async () => {
   await nextTick()
-
   if (!contentRef.value) return
-
   await convertMarkdownContainers(locale.value, contentRef.value)
 }
 
-onMounted(() => {
-  handleConvert()
-})
-
+onMounted(() => handleConvert())
 watch(
   () => props.meta,
-  () => {
-    handleConvert()
-  },
+  () => handleConvert(),
   { deep: true },
 )
-
-watch(locale, () => {
-  handleConvert()
-})
+watch(locale, () => handleConvert())
 
 interface IconMap {
   [key: string]: string
@@ -157,8 +145,6 @@ const iconMap: IconMap = {
   modrinth: '/imgs/svg/modrinth.svg',
 }
 
-const getIcon = (id: string): string | undefined => iconMap[id?.toLowerCase()]
-
 const loaderIconMap: IconMap = {
   neoforge: '/imgs/svg/neoforge.svg',
   fabric: '/imgs/svg/fabric.svg',
@@ -166,13 +152,11 @@ const loaderIconMap: IconMap = {
   vanilla: '/imgs/svg/vanilla.svg',
 }
 
-const getLoaderIcon = (loader: string): string | undefined => loaderIconMap[loader?.toLowerCase()]
-
-const getLoaderText = (loader: string): string => t(`loader.${loader?.toLowerCase()}`)
-
-const getLoaderClass = (loader: string): string => `loader-${loader?.toLowerCase()}`
-
-const scrollToDownload = (): void => {
+const getIcon = (id: string) => iconMap[id?.toLowerCase()]
+const getLoaderIcon = (loader: string) => loaderIconMap[loader?.toLowerCase()]
+const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
+const getLoaderClass = (loader: string) => `loader-${loader?.toLowerCase()}`
+const scrollToDownload = () => {
   const el = document.getElementById('download-section')
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }

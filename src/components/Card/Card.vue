@@ -73,5 +73,5 @@ const descText = computed(() => {
 </script>
 
 <style scoped>
-@import '@/styles/Card.css';
+@import '@/styles/card.css';
 </style>
