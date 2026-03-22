@@ -107,7 +107,7 @@
   gap: 6px;
   margin-top: 10px;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-light);
 }
 
 .pack-main {
@@ -133,10 +133,10 @@
 }
 
 .sidebar-title {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-black);
   letter-spacing: 0.08em;
   margin-bottom: 20px;
 }
@@ -159,6 +159,25 @@
 .info-value {
   color: var(--text-dark);
   font-weight: 600;
+}
+
+.loader-icon {
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.link-icon {
+  width: 14px;
+  height: 14px;
 }
 
 .loader-pill {
@@ -241,6 +260,11 @@
   background: var(--vp-c-tip-soft);
   color: var(--vp-c-tip-1);
   border: none;
+}
+
+.status-tag.stopped {
+  background: #ff4d4f;
+  color: white;
 }
 
 @media (max-width: 960px) {

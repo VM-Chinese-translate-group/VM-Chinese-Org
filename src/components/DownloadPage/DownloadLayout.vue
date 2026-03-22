@@ -67,10 +67,13 @@
             </div>
             <div class="info-value">
               <span :class="['loader-pill', getLoaderClass(meta.compatibility.loader)]">
-                <img
+                <span
                   v-if="getLoaderIcon(meta.compatibility.loader)"
-                  v-lazy="getLoaderIcon(meta.compatibility.loader)"
-                  class="pill-icon"
+                  class="loader-icon"
+                  :style="{
+                    WebkitMaskImage: `url(${getLoaderIcon(meta.compatibility.loader)})`,
+                    maskImage: `url(${getLoaderIcon(meta.compatibility.loader)})`,
+                  }"
                 />
                 {{ getLoaderText(meta.compatibility.loader) }}
               </span>
@@ -96,7 +99,7 @@
               class="link-pill"
               target="_blank"
             >
-              <img v-if="getIcon(item.id)" v-lazy="getIcon(item.id)" class="pill-icon" />
+              <img v-if="getIcon(item.id)" v-lazy="getIcon(item.id)" class="link-icon" />
               <span>{{ item.text }}</span>
               <Icon icon="lucide:external-link" class="external-icon" />
             </a>
