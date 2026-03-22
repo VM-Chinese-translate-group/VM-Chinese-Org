@@ -5,16 +5,7 @@
         <div class="search-panel">
           <div class="search-header">
             <div class="search-icon-wrapper">
-              <svg class="search-icon" viewBox="0 0 24 24">
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314Z"
-                />
-              </svg>
+              <Icon icon="lucide:search" class="search-icon" />
             </div>
             <input
               v-model="keyword"
@@ -40,26 +31,18 @@
                   <p class="result-snippet" v-html="highlight(item.snippet)"></p>
                 </div>
                 <div class="result-arrow">
-                  <svg viewBox="0 0 24 24" width="18" height="18">
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 18l6-6l-6-6"
-                    />
-                  </svg>
+                  <Icon icon="lucide:chevron-right" />
                 </div>
               </div>
             </div>
 
             <div v-else-if="keyword" class="search-empty">
+              <Icon icon="lucide:search-x" class="empty-icon" />
               <p v-html="$t('search.empty', { query: `<span>${keyword}</span>` })"></p>
             </div>
 
             <div v-else class="search-placeholder">
-              {{ $t('search.startSearch') }}
+              <p>{{ $t('search.startSearch') }}</p>
             </div>
           </div>
         </div>
@@ -72,6 +55,7 @@
 import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { Icon } from '@iconify/vue'
 import { searchIndex } from 'virtual:search-index'
 import { convertInlineText } from '@/utils/zhconv'
 

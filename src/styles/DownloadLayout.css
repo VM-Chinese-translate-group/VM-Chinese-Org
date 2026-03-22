@@ -1,6 +1,8 @@
 @import './variables.css';
 
-.author-name, .link-pill, .btn-download-main {
+.author-name,
+.link-pill,
+.btn-download-main {
   text-decoration: none !important;
 }
 
@@ -76,13 +78,13 @@
 .author-name {
   color: var(--text-dark);
   font-weight: 600;
-  text-decoration-color: var(--switcher-border);
 }
 
 .btn-download-main {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 0.85rem 1.8rem;
   background: var(--btn-primary-bg);
   color: #ffffff;
@@ -91,7 +93,6 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: all 0.25s ease;
-  text-decoration: none;
 }
 
 .btn-download-main:hover {
@@ -106,7 +107,7 @@
   gap: 6px;
   margin-top: 10px;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-light);
 }
 
 .pack-main {
@@ -132,10 +133,10 @@
 }
 
 .sidebar-title {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-black);
   letter-spacing: 0.08em;
   margin-bottom: 20px;
 }
@@ -160,6 +161,25 @@
   font-weight: 600;
 }
 
+.loader-icon {
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.link-icon {
+  width: 14px;
+  height: 14px;
+}
+
 .loader-pill {
   display: flex;
   align-items: center;
@@ -172,7 +192,7 @@
 
 .loader-fabric {
   background: var(--vp-c-warning-soft);
-  color: #8A7B71;
+  color: #8a7b71;
 }
 
 .loader-forge {
@@ -209,7 +229,6 @@
   background: var(--link-bg);
   border-radius: 10px;
   color: var(--text-dark);
-  text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -218,6 +237,12 @@
   background: var(--link-bg-hover);
   color: var(--brand-primary);
   transform: translateX(4px);
+}
+
+.external-icon {
+  font-size: 0.9rem;
+  margin-left: auto;
+  opacity: 0.5;
 }
 
 .status-tag {
@@ -235,6 +260,11 @@
   background: var(--vp-c-tip-soft);
   color: var(--vp-c-tip-1);
   border: none;
+}
+
+.status-tag.stopped {
+  background: #ff4d4f;
+  color: white;
 }
 
 @media (max-width: 960px) {

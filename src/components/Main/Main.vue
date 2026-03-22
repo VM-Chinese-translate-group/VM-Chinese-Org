@@ -14,12 +14,12 @@
         <div class="action-buttons">
           <RouterLink to="/modpacks" class="primary-btn">
             {{ $t('main.modpackBtn') }}
-            <Icon icon="fluent:arrow-right-48-filled" class="btn-icon" />
+            <Icon icon="lucide:arrow-right" class="btn-icon" />
           </RouterLink>
 
           <RouterLink to="/map" class="primary-btn">
             {{ $t('main.mapBtn') }}
-            <Icon icon="fluent:arrow-right-48-filled" class="btn-icon" />
+            <Icon icon="lucide:map" class="btn-icon" />
           </RouterLink>
         </div>
       </div>
