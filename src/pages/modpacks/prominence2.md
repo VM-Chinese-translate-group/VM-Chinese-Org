@@ -41,7 +41,7 @@ links:
 ![图片 =500x](https://github.com/nvb-uy/cdn/blob/f70cba5260e5a833994bc0d849025df91893f26e/desc/prominence/rpg/promlogo.webp?raw=true)
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/prominence2', quarkLink: 'https://pan.quark.cn/s/29e3994b9d1d' },,
+  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/prominence2', quarkLink: 'https://pan.quark.cn/s/29e3994b9d1d' },
   { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/prominence2' }
 ]" />
 

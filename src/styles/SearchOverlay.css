@@ -1,11 +1,21 @@
 @import './variables.css';
 
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.2;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .search-fade-enter-active,
 .search-fade-leave-active {
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
 }
+
 .search-fade-enter-from,
 .search-fade-leave-to {
   opacity: 0;
@@ -44,8 +54,7 @@
 }
 
 .search-icon {
-  width: 20px;
-  height: 20px;
+  font-size: 1.25rem;
   color: var(--text-muted);
 }
 
@@ -111,8 +120,9 @@
 }
 
 .result-arrow {
+  font-size: 1.2rem;
+  opacity: 0.5;
   color: var(--brand-primary);
-  opacity: 0;
   transform: translateX(-5px);
   transition: all 0.2s ease;
 }
@@ -126,6 +136,7 @@
 .search-empty {
   padding: 4rem 1rem;
   text-align: center;
+  margin: 0;
   color: var(--text-muted);
 }
 

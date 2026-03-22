@@ -40,11 +40,12 @@ export function searchIndexPlugin() {
         route = route.startsWith('/') ? route : '/' + route
 
         const textRaw = body
-          .replace(/<[^>]+>/g, '') // 去 HTML
+          .replace(/```[\s\S]*?```/g, '') // 去代码块（防止误伤代码里的链接）
           .replace(/:::[\s\S]*?:::/g, '') // 去 Container
-          .replace(/```[\s\S]*?```/g, '') // 去代码块
-          .replace(/[#*`>_\-]/g, '') // 去 MD 符号
-          .replace(/\s+/g, ' ')
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // 将 [文字](链接) 替换为 "文字"
+          .replace(/<[^>]+>/g, '') // 去 HTML
+          .replace(/[#*`>_\-]/g, '') // 去掉剩余的 MD 符号
+          .replace(/\s+/g, ' ') // 合并多余空格
           .trim()
           .slice(0, 500)
 

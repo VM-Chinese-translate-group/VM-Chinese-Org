@@ -1,6 +1,8 @@
 @import './variables.css';
 
-.author-name, .link-pill, .btn-download-main {
+.author-name,
+.link-pill,
+.btn-download-main {
   text-decoration: none !important;
 }
 
@@ -76,13 +78,13 @@
 .author-name {
   color: var(--text-dark);
   font-weight: 600;
-  text-decoration-color: var(--switcher-border);
 }
 
 .btn-download-main {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 0.85rem 1.8rem;
   background: var(--btn-primary-bg);
   color: #ffffff;
@@ -91,7 +93,6 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: all 0.25s ease;
-  text-decoration: none;
 }
 
 .btn-download-main:hover {
@@ -172,7 +173,7 @@
 
 .loader-fabric {
   background: var(--vp-c-warning-soft);
-  color: #8A7B71;
+  color: #8a7b71;
 }
 
 .loader-forge {
@@ -209,7 +210,6 @@
   background: var(--link-bg);
   border-radius: 10px;
   color: var(--text-dark);
-  text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -218,6 +218,12 @@
   background: var(--link-bg-hover);
   color: var(--brand-primary);
   transform: translateX(4px);
+}
+
+.external-icon {
+  font-size: 0.9rem;
+  margin-left: auto;
+  opacity: 0.5;
 }
 
 .status-tag {

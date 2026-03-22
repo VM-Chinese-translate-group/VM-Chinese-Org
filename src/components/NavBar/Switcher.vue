@@ -2,8 +2,8 @@
   <div class="switcher-container">
     <div class="switcher">
       <div class="language-display" @click="toggleDropdown">
-        <Icon icon="fluent-mdl2:locale-language" class="icon" />
-        <span class="dropdown-arrow" :class="{ rotate: dropdownOpen }"> &#9660; </span>
+        <Icon icon="lucide:languages" class="icon" />
+        <Icon icon="lucide:chevron-down" class="dropdown-arrow" :class="{ rotate: dropdownOpen }" />
       </div>
 
       <ul v-if="dropdownOpen" class="language-dropdown">
@@ -20,7 +20,7 @@
     </div>
 
     <button @click="toggleTheme" class="theme-toggle-btn">
-      <Icon :icon="isDark ? 'solar:sun-bold' : 'solar:moon-bold'" />
+      <Icon :icon="isDark ? 'lucide:sun' : 'lucide:moon'" />
     </button>
   </div>
 </template>
@@ -31,7 +31,6 @@ import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 
 const { locale } = useI18n()
-
 const dropdownOpen = ref(false)
 const isDark = ref(false)
 
@@ -44,13 +43,11 @@ const availableLanguages = [
 const toggleDropdown = () => {
   dropdownOpen.value = !dropdownOpen.value
 }
-
 const selectLanguage = (langCode: string) => {
   locale.value = langCode
   localStorage.setItem('locale', langCode)
   dropdownOpen.value = false
 }
-
 const toggleTheme = () => {
   isDark.value = !isDark.value
   updateTheme()
@@ -58,19 +55,13 @@ const toggleTheme = () => {
 
 const updateTheme = () => {
   const html = document.documentElement
-  if (isDark.value) {
-    html.classList.add('dark')
-    localStorage.setItem('theme', 'dark')
-  } else {
-    html.classList.remove('dark')
-    localStorage.setItem('theme', 'light')
-  }
+  html.classList.toggle('dark', isDark.value)
+  localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
 }
 
 onMounted(() => {
   const savedTheme = localStorage.getItem('theme')
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-
   if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
     isDark.value = true
     updateTheme()

@@ -23,19 +23,19 @@
 
           <div class="author-row" v-if="meta.authors">
             <span class="by-text">by</span>
-            <span class="author-name" v-for="author in meta.authors" :key="author">{{
-              author
-            }}</span>
+            <span class="author-name" v-for="author in meta.authors" :key="author">
+              {{ author }}
+            </span>
           </div>
         </div>
 
         <div class="download-button-wrapper">
           <a href="#download-section" class="btn-download-main" @click.prevent="scrollToDownload">
-            <Icon icon="mdi:download" />
+            <Icon icon="lucide:download" />
             {{ t('pack.downloadPatch') }}
           </a>
           <span class="update-date" v-if="meta.updateDate">
-            <Icon icon="mdi:clock-outline" />
+            <Icon icon="lucide:calendar-clock" />
             {{ t('pack.updateDate', { date: meta.updateDate }) }}
           </span>
         </div>
@@ -62,7 +62,7 @@
 
           <div class="info-item" v-if="meta.compatibility?.loader">
             <div class="info-label">
-              <Icon icon="mdi:engine" />
+              <Icon icon="lucide:layers" />
               {{ t('pack.loader') }}
             </div>
             <div class="info-value">
@@ -79,7 +79,7 @@
 
           <div class="info-item" v-if="meta.compatibility?.pack">
             <div class="info-label">
-              <Icon icon="mdi:tag-outline" />
+              <Icon icon="lucide:tag" />
               {{ t('pack.packVersion') }}
             </div>
             <div class="info-value">{{ meta.compatibility.pack }}</div>
@@ -98,7 +98,7 @@
             >
               <img v-if="getIcon(item.id)" v-lazy="getIcon(item.id)" class="pill-icon" />
               <span>{{ item.text }}</span>
-              <Icon icon="mdi:open-in-new" class="external-icon" />
+              <Icon icon="lucide:external-link" class="external-icon" />
             </a>
           </div>
         </div>
@@ -109,8 +109,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch, nextTick } from 'vue'
-import { convertMarkdownContainers } from '@/utils/zhconv'
+import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
+import { convertMarkdownContainers } from '@/utils/zhconv'
 
 const props = defineProps({
   meta: { type: Object, default: () => ({}) },
@@ -133,11 +134,8 @@ watch(
 )
 watch(locale, () => handleConvert())
 
-interface IconMap {
-  [key: string]: string
-}
-
-const iconMap: IconMap = {
+// 图标映射
+const iconMap: Record<string, string> = {
   bilibili: '/imgs/svg/bilibili.svg',
   curseforge: '/imgs/svg/curseforge.svg',
   github: '/imgs/svg/github.svg',
@@ -145,7 +143,7 @@ const iconMap: IconMap = {
   modrinth: '/imgs/svg/modrinth.svg',
 }
 
-const loaderIconMap: IconMap = {
+const loaderIconMap: Record<string, string> = {
   neoforge: '/imgs/svg/neoforge.svg',
   fabric: '/imgs/svg/fabric.svg',
   forge: '/imgs/svg/forge.svg',
@@ -156,6 +154,7 @@ const getIcon = (id: string) => iconMap[id?.toLowerCase()]
 const getLoaderIcon = (loader: string) => loaderIconMap[loader?.toLowerCase()]
 const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
 const getLoaderClass = (loader: string) => `loader-${loader?.toLowerCase()}`
+
 const scrollToDownload = () => {
   const el = document.getElementById('download-section')
   if (el) el.scrollIntoView({ behavior: 'smooth' })
