@@ -106,7 +106,6 @@
   /* ===========================
      Search Component
      =========================== */
-  --search-bg: var(--bg-white);
   --search-overlay: rgba(0, 0, 0, 0.4);
   --search-border: var(--switcher-border);
   --search-input-text: var(--text-dark);
@@ -195,7 +194,7 @@
   /* ===========================
     Search Component
     =========================== */
-  --search-bg: var(--bg-off-white);
+  --bg-white: var(--bg-off-white);
   --search-overlay: rgba(0, 0, 0, 0.7);
   --search-border: #3e3e41;
   --search-input-text: var(--text-dark);

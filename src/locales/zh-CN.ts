@@ -1,6 +1,7 @@
 export default {
   navbar: {
     title: 'VM汉化组',
+    appearance: '外观切换',
     modpack: '整合包汉化',
     map: '地图汉化',
     community: '加入社区',

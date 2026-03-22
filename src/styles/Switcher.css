@@ -3,86 +3,185 @@
 .switcher-container {
   display: flex;
   align-items: center;
-  gap: 15px;
+  height: 100%;
 }
 
-.switcher {
-  user-select: none;
+.switcher-group {
   position: relative;
-  display: inline-block;
-  color: var(--text-dark);
-}
-
-.theme-toggle-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.4rem;
+  height: 100%;
   display: flex;
   align-items: center;
-  color: var(--text-dark);
-  transition: transform 0.3s ease;
 }
 
-.theme-toggle-btn:hover {
-  transform: scale(1.1);
-}
-
-.language-display {
+.language-trigger {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 100%;
   cursor: pointer;
-  padding: 6px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  color: var(--nav-text);
+  transition: background-color 0.2s;
 }
 
-.language-display:hover {
-  background-color: var(--switcher-hover);
+.language-trigger:hover {
+  background-color: var(--bg-white);
 }
 
-.language-display .icon {
-  font-size: 1.2rem;
+.current-lang-name {
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .dropdown-arrow {
-  margin-left: 4px;
-  font-size: 0.7rem;
-  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+  transition: transform 0.3s;
 }
 
-.dropdown-arrow.rotate {
+.is-open .dropdown-arrow {
   transform: rotate(180deg);
 }
 
 .language-dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
-  background-color: var(--bg-white);
-  border: 1px solid var(--switcher-border);
-  border-radius: 4px;
+  right: 0;
+  min-width: 160px;
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-shadow);
+  border-top: none;
+  box-shadow: 0 4px 12px var(--nav-shadow);
   list-style: none;
-  padding: 5px 0;
-  margin: 5px 0 0 0;
-  box-shadow: var(--switcher-shadow);
-  min-width: 110px;
-  z-index: 1000;
+  padding: 8px 0;
+  margin: 0;
+  z-index: 100;
+  display: none;
+}
+
+.is-open .language-dropdown {
+  display: block;
 }
 
 .dropdown-item {
-  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.2s;
-  color: var(--text-dark);
+  font-size: 0.9rem;
+  color: var(--nav-text);
 }
 
 .dropdown-item:hover {
-  background-color: var(--switcher-item-hover);
+  background-color: var(--bg-white);
+  color: var(--nav-primary);
 }
 
 .dropdown-item.active {
-  background-color: var(--switcher-item-active);
-  font-weight: bold;
+  color: var(--nav-primary);
+  font-weight: 600;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  padding: 0 12px;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--nav-text);
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--bg-white);
+}
+
+.icon-wrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sun-icon,
+.moon-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.moon-icon {
+  opacity: 0;
+  transform: scale(0) rotate(-90deg);
+}
+
+.is-dark {
+  transform: rotate(360deg);
+}
+
+.is-dark .sun-icon {
+  opacity: 0;
+  transform: scale(0) rotate(90deg);
+}
+
+.is-dark .moon-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .switcher-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .switcher-group {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .language-trigger {
+    width: 100%;
+    padding: 12px 0;
+    justify-content: space-between;
+  }
+
+  .language-dropdown {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    display: none;
+  }
+
+  .is-open .language-dropdown {
+    display: block;
+  }
+
+  .dropdown-item {
+    padding: 12px 16px;
+    border-left: 2px solid var(--bg-white);
+  }
+
+  .theme-toggle-btn {
+    width: 100%;
+    padding: 12px 0;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .mobile-label {
+    display: inline;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
 }
