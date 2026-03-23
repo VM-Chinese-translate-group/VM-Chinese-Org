@@ -38,7 +38,7 @@ const getMdRoutes = () => {
     .map(f => `/${f.replace(/\.md$/, '').replace(/index$/, '')}`)
 }
 
-export default defineConfig(({ command }) => ({
+export default defineConfig({
   define: {
     'import.meta.env.VITE_GIT_COMMIT': JSON.stringify(getGitCommitHash()),
     'import.meta.env.VITE_GIT_BRANCH': JSON.stringify(getGitBranch()),
@@ -130,7 +130,7 @@ export default defineConfig(({ command }) => ({
     }),
 
     Components({
-      dirs: ['src/components'],
+      dirs: ['src/components', 'src/layout'], 
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.md$/],
       dts: false,
@@ -165,4 +165,4 @@ export default defineConfig(({ command }) => ({
       },
     },
   },
-}))
+})
