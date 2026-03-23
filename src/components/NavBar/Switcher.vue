@@ -1,8 +1,8 @@
 <template>
-  <div class="switcher-container">
+  <div class="switcher-container" @mousedown.prevent>
     <div class="switcher-group" :class="{ 'is-open': dropdownOpen }">
       <div class="language-trigger" @click.stop="toggleDropdown">
-        <Icon icon="lucide:languages" class="icon" />
+        <Icon icon="lucide:languages" class="icon-main" />
         <span class="current-lang-name">{{ currentLangName }}</span>
         <Icon icon="lucide:chevron-down" class="dropdown-arrow" />
       </div>
@@ -11,7 +11,7 @@
         <li
           v-for="lang in availableLanguages"
           :key="lang.code"
-          @click="selectLanguage(lang.code)"
+          @click.stop="selectLanguage(lang.code)"
           class="dropdown-item"
           :class="{ active: locale === lang.code }"
         >
