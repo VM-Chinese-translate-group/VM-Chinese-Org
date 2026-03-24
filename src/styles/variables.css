@@ -34,7 +34,7 @@
   /* ===========================
      Footer
      =========================== */
-  --footer-bg-gradient: linear-gradient(to bottom, #eef1f7 0%, #e8f5e9 100%);
+  --footer-bg-gradient: linear-gradient(to bottom, #eef1f7 0%, #cee2da 100%);
   --footer-link-hover: #007bff;
   --footer-underline-gradient: linear-gradient(90deg, #007bff, #00d4ff);
 
@@ -153,7 +153,7 @@
   --nav-hover-bg: rgba(255, 255, 255, 0.1);
 
   /* --- Footer --- */
-  --footer-bg-gradient: linear-gradient(to bottom, #1e1e20 0%, #151518 100%);
+  --footer-bg-gradient: linear-gradient(to bottom, #101813 0%, #17261c 100%);
   --footer-link-hover: #4f8cff;
 
   /* --- Info Section --- */

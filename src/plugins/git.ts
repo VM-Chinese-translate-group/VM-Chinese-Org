@@ -114,3 +114,24 @@ export function getGitCommitHash() {
     return 'unknown'
   }
 }
+
+export function getGitCommitDate() {
+  try {
+    return execSync('git log -1 --format=%cd --date=format:"%Y%m%d_%H%M%S"', {
+      stdio: ['ignore', 'pipe', 'ignore'],
+    })
+      .toString()
+      .trim()
+  } catch {
+    const now = new Date()
+    return (
+      now.getFullYear() +
+      String(now.getMonth() + 1).padStart(2, '0') +
+      String(now.getDate()).padStart(2, '0') +
+      '_' +
+      String(now.getHours()).padStart(2, '0') +
+      String(now.getMinutes()).padStart(2, '0') +
+      String(now.getSeconds()).padStart(2, '0')
+    )
+  }
+}

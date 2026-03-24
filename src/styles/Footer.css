@@ -29,9 +29,8 @@
 }
 
 .logo-icon {
-  width: 8rem;
-  height: 8rem;
-  margin-bottom: 0.5rem;
+  width: 10rem;
+  height: 10rem;
 }
 
 .footer-text {
@@ -88,10 +87,21 @@
   width: 100%;
 }
 
-.bottom-note {
+.bottom-note,
+.build-date {
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-medium);
+}
+
+.build-info {
+  margin-bottom: 2px;
+}
+
+.copyright {
+  max-width: 300px;
+  word-wrap: break-word;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -103,5 +113,9 @@
   .links-section {
     justify-content: center;
     gap: 2rem;
+  }
+
+  .copyright {
+    max-width: 200px;
   }
 }

@@ -18,7 +18,7 @@ import Shiki from '@shikijs/markdown-it'
 
 import Card from './src/components/Card/card.js'
 
-import { getGitBranch, getGitCommitHash, getGitEnv } from './src/plugins/git'
+import { getGitBranch, getGitCommitHash, getGitEnv, getGitCommitDate } from './src/plugins/git'
 import { resourcesPlugin } from './src/plugins/resourcesList'
 import { searchIndexPlugin } from './src/plugins/searchIndex'
 
@@ -43,6 +43,7 @@ export default defineConfig(({ command }) => ({
     'import.meta.env.VITE_GIT_COMMIT': JSON.stringify(getGitCommitHash()),
     'import.meta.env.VITE_GIT_BRANCH': JSON.stringify(getGitBranch()),
     'import.meta.env.VITE_GIT_REPO': JSON.stringify(repoPath),
+    'import.meta.env.VITE_GIT_DATE': JSON.stringify(getGitCommitDate()),
   },
 
   resolve: {
