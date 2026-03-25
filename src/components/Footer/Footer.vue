@@ -4,14 +4,18 @@
       <div class="logo-section">
         <img class="logo-icon" v-lazy="'/imgs/logo/logo_long.png'" />
         <p class="copyright">{{ $t('footer.copyright') }}</p>
-        <p class="build-info">
-          {{ $t('footer.buildInfo', { branch: branchName }) }}@<a
-            :href="`https://github.com/${repoPath}/commit/${commitId}`"
-            target="_blank"
-            class="commit-link"
-            >{{ commitId }}</a
-          >
-        </p>
+
+        <div class="build-info-container">
+          <p class="build-info">
+            {{ $t('footer.buildInfo', { branch: branchName }) }}@<a
+              :href="`https://github.com/${repoPath}/commit/${commitId}`"
+              target="_blank"
+              class="commit-link"
+              >{{ commitId }}</a
+            >
+          </p>
+          <p class="build-date">{{ commitDate }}</p>
+        </div>
       </div>
 
       <div class="links-section">
@@ -72,6 +76,7 @@ import { useI18n } from 'vue-i18n'
 const commitId = import.meta.env.VITE_GIT_COMMIT
 const branchName = import.meta.env.VITE_GIT_BRANCH
 const repoPath = import.meta.env.VITE_GIT_REPO
+const commitDate = import.meta.env.VITE_GIT_DATE
 
 useI18n()
 </script>
