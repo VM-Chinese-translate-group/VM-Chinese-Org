@@ -37,7 +37,7 @@
   width: 640px;
   max-width: 95%;
   max-height: 70vh;
-  background: var(--search-bg);
+  background: var(--bg-white);
   border-radius: 12px;
   box-shadow: var(--card-shadow);
   border: 1px solid var(--search-border);

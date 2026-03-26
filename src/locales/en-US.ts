@@ -1,10 +1,11 @@
 export default {
   navbar: {
     title: 'VM Translation Group',
+    appearance: 'Appearance',
     modpack: 'Modpacks',
     map: 'Maps',
     community: 'Join Community',
-    supportUs: 'Support Us',
+    supportUs: 'Donate',
     tools: 'Translation Tools',
     rule: 'Translation Guidelines',
   },
