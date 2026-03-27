@@ -5,7 +5,6 @@ description: |
   重生之夜通过全面革新Minecraft及其模组，重现了初次探索Minecraft时的兴奋感，并加入了动态世界、复杂战斗和丰富的背景故事，让每一次冒险都充满新鲜感和挑战。
 updateDate: 2022年10月22日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

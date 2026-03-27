@@ -5,7 +5,6 @@ description: |
   SkyFactory® 5：创意的重塑，迎来第五次飞跃！
 updateDate: 2025年8月20日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

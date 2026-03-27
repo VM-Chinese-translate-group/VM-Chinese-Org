@@ -5,7 +5,6 @@ description: |
   这个包不是以往的mod开局，而是采用蜜蜂来获得在空岛中你需要的资源，你得到你的第一只蜜蜂后你就需要繁殖它们以此获得所有的蜜蜂。一些配方变得更加困难，更具有挑战性。
 updateDate: 2022年10月2日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

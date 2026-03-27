@@ -5,7 +5,6 @@ description: |
   FTB建筑师天堂2延续了前代的传统，与近期以科技导向、目标明确的空岛包形成鲜明对比。FTB自豪地呈现了一个美丽、自由与宏伟的小型整合包。
 updateDate: 2024年4月27日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: forge

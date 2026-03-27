@@ -5,7 +5,6 @@ description: |
   Integrated MC 是地牢建筑统合（IDAS）系列模组的官方整合包，专注于打造最出色的探索体验。
 updateDate: 2026年2月1日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: forge

@@ -5,7 +5,6 @@ description: |
   Tales of Glarthford 是一张1.19.4版本的冒险地图
 updateDate: 2026年3月21日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: vanilla

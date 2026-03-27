@@ -68,6 +68,10 @@ export default {
     minecraftVersion: 'Minecraft 版本',
     loader: '載入器',
     packVersion: '適配版本',
+    status: {
+      maintaining: '維護中',
+      stopped: '停止維護',
+    },
     authorsTitle: '作者',
     relatedLinks: '相關連結',
   },

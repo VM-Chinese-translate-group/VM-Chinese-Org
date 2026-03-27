@@ -5,7 +5,6 @@ description: |
   类魂系列的RPG整合包，还有独特的任务系统！
 updateDate: 2025年3月20日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

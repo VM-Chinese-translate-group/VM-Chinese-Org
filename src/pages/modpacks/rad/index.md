@@ -6,7 +6,6 @@ description: |
   那么这个整合包就是为你准备的。它完全专注于冒险和探索，战利品和战斗。
 updateDate: 2025年4月26日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: forge

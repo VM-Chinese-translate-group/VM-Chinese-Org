@@ -5,7 +5,6 @@ description: |
   受《泰拉瑞亚》深度启发，体验一套独特的成长系统：击败Boss以解锁新的矿物、新的怪物，甚至是新的NPC！
 updateDate: 待定
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: forge

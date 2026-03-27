@@ -6,7 +6,6 @@ description: |
   在这里，数百小时的内容等待你探索，热门模组与定制内容深度融合，助你直达星辰大海。
 updateDate: 2026年3月21日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: neoforge

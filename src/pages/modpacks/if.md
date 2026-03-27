@@ -6,7 +6,6 @@ description: |
   列如：终极炼金和星辰工厂，在这个意义上，你被授予无限的特定资源。
 updateDate: 2023年5月20日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

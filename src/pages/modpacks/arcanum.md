@@ -6,7 +6,6 @@ description: |
   在这个濒临毁灭的世界中，体验冒险、神秘与发现的完美融合。古老的力量在召唤，魔法领域的命运岌岌可危，而这一切，都掌握在一名充满热情的学生手中。
 updateDate: 2024年9月6日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: forge

@@ -5,7 +5,6 @@ description: |
   幻想领域是一个注重质量的RPG冒险和探索整合包！
 updateDate: 2023年10月5日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

@@ -5,7 +5,6 @@ description: |
   这只是一个 Minecraft 1.20.1 整合包而已，但它的主题是科幻，还有魔法！
 updateDate: 2025年9月20日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

@@ -5,7 +5,6 @@ description: |
   🔥 全面强化的整合包，战斗、探索、魔法与科技的完美平衡，还有丰富的自定义内容！
 updateDate: 2025年9月14日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: fabric

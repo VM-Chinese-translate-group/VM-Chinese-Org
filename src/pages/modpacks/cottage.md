@@ -6,7 +6,6 @@ description: |
   还扩展了烹饪、手工艺和装饰的技艺——当然，还有魔法。它通过改造生物群落和野生动物，增强了你冒险所处的自然世界。
 updateDate: 2024年8月31日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

@@ -5,7 +5,6 @@ description: |
   人人都想要的中世纪奇幻RPG冒险与探索整合包！
 updateDate: 2023年9月1日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: fabric

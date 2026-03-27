@@ -6,7 +6,6 @@ description: |
   便是在这片似真似幻的空间中心，亲手建造属于你的自动化工厂。
 updateDate: 2026年1月1日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: forge

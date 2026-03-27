@@ -6,7 +6,6 @@ description: |
   这款整合包融合了科技与幻想的精华，以极致的自由度鼓励玩家在多个领域中施展创意、磨砺技艺。
 updateDate: 待定
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: neoforge

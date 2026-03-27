@@ -5,7 +5,6 @@ description: |
   贝维尔是完美的角色扮演地图。参与工作，然后买房子，汽车，食物（甚至还有一些定制食品）等等。还包含120多座独特的建筑和5个城镇/村庄。
 updateDate: 2023年8月28日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: vanilla

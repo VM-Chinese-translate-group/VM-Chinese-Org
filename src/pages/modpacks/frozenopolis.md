@@ -5,7 +5,6 @@ description: |
   冰雪之域是一个以冰雪为主题的整合包。世界变成了一个冬季仙境，充满了冰冻的生物群落、冰冻的湖泊和具有挑战性的生物。
 updateDate: 2025年3月16日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

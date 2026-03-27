@@ -5,7 +5,6 @@ description: |
   欢迎来到科技城3——一个以科技为核心、囊括顶级科技模组的整合包。
 updateDate: 2026年3月15日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: neoforge

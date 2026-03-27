@@ -5,7 +5,6 @@ description: |
   太阳守卫者2：搁浅是一张融合了艾尔登法环以及马里奥高尔夫：家庭巡回赛精髓的CTM地图。
 updateDate: 2025年5月15日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: vanilla

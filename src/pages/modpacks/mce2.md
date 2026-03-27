@@ -5,7 +5,6 @@ description: |
   在永恒的 MC 中，你将踏上一段充满惊奇™的冒险之旅：魔法、科技、任务、战斗、首领、自动化、探索——还有那些依然能用大炮发射奶酪的老鼠？
 updateDate: 待定
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: forge

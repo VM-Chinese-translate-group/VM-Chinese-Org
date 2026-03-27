@@ -6,7 +6,6 @@ description: |
   玩家可以发展自己的天赋和能力，同时努力实现收集所有25件独特文物以解锁最终挑战的目标！你有能力吗？
 updateDate: 2025年12月25日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: forge
