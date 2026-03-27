@@ -39,8 +39,7 @@ export function resourcesPlugin() {
 
         // 1. 提取状态（仅保留 type，文本在前端按 i18n 动态生成）
         const statusBlock = yamlRaw.match(/status:\s*\n([\s\S]*?)(?=\n\S|$)/)?.[1] || ''
-        const statusType =
-          statusBlock.match(/^\s*type:\s*['"]?([^'"\n]+)['"]?/m)?.[1]?.trim() || ''
+        const statusType = statusBlock.match(/^\s*type:\s*['"]?([^'"\n]+)['"]?/m)?.[1]?.trim() || ''
 
         // 2. 提取版本信息
         const mcVersion = yamlRaw.match(/minecraft:\s*['"]?([^'"\n]+)['"]?/)?.[1] || ''
