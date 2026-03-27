@@ -6,7 +6,6 @@ description: |
   你被困在一家公路边的咖啡馆中，外面正下着暴雪。探索环境，寻找钥匙、阅读笔记、搬动箱子。每走一步，这家咖啡馆就变得越来越不真实……
 updateDate: 2025年5月21日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: vanilla

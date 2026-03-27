@@ -5,7 +5,6 @@ description: |
   Submerged 2 将你带入一个绝美的、完全自定义的水下世界。这里充满了全新的挑战、独特的地形和重重惊喜。
 updateDate: 待定
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: neoforge

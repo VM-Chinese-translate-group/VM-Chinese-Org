@@ -5,7 +5,6 @@ description: |
   神界陨落是一个史诗般规模的CTM类地图，是高版本CTM类地图的奠基之作。你已经战胜了众神的残酷，征服了泰坦的领域……人类的时代已经来临，你准备好面对神界陨落了吗？
 updateDate: 2024年4月27日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: vanilla

@@ -6,7 +6,6 @@ description: |
   想要重见太阳的唯一方法是通过传送门前往亚尔夫海姆维度。为了更好的沉浸感，作者修改了大量的合成表和材质，会有一本任务书指导你
 updateDate: 2022年9月19日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

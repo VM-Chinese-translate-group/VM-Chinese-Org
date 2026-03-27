@@ -5,7 +5,6 @@ description: |
   耕种、烹饪、钓鱼收集，加上受《动物森友会》启发的创意建造玩法！
 updateDate: 2025年1月
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: neoforge

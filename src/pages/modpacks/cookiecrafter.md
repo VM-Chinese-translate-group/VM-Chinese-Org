@@ -5,7 +5,6 @@ description: |
   这是一款颠覆经典空岛主题的整合包，将带你踏上一场甜蜜的饼干制作艺术之旅。通过“机械动力”模组，你可以亲手打造专属的饼干工厂！
 updateDate: 2025年7月23日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

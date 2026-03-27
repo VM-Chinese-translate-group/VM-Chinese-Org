@@ -5,7 +5,6 @@ description: |
   本整合包旨在融合机械动力与通用机械。玩家将从零开始，逐步实现游戏核心部分的自动化生产，最终突破太阳系的束缚，
 updateDate: 2025年6月22日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

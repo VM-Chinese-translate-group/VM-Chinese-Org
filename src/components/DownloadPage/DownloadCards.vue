@@ -61,7 +61,7 @@
 
               <div class="card-footer">
                 <div class="tag-group">
-                  <span v-if="mod.status?.text" :class="['status-badge', mod.status.type]">
+                  <span v-if="mod.status?.type" :class="['status-badge', mod.status.type]">
                     {{ mod.displayStatus }}
                   </span>
 
@@ -127,7 +127,7 @@ export interface ModCard {
   description?: string
   link?: string
   displayDate?: string
-  status?: { text: string; type: string }
+  status?: { type: string }
   versions?: { mc: string; pack: string }
 }
 
@@ -135,7 +135,7 @@ const props = defineProps<{
   mods: ModCard[]
 }>()
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const currentLocale = computed(() => locale.value)
 
 const searchQuery = ref('')
@@ -145,6 +145,11 @@ const pageSizeOptions = [6, 12, 18]
 
 const searchIndexTW = ref<Record<string, { name: string; desc: string }>>({})
 const convertedDisplayData = ref<Record<string, { name: string; desc: string; status: string }>>({})
+
+const getStatusText = (statusType?: string) => {
+  if (!statusType) return ''
+  return t(`pack.status.${statusType}`)
+}
 
 async function initSearchIndex() {
   for (const mod of props.mods) {
@@ -163,13 +168,12 @@ async function refreshDisplayTranslations() {
   const targetLocale = currentLocale.value
 
   const tasks = paginatedMods.value.map(async (mod) => {
-    const [name, desc, status] = await Promise.all([
+    const [name, desc] = await Promise.all([
       convertInlineText(mod.name, targetLocale),
       convertInlineText(mod.description || '', targetLocale),
-      convertInlineText(mod.status?.text || '', targetLocale),
     ])
 
-    return { id: mod.name, name, desc, status }
+    return { id: mod.name, name, desc, status: getStatusText(mod.status?.type) }
   })
 
   const results = await Promise.all(tasks)
@@ -217,7 +221,7 @@ const displayMods = computed(() =>
     ...mod,
     displayName: convertedDisplayData.value[mod.name]?.name || mod.name,
     displayDesc: convertedDisplayData.value[mod.name]?.desc || mod.description,
-    displayStatus: convertedDisplayData.value[mod.name]?.status || mod.status?.text,
+    displayStatus: convertedDisplayData.value[mod.name]?.status || getStatusText(mod.status?.type),
   })),
 )
 

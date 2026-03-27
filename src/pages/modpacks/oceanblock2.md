@@ -6,7 +6,6 @@ description: |
   发现遍布无尽海洋的定制建筑。深入探索将你困在这颗星球上的黑暗传说。击败深渊中的怪物，找到回家的路！
 updateDate: 2026年2月16日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: neoforge

@@ -5,7 +5,6 @@ description: |
   准备好迎接一场宏大的冒险，去挑战一个更为可怕的敌人吧。
 updateDate: 2025年6月21日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

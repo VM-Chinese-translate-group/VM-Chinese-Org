@@ -5,7 +5,6 @@ description: |
   这个整合包为各种各样的玩家提供了机会。新玩家将一直受到任务的帮助，而高玩将面临大量魔改合成表和机制的挑战。
 updateDate: 2023年9月28日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

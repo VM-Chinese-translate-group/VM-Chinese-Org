@@ -5,7 +5,6 @@ description: |
   一款使用枪械战斗的世界探索冒险包，以12种不同的末影之眼为目标，探索不同维度，推动剧情的发展。
 updateDate: 2024年10月2日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

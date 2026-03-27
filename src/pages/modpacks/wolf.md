@@ -6,7 +6,6 @@ description: |
   现在，1.19 版本来袭，游戏变得更棒了！
 updateDate: 2024年8月18日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

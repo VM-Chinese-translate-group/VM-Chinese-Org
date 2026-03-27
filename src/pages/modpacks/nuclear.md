@@ -5,7 +5,6 @@ description: |
   探索广阔无垠的核荒地……或者深入地下，探险充满未知的洞穴系统……但要小心，那些在核毁灭后出现的怪物！
 updateDate: 2022年9月11日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

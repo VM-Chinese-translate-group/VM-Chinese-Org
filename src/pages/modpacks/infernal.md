@@ -5,7 +5,6 @@ description: |
   这是一个极具挑战性的整合包，从MMO游戏玩法中汲取了大量灵感。这里有大量的自定义起源、具有突袭机制的 Boss 和快节奏。还有大量专门为这个包定制的内容，你在其他任何地方都找不到。
 updateDate: 2024年7月18日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

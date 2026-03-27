@@ -5,7 +5,6 @@ description: |
   灵感源自 Project Ozone。极致合成、技术、魔法与自动化！Ozone Skyblock Reborn正统续作。
 updateDate: 待定
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: neoforge

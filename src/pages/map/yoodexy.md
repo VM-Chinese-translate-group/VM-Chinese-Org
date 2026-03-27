@@ -5,7 +5,6 @@ description: |
   这是一款非对称玩法的多人恐怖地图。你将体验独特的逃生路线、爬行能力，使用监控摄像头、装饰外观，以及可以操控时间的秘密神器。你能活下来吗？
 updateDate: 2025年12月27日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: vanilla

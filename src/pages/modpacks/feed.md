@@ -6,7 +6,6 @@ description: |
   如果你想在机械动力模组中追求一个明确的终极目标，这个整合包将是你的最佳选择。
 updateDate: 2023年5月20日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

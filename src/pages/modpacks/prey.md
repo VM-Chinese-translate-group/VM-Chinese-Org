@@ -5,7 +5,6 @@ description: |
   在这个高度自定义的独特RPG整合包中，探索5个维度和19个Boss
 updateDate: 2024年5月2日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

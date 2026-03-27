@@ -5,7 +5,6 @@ description: |
   天空奥德赛是一个独特的空岛整合包。它拥有几个新的自定义模组。你的目标是打开奥德赛维度的传送门。
 updateDate: 2025年9月1日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

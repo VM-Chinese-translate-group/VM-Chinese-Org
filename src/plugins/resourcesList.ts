@@ -37,9 +37,9 @@ export function resourcesPlugin() {
           return m && m[1] ? m[1].trim().replace(/^['"]|['"]$/g, '') : ''
         }
 
-        // 1. 提取状态 (简单正则提取 text 和 type)
-        const statusText = yamlRaw.match(/status:\s*\n\s*text:\s*(.*)/)?.[1]?.trim() || ''
-        const statusType = yamlRaw.match(/status:\s*\n\s*.*?\n\s*type:\s*(.*)/)?.[1]?.trim() || ''
+        // 1. 提取状态（仅保留 type，文本在前端按 i18n 动态生成）
+        const statusBlock = yamlRaw.match(/status:\s*\n([\s\S]*?)(?=\n\S|$)/)?.[1] || ''
+        const statusType = statusBlock.match(/^\s*type:\s*['"]?([^'"\n]+)['"]?/m)?.[1]?.trim() || ''
 
         // 2. 提取版本信息
         const mcVersion = yamlRaw.match(/minecraft:\s*['"]?([^'"\n]+)['"]?/)?.[1] || ''
@@ -80,7 +80,7 @@ export function resourcesPlugin() {
           link,
           date: date.getTime(),
           displayDate: dateStr,
-          status: { text: statusText, type: statusType },
+          status: statusType ? { type: statusType } : undefined,
           versions: {
             mc: mcVersion,
             pack: packVersion,

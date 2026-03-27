@@ -6,7 +6,6 @@ description: |
   石头世界4是这款经典系列的全新篇章。它从零重制，带来你熟悉又陌生的地下生存体验。
 updateDate: 2026年3月30日
 status:
-  text: 维护中
   type: maintaining
 compatibility:
   loader: neoforge

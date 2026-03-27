@@ -5,7 +5,6 @@ description: |
   Vazkii 继 Crucial 2 后的又一力作！Bliss 是一款精心打造的和平向整合包，正如其名字一样旨在营造一种轻松舒适、幸福快乐的和平游戏模式。
 updateDate: 2022年10月11日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

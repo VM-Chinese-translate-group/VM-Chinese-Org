@@ -6,7 +6,6 @@ description: |
   你将在暮色森林、蜜蜂领域以及经典的原版维度开启一场传奇的旅途，设法复苏神秘枯萎的生命之树。记载详细的任务书将会指引你完成这场冒险！
 updateDate: 2025年2月3日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

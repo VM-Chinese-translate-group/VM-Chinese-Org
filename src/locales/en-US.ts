@@ -68,6 +68,10 @@ export default {
     minecraftVersion: 'Minecraft Version',
     loader: 'Loader',
     packVersion: 'Compatible Version',
+    status: {
+      maintaining: 'Maintaining',
+      stopped: 'No Longer Maintained',
+    },
     authorsTitle: 'Authors',
     relatedLinks: 'Related Links',
   },

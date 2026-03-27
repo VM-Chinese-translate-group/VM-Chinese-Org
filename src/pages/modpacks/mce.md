@@ -5,7 +5,6 @@ description: |
   欢迎来到永恒的安慕希！这里是麦块福特颇负盛名的水槽整合包！
 updateDate: 2023年7月1日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: forge

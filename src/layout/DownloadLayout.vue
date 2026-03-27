@@ -10,9 +10,9 @@
         <div class="pack-title-area">
           <div class="title-row">
             <h1>{{ meta.title || t('pack.defaultTitle') }}</h1>
-            <div class="pack-status-tags" v-if="meta.status">
+            <div class="pack-status-tags" v-if="meta.status?.type">
               <span :class="['status-tag', meta.status.type || 'info']">
-                {{ meta.status.text }}
+                {{ getStatusText(meta.status.type) }}
               </span>
             </div>
           </div>
@@ -157,6 +157,7 @@ const getIcon = (id: string) => iconMap[id?.toLowerCase()]
 const getLoaderIcon = (loader: string) => loaderIconMap[loader?.toLowerCase()]
 const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
 const getLoaderClass = (loader: string) => `loader-${loader?.toLowerCase()}`
+const getStatusText = (statusType: string) => t(`pack.status.${statusType}`)
 
 const scrollToDownload = () => {
   const el = document.getElementById('download-section')

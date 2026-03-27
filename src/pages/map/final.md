@@ -5,7 +5,6 @@ description: |
   最终悖论是一个可以玩超40小时的超大型CTM地图！玩家需要收集资源、合成物品，在复杂的悖论循环中找到通关的钥匙。
 updateDate: 2026年1月31日
 status:
-  text: 停止维护
   type: stopped
 compatibility:
   loader: vanilla
