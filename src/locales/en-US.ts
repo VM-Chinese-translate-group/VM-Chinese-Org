@@ -69,8 +69,8 @@ export default {
     loader: 'Loader',
     packVersion: 'Compatible Version',
     status: {
-      maintaining: 'Maintained',
-      stopped: 'Maintenance Stopped',
+      maintaining: 'Maintaining',
+      stopped: 'No Longer Maintained',
     },
     authorsTitle: 'Authors',
     relatedLinks: 'Related Links',
