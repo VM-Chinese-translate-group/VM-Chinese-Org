@@ -68,6 +68,16 @@ const keyword = ref('')
 const results = ref<any[]>([])
 const inputRef = ref<HTMLInputElement | null>(null)
 let timer: any = null
+let previousBodyOverflow = ''
+
+const lockBodyScroll = () => {
+  previousBodyOverflow = document.body.style.overflow
+  document.body.style.overflow = 'hidden'
+}
+
+const unlockBodyScroll = () => {
+  document.body.style.overflow = previousBodyOverflow
+}
 
 const currentLocale = computed(() => locale.value)
 
@@ -136,12 +146,15 @@ watch(
   () => props.visible,
   (newVal) => {
     if (newVal) {
+      lockBodyScroll()
       nextTick(() => inputRef.value?.focus())
     } else {
+      unlockBodyScroll()
       keyword.value = ''
       results.value = []
     }
   },
+  { immediate: true },
 )
 
 watch(currentLocale, () => {
@@ -153,6 +166,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  unlockBodyScroll()
   window.removeEventListener('keydown', onKeyDown)
   clearTimeout(timer)
 })
