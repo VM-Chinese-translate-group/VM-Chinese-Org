@@ -1,14 +1,7 @@
 @import './variables.css';
 
-html,
-body,
-#app {
+body {
   margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  min-height: 100%;
-  background: var(--bg-white);
 }
 
 /* 让锚点跳转时，标题下方留出空间，不被固定导航栏遮住 */
