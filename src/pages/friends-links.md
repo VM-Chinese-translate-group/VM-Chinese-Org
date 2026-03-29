@@ -2,6 +2,8 @@
 title: 友情链接
 ---
 
+<DocLayout :meta="frontmatter">
+
 ## Bilibili UP主
 
 他/她们在视频中使用了我们的汉化并录制了一系列视频，为我们做了宣传。
@@ -94,3 +96,5 @@ title: XyeBBS 论坛
 link: https://www.xyebbs.com/languages
 logo: https://www.xyebbs.com/favicon.png
 ```
+
+</DocLayout>

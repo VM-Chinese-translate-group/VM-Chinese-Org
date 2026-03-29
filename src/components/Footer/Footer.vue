@@ -23,13 +23,13 @@
           <h3 class="column-title">{{ $t('footer.about') }}</h3>
           <ul class="link-list">
             <li>
-              <a href="join" class="link">{{ $t('footer.joinUs') }}</a>
+              <a href="/join" class="link">{{ $t('footer.joinUs') }}</a>
             </li>
             <li>
-              <a href="support-us" class="link">{{ $t('footer.supportUs') }}</a>
+              <a href="/support-us" class="link">{{ $t('footer.supportUs') }}</a>
             </li>
             <li>
-              <a href="friends-links" class="link">{{ $t('footer.friendsLinks') }}</a>
+              <a href="/friends-links" class="link">{{ $t('footer.friendsLinks') }}</a>
             </li>
           </ul>
         </div>
@@ -37,10 +37,10 @@
           <h3 class="column-title">{{ $t('footer.policy') }}</h3>
           <ul class="link-list">
             <li>
-              <a href="privacy" class="link">{{ $t('footer.privacy') }}</a>
+              <a href="/privacy" class="link">{{ $t('footer.privacy') }}</a>
             </li>
             <li>
-              <a href="agreement" class="link">{{ $t('footer.agreement') }}</a>
+              <a href="/agreement" class="link">{{ $t('footer.agreement') }}</a>
             </li>
           </ul>
         </div>
@@ -48,16 +48,16 @@
           <h3 class="column-title">{{ $t('footer.products') }}</h3>
           <ul class="link-list">
             <li>
-              <a href="modpacks" class="link">{{ $t('footer.modpacks') }}</a>
+              <a href="/modpacks" class="link">{{ $t('footer.modpacks') }}</a>
             </li>
             <li>
-              <a href="map" class="link">{{ $t('footer.maps') }}</a>
+              <a href="/map" class="link">{{ $t('footer.maps') }}</a>
             </li>
             <li>
-              <a href="vmtu" class="link">{{ $t('footer.vmtu') }}</a>
+              <a href="/vmtu" class="link">{{ $t('footer.vmtu') }}</a>
             </li>
             <li>
-              <a href="tools" class="link">{{ $t('footer.tools') }}</a>
+              <a href="/tools" class="link">{{ $t('footer.tools') }}</a>
             </li>
           </ul>
         </div>

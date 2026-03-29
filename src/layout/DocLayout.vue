@@ -2,11 +2,12 @@
   <div class="doc-page-container">
     <header class="doc-header" v-if="pageTitle">
       <h1 ref="titleRef">{{ convertedPageTitle }}</h1>
+      <p v-if="pageDescription" class="doc-subtitle">{{ convertedPageDescription }}</p>
     </header>
 
     <main class="doc-main">
       <section class="doc-content markdown-body" ref="contentRef">
-        <router-view />
+        <slot />
       </section>
 
       <aside class="doc-sidebar" v-if="showSidebar">
@@ -35,17 +36,21 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers, convertInlineText } from '@/utils/zhconv'
 
-const route = useRoute()
+const props = defineProps<{
+  meta?: Record<string, any>
+}>()
+
 const { t, locale } = useI18n()
 
 const contentRef = ref<HTMLElement | null>(null)
 
-const pageTitle = computed(() => (route.meta.title as string) || '')
+const pageTitle = computed(() => (props.meta?.title as string) || '')
+const pageDescription = computed(() => (props.meta?.description as string) || '')
 const convertedPageTitle = ref('')
+const convertedPageDescription = ref('')
 
 interface Heading {
   id: string
@@ -58,15 +63,18 @@ const headers = ref<Heading[]>([])
 const activeId = ref<string>('')
 
 const showSidebar = computed(() => {
-  if (route.meta.sidebar === false) return false
+  if (props.meta?.sidebar === false) return false
   return headers.value.length > 0
 })
 
 const handleConversion = async () => {
   await nextTick()
-  await convertMarkdownContainers(locale.value)
+  if (contentRef.value) {
+    await convertMarkdownContainers(locale.value, contentRef.value)
+  }
 
   convertedPageTitle.value = await convertInlineText(pageTitle.value, locale.value)
+  convertedPageDescription.value = await convertInlineText(pageDescription.value, locale.value)
 
   await extractHeaders()
 }
@@ -130,11 +138,11 @@ const scrollToHeading = (id: string) => {
 }
 
 watch(
-  () => route.path,
+  () => props.meta,
   () => {
     handleConversion()
   },
-  { immediate: true },
+  { immediate: true, deep: true },
 )
 
 watch(locale, () => {

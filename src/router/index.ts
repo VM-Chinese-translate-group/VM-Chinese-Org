@@ -2,30 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
 import DefaultLayout from '@/layout/DefaultLayout.vue'
-import DocLayout from '@/layout/DocLayout.vue'
 import Main from '@/components/Main/Main.vue'
 import Maps from '@/pages/map.vue'
 import Modpacks from '@/pages/modpacks.vue'
 import NotFound from '@/pages/NotFound.vue'
 
 const mdModules = import.meta.glob('../pages/**/*.md', { eager: true }) as Record<string, any>
-
-const STATIC_DOCS = [
-  '/tools',
-  '/support-us',
-  '/community',
-  '/rule',
-  '/friends-links',
-  '/privacy',
-  '/agreement',
-]
-
-function isDocRoute(routePath: string): boolean {
-  if (STATIC_DOCS.includes(routePath)) return true
-  if (routePath.startsWith('/modpacks/fc5-wiki')) return true
-  if (routePath.endsWith('/secret')) return true
-  return false
-}
 
 function fileToRoutePath(file: string) {
   let p = file.replace('../pages', '').replace(/\.md$/, '')
@@ -34,8 +16,7 @@ function fileToRoutePath(file: string) {
   return p.startsWith('/') ? p : `/${p}`
 }
 
-const docRoutes: RouteRecordRaw[] = []
-const plainMdRoutes: RouteRecordRaw[] = []
+const mdRoutes: RouteRecordRaw[] = []
 
 Object.keys(mdModules).forEach((file) => {
   const module = mdModules[file]
@@ -43,18 +24,18 @@ Object.keys(mdModules).forEach((file) => {
 
   if (['/', '/modpacks', '/map'].includes(routePath)) return
 
+  const isDocLayout = routePath.startsWith('/modpacks/fc5-wiki') || routePath.endsWith('/secret')
+
   const routeRecord: RouteRecordRaw = {
     path: routePath,
     name: routePath.replace(/^\//, '').replace(/\//g, '-') || `md-${Math.random()}`,
     component: module.default,
-    meta: module.frontmatter || {},
+    meta: {
+      layout: isDocLayout ? 'doc' : 'default',
+    },
   }
 
-  if (isDocRoute(routePath)) {
-    docRoutes.push(routeRecord)
-  } else {
-    plainMdRoutes.push(routeRecord)
-  }
+  mdRoutes.push(routeRecord)
 })
 
 const routes: RouteRecordRaw[] = [
@@ -66,13 +47,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'modpacks', name: 'modpacks-list', component: Modpacks },
       { path: 'map', name: 'map-list', component: Maps },
 
-      ...plainMdRoutes,
-
-      {
-        path: '',
-        component: DocLayout,
-        children: docRoutes,
-      },
+      ...mdRoutes,
     ],
   },
 
