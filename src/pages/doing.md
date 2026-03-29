@@ -3,6 +3,9 @@ title: 正在汉化中
 description: 这是一个正在进行中的项目
 ---
 
+
+<DocLayout :meta="frontmatter">
+
 ::: info
 还没做完，我们正在招贤纳士，欢迎看一看[更多-加入我们](/join)！
 :::
@@ -18,3 +21,5 @@ description: 这是一个正在进行中的项目
 <DownloadLinks :methods="[
   { id: 'vm', text: '返回我们的主页', icon: '/imgs/logo/logo_64.png', link: '/' }
 ]" />
+
+</DocLayout>
