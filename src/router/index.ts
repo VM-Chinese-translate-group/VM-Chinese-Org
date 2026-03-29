@@ -18,29 +18,21 @@ function fileToRoutePath(file: string) {
 
 const mdRoutes: RouteRecordRaw[] = []
 
-function resolveFrontmatter(module: Record<string, any>) {
-  return (
-    module.frontmatter ||
-    module.attributes ||
-    module?.default?.frontmatter ||
-    module?.default?.__frontmatter ||
-    module?.default?.__pageData?.frontmatter ||
-    module?.default?.__vccOpts?.frontmatter ||
-    {}
-  )
-}
-
 Object.keys(mdModules).forEach((file) => {
   const module = mdModules[file]
   const routePath = fileToRoutePath(file)
 
   if (['/', '/modpacks', '/map'].includes(routePath)) return
 
+  const isDocLayout = routePath.startsWith('/modpacks/fc5-wiki') || routePath.endsWith('/secret')
+
   const routeRecord: RouteRecordRaw = {
     path: routePath,
     name: routePath.replace(/^\//, '').replace(/\//g, '-') || `md-${Math.random()}`,
     component: module.default,
-    meta: resolveFrontmatter(module),
+    meta: {
+      layout: isDocLayout ? 'doc' : 'default',
+    },
   }
 
   mdRoutes.push(routeRecord)
