@@ -1,5 +1,9 @@
 @import './variables.css';
 
+body {
+  margin: 0;
+}
+
 /* 让锚点跳转时，标题下方留出空间，不被固定导航栏遮住 */
 h1[id],
 h2[id],
