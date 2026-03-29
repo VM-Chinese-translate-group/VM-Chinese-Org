@@ -2,7 +2,6 @@
 title: 汉化准则
 ---
 
-
 <DocLayout :meta="frontmatter">
 
 为了适应VM汉化组自身翻译领域的特点与随着时间发展相关实用工具的不断出现，

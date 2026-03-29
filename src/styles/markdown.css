@@ -17,7 +17,7 @@ h4[id] {
 }
 
 .markdown-body {
-  background-color: var(--vp-c-bg-soft);
+  background-color: var(--vp-c-bg-alt);
   color: var(--vp-c-text-1);
 }
 

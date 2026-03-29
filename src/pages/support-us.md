@@ -1,7 +1,7 @@
 ---
 title: 支持我们
+sidebar: false
 ---
-
 
 <DocLayout :meta="frontmatter">
 
