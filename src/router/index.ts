@@ -14,6 +14,7 @@ const STATIC_DOCS = [
   '/tools',
   '/support-us',
   '/community',
+  '/doing',
   '/rule',
   '/friends-links',
   '/privacy',
