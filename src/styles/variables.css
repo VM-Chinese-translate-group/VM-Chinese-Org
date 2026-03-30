@@ -10,12 +10,6 @@
   --text-light: #666666;
   --text-muted: #888888;
 
-  /* ===========================
-     Hero Section
-     =========================== */
-  --hero-overlay: rgba(0, 0, 0, 0.2);
-  --hero-slogan-opacity: 0.9;
-
   /* Hero Buttons */
   --btn-primary-bg: #3451b2;
   --btn-primary-hover: #1a6ac4;

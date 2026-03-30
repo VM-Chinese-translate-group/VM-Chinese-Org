@@ -157,7 +157,9 @@
 .hamburger {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
   width: 2rem;
   height: 2rem;
   background: transparent;
@@ -168,7 +170,7 @@
 
 .hamburger .line {
   width: 1.2rem;
-  height: 2px;
+  height: 3px;
   background: var(--nav-text);
   border-radius: 10px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -176,13 +178,16 @@
 }
 
 .hamburger.is-active .line:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
+
 .hamburger.is-active .line:nth-child(2) {
   opacity: 0;
+  transform: scale(0);
 }
+
 .hamburger.is-active .line:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 @media (max-width: 860px) {
