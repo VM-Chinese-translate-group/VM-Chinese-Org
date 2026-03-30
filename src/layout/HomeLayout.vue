@@ -14,7 +14,7 @@
         <div class="action-buttons">
           <RouterLink to="/modpacks" class="primary-btn">
             {{ $t('main.modpackBtn') }}
-            <Icon icon="lucide:arrow-right" class="btn-icon" />
+            <Icon icon="lucide:package" class="btn-icon" />
           </RouterLink>
 
           <RouterLink to="/map" class="primary-btn">
@@ -50,5 +50,5 @@ const infoItems = [
 </script>
 
 <style scoped>
-@import '@/styles/Main.css';
+@import '@/styles/Home.css';
 </style>

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
 import DefaultLayout from '@/layout/DefaultLayout.vue'
-import Main from '@/components/Main/Main.vue'
+import Home from '@/layout/HomeLayout.vue'
 import Maps from '@/pages/map.vue'
 import Modpacks from '@/pages/modpacks.vue'
 import NotFound from '@/pages/NotFound.vue'
@@ -43,7 +43,7 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: DefaultLayout,
     children: [
-      { path: '', name: 'Main', component: Main },
+      { path: '', name: 'Home', component: Home },
       { path: 'modpacks', name: 'modpacks-list', component: Modpacks },
       { path: 'map', name: 'map-list', component: Maps },
 
