@@ -85,7 +85,7 @@ importers:
         specifier: 3.7.4
         version: 3.7.4
       taze:
-        specifier: ^19.11.0
+        specifier: ^19.10.0
         version: 19.11.0
       typescript:
         specifier: ^6.0.2
@@ -3384,7 +3384,7 @@ snapshots:
     dependencies:
       destr: 2.0.5
       node-fetch-native: 1.6.7
-      ufo: 1.6.1
+      ufo: 1.6.3
 
   ohash@2.0.11: {}
 
