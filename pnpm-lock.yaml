@@ -49,11 +49,11 @@ importers:
         version: 5.0.4(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2))
     devDependencies:
       '@mdit/plugin-container':
-        specifier: ^0.23.1
-        version: 0.23.1(markdown-it@14.1.1)
+        specifier: ^0.23.2
+        version: 0.23.2(markdown-it@14.1.1)
       '@mdit/plugin-img-size':
-        specifier: ^0.23.1
-        version: 0.23.1(markdown-it@14.1.1)
+        specifier: ^0.23.2
+        version: 0.23.2(markdown-it@14.1.1)
       '@shikijs/markdown-it':
         specifier: ^4.0.2
         version: 4.0.2(markdown-it-async@2.2.0)
@@ -86,7 +86,7 @@ importers:
         version: 3.7.4
       taze:
         specifier: ^19.10.0
-        version: 19.10.0
+        version: 19.11.0
       typescript:
         specifier: ^6.0.2
         version: 6.0.2
@@ -98,7 +98,7 @@ importers:
         version: 30.0.0(vite@8.0.3)
       vite:
         specifier: ^8.0.3
-        version: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2)
+        version: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.3)
       vite-plugin-compression2:
         specifier: ^2.5.3
         version: 2.5.3(rollup@4.54.0)
@@ -111,9 +111,9 @@ importers:
 
 packages:
 
-  '@antfu/ni@28.3.0':
-    resolution: {integrity: sha512-JbRijiCNAGcQcyPfV0EXOJYwV27e/srXfTvETqzbbh4jzHBV2pDYiBz8rj5SyzX27aTbCK+qXR3x6g2WKokcrA==}
-    engines: {node: '>=20'}
+  '@antfu/ni@30.0.0':
+    resolution: {integrity: sha512-DqBVB3XqXH4VsDpER7iLlEtayMC98iXrY7kwBzp1v6LGc/6U6+qnN3+X0bcPK63LMXJCRG2D/XDq7dvtKDGogg==}
+    engines: {node: '>=20.19.0'}
     hasBin: true
 
   '@babel/code-frame@7.29.0':
@@ -379,8 +379,8 @@ packages:
     resolution: {integrity: sha512-00aAZ0F0NLik6I6Yba2emGbHLxv+QYrPH00qQ5dFKXlAo1Ll2RHDXwY7nN2WAfrx2pP+WrvSRFTGFCNGdzBDHw==}
     engines: {node: '>=20.0.0'}
 
-  '@mdit/plugin-container@0.23.1':
-    resolution: {integrity: sha512-mHTp4+zvuE6uqhG6honfR6F5wLgAIcLlGVCu8xHIoO6H8Oc23lrjl+8Ieyr+PKLH3Lz0QFQf0fWdwNi44EsYSg==}
+  '@mdit/plugin-container@0.23.2':
+    resolution: {integrity: sha512-rXlFg37YuQDNcVKCaPtaJ2oCbfxTIguzf0Uklt65PK6J3kqB82+IE0+p87GIObWxdm1ajfbMUSLfvfrHoiqq4Q==}
     engines: {node: '>= 20'}
     peerDependencies:
       markdown-it: ^14.1.0
@@ -388,8 +388,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-img-size@0.23.1':
-    resolution: {integrity: sha512-cpnXRpLWGBhBAxuIqq4YTeqcF5wLdmSFlKiEr4dBCKI/pj9Gsjd6WY40OzvpXyamSMoyAjYj4Fo+JO1ghwvarg==}
+  '@mdit/plugin-img-size@0.23.2':
+    resolution: {integrity: sha512-WsMBjy32leLRwTVvZj/88+QqvoKU5ZM1znx7kLnaUJUYjw6fqd82RTC3P3wmQa0/dxKk3m17oFQPlDshzXhEiA==}
     engines: {node: '>= 20'}
     peerDependencies:
       markdown-it: ^14.1.0
@@ -1756,12 +1756,16 @@ packages:
   tar-mini@0.2.0:
     resolution: {integrity: sha512-+qfUHz700DWnRutdUsxRRVZ38G1Qr27OetwaMYTdg8hcPxf46U0S1Zf76dQMWRBmusOt2ZCK5kbIaiLkoGO7WQ==}
 
-  taze@19.10.0:
-    resolution: {integrity: sha512-pylMr+Yl8m4ZXu5LwWdtfCOJhLW69NuoeZTLtRzTekfheQ1ix5wOWjQlTb8S3SSxLlDcYFuajQOWllO5iyE0jg==}
+  taze@19.11.0:
+    resolution: {integrity: sha512-BlfH8Z6JdoIsrUptnz4P4YuEqdYsa/bSNNDOMhTlsHZ7Bbg1/0NyYh6uPkoRREjrt/kVovV+HYdi1ilHxvChfw==}
     hasBin: true
 
   tinyexec@1.0.2:
     resolution: {integrity: sha512-W/KYk+NFhkmsYpuHq5JykngiOCnxeVL8v8dFnqxSD8qEEdRfXk1SDM6JzNqcERbcGYj9tMrDQBYV9cjgnunFIg==}
+    engines: {node: '>=18'}
+
+  tinyexec@1.0.4:
+    resolution: {integrity: sha512-u9r3uZC0bdpGOXtlxUIdwf9pkmvhqJdrVCH9fapQtgy/OeTTMZ1nqH7agtvEfmGui6e1XxjcdrlxvxJvc3sMqw==}
     engines: {node: '>=18'}
 
   tinyglobby@0.2.15:
@@ -2060,6 +2064,11 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
+  yaml@2.8.3:
+    resolution: {integrity: sha512-AvbaCLOO2Otw/lW5bmh9d/WEdcDFdQp2Z2ZUH3pX9U2ihyUY0nvLv7J6TrWowklRGPYbB/IuIMfYgxaCPg5Bpg==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
   yargs-parser@18.1.3:
     resolution: {integrity: sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==}
     engines: {node: '>=6'}
@@ -2077,12 +2086,11 @@ packages:
 
 snapshots:
 
-  '@antfu/ni@28.3.0':
+  '@antfu/ni@30.0.0':
     dependencies:
-      ansis: 4.2.0
       fzf: 0.5.2
       package-manager-detector: 1.6.0
-      tinyexec: 1.0.2
+      tinyexec: 1.0.4
       tinyglobby: 0.2.15
 
   '@babel/code-frame@7.29.0':
@@ -2283,13 +2291,13 @@ snapshots:
 
   '@mdit-vue/types@3.0.2': {}
 
-  '@mdit/plugin-container@0.23.1(markdown-it@14.1.1)':
+  '@mdit/plugin-container@0.23.2(markdown-it@14.1.1)':
     dependencies:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
       markdown-it: 14.1.1
 
-  '@mdit/plugin-img-size@0.23.1(markdown-it@14.1.1)':
+  '@mdit/plugin-img-size@0.23.2(markdown-it@14.1.1)':
     dependencies:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
@@ -2593,7 +2601,7 @@ snapshots:
       '@vitejs/devtools-rpc': 0.1.3(typescript@6.0.2)(ws@8.19.0)
       birpc: 4.0.0
       immer: 11.1.4
-      vite: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2)
+      vite: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.3)
     transitivePeerDependencies:
       - typescript
       - ws
@@ -2682,7 +2690,7 @@ snapshots:
       perfect-debounce: 2.1.0
       sirv: 3.0.2
       tinyexec: 1.0.2
-      vite: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2)
+      vite: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.3)
       ws: 8.19.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -2713,7 +2721,7 @@ snapshots:
   '@vitejs/plugin-vue@6.0.5(vite@8.0.3)(vue@3.5.31(typescript@6.0.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.2
-      vite: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2)
+      vite: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.3)
       vue: 3.5.31(typescript@6.0.2)
 
   '@volar/language-core@2.4.28':
@@ -3376,7 +3384,7 @@ snapshots:
     dependencies:
       destr: 2.0.5
       node-fetch-native: 1.6.7
-      ufo: 1.6.1
+      ufo: 1.6.3
 
   ohash@2.0.11: {}
 
@@ -3467,7 +3475,7 @@ snapshots:
 
   pnpm-workspace-yaml@1.6.0:
     dependencies:
-      yaml: 2.8.2
+      yaml: 2.8.3
 
   pnpm@10.33.0: {}
 
@@ -3663,9 +3671,9 @@ snapshots:
 
   tar-mini@0.2.0: {}
 
-  taze@19.10.0:
+  taze@19.11.0:
     dependencies:
-      '@antfu/ni': 28.3.0
+      '@antfu/ni': 30.0.0
       '@henrygd/queue': 1.2.0
       cac: 7.0.0
       find-up-simple: 1.0.1
@@ -3674,12 +3682,14 @@ snapshots:
       pathe: 2.0.3
       pnpm-workspace-yaml: 1.6.0
       restore-cursor: 5.1.0
-      tinyexec: 1.0.2
+      tinyexec: 1.0.4
       tinyglobby: 0.2.15
       unconfig: 7.5.0
-      yaml: 2.8.2
+      yaml: 2.8.3
 
   tinyexec@1.0.2: {}
+
+  tinyexec@1.0.4: {}
 
   tinyglobby@0.2.15:
     dependencies:
@@ -3767,7 +3777,7 @@ snapshots:
       markdown-exit: 1.0.0-beta.8
       unplugin: 2.3.11
       unplugin-utils: 0.3.1
-      vite: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2)
+      vite: 8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.3)
 
   unplugin@2.3.11:
     dependencies:
@@ -3816,7 +3826,7 @@ snapshots:
 
   vite-plugin-sitemap@0.8.2: {}
 
-  vite@8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2):
+  vite@8.0.3(@types/node@25.5.0)(@vitejs/devtools@0.1.3)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.3):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -3829,7 +3839,7 @@ snapshots:
       esbuild: 0.27.2
       fsevents: 2.3.3
       jiti: 2.6.1
-      yaml: 2.8.2
+      yaml: 2.8.3
 
   vscode-uri@3.1.0: {}
 
@@ -3917,6 +3927,8 @@ snapshots:
   y18n@4.0.3: {}
 
   yaml@2.8.2: {}
+
+  yaml@2.8.3: {}
 
   yargs-parser@18.1.3:
     dependencies:

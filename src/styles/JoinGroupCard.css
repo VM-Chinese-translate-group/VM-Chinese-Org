@@ -1,0 +1,82 @@
+@import './variables.css';
+
+.join-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.join-card {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid color-mix(in srgb, var(--text-muted) 18%, transparent);
+  border-radius: 16px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.join-card:hover {
+  transform: translateY(-4px);
+}
+
+.join-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.join-card-title {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.join-card-button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 9px;
+  background: var(--btn-primary-bg);
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.join-card-button:hover {
+  background: var(--btn-primary-hover);
+  transform: translateY(-1px);
+}
+
+.join-card-body h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.join-card-body ol {
+  margin: 0 0 18px;
+  padding-left: 1.25em;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.join-card-body ol:last-child {
+  margin-bottom: 0;
+}
