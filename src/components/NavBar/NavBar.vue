@@ -45,7 +45,9 @@
           <Icon icon="lucide:search" class="search-icon" />
         </button>
         <button class="hamburger" @click="toggleMenu" :class="{ 'is-active': isMenuOpen }">
-          <span class="line"></span><span class="line"></span><span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
         </button>
       </div>
     </div>

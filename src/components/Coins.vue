@@ -12,7 +12,8 @@
     <div v-if="selectedPayment && coins[selectedPayment]" class="coin-details slide-enter">
       <p>
         <img :src="iconSrc" class="icon icon-rotate" />
-        {{ coins[selectedPayment].name }}：<br />
+        {{ coins[selectedPayment].name }}：
+        <br />
         <a
           :href="coins[selectedPayment].address"
           :title="coins[selectedPayment].name"

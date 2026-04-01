@@ -7,12 +7,14 @@
 
         <div class="build-info-container">
           <p class="build-info">
-            {{ $t('footer.buildInfo', { branch: branchName }) }}@<a
+            {{ $t('footer.buildInfo', { branch: branchName }) }}@
+            <a
               :href="`https://github.com/${repoPath}/commit/${commitId}`"
               target="_blank"
               class="commit-link"
-              >{{ commitId }}</a
             >
+              {{ commitId }}
+            </a>
           </p>
           <p class="build-date">{{ commitDate }}</p>
         </div>
