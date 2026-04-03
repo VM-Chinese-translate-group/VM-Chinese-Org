@@ -3,9 +3,9 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import DefaultLayout from '@/layout/DefaultLayout.vue'
 import Home from '@/layout/HomeLayout.vue'
+import NotFound from '@/layout/NotFoundLayout.vue'
 import Maps from '@/pages/map.vue'
 import Modpacks from '@/pages/modpacks.vue'
-import NotFound from '@/pages/NotFound.vue'
 
 const mdModules = import.meta.glob('../pages/**/*.md', { eager: true }) as Record<string, any>
 
@@ -26,16 +26,14 @@ Object.keys(mdModules).forEach((file) => {
 
   const isDocLayout = routePath.startsWith('/modpacks/fc5-wiki') || routePath.endsWith('/secret')
 
-  const routeRecord: RouteRecordRaw = {
+  mdRoutes.push({
     path: routePath,
     name: routePath.replace(/^\//, '').replace(/\//g, '-') || `md-${Math.random()}`,
     component: module.default,
     meta: {
       layout: isDocLayout ? 'doc' : 'default',
     },
-  }
-
-  mdRoutes.push(routeRecord)
+  })
 })
 
 const routes: RouteRecordRaw[] = [
@@ -48,13 +46,13 @@ const routes: RouteRecordRaw[] = [
       { path: 'map', name: 'map-list', component: Maps },
 
       ...mdRoutes,
-    ],
-  },
 
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'not-found',
-    component: NotFound,
+      {
+        path: '/:pathMatch(.*)*',
+        name: 'not-found',
+        component: NotFound,
+      },
+    ],
   },
 ]
 

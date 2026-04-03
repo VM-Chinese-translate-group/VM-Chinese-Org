@@ -1,11 +1,5 @@
 @import './variables.css';
 
-.layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .notfound {
   flex: 1;
   display: flex;
@@ -13,6 +7,7 @@
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
+  background: var(--bg-white);
 }
 
 .content {
@@ -52,18 +47,12 @@
   font-weight: 500;
   color: #fff;
   background: var(--btn-primary-bg);
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
 }
 
 .home-btn:hover {
   background: var(--btn-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .home-btn:active {
   background: var(--btn-primary-active);
-  transform: translateY(0);
 }
