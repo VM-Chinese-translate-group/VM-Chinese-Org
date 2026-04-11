@@ -91,6 +91,7 @@
         :disabled="currentPage === 1"
         class="pagination-btn"
       >
+        {{ $t('DownloadCards.previousPage') }}
         <Icon icon="lucide:chevron-left" />
       </button>
 
@@ -108,6 +109,7 @@
         :disabled="currentPage === totalPages"
         class="pagination-btn"
       >
+        {{ $t('DownloadCards.nextPage') }}
         <Icon icon="lucide:chevron-right" />
       </button>
     </div>
