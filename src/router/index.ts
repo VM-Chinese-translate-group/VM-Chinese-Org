@@ -1,40 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
-import DefaultLayout from '@/layout/DefaultLayout.vue'
-import Home from '@/layout/HomeLayout.vue'
-import NotFound from '@/layout/NotFoundLayout.vue'
-import Maps from '@/pages/map.vue'
-import Modpacks from '@/pages/modpacks.vue'
+import { createMarkdownRoutes } from '@/router/markdown-routes'
 
-const mdModules = import.meta.glob('../pages/**/*.md', { eager: true }) as Record<string, any>
+const DefaultLayout = () => import('@/layout/DefaultLayout.vue')
+const Home = () => import('@/layout/HomeLayout.vue')
+const NotFound = () => import('@/layout/NotFoundLayout.vue')
+const Maps = () => import('@/pages/map.vue')
+const Modpacks = () => import('@/pages/modpacks.vue')
 
-function fileToRoutePath(file: string) {
-  let p = file.replace('../pages', '').replace(/\.md$/, '')
-  if (p.endsWith('/index')) p = p.replace(/\/index$/, '')
-  if (p === '') return '/'
-  return p.startsWith('/') ? p : `/${p}`
-}
-
-const mdRoutes: RouteRecordRaw[] = []
-
-Object.keys(mdModules).forEach((file) => {
-  const module = mdModules[file]
-  const routePath = fileToRoutePath(file)
-
-  if (['/', '/modpacks', '/map'].includes(routePath)) return
-
-  const isDocLayout = routePath.startsWith('/modpacks/fc5-wiki') || routePath.endsWith('/secret')
-
-  mdRoutes.push({
-    path: routePath,
-    name: routePath.replace(/^\//, '').replace(/\//g, '-') || `md-${Math.random()}`,
-    component: module.default,
-    meta: {
-      layout: isDocLayout ? 'doc' : 'default',
-    },
-  })
-})
+const mdRoutes: RouteRecordRaw[] = createMarkdownRoutes()
 
 const routes: RouteRecordRaw[] = [
   {

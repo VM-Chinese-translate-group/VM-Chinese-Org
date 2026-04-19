@@ -4,13 +4,13 @@ icon: https://media.forgecdn.net/avatars/thumbnails/1495/561/256/256/63897162750
 description: |
   你在石头的怀抱中醒来。没有天空，没有地平线，只有你，被无尽的岩壁包围。可这一次，石头回应了你的呼唤。
   石头世界4是这款经典系列的全新篇章。它从零重制，带来你熟悉又陌生的地下生存体验。
-updateDate: 2026年3月30日
+updateDate: 2026年4月18日
 status:
   type: maintaining
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '1.9.1'
+  pack: '1.11.0'
 authors:
   - 'FTB (作者团队)'
   - 'VM汉化组 (翻译)'
