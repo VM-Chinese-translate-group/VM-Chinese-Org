@@ -42,9 +42,9 @@ export async function convertMarkdownContainers(targetLocale: string, root?: HTM
 
   if (!containers.length) return
 
-  const converter = await getConverter()
-
   if (targetLocale === 'zh-TW') {
+    const converter = await getConverter()
+
     containers.forEach((el) => {
       if (!originalMap.has(el)) originalMap.set(el, el.innerHTML)
 

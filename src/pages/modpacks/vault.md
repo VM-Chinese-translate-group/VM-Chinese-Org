@@ -4,13 +4,13 @@ icon: https://media.forgecdn.net/avatars/thumbnails/1559/129/256/256/63901173381
 description: |
   宝藏猎人3是一个基于RPG的整合包，讲述了一个名为宝库的维度的神秘和危险
   玩家可以发展自己的天赋和能力，同时努力实现收集所有25件独特文物以解锁最终挑战的目标！你有能力吗？
-updateDate: 2025年12月25日
+updateDate: 2026年4月12日
 status:
   type: maintaining
 compatibility:
   loader: forge
   minecraft: '1.18.2'
-  pack: '最新版'
+  pack: '3.21.4.1'
 authors:
   - 'Iskall85Team (作者团队)'
   - 'VM汉化组 (翻译)'
