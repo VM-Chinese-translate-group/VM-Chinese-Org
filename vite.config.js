@@ -113,7 +113,7 @@ export default defineConfig({
                   : type.toUpperCase()
 
               if (type === 'details') {
-                return `<details class="custom-block details"><summary>${title}</summary>\n`
+                return `<details class="custom-block details" open><summary>${title}</summary>\n`
               }
 
               return `<div class="custom-block ${type}"><p class="custom-block-title">${title}</p>\n`
