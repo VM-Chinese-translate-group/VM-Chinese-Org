@@ -32,12 +32,21 @@
       </aside>
     </main>
   </div>
+
+  <ImagePreview
+    :visible="previewVisible"
+    :imgs="previewImages"
+    :index="previewIndex"
+    @hide="closePreview"
+    @update:visible="onPreviewVisibleChange"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers, convertInlineText } from '@/utils/zhconv'
+import { useImagePreview } from '@/composables/useImagePreview'
 
 const props = defineProps<{
   meta?: Record<string, any>
@@ -46,6 +55,15 @@ const props = defineProps<{
 const { t, locale } = useI18n()
 
 const contentRef = ref<HTMLElement | null>(null)
+const {
+  bindPreview,
+  closePreview,
+  images: previewImages,
+  index: previewIndex,
+  onVisibleChange: onPreviewVisibleChange,
+  unbindPreview,
+  visible: previewVisible,
+} = useImagePreview(contentRef)
 
 const pageTitle = computed(() => (props.meta?.title as string) || '')
 const pageDescription = computed(() => (props.meta?.description as string) || '')
@@ -150,11 +168,13 @@ watch(locale, () => {
 })
 
 onMounted(() => {
+  bindPreview()
   window.addEventListener('scroll', onScroll)
   window.addEventListener('resize', extractHeaders)
 })
 
 onUnmounted(() => {
+  unbindPreview()
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', extractHeaders)
 })
