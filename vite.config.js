@@ -55,6 +55,10 @@ export default defineConfig({
   plugins: [
     Markdown({
       async markdownItSetup(md) {
+        const defaultImageRenderer =
+          md.renderer.rules.image ||
+          ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options))
+
         // 链接优化
         md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
           const token = tokens[idx]
@@ -70,6 +74,11 @@ export default defineConfig({
           }
 
           return self.renderToken(tokens, idx, options)
+        }
+
+        md.renderer.rules.image = (tokens, idx, options, env, self) => {
+          tokens[idx].attrSet('data-md-image-preview', 'true')
+          return defaultImageRenderer(tokens, idx, options, env, self)
         }
 
         md.use(anchor, {

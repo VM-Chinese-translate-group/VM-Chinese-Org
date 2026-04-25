@@ -13,7 +13,6 @@ sidebar: false
   { id: 'qq', text: 'QQ', icon: '/imgs/svg/qq.svg', link: 'https://qm.qq.com/q/zfY3xUJ2YS' }
 ]" />
 
-
 ## QQ 交流群
 
 - [**点击加入不知名汉化组交流群**](https://qm.qq.com/q/zfY3xUJ2YS)

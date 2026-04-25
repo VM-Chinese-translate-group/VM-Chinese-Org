@@ -15,8 +15,7 @@
   --home-blue-soft: rgba(45, 108, 223, 0.12);
   background:
     radial-gradient(circle at top left, rgba(39, 132, 255, 0.16), transparent 34%),
-    radial-gradient(circle at 80% 20%, rgba(53, 208, 125, 0.18), transparent 24%),
-    var(--home-bg);
+    radial-gradient(circle at 80% 20%, rgba(53, 208, 125, 0.18), transparent 24%), var(--home-bg);
   color: var(--home-text);
   overflow-x: clip;
 }

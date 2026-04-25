@@ -71,7 +71,12 @@
       </div>
 
       <div class="browse-grid">
-        <RouterLink v-for="item in browseCards" :key="item.title" :to="item.link" class="browse-card">
+        <RouterLink
+          v-for="item in browseCards"
+          :key="item.title"
+          :to="item.link"
+          class="browse-card"
+        >
           <div class="browse-icon">
             <Icon :icon="item.icon" />
           </div>
@@ -94,7 +99,12 @@
           <h2>{{ $t('main.featuredModpacks') }}</h2>
         </div>
 
-        <RouterLink v-for="item in featuredModpacks" :key="item.link" :to="item.link" class="catalog-card">
+        <RouterLink
+          v-for="item in featuredModpacks"
+          :key="item.link"
+          :to="item.link"
+          class="catalog-card"
+        >
           <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" class="catalog-icon" />
           <div class="catalog-meta">
             <div class="catalog-topline">
@@ -124,7 +134,12 @@
           <h2>{{ $t('main.featuredMaps') }}</h2>
         </div>
 
-        <RouterLink v-for="item in featuredMaps" :key="item.link" :to="item.link" class="catalog-card">
+        <RouterLink
+          v-for="item in featuredMaps"
+          :key="item.link"
+          :to="item.link"
+          class="catalog-card"
+        >
           <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" class="catalog-icon" />
           <div class="catalog-meta">
             <div class="catalog-topline">

@@ -108,13 +108,22 @@
       </aside>
     </main>
   </div>
+
+  <ImagePreview
+    :visible="previewVisible"
+    :imgs="previewImages"
+    :index="previewIndex"
+    @hide="closePreview"
+    @update:visible="onPreviewVisibleChange"
+  />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers } from '@/utils/zhconv'
+import { useImagePreview } from '@/composables/useImagePreview'
 
 const props = defineProps({
   meta: { type: Object, default: () => ({}) },
@@ -122,6 +131,15 @@ const props = defineProps({
 
 const { t, locale } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
+const {
+  bindPreview,
+  closePreview,
+  images: previewImages,
+  index: previewIndex,
+  onVisibleChange: onPreviewVisibleChange,
+  unbindPreview,
+  visible: previewVisible,
+} = useImagePreview(contentRef)
 
 const handleConvert = async () => {
   await nextTick()
@@ -129,7 +147,14 @@ const handleConvert = async () => {
   await convertMarkdownContainers(locale.value, contentRef.value)
 }
 
-onMounted(() => handleConvert())
+onMounted(() => {
+  bindPreview()
+  handleConvert()
+})
+
+onUnmounted(() => {
+  unbindPreview()
+})
 watch(
   () => props.meta,
   () => handleConvert(),
