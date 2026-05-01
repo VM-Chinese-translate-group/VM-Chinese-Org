@@ -12,16 +12,19 @@ declare module '*.md' {
   export default Component
 }
 
-declare module 'virtual:modpacks' {
-  export const modpacks: any[]
-}
-
 declare module 'virtual:search-index' {
   export const searchIndex: Array<{
     url: string
     title: string
+    titleTW: string
     text: string
+    textTW: string
   }>
+}
+
+declare module 'virtual:resources' {
+  export const modpacks: any[]
+  export const maps: any[]
 }
 
 declare module 'opencc-js/core' {

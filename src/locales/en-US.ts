@@ -15,6 +15,14 @@ export default {
     startSearch: 'Type keywords to start searching...',
     esc: 'ESC',
   },
+  seo: {
+    defaultDescription:
+      'VM Chinese Translation Group is a non-profit team focused on Minecraft modpack and map localization, providing localization patches, translation tools, and community resources.',
+    modpacksDescription:
+      'Browse Minecraft modpack localization patches maintained by VM Chinese Translation Group, including supported versions, authors, and download links.',
+    mapsDescription:
+      'Browse Minecraft map localization projects maintained by VM Chinese Translation Group, including gameplay notes, requirements, and download links.',
+  },
   main: {
     headline: 'VM Translation Group',
     subheadline: 'A non-profit organization dedicated to translating Minecraft modpacks and maps.',

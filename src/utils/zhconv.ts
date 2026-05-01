@@ -35,7 +35,40 @@ export async function convertInlineText(text: string, locale: string): Promise<s
   return result
 }
 
-const originalMap = new WeakMap<Element, string>()
+interface ConvertedText {
+  converted: string
+  source: string
+}
+
+const originalTextMap = new WeakMap<Text, ConvertedText>()
+
+function shouldConvertTextNode(node: Text) {
+  const value = node.nodeValue
+  if (!value?.trim()) return false
+
+  const parent = node.parentElement
+  if (!parent) return true
+
+  return !parent.closest('script, style, noscript')
+}
+
+function getTextNodes(root: Element) {
+  const nodes: Text[] = []
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      return shouldConvertTextNode(node as Text)
+        ? NodeFilter.FILTER_ACCEPT
+        : NodeFilter.FILTER_REJECT
+    },
+  })
+
+  let node: Node | null
+  while ((node = walker.nextNode())) {
+    nodes.push(node as Text)
+  }
+
+  return nodes
+}
 
 export async function convertMarkdownContainers(targetLocale: string, root?: HTMLElement) {
   const containers = root ? [root] : document.querySelectorAll('.markdown-body')
@@ -46,27 +79,25 @@ export async function convertMarkdownContainers(targetLocale: string, root?: HTM
     const converter = await getConverter()
 
     containers.forEach((el) => {
-      if (!originalMap.has(el)) originalMap.set(el, el.innerHTML)
+      for (const textNode of getTextNodes(el)) {
+        const current = textNode.nodeValue || ''
+        const previous = originalTextMap.get(textNode)
+        const source = previous && current === previous.converted ? previous.source : current
+        const converted = converter(source)
 
-      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null)
-      let node: Node | null
-
-      while ((node = walker.nextNode())) {
-        const textNode = node as Text
-        const rawText = textNode.nodeValue?.trim()
-
-        if (rawText) {
-          textNode.nodeValue = converter(textNode.nodeValue!)
-        }
+        originalTextMap.set(textNode, { source, converted })
+        textNode.nodeValue = converted
       }
     })
   } else {
     containers.forEach((el) => {
-      const original = originalMap.get(el)
+      for (const textNode of getTextNodes(el)) {
+        const original = originalTextMap.get(textNode)
 
-      if (original) {
-        el.innerHTML = original
-        originalMap.delete(el)
+        if (original) {
+          textNode.nodeValue = original.source
+          originalTextMap.delete(textNode)
+        }
       }
     })
   }

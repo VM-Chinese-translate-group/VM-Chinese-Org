@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import path from 'node:path'
-import fs from 'node:fs'
 
 import vue from '@vitejs/plugin-vue'
 import Markdown from 'unplugin-vue-markdown/vite'
@@ -19,6 +18,7 @@ import Shiki from '@shikijs/markdown-it'
 import Card from './src/components/Card/card.js'
 
 import { getGitBranch, getGitCommitHash, getGitEnv, getGitCommitDate } from './src/plugins/git'
+import { getMarkdownRoutes } from './src/plugins/contentScanner'
 import { resourcesPlugin } from './src/plugins/resourcesList'
 import { searchIndexPlugin } from './src/plugins/searchIndex'
 
@@ -28,15 +28,6 @@ const repoPath =
   gitEnv.owner && gitEnv.name
     ? `${gitEnv.owner}/${gitEnv.name}`
     : 'VM-Chinese-translate-group/VM-Chinese-Org'
-
-// 自动获取所有 md 路由
-const getMdRoutes = () => {
-  const pagesDir = path.resolve(__dirname, 'src/pages')
-  if (!fs.existsSync(pagesDir)) return []
-  return fs.readdirSync(pagesDir, { recursive: true })
-    .filter(f => f.endsWith('.md'))
-    .map(f => `/${f.replace(/\.md$/, '').replace(/index$/, '')}`)
-}
 
 export default defineConfig({
   define: {
@@ -152,7 +143,7 @@ export default defineConfig({
 
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',
-      dynamicRoutes: getMdRoutes(),
+      dynamicRoutes: getMarkdownRoutes(),
     }),
 
     compression({
