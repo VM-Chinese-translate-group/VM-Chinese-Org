@@ -15,6 +15,13 @@ export default {
     startSearch: '输入关键词开始搜索...',
     esc: 'ESC',
   },
+  seo: {
+    defaultDescription:
+      'VM汉化组是专注于 Minecraft 整合包与地图汉化的非盈利组织，提供汉化补丁下载、翻译工具与社区资源。',
+    modpacksDescription:
+      '浏览 VM 汉化组维护的 Minecraft 整合包汉化补丁、适配版本、作者信息与下载入口。',
+    mapsDescription: '浏览 VM 汉化组维护的 Minecraft 地图汉化项目、玩法介绍、资源要求与下载入口。',
+  },
   main: {
     headline: 'VM汉化组',
     subheadline: '一个用爱发电专注于汉化MC整合包与地图的非盈利组织',

@@ -15,6 +15,14 @@ export default {
     startSearch: '輸入關鍵字開始搜尋...',
     esc: 'ESC',
   },
+  seo: {
+    defaultDescription:
+      'VM漢化組是專注於 Minecraft 模組包與地圖中文化的非營利組織，提供中文化補丁下載、翻譯工具與社群資源。',
+    modpacksDescription:
+      '瀏覽 VM 漢化組維護的 Minecraft 模組包中文化補丁、適配版本、作者資訊與下載入口。',
+    mapsDescription:
+      '瀏覽 VM 漢化組維護的 Minecraft 地圖中文化項目、玩法介紹、資源需求與下載入口。',
+  },
   main: {
     headline: 'VM漢化組',
     subheadline: '一個用愛發電、專注於中文化 MC 模組包與地圖的非營利組織',

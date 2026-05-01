@@ -31,7 +31,9 @@ Object.keys(mdModules).forEach((file) => {
     name: routePath.replace(/^\//, '').replace(/\//g, '-') || `md-${Math.random()}`,
     component: module.default,
     meta: {
+      ...(module.frontmatter || module.default?.frontmatter || {}),
       layout: isDocLayout ? 'doc' : 'default',
+      noindex: routePath.endsWith('/secret'),
     },
   })
 })
@@ -51,6 +53,9 @@ const routes: RouteRecordRaw[] = [
         path: '/:pathMatch(.*)*',
         name: 'not-found',
         component: NotFound,
+        meta: {
+          noindex: true,
+        },
       },
     ],
   },
