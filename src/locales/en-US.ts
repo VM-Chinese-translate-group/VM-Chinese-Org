@@ -80,6 +80,7 @@ export default {
     joinUs: 'Join Us',
     supportUs: 'Support Us',
     friendsLinks: 'Friend Links',
+    credits: 'Credits',
     policy: 'Policy',
     privacy: 'Privacy Policy',
     agreement: 'User Agreement',

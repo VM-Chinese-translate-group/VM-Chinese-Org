@@ -77,6 +77,7 @@ export default {
     joinUs: '加入我们',
     supportUs: '赞助我们',
     friendsLinks: '友情链接',
+    credits: '贡献名单',
     policy: '政策',
     privacy: '隐私政策',
     agreement: '用户协议',
