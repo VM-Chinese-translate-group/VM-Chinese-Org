@@ -10,6 +10,8 @@ title: 友情链接
 
 非常感谢！(\*´∀`)~♥
 
+<div card-grid>
+
 ```card
 title: 籽岷
 link: https://space.bilibili.com/686127
@@ -59,7 +61,11 @@ logo: /imgs/friend-links/puff.webp
 desc: 使用我们的春晓之巫整合包汉化
 ```
 
-## 人工高质量汉化推荐 {#recommend}
+</div>
+
+## 人工高质量汉化推荐
+
+<div card-grid>
 
 ```card
 title: 安逸菌汉化补丁
@@ -71,7 +77,7 @@ desc: 来自安逸汉化组的汉化
 ```card
 title: Modpack汉化合集
 link: https://modpack.top/
-logo: https://modpack.top/logo.png
+logo: https://modpack.top/img/logo.svg
 desc: 一个致力于收集整合包汉化的网站
 ```
 
@@ -89,12 +95,18 @@ logo: https://avatars.githubusercontent.com/u/118149830?s=200&v=4
 desc: 来自台湾的繁体中文翻译组，制作了很多整合包和模组的繁体中文翻译。
 ```
 
+</div>
+
 ## 社区论坛
+
+<div card-grid>
 
 ```card
 title: XyeBBS 论坛
 link: https://www.xyebbs.com/languages
 logo: https://www.xyebbs.com/favicon.png
 ```
+
+</div>
 
 </DocLayout>
