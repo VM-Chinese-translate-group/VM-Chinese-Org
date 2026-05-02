@@ -78,6 +78,7 @@ export default {
     joinUs: '加入我們',
     supportUs: '贊助我們',
     friendsLinks: '友情連結',
+    credits: '貢獻名單',
     policy: '政策',
     privacy: '隱私政策',
     agreement: '用戶協議',

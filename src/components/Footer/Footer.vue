@@ -33,6 +33,9 @@
             <li>
               <a href="/friends-links" class="link">{{ $t('footer.friendsLinks') }}</a>
             </li>
+            <li>
+              <a href="/credits" class="link">{{ $t('footer.credits') }}</a>
+            </li>
           </ul>
         </div>
         <div class="column">

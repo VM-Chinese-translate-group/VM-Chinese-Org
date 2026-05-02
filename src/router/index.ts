@@ -4,6 +4,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import DefaultLayout from '@/layout/DefaultLayout.vue'
 import Home from '@/layout/HomeLayout.vue'
 import NotFound from '@/layout/NotFoundLayout.vue'
+import Credits from '@/pages/credits.vue'
 import Maps from '@/pages/map.vue'
 import Modpacks from '@/pages/modpacks.vue'
 
@@ -46,6 +47,15 @@ const routes: RouteRecordRaw[] = [
       { path: '', name: 'Home', component: Home },
       { path: 'modpacks', name: 'modpacks-list', component: Modpacks },
       { path: 'map', name: 'map-list', component: Maps },
+      {
+        path: 'credits',
+        name: 'credits',
+        component: Credits,
+        meta: {
+          title: '贡献名单',
+          description: '按网页开发、外部贡献人员与 VM汉化组成员分类展示贡献名单。',
+        },
+      },
 
       ...mdRoutes,
 
