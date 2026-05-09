@@ -1,21 +1,19 @@
 @import './variables.css';
 
 .home-shell {
-  --home-bg: linear-gradient(180deg, #f4f8ff 0%, #f8fbf8 36%, #eef3f8 100%);
-  --home-panel: rgba(255, 255, 255, 0.76);
-  --home-panel-strong: rgba(255, 255, 255, 0.88);
+  --home-bg: linear-gradient(180deg, #f6f8fb 0%, #f8fbf8 42%, #eef3f8 100%);
+  --home-panel: rgba(255, 255, 255, 0.82);
+  --home-panel-strong: rgba(255, 255, 255, 0.94);
   --home-border: rgba(15, 23, 42, 0.09);
-  --home-shadow: 0 24px 80px rgba(36, 70, 126, 0.16);
-  --home-shadow-soft: 0 14px 34px rgba(36, 70, 126, 0.1);
+  --home-shadow: 0 18px 48px rgba(36, 70, 126, 0.14);
+  --home-shadow-soft: 0 10px 24px rgba(36, 70, 126, 0.1);
   --home-text: #122033;
   --home-muted: #5f6f82;
   --home-accent: #1f8f5f;
   --home-accent-soft: rgba(31, 143, 95, 0.12);
   --home-blue: #2d6cdf;
   --home-blue-soft: rgba(45, 108, 223, 0.12);
-  background:
-    radial-gradient(circle at top left, rgba(39, 132, 255, 0.16), transparent 34%),
-    radial-gradient(circle at 80% 20%, rgba(53, 208, 125, 0.18), transparent 24%), var(--home-bg);
+  background: var(--home-bg);
   color: var(--home-text);
   overflow-x: clip;
 }
@@ -69,30 +67,6 @@
   object-fit: cover;
   opacity: 0.2;
   filter: saturate(1.15) blur(1px);
-}
-
-.hero-glow {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(18px);
-  animation: homeFloat 10s ease-in-out infinite;
-}
-
-.hero-glow-left {
-  width: 280px;
-  height: 280px;
-  left: -60px;
-  top: 80px;
-  background: rgba(45, 108, 223, 0.18);
-}
-
-.hero-glow-right {
-  width: 220px;
-  height: 220px;
-  right: -20px;
-  top: 28px;
-  background: rgba(31, 143, 95, 0.2);
-  animation-delay: -3s;
 }
 
 .hero::after {
@@ -174,12 +148,12 @@
   align-items: center;
   width: fit-content;
   padding: 8px 14px;
-  border-radius: 999px;
+  border-radius: 8px;
   background: var(--home-accent-soft);
   color: var(--home-accent);
   font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -193,7 +167,7 @@
   margin: 0;
   font-size: clamp(3rem, 6vw, 5.6rem);
   line-height: 0.96;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 
 .hero-description,
@@ -219,7 +193,7 @@
   gap: 10px;
   min-width: 184px;
   padding: 14px 22px;
-  border-radius: 18px;
+  border-radius: 8px;
   border: 1px solid var(--home-border);
   color: var(--home-text);
   font-weight: 700;
@@ -298,7 +272,7 @@
   flex-direction: column;
   gap: 4px;
   padding: 18px;
-  border-radius: 22px;
+  border-radius: 8px;
   animation: homeReveal 0.75s ease both;
 }
 
@@ -333,7 +307,7 @@
 
 .spotlight-card {
   padding: 22px;
-  border-radius: 28px;
+  border-radius: 8px;
 }
 
 .spotlight-header,
@@ -401,7 +375,7 @@
   padding-left: 10px;
   padding-right: 10px;
   border-top-color: transparent;
-  border-radius: 18px;
+  border-radius: 8px;
   background: var(--home-panel-strong);
 }
 
@@ -424,7 +398,7 @@
   width: 56px;
   height: 56px;
   flex: 0 0 auto;
-  border-radius: 18px;
+  border-radius: 8px;
   background: linear-gradient(135deg, var(--home-blue-soft), var(--home-accent-soft));
   color: var(--home-blue);
   font-size: 1.35rem;
@@ -501,7 +475,7 @@
 .browse-card {
   align-items: center;
   padding: 22px;
-  border-radius: 28px;
+  border-radius: 8px;
   animation: homeReveal 0.75s ease both;
 }
 
@@ -536,7 +510,7 @@
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  border-radius: 20px;
+  border-radius: 8px;
 }
 
 .browse-icon {
@@ -566,7 +540,7 @@
 .catalog-card {
   align-items: center;
   padding: 18px;
-  border-radius: 26px;
+  border-radius: 8px;
   margin-top: 14px;
   animation: homeReveal 0.75s ease both;
 }
@@ -607,7 +581,7 @@
 
 .value-card {
   padding: 24px;
-  border-radius: 28px;
+  border-radius: 8px;
 }
 
 .value-card:nth-child(1) {
@@ -638,19 +612,7 @@
   }
 }
 
-@keyframes homeFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-glow,
   .hero-logo,
   .hero-title,
   .hero-description,
@@ -738,7 +700,7 @@
     width: 100%;
     min-width: 0;
     padding: 13px 16px;
-    border-radius: 16px;
+    border-radius: 8px;
     font-size: 0.98rem;
   }
 

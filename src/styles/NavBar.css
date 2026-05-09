@@ -5,8 +5,8 @@
   top: 0;
   width: 100%;
   background: var(--nav-bg, rgba(255, 255, 255, 0.8));
-  backdrop-filter: saturate(50%) blur(8px);
-  -webkit-backdrop-filter: saturate(50%) blur(8px);
+  backdrop-filter: saturate(80%) blur(12px);
+  -webkit-backdrop-filter: saturate(80%) blur(12px);
   box-shadow: 0 1px 2px var(--nav-shadow, rgba(0, 0, 0, 0.05));
   z-index: 1000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -27,6 +27,7 @@
   align-items: center;
   cursor: pointer;
   z-index: 1001;
+  min-width: 0;
 }
 
 .navbar-logo {
@@ -40,6 +41,7 @@
   color: var(--text-dark);
   font-weight: 600;
   font-size: 1.1rem;
+  white-space: nowrap;
 }
 
 .navbar-content {
@@ -61,6 +63,8 @@
 }
 
 .navbar-item a {
+  display: inline-flex;
+  align-items: center;
   color: var(--nav-text, #333);
   font-size: var(--nav-font-size-link, 0.95rem);
   font-weight: 500;
@@ -68,6 +72,9 @@
   padding: 0.5rem 0.6rem;
   border-radius: 6px;
   white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .navbar-item a:hover {
@@ -78,6 +85,14 @@
 .navbar-item a.router-link-active {
   color: var(--nav-primary);
   font-weight: 600;
+}
+
+.navbar-item a:focus-visible,
+.search-box-trigger:focus-visible,
+.mobile-search-btn:focus-visible,
+.hamburger:focus-visible {
+  outline: 2px solid var(--nav-primary);
+  outline-offset: 3px;
 }
 
 .navbar-divider {
@@ -152,6 +167,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 8px;
 }
 
 .hamburger {
@@ -166,6 +182,7 @@
   border: none;
   cursor: pointer;
   padding: 0.4rem;
+  border-radius: 8px;
 }
 
 .hamburger .line {
@@ -239,7 +256,7 @@
   }
 
   .navbar-item a {
-    display: block;
+    display: flex;
     padding: 1rem 0;
     font-size: 1.1rem;
     border-radius: 0;

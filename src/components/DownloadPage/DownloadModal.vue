@@ -1,6 +1,7 @@
 <script setup>
+import { downloadQuestions } from '@/data/downloadQuestions'
+
 let swalPromise
-let questionsPromise
 
 const QUESTION_OPTIONS = ['A', 'B', 'C', 'D']
 
@@ -23,19 +24,7 @@ const getQuestions = async () => {
   if (props.questions.length) return props.questions
   if (props.questionLoader) return (await props.questionLoader()) || []
 
-  if (!questionsPromise) {
-    questionsPromise = fetch('/downloadQuestions.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Failed to load questions')
-        return res.json()
-      })
-      .catch((err) => {
-        console.error(err)
-        return []
-      })
-  }
-
-  return questionsPromise
+  return downloadQuestions
 }
 
 const getDownloadModalHtml = (showInstallLink = true) => {

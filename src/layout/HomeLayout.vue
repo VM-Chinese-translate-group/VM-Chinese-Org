@@ -3,8 +3,6 @@
     <section class="hero">
       <div class="hero-backdrop">
         <img v-lazy="'/imgs/home.png'" class="hero-image" alt="Minecraft world background" />
-        <div class="hero-glow hero-glow-left"></div>
-        <div class="hero-glow hero-glow-right"></div>
       </div>
 
       <div class="hero-inner">
@@ -184,12 +182,14 @@
   </main>
 </template>
 
-<script setup>
-import { computed } from 'vue'
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { maps, modpacks } from 'virtual:resources'
+import { useResourceCatalog } from '@/composables/useResourceCatalog'
+import type { ResourceStatusType } from '@/types/resource'
 
 const { t } = useI18n()
+const { browseCards, featuredMaps, featuredModpacks, overviewCards, statCards } =
+  useResourceCatalog()
 
 const infoItems = [
   { title: 'main.qualityTitle', desc: 'main.qualityDesc', icon: 'lucide:badge-check' },
@@ -198,75 +198,7 @@ const infoItems = [
   { title: 'main.techTitle', desc: 'main.techDesc', icon: 'lucide:wrench' },
 ]
 
-const featuredModpacks = computed(() => modpacks.slice(0, 3))
-const featuredMaps = computed(() => maps.slice(0, 3))
-
-const maintainedCount = computed(
-  () => modpacks.filter((item) => item.status?.type === 'maintaining').length,
-)
-
-const statCards = computed(() => [
-  { value: String(modpacks.length), label: t('main.modpackCount') },
-  { value: String(maps.length), label: t('main.mapCount') },
-  { value: String(maintainedCount.value), label: t('main.maintainedCount') },
-])
-
-const browseCards = computed(() => [
-  {
-    title: t('navbar.modpack'),
-    description: t('main.modpackEntryDesc'),
-    badge: t('main.modpackCountBadge', { total: modpacks.length }),
-    icon: 'lucide:package',
-    link: '/modpacks',
-  },
-  {
-    title: t('navbar.map'),
-    description: t('main.mapEntryDesc'),
-    badge: t('main.mapCountBadge', { total: maps.length }),
-    icon: 'lucide:map',
-    link: '/map',
-  },
-  {
-    title: t('navbar.tools'),
-    description: t('main.toolsEntryDesc'),
-    badge: t('main.toolsEntryBadge'),
-    icon: 'lucide:hammer',
-    link: '/tools',
-  },
-  {
-    title: t('navbar.community'),
-    description: t('main.communityEntryDesc'),
-    badge: t('main.communityEntryBadge'),
-    icon: 'lucide:messages-square',
-    link: '/community',
-  },
-])
-
-const overviewCards = computed(() => [
-  {
-    title: t('navbar.modpack'),
-    description: t('main.overviewModpacksDesc'),
-    value: t('main.modpackCountBadge', { total: modpacks.length }),
-    icon: 'lucide:package',
-    link: '/modpacks',
-  },
-  {
-    title: t('navbar.map'),
-    description: t('main.overviewMapsDesc'),
-    value: t('main.mapCountBadge', { total: maps.length }),
-    icon: 'lucide:map',
-    link: '/map',
-  },
-  {
-    title: t('navbar.tools'),
-    description: t('main.overviewToolsDesc'),
-    value: '',
-    icon: 'lucide:hammer',
-    link: '/tools',
-  },
-])
-
-const getStatusText = (statusType) => {
+const getStatusText = (statusType?: ResourceStatusType) => {
   if (!statusType) return ''
   return t(`pack.status.${statusType}`)
 }

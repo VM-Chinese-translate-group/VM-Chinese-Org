@@ -1,4 +1,4 @@
-declare module 'markdown-it-table-of-contents';
+declare module 'markdown-it-table-of-contents'
 
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
@@ -23,15 +23,17 @@ declare module 'virtual:search-index' {
 }
 
 declare module 'virtual:resources' {
-  export const modpacks: any[]
-  export const maps: any[]
+  import type { ResourceItem } from '@/types/resource'
+
+  export const modpacks: ResourceItem[]
+  export const maps: ResourceItem[]
 }
 
 declare module 'opencc-js/core' {
-  export function ConverterFactory(from: any, to: any): (text: string) => string;
+  export function ConverterFactory(from: any, to: any): (text: string) => string
 }
 
 declare module 'opencc-js/preset' {
-  export const from: { cn: any; tw: any; hk: any; [key: string]: any };
-  export const to: { cn: any; tw: any; hk: any; [key: string]: any };
+  export const from: { cn: any; tw: any; hk: any; [key: string]: any }
+  export const to: { cn: any; tw: any; hk: any; [key: string]: any }
 }

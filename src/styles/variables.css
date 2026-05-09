@@ -42,9 +42,9 @@
   --nav-hover-bg: rgba(255, 255, 255, 0.18);
 
   /* NavBar Sizing */
-  --nav-font-size-link: clamp(0.75rem, 4vw, 1rem);
-  --nav-logo-desktop: clamp(32px, 5vw, 60px);
-  --nav-logo-mobile: clamp(24px, 5vw, 32px);
+  --nav-font-size-link: 0.95rem;
+  --nav-logo-desktop: 40px;
+  --nav-logo-mobile: 32px;
 
   /* ===========================
      Switcher Component
@@ -90,7 +90,7 @@
   --link-title: var(--vp-c-info-1);
   --link-desc: #8c8c92;
 
-  --link-radius: 18px;
+  --link-radius: 8px;
 
   img[src*='github.svg'],
   .icon-svg[style*='github.svg'] {

@@ -8,23 +8,8 @@
 
       <div class="navbar-content" :class="{ 'is-active': isMenuOpen }">
         <ul class="navbar-list">
-          <li class="navbar-item">
-            <router-link to="/modpacks">{{ $t('navbar.modpack') }}</router-link>
-          </li>
-          <li class="navbar-item">
-            <router-link to="/map">{{ $t('navbar.map') }}</router-link>
-          </li>
-          <li class="navbar-item">
-            <router-link to="/community">{{ $t('navbar.community') }}</router-link>
-          </li>
-          <li class="navbar-item">
-            <router-link to="/support-us">{{ $t('navbar.supportUs') }}</router-link>
-          </li>
-          <li class="navbar-item">
-            <router-link to="/tools">{{ $t('navbar.tools') }}</router-link>
-          </li>
-          <li class="navbar-item">
-            <router-link to="/rule">{{ $t('navbar.rule') }}</router-link>
+          <li v-for="item in navItems" :key="item.key" class="navbar-item">
+            <router-link :to="item.to">{{ $t(item.labelKey) }}</router-link>
           </li>
         </ul>
 
@@ -60,6 +45,7 @@ import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
+import { navItems } from '@/data/navigation'
 import Switcher from './Switcher.vue'
 import SearchOverlay from './SearchOverlay.vue'
 

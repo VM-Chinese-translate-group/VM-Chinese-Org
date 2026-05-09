@@ -121,20 +121,10 @@ import { ref, computed, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { convertInlineText } from '@/utils/zhconv'
-
-export interface ModCard {
-  icon: string
-  name: string
-  author: string
-  description?: string
-  link?: string
-  displayDate?: string
-  status?: { type: string }
-  versions?: { mc: string; pack: string }
-}
+import type { ResourceItem } from '@/types/resource'
 
 const props = defineProps<{
-  mods: ModCard[]
+  mods: ResourceItem[]
 }>()
 
 const { locale, t } = useI18n()

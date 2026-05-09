@@ -11,6 +11,6 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { modpacks } from 'virtual:resources'
 </script>

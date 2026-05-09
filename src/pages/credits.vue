@@ -95,51 +95,10 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive } from 'vue'
 
-import communityStaff from '@/components/Credit/staff-community.json'
-import vmStaff from '@/components/Credit/staff-vm.json'
-import webStaff from '@/components/Credit/staff-web.json'
+import { creditCategories } from '@/data/credits'
+import type { CreditPerson, DisplayCreditPerson } from '@/types/credit'
 
-interface CreditPerson {
-  name: string
-  title?: string
-  uid?: number | string
-}
-
-interface CreditCategory {
-  id: string
-  label: string
-  description: string
-  people: CreditPerson[]
-}
-
-interface DisplayPerson extends CreditPerson {
-  uidText: string
-  displayName: string
-  nickname: string
-  initial: string
-  spaceUrl: string
-}
-
-const rawCategories: CreditCategory[] = [
-  {
-    id: 'web',
-    label: '网站开发',
-    description: '负责官网开发、维护与内容呈现的贡献者。',
-    people: webStaff,
-  },
-  {
-    id: 'vm',
-    label: 'VM汉化组成员',
-    description: '持续参与整合包、地图、工具链与审核工作的正式成员。',
-    people: vmStaff,
-  },
-  {
-    id: 'community',
-    label: '外部贡献人员',
-    description: '来自社区、协作平台与开源项目的外部贡献者。',
-    people: communityStaff,
-  },
-]
+const rawCategories = creditCategories
 
 const avatarMap = reactive<Record<string, string>>({})
 const pendingUids = new Set<string>()
@@ -163,7 +122,7 @@ const allUids = computed(() => {
   return [...uids]
 })
 
-function normalizePerson(person: CreditPerson): DisplayPerson {
+function normalizePerson(person: CreditPerson): DisplayCreditPerson {
   const uidText = person.uid == null ? '' : String(person.uid).trim()
   const { displayName, nickname } = splitName(person.name)
 
