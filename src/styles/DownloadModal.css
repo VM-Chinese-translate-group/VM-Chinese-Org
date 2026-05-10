@@ -5,12 +5,12 @@
   border-radius: 12px;
   text-decoration: none !important;
   color: inherit !important;
-  background-color: var(--vp-c-bg-soft);
+  background-color: var(--bg-soft);
   transition: all 0.3s ease;
 }
 
 .Link:hover {
-  color: var(--vp-c-brand) !important;
+  color: var(--brand) !important;
   transform: translateY(-2px);
 }
 
@@ -35,8 +35,8 @@
 .vm-swal-popup {
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'Helvetica Neue', sans-serif !important;
-  background-color: var(--vp-c-bg-alt) !important;
-  color: var(--vp-c-text-1) !important;
+  background-color: var(--bg-alt) !important;
+  color: var(--text-1) !important;
   border-radius: 16px !important;
   box-shadow: var(--switcher-shadow) !important;
 }
@@ -47,15 +47,15 @@
 }
 
 .dark .swal2-input {
-  background-color: var(--vp-c-bg-soft) !important;
-  color: var(--vp-c-text-1) !important;
+  background-color: var(--bg-soft) !important;
+  color: var(--text-1) !important;
   border: 1px solid var(--switcher-border) !important;
 }
 
 .dark .swal2-success-circular-line-left,
 .dark .swal2-success-circular-line-right,
 .dark .swal2-success-fix {
-  background-color: var(--vp-c-bg-alt) !important;
+  background-color: var(--bg-alt) !important;
 }
 
 .modal-content-container {
@@ -67,17 +67,17 @@
 .intro-text {
   margin-bottom: 15px;
   font-size: 0.95em;
-  color: var(--vp-c-text-2);
+  color: var(--text-2);
 }
 
 .important-notice {
   margin-top: 25px;
   font-size: 13px;
-  color: var(--vp-c-text-2);
+  color: var(--text-2);
 }
 
 .important-notice a {
-  color: var(--vp-c-info-1);
+  color: var(--info-1);
   text-decoration: underline;
   font-weight: normal !important;
 }
@@ -91,7 +91,7 @@
 .option-item {
   margin-bottom: 12px;
   padding: 15px 20px;
-  background-color: var(--vp-c-bg-soft);
+  background-color: var(--bg-soft);
   border: 1px solid var(--switcher-border);
   border-radius: 8px;
   transition: all 0.2s ease-in-out;
@@ -111,12 +111,12 @@
 }
 
 .option-title strong {
-  color: var(--vp-c-text-1);
+  color: var(--text-1);
 }
 
 .option-desc {
   font-size: 14px;
-  color: var(--vp-c-text-2);
+  color: var(--text-2);
   line-height: 1.5;
 }
 
@@ -166,7 +166,7 @@
 
 .btn-cancel {
   background-color: var(--switcher-item-hover) !important;
-  color: var(--vp-c-text-2) !important;
+  color: var(--text-2) !important;
   border: 1px solid var(--switcher-border) !important;
 }
 

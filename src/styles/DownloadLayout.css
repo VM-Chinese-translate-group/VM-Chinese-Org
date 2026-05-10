@@ -21,6 +21,11 @@
   box-shadow: var(--card-shadow);
 }
 
+.dark .pack-header {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
 .header-content {
   display: flex;
   gap: 32px;
@@ -32,8 +37,12 @@
   height: 140px;
   border-radius: 20px;
   object-fit: cover;
-  background-color: var(--vp-c-bg-soft);
+  background-color: var(--bg-soft);
   display: block;
+}
+
+.dark .pack-icon {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .pack-icon-placeholder {
@@ -124,12 +133,22 @@
   color: var(--text-dark);
 }
 
+.dark .pack-content-body {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
 .sidebar-card {
   background: var(--bg-white);
   padding: 24px;
   border-radius: 16px;
   margin-bottom: 24px;
   box-shadow: var(--card-shadow);
+}
+
+.dark .sidebar-card {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
 }
 
 .sidebar-title {
@@ -191,23 +210,27 @@
 }
 
 .loader-fabric {
-  background: var(--vp-c-warning-soft);
+  background: var(--warning-soft);
   color: #8a7b71;
 }
 
+.dark .loader-fabric {
+  color: #ffd08a;
+}
+
 .loader-forge {
-  background: var(--vp-c-info-soft);
-  color: var(--vp-c-info-1);
+  background: var(--info-soft);
+  color: var(--info-1);
 }
 
 .loader-neoforge {
-  background: var(--vp-c-warning-soft);
-  color: var(--vp-c-warning-1);
+  background: var(--warning-soft);
+  color: var(--warning-1);
 }
 
 .loader-vanilla {
-  background: var(--vp-c-tip-soft);
-  color: var(--vp-c-tip-1);
+  background: var(--tip-soft);
+  color: var(--tip-1);
 }
 
 .pill-icon {
@@ -233,6 +256,10 @@
   transition: all 0.2s ease;
 }
 
+.dark .link-pill {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
 .link-pill:hover {
   background: var(--link-bg-hover);
   color: var(--brand-primary);
@@ -251,20 +278,34 @@
   font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
-  background: var(--vp-c-bg-soft);
+  background: var(--bg-soft);
   color: var(--text-medium);
   border: 1px solid var(--switcher-border);
 }
 
+.dark .status-tag {
+  background: #26272e;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 .status-tag.maintaining {
-  background: var(--vp-c-tip-soft);
-  color: var(--vp-c-tip-1);
+  background: var(--tip-soft);
+  color: var(--tip-1);
   border: none;
 }
 
 .status-tag.stopped {
   background: #ff4d4f;
   color: white;
+}
+
+.dark .status-tag.maintaining {
+  border: 1px solid rgba(61, 214, 140, 0.3);
+}
+
+.dark .status-tag.stopped {
+  background: #ff6b70;
+  color: #21080a;
 }
 
 @media (max-width: 960px) {

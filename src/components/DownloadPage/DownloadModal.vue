@@ -80,7 +80,7 @@ function buildQuestionHtml(q) {
       <div style="margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center;">
         ${
           q.isInput
-            ? `<input type="text" id="swal-input" class="swal2-input" style="width: 80%; color: var(--vp-c-text-1); background: var(--vp-c-bg-soft);" placeholder="请输入答案">`
+            ? `<input type="text" id="swal-input" class="swal2-input" style="width: 80%; color: var(--text-1); background: var(--bg-soft);" placeholder="请输入答案">`
             : QUESTION_OPTIONS.map(
                 (opt) =>
                   `<button class="btn btn-lanzou q-btn" style="margin:5px;" data-value="${opt}">${opt}</button>`,
@@ -149,7 +149,7 @@ async function validateAnswer(input, correct, item) {
       html: `
         <div class="modal-content-container">
           您可以下载汉化了！懒汉下载和普通下载的链接一样，只是为了增加娱乐用途。<br><br>
-          不过在此之前，请您先阅读并接受<a href="/agreement/" target="_blank" style="color: var(--vp-c-info-1);">VM汉化组用户服务协议</a>，并仔细阅读 <a href="/modpacks/" target="_blank" style="color: var(--vp-c-info-1);">汉化补丁安装说明</a>。
+          不过在此之前，请您先阅读并接受<a href="/agreement/" target="_blank" style="color: var(--info-1);">VM汉化组用户服务协议</a>，并仔细阅读 <a href="/modpacks/" target="_blank" style="color: var(--info-1);">汉化补丁安装说明</a>。
         </div>`,
       showCancelButton: false,
       confirmButtonText: '确定',

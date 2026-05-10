@@ -7,7 +7,7 @@
 }
 
 .join-card {
-  background: var(--vp-c-bg-soft);
+  background: var(--bg-soft);
   border: 1px solid color-mix(in srgb, var(--text-muted) 18%, transparent);
   border-radius: 16px;
   padding: 26px 30px;
@@ -36,7 +36,7 @@
   margin: 0;
   font-size: 1.6rem;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: var(--text-1);
 }
 
 .join-card-button {
@@ -67,7 +67,7 @@
   margin: 0 0 8px;
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: var(--text-1);
 }
 
 .join-card-body ol {

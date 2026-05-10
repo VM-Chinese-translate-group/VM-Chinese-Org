@@ -9,6 +9,7 @@
   --text-medium: #555555;
   --text-light: #666666;
   --text-muted: #888888;
+  --text-black: #111827;
 
   /* Hero Buttons */
   --btn-primary-bg: #3451b2;
@@ -58,10 +59,10 @@
   /* ===========================
      Markdown / VP Theme (Original)
      =========================== */
-  --vp-c-bg-soft: #f6f7f8;
-  --vp-c-bg-alt: #ffffff;
-  --vp-c-text-1: #3c3c43;
-  --vp-c-text-2: #67676c;
+  --bg-soft: #f6f7f8;
+  --bg-alt: #ffffff;
+  --text-1: #3c3c43;
+  --text-2: #67676c;
   --vp-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
 
   --vp-custom-block-radius: 8px;
@@ -70,16 +71,16 @@
   --vp-custom-block-border-width: 4px;
 
   /* tip */
-  --vp-c-tip-1: #18794e;
-  --vp-c-tip-soft: rgba(24, 121, 78, 0.14);
+  --tip-1: #18794e;
+  --tip-soft: rgba(24, 121, 78, 0.14);
 
   /* info */
-  --vp-c-info-1: #3451b2;
-  --vp-c-info-soft: rgba(52, 81, 178, 0.14);
+  --info-1: #3451b2;
+  --info-soft: rgba(52, 81, 178, 0.14);
 
   /* warning */
-  --vp-c-warning-1: #9f6000;
-  --vp-c-warning-soft: rgba(255, 193, 7, 0.18);
+  --warning-1: #9f6000;
+  --warning-soft: rgba(255, 193, 7, 0.18);
 
   /* ===========================
    Link Card Component
@@ -87,7 +88,7 @@
   --link-bg: #f7f7f8;
   --link-bg-hover: #ececef;
 
-  --link-title: var(--vp-c-info-1);
+  --link-title: var(--info-1);
   --link-desc: #8c8c92;
 
   --link-radius: 8px;
@@ -104,7 +105,7 @@
   --search-border: var(--switcher-border);
   --search-input-text: var(--text-dark);
   --search-placeholder: var(--text-muted);
-  --search-row-hover: var(--vp-c-bg-soft);
+  --search-row-hover: var(--bg-soft);
   --search-highlight: #ffe066;
   --brand-primary: var(--btn-primary-bg);
 }
@@ -124,23 +125,24 @@
   }
 
   /* --- Base Colors --- */
-  --bg-white: #1b1b1f;
-  --bg-off-white: #202127;
-  --text-white: #1b1b1f;
-  --text-dark: #ebebf5;
-  --text-medium: #ebebf5ad;
-  --text-light: #ebebf599;
-  --text-muted: #ebebf566;
+  --bg-white: #222329;
+  --bg-off-white: #15161a;
+  --text-white: #15161a;
+  --text-dark: #f2f5ff;
+  --text-medium: rgba(226, 232, 240, 0.82);
+  --text-light: rgba(203, 213, 225, 0.72);
+  --text-muted: rgba(148, 163, 184, 0.72);
+  --text-black: #f2f5ff;
 
   /* --- Switcher Component --- */
   --switcher-hover: rgba(255, 255, 255, 0.1);
-  --switcher-item-hover: #2f2f32;
-  --switcher-item-active: #3a3a3e;
-  --switcher-border: #3c3c3c;
-  --switcher-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --switcher-item-hover: #292a31;
+  --switcher-item-active: #303138;
+  --switcher-border: #353640;
+  --switcher-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
 
   /* --- NavBar --- */
-  --nav-bg: #1b1b1f;
+  --nav-bg: #18191d;
   --nav-text: #ebebf5;
   --nav-shadow: rgba(0, 0, 0, 0.5);
   --nav-hover-bg: rgba(255, 255, 255, 0.1);
@@ -150,32 +152,32 @@
   --footer-link-hover: #4f8cff;
 
   /* --- Info Section --- */
-  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --card-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
   --info-bg-gradient: linear-gradient(172.23deg, rgba(30, 41, 59, 1) 0%, rgba(15, 23, 42, 1) 100%);
 
   /* --- Markdown / VP Theme --- */
-  --vp-c-bg-soft: #202127;
-  --vp-c-bg-alt: #161618;
-  --vp-c-text-1: #dfdfd6;
-  --vp-c-text-2: #98989f;
+  --bg-soft: #27282f;
+  --bg-alt: #1e1f24;
+  --text-1: #edf2ff;
+  --text-2: #a8b3c7;
 
-  --vp-c-tip-1: #3dd68c;
-  --vp-c-tip-soft: rgba(61, 214, 140, 0.16);
+  --tip-1: #3dd68c;
+  --tip-soft: rgba(61, 214, 140, 0.16);
 
-  --vp-c-info-1: #7aa2ff;
-  --vp-c-info-soft: rgba(122, 162, 255, 0.16);
+  --info-1: #7aa2ff;
+  --info-soft: rgba(122, 162, 255, 0.16);
 
-  --vp-c-warning-1: #f9b44d;
-  --vp-c-warning-soft: rgba(249, 180, 77, 0.18);
+  --warning-1: #f9b44d;
+  --warning-soft: rgba(249, 180, 77, 0.18);
 
-  --vp-c-details-1: #9ca3af;
-  --vp-c-details-soft: #1f2937;
+  --details-1: #9ca3af;
+  --details-soft: #1f2937;
 
   /* ===========================
    Link Card Component
    =========================== */
-  --link-bg: #1f1f22;
-  --link-bg-hover: #2a2a2e;
+  --link-bg: #26272e;
+  --link-bg-hover: #303138;
 
   --link-title: #9db2ff;
   --link-desc: #9a9aa0;
@@ -188,14 +190,13 @@
   /* ===========================
     Search Component
     =========================== */
-  --bg-white: var(--bg-off-white);
   --search-overlay: rgba(0, 0, 0, 0.7);
-  --search-border: #3e3e41;
+  --search-border: #34353d;
   --search-input-text: var(--text-dark);
   --search-placeholder: var(--text-light);
-  --search-row-hover: #2a2a2e;
+  --search-row-hover: #292a31;
   --search-highlight: #634b00;
-  --brand-primary: var(--vp-c-info-1);
+  --brand-primary: var(--info-1);
 }
 
 * {

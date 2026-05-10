@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--vp-c-bg-alt);
+  background-color: var(--bg-alt);
   padding: 0 64px;
 }
 
@@ -26,7 +26,7 @@
   font-size: 24px;
   line-height: 1.7;
   margin-bottom: 2rem;
-  color: var(--vp-c-text-2);
+  color: var(--text-2);
 }
 
 .doc-main {
@@ -64,7 +64,7 @@
 .toc-title {
   font-size: 13px;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: var(--text-1);
   margin-bottom: 8px;
   letter-spacing: 0.4px;
 }
@@ -92,7 +92,7 @@
   padding-left: 16px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--vp-c-text-2);
+  color: var(--text-2);
   text-decoration: none;
   transition:
     color 0.25s,
@@ -104,7 +104,7 @@
 
 .toc-item a:hover {
   text-decoration: none;
-  color: var(--vp-c-text-1);
+  color: var(--text-1);
 }
 
 .toc-item a.active {
@@ -113,8 +113,8 @@
 }
 
 .dark .toc-item a.active {
-  color: var(--vp-c-info-1);
-  border-left-color: var(--vp-c-info-1);
+  color: var(--info-1);
+  border-left-color: var(--info-1);
 }
 
 @media (min-width: 1200px) {
