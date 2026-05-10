@@ -103,6 +103,7 @@
 }
 
 .toc-item a:hover {
+  text-decoration: none;
   color: var(--vp-c-text-1);
 }
 

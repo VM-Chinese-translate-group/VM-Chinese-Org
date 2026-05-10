@@ -1,6 +1,11 @@
 <template>
-  <div class="flex h-80% items-center gap-1 max-[860px]:h-auto max-[860px]:w-full max-[860px]:flex-col max-[860px]:items-stretch max-[860px]:gap-0" @mousedown.prevent>
-    <div class="relative flex h-full items-center max-[860px]:h-auto max-[860px]:flex-col max-[860px]:items-stretch">
+  <div
+    class="flex h-80% items-center gap-1 max-[860px]:h-auto max-[860px]:w-full max-[860px]:flex-col max-[860px]:items-stretch max-[860px]:gap-0"
+    @mousedown.prevent
+  >
+    <div
+      class="relative flex h-full items-center max-[860px]:h-auto max-[860px]:flex-col max-[860px]:items-stretch"
+    >
       <div
         class="flex h-10 cursor-pointer items-center gap-2 rounded-2 px-3 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.1)] max-[860px]:h-12.5 max-[860px]:w-full max-[860px]:justify-between max-[860px]:border-b max-[860px]:border-b-[rgba(0,0,0,0.05)] max-[860px]:px-0"
         role="button"
@@ -40,7 +45,11 @@
           @click.stop="selectLanguage(lang.code)"
         >
           <span>{{ lang.name }}</span>
-          <Icon v-if="locale === lang.code" icon="lucide:check" class="text-4 text-[var(--nav-primary)]" />
+          <Icon
+            v-if="locale === lang.code"
+            icon="lucide:check"
+            class="text-4 text-[var(--nav-primary)]"
+          />
         </li>
       </ul>
     </div>
