@@ -19,7 +19,16 @@
           <div class="search-box-trigger desktop-search" @click="openSearch">
             <Icon icon="lucide:search" class="search-icon" />
             <span class="search-text">{{ $t('search.placeholder') }}</span>
-            <span class="search-shortcut">Ctrl K</span>
+            <span class="search-shortcut" :aria-label="isApplePlatform ? 'Command K' : 'Ctrl K'">
+              <Icon
+                v-if="isApplePlatform"
+                icon="lucide:command"
+                class="search-shortcut-icon"
+                aria-hidden="true"
+              />
+              <span v-else>Ctrl</span>
+              <span>K</span>
+            </span>
           </div>
           <Switcher />
         </div>
@@ -55,6 +64,25 @@ const router = useRouter()
 const route = useRoute()
 const isMenuOpen = ref(false)
 const isSearchOpen = ref(false)
+
+const getIsApplePlatform = () => {
+  if (typeof navigator === 'undefined') return false
+
+  const platform = navigator.platform.toLowerCase()
+  const userAgent = navigator.userAgent.toLowerCase()
+  return (
+    platform.includes('mac') ||
+    platform.includes('iphone') ||
+    platform.includes('ipad') ||
+    platform.includes('ipod') ||
+    userAgent.includes('mac os') ||
+    userAgent.includes('iphone') ||
+    userAgent.includes('ipad') ||
+    userAgent.includes('ipod')
+  )
+}
+
+const isApplePlatform = getIsApplePlatform()
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
