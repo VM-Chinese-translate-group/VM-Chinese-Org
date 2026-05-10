@@ -1,44 +1,77 @@
 <template>
-  <div class="switcher-container" @mousedown.prevent>
-    <div class="switcher-group" :class="{ 'is-open': isDropdownOpen }">
+  <div
+    class="flex h-80% items-center gap-1 max-[860px]:h-auto max-[860px]:w-full max-[860px]:flex-col max-[860px]:items-stretch max-[860px]:gap-0"
+    @mousedown.prevent
+  >
+    <div
+      class="relative flex h-full items-center max-[860px]:h-auto max-[860px]:flex-col max-[860px]:items-stretch"
+    >
       <div
-        class="language-trigger"
+        class="flex h-10 cursor-pointer items-center gap-2 rounded-2 px-3 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.1)] max-[860px]:h-12.5 max-[860px]:w-full max-[860px]:justify-between max-[860px]:border-b max-[860px]:border-b-[rgba(0,0,0,0.05)] max-[860px]:px-0"
         role="button"
         aria-haspopup="listbox"
         :aria-expanded="isDropdownOpen"
         @click.stop="toggleDropdown"
       >
-        <Icon icon="lucide:languages" class="icon-main" />
-        <span class="current-lang-name">{{ currentLangName }}</span>
-        <Icon icon="lucide:chevron-down" class="dropdown-arrow" />
+        <Icon icon="lucide:languages" class="text-4.8 opacity-80" />
+        <span class="text-3.8 font-500">{{ currentLangName }}</span>
+        <Icon
+          icon="lucide:chevron-down"
+          class="text-3.2 opacity-50 transition-transform duration-300"
+          :class="{ 'rotate-180': isDropdownOpen }"
+        />
       </div>
 
-      <ul class="language-dropdown" role="listbox">
+      <ul
+        class="absolute right-0 top-[calc(100%+8px)] m-0 min-w-40 list-none rounded-3 border border-[rgba(0,0,0,0.1)] bg-[var(--nav-bg,#fff)] p-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.1)] transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] max-[860px]:static max-[860px]:w-full max-[860px]:border-none max-[860px]:bg-transparent max-[860px]:p-0 max-[860px]:shadow-none"
+        :class="
+          isDropdownOpen
+            ? 'visible translate-y-0 opacity-100 max-[860px]:mb-2.5 max-[860px]:block'
+            : 'invisible -translate-y-2.5 opacity-0 max-[860px]:hidden'
+        "
+        role="listbox"
+      >
         <li
           v-for="lang in AVAILABLE_LANGUAGES"
           :key="lang.code"
-          class="dropdown-item"
-          :class="{ active: locale === lang.code }"
+          class="flex cursor-pointer items-center justify-between rounded-2 px-3 py-2.5 text-3.6 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.08)] max-[860px]:rounded-0 max-[860px]:border-l-2 max-[860px]:border-l-transparent max-[860px]:px-4 max-[860px]:py-3"
+          :class="
+            locale === lang.code
+              ? 'bg-[rgba(64,158,255,0.1)] text-[var(--nav-primary)] font-600 max-[860px]:border-l-[var(--nav-primary)] max-[860px]:bg-transparent'
+              : ''
+          "
           role="option"
           :aria-selected="locale === lang.code"
           @click.stop="selectLanguage(lang.code)"
         >
           <span>{{ lang.name }}</span>
-          <Icon v-if="locale === lang.code" icon="lucide:check" class="check-icon" />
+          <Icon
+            v-if="locale === lang.code"
+            icon="lucide:check"
+            class="text-4 text-[var(--nav-primary)]"
+          />
         </li>
       </ul>
     </div>
 
     <button
-      class="theme-toggle-btn"
+      class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-visible border-none rounded-2 bg-transparent p-0 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.1)] max-[860px]:w-full max-[860px]:justify-start max-[860px]:gap-3 max-[860px]:py-3"
       :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
       @click="toggleTheme"
     >
-      <div class="icon-wrapper" :class="{ 'is-dark': isDark }">
-        <Icon icon="lucide:sun" class="sun-icon" />
-        <Icon icon="lucide:moon" class="moon-icon" />
+      <div class="relative flex h-5.5 w-5.5 items-center justify-center">
+        <Icon
+          icon="lucide:sun"
+          class="absolute left-0 top-0 h-full w-full transition-all duration-400 ease-[cubic-bezier(0.4,0,0.2,1)]"
+          :class="isDark ? 'scale-0 rotate-45 opacity-0' : 'scale-100 rotate-0 opacity-100'"
+        />
+        <Icon
+          icon="lucide:moon"
+          class="absolute left-0 top-0 h-full w-full transition-all duration-400 ease-[cubic-bezier(0.4,0,0.2,1)]"
+          :class="isDark ? 'scale-100 rotate-0 opacity-100' : 'scale-0 -rotate-45 opacity-0'"
+        />
       </div>
-      <span class="mobile-label">{{ $t('navbar.appearance') }}</span>
+      <span class="hidden text-4 max-[860px]:inline">{{ $t('navbar.appearance') }}</span>
     </button>
   </div>
 </template>
@@ -107,7 +140,3 @@ onUnmounted(() => {
   window.removeEventListener('click', closeDropdown)
 })
 </script>
-
-<style scoped>
-@import '@/styles/Switcher.css';
-</style>

@@ -4,6 +4,7 @@ import path from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import Markdown from 'unplugin-vue-markdown/vite'
 import Components from 'unplugin-vue-components/vite'
+import UnoCSS from 'unocss/vite'
 
 import Sitemap from 'vite-plugin-sitemap'
 import compression from 'vite-plugin-compression2'
@@ -44,6 +45,8 @@ export default defineConfig({
   },
 
   plugins: [
+    UnoCSS(),
+
     Markdown({
       async markdownItSetup(md) {
         const defaultImageRenderer =
