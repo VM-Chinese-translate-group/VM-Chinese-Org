@@ -10,6 +10,7 @@ import VueLazyload from 'vue-lazyload'
 
 import 'github-markdown-css/github-markdown.css'
 import '@/styles/markdown.css'
+import 'virtual:uno.css'
 
 declare global {
   interface Window {
@@ -18,6 +19,17 @@ declare global {
 }
 
 const app = createApp(App)
+
+const registerImageCache = () => {
+  if (!import.meta.env.PROD) return
+  if (!('serviceWorker' in navigator)) return
+
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/image-cache-sw.js').catch(() => {
+      // 图片缓存只是加速层，注册失败不影响页面内容。
+    })
+  })
+}
 
 app.component('Icon', Icon)
 
@@ -61,6 +73,8 @@ watch(
 router.afterEach(() => {
   syncSeo()
 })
+
+registerImageCache()
 
 if (import.meta.env.PROD) {
   router.afterEach(async () => {
