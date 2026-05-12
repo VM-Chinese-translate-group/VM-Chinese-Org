@@ -50,7 +50,7 @@
               type="button"
               :class="[
                 'filter-option',
-                `loader-${option.value}`,
+                getLoaderClass(option.value),
                 { active: selectedLoaders.includes(option.value) },
               ]"
               @click="toggleFilter(selectedLoaders, option.value)"
@@ -249,6 +249,7 @@
 import { ref, computed, reactive, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
+import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { convertInlineText } from '@/utils/zhconv'
 import type { ResourceItem } from '@/types/resource'
 
@@ -278,13 +279,6 @@ const openGroups = reactive({
 const searchIndexTW = ref<Record<string, { name: string; desc: string }>>({})
 const convertedDisplayData = ref<Record<string, { name: string; desc: string; status: string }>>({})
 
-const loaderIconMap: Record<string, string> = {
-  neoforge: '/imgs/svg/neoforge.svg',
-  fabric: '/imgs/svg/fabric.svg',
-  forge: '/imgs/svg/forge.svg',
-  vanilla: '/imgs/svg/vanilla.svg',
-}
-
 type FilterOption = {
   count: number
   label: string
@@ -306,11 +300,6 @@ const getLoaderText = (loader?: string) => {
   const key = loader.toLowerCase()
   const label = t(`loader.${key}`)
   return label === `loader.${key}` ? loader : label
-}
-
-const getLoaderIcon = (loader?: string) => {
-  if (!loader) return ''
-  return loaderIconMap[loader.toLowerCase()] || ''
 }
 
 const normalizeVersionToken = (value?: string) => value?.trim().toLowerCase() || ''

@@ -103,19 +103,19 @@
 }
 
 .filter-option.loader-fabric {
-  color: #8a7b71;
+  color: var(--loader-fabric-color);
 }
 
 .filter-option.loader-forge {
-  color: var(--info-1);
+  color: var(--loader-forge-color);
 }
 
 .filter-option.loader-neoforge {
-  color: var(--warning-1);
+  color: var(--loader-neoforge-color);
 }
 
 .filter-option.loader-vanilla {
-  color: var(--tip-1);
+  color: var(--loader-vanilla-color);
 }
 
 .filter-option.status-maintaining {
@@ -124,22 +124,6 @@
 
 .filter-option.status-stopped {
   color: #ef4444;
-}
-
-.dark .filter-option.loader-fabric {
-  color: #ffd08a;
-}
-
-.dark .filter-option.loader-forge {
-  color: #9db2ff;
-}
-
-.dark .filter-option.loader-neoforge {
-  color: #ffd08a;
-}
-
-.dark .filter-option.loader-vanilla {
-  color: #8ff0bd;
 }
 
 .dark .filter-option.status-maintaining {
@@ -184,39 +168,19 @@
 }
 
 .filter-option.loader-fabric .filter-loader-icon {
-  filter: brightness(0) saturate(100%) invert(50%) sepia(10%) saturate(545%) hue-rotate(341deg)
-    brightness(90%) contrast(86%);
+  filter: var(--loader-fabric-icon-filter);
 }
 
 .filter-option.loader-forge .filter-loader-icon {
-  filter: brightness(0) saturate(100%) invert(30%) sepia(60%) saturate(1451%) hue-rotate(214deg)
-    brightness(93%) contrast(89%);
+  filter: var(--loader-forge-icon-filter);
 }
 
 .filter-option.loader-neoforge .filter-loader-icon {
-  filter: brightness(0) saturate(100%) invert(55%) sepia(72%) saturate(746%) hue-rotate(335deg)
-    brightness(96%) contrast(89%);
+  filter: var(--loader-neoforge-icon-filter);
 }
 
 .filter-option.loader-vanilla .filter-loader-icon {
-  filter: brightness(0) saturate(100%) invert(34%) sepia(82%) saturate(533%) hue-rotate(105deg)
-    brightness(92%) contrast(87%);
-}
-
-.dark .filter-option.loader-fabric .filter-loader-icon,
-.dark .filter-option.loader-neoforge .filter-loader-icon {
-  filter: brightness(0) saturate(100%) invert(82%) sepia(34%) saturate(597%) hue-rotate(345deg)
-    brightness(102%) contrast(102%);
-}
-
-.dark .filter-option.loader-forge .filter-loader-icon {
-  filter: brightness(0) saturate(100%) invert(69%) sepia(22%) saturate(1470%) hue-rotate(194deg)
-    brightness(101%) contrast(102%);
-}
-
-.dark .filter-option.loader-vanilla .filter-loader-icon {
-  filter: brightness(0) saturate(100%) invert(87%) sepia(25%) saturate(785%) hue-rotate(81deg)
-    brightness(99%) contrast(91%);
+  filter: var(--loader-vanilla-icon-filter);
 }
 
 .filter-count {

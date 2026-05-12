@@ -82,6 +82,23 @@
   --warning-1: #9f6000;
   --warning-soft: rgba(255, 193, 7, 0.18);
 
+  --loader-fabric-color: #8a7b71;
+  --loader-fabric-bg: var(--warning-soft);
+  --loader-fabric-icon-filter: brightness(0) saturate(100%) invert(50%) sepia(10%)
+    saturate(545%) hue-rotate(341deg) brightness(90%) contrast(86%);
+  --loader-forge-color: var(--info-1);
+  --loader-forge-bg: var(--info-soft);
+  --loader-forge-icon-filter: brightness(0) saturate(100%) invert(30%) sepia(60%)
+    saturate(1451%) hue-rotate(214deg) brightness(93%) contrast(89%);
+  --loader-neoforge-color: var(--warning-1);
+  --loader-neoforge-bg: var(--warning-soft);
+  --loader-neoforge-icon-filter: brightness(0) saturate(100%) invert(55%) sepia(72%)
+    saturate(746%) hue-rotate(335deg) brightness(96%) contrast(89%);
+  --loader-vanilla-color: var(--tip-1);
+  --loader-vanilla-bg: var(--tip-soft);
+  --loader-vanilla-icon-filter: brightness(0) saturate(100%) invert(34%) sepia(82%)
+    saturate(533%) hue-rotate(105deg) brightness(92%) contrast(87%);
+
   /* ===========================
    Link Card Component
    =========================== */
@@ -169,6 +186,22 @@
 
   --warning-1: #f9b44d;
   --warning-soft: rgba(249, 180, 77, 0.18);
+
+  --loader-fabric-color: #ffd08a;
+  --loader-fabric-bg: var(--warning-soft);
+  --loader-fabric-icon-filter: brightness(0) saturate(100%) invert(82%) sepia(34%)
+    saturate(597%) hue-rotate(345deg) brightness(102%) contrast(102%);
+  --loader-forge-color: #9db2ff;
+  --loader-forge-bg: var(--info-soft);
+  --loader-forge-icon-filter: brightness(0) saturate(100%) invert(69%) sepia(22%)
+    saturate(1470%) hue-rotate(194deg) brightness(101%) contrast(102%);
+  --loader-neoforge-color: #ffd08a;
+  --loader-neoforge-bg: var(--warning-soft);
+  --loader-neoforge-icon-filter: var(--loader-fabric-icon-filter);
+  --loader-vanilla-color: #8ff0bd;
+  --loader-vanilla-bg: var(--tip-soft);
+  --loader-vanilla-icon-filter: brightness(0) saturate(100%) invert(87%) sepia(25%)
+    saturate(785%) hue-rotate(81deg) brightness(99%) contrast(91%);
 
   --details-1: #9ca3af;
   --details-soft: #1f2937;

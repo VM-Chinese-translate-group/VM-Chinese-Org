@@ -210,27 +210,23 @@
 }
 
 .loader-fabric {
-  background: var(--warning-soft);
-  color: #8a7b71;
-}
-
-.dark .loader-fabric {
-  color: #ffd08a;
+  background: var(--loader-fabric-bg);
+  color: var(--loader-fabric-color);
 }
 
 .loader-forge {
-  background: var(--info-soft);
-  color: var(--info-1);
+  background: var(--loader-forge-bg);
+  color: var(--loader-forge-color);
 }
 
 .loader-neoforge {
-  background: var(--warning-soft);
-  color: var(--warning-1);
+  background: var(--loader-neoforge-bg);
+  color: var(--loader-neoforge-color);
 }
 
 .loader-vanilla {
-  background: var(--tip-soft);
-  color: var(--tip-1);
+  background: var(--loader-vanilla-bg);
+  color: var(--loader-vanilla-color);
 }
 
 .pill-icon {
