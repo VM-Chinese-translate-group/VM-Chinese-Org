@@ -1,7 +1,26 @@
 <template>
   <div v-if="mods" class="DownloadCards">
     <div class="catalog-shell">
-      <aside class="filters-panel" :aria-label="$t('DownloadCards.filters')">
+      <button
+        class="filter-backdrop"
+        :class="{ visible: filterDrawerOpen }"
+        type="button"
+        :aria-label="$t('DownloadCards.filters')"
+        @click="closeFilterDrawer"
+      />
+
+      <aside
+        class="filters-panel"
+        :class="{ open: filterDrawerOpen }"
+        :aria-label="$t('DownloadCards.filters')"
+      >
+        <div class="filters-drawer-header">
+          <h2>{{ $t('DownloadCards.filters') }}</h2>
+          <button type="button" class="filters-close" :aria-label="$t('DownloadCards.filters')" @click="closeFilterDrawer">
+            <Icon icon="lucide:x" />
+          </button>
+        </div>
+
         <section class="filter-group">
           <button class="filter-group-title" type="button" @click="toggleGroup('mc')">
             <span>{{ $t('DownloadCards.minecraftVersion') }}</span>
@@ -132,6 +151,12 @@
             </select>
           </label>
 
+          <button class="mobile-filter-toggle" type="button" @click="openFilterDrawer">
+            <Icon icon="lucide:list-filter" />
+            <span>{{ $t('DownloadCards.filters') }}</span>
+            <span v-if="activeFilterCount" class="filter-active-count">{{ activeFilterCount }}</span>
+          </button>
+
           <div class="results-info">
             {{
               $t('DownloadCards.resultsInfo', {
@@ -172,7 +197,10 @@
                         {{ mod.displayStatus }}
                       </span>
 
-                      <span v-if="mod.versions?.loader" class="loader-badge">
+                      <span
+                        v-if="mod.versions?.loader"
+                        :class="['loader-badge', getLoaderClass(mod.versions.loader)]"
+                      >
                         <img
                           v-if="getLoaderIcon(mod.versions.loader)"
                           :src="getLoaderIcon(mod.versions.loader)"
@@ -270,6 +298,7 @@ const pageSizeOptions = [6, 12, 18]
 const selectedMcVersions = ref<string[]>([])
 const selectedLoaders = ref<string[]>([])
 const selectedStatuses = ref<string[]>([])
+const filterDrawerOpen = ref(false)
 const openGroups = reactive({
   mc: true,
   loader: true,
@@ -356,12 +385,26 @@ const statusOptions = computed(() =>
   ),
 )
 
-const sortOptions = computed<SortOption[]>(() => [
-  { value: 'updated-desc', label: t('DownloadCards.sort.updatedDesc') },
-  { value: 'updated-asc', label: t('DownloadCards.sort.updatedAsc') },
-  { value: 'mc-desc', label: t('DownloadCards.sort.mcDesc') },
-  { value: 'mc-asc', label: t('DownloadCards.sort.mcAsc') },
-])
+const activeFilterCount = computed(
+  () =>
+    selectedMcVersions.value.length + selectedLoaders.value.length + selectedStatuses.value.length,
+)
+
+const sortOptions = computed<SortOption[]>(() => {
+  const options = [
+    { value: 'updated-desc', label: t('DownloadCards.sort.updatedDesc') },
+    { value: 'updated-asc', label: t('DownloadCards.sort.updatedAsc') },
+  ]
+
+  if (selectedMcVersions.value.length !== 1) {
+    options.push(
+      { value: 'mc-desc', label: t('DownloadCards.sort.mcDesc') },
+      { value: 'mc-asc', label: t('DownloadCards.sort.mcAsc') },
+    )
+  }
+
+  return options
+})
 
 function compareVersionLike(a = '', b = '') {
   const aParts = a.match(/\d+|[a-z]+/gi) || []
@@ -515,10 +558,27 @@ const toggleGroup = (group: keyof typeof openGroups) => {
   openGroups[group] = !openGroups[group]
 }
 
+const openFilterDrawer = () => {
+  filterDrawerOpen.value = true
+}
+
+const closeFilterDrawer = () => {
+  filterDrawerOpen.value = false
+}
+
 const toggleFilter = (target: string[], value: string) => {
   const index = target.indexOf(value)
   if (index >= 0) target.splice(index, 1)
   else target.push(value)
+
+  if (
+    target === selectedMcVersions.value &&
+    target.length === 1 &&
+    sortKey.value.startsWith('mc-')
+  ) {
+    sortKey.value = 'updated-desc'
+  }
+
   currentPage.value = 1
 }
 
