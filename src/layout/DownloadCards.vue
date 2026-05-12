@@ -16,7 +16,12 @@
       >
         <div class="filters-drawer-header">
           <h2>{{ $t('DownloadCards.filters') }}</h2>
-          <button type="button" class="filters-close" :aria-label="$t('DownloadCards.filters')" @click="closeFilterDrawer">
+          <button
+            type="button"
+            class="filters-close"
+            :aria-label="$t('DownloadCards.filters')"
+            @click="closeFilterDrawer"
+          >
             <Icon icon="lucide:x" />
           </button>
         </div>
@@ -154,7 +159,9 @@
           <button class="mobile-filter-toggle" type="button" @click="openFilterDrawer">
             <Icon icon="lucide:list-filter" />
             <span>{{ $t('DownloadCards.filters') }}</span>
-            <span v-if="activeFilterCount" class="filter-active-count">{{ activeFilterCount }}</span>
+            <span v-if="activeFilterCount" class="filter-active-count">
+              {{ activeFilterCount }}
+            </span>
           </button>
 
           <div class="results-info">
