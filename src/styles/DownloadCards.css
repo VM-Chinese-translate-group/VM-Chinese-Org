@@ -652,6 +652,7 @@
     transform: translateX(-105%);
     transition: transform 0.22s ease;
     overscroll-behavior: contain;
+    overscroll-behavior-y: contain;
   }
 
   .filters-panel.open {

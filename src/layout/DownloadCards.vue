@@ -281,7 +281,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, reactive, watch, onMounted } from 'vue'
+import { ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
@@ -311,6 +311,20 @@ const openGroups = reactive({
   loader: true,
   status: true,
 })
+let previousBodyOverflow = ''
+let previousDocumentOverflow = ''
+
+const lockPageScroll = () => {
+  previousBodyOverflow = document.body.style.overflow
+  previousDocumentOverflow = document.documentElement.style.overflow
+  document.body.style.overflow = 'hidden'
+  document.documentElement.style.overflow = 'hidden'
+}
+
+const unlockPageScroll = () => {
+  document.body.style.overflow = previousBodyOverflow
+  document.documentElement.style.overflow = previousDocumentOverflow
+}
 
 const searchIndexTW = ref<Record<string, { name: string; desc: string }>>({})
 const convertedDisplayData = ref<Record<string, { name: string; desc: string; status: string }>>({})
@@ -624,6 +638,15 @@ watch([searchQuery, sortKey, selectedMcVersions, selectedLoaders, selectedStatus
 
 watch(filteredMods, () => {
   if (currentPage.value > totalPages.value) currentPage.value = Math.max(totalPages.value, 1)
+})
+
+watch(filterDrawerOpen, (isOpen) => {
+  if (isOpen) lockPageScroll()
+  else unlockPageScroll()
+})
+
+onUnmounted(() => {
+  unlockPageScroll()
 })
 
 const goToPage = (page: number) => {
