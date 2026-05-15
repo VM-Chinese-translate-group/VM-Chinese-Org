@@ -1,6 +1,6 @@
 <template>
   <div class="markdown-body">
-    <DownloadCards :mods="maps" />
+    <DownloadCards :mods="maps" :show-loader-filter="false" />
   </div>
 </template>
 

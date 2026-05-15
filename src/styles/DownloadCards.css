@@ -35,6 +35,7 @@
 }
 
 .filter-group {
+  flex: 0 0 auto;
   background: var(--bg-soft);
   border: 1px solid var(--switcher-border);
   border-radius: 8px;

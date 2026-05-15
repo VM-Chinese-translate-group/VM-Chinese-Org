@@ -62,7 +62,7 @@
           </div>
         </section>
 
-        <section class="filter-group">
+        <section v-if="showLoaderFilter" class="filter-group">
           <button class="filter-group-title" type="button" @click="toggleGroup('loader')">
             <span>{{ $t('DownloadCards.loader') }}</span>
             <Icon :icon="openGroups.loader ? 'lucide:chevron-up' : 'lucide:chevron-down'" />
@@ -288,9 +288,15 @@ import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { convertInlineText } from '@/utils/zhconv'
 import type { ResourceItem } from '@/types/resource'
 
-const props = defineProps<{
-  mods: ResourceItem[]
-}>()
+const props = withDefaults(
+  defineProps<{
+    mods: ResourceItem[]
+    showLoaderFilter?: boolean
+  }>(),
+  {
+    showLoaderFilter: true,
+  },
+)
 
 const { locale, t } = useI18n()
 const currentLocale = computed(() => locale.value)
@@ -408,7 +414,9 @@ const statusOptions = computed(() =>
 
 const activeFilterCount = computed(
   () =>
-    selectedMcVersions.value.length + selectedLoaders.value.length + selectedStatuses.value.length,
+    selectedMcVersions.value.length +
+    (props.showLoaderFilter ? selectedLoaders.value.length : 0) +
+    selectedStatuses.value.length,
 )
 
 const sortOptions = computed<SortOption[]>(() => {
@@ -514,7 +522,11 @@ const filteredMods = computed(() => {
         }
       }
 
-      if (selectedLoaders.value.length && !selectedLoaders.value.includes(getLoaderValue(mod))) {
+      if (
+        props.showLoaderFilter &&
+        selectedLoaders.value.length &&
+        !selectedLoaders.value.includes(getLoaderValue(mod))
+      ) {
         return false
       }
 
@@ -635,6 +647,13 @@ watch(
 watch([searchQuery, sortKey, selectedMcVersions, selectedLoaders, selectedStatuses], () => {
   currentPage.value = 1
 })
+
+watch(
+  () => props.showLoaderFilter,
+  (showLoaderFilter) => {
+    if (!showLoaderFilter) selectedLoaders.value = []
+  },
+)
 
 watch(filteredMods, () => {
   if (currentPage.value > totalPages.value) currentPage.value = Math.max(totalPages.value, 1)
