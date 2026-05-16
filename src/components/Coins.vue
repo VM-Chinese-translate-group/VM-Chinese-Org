@@ -7,7 +7,7 @@
           :key="key"
           :href="`#${key}`"
           :title="payment.name"
-          class="flex flex-auto select-none items-center justify-center px-2 py-3 text-center text-4 text-[var(--vp-c-text-1)] font-600 indent-2 no-underline transition-transform duration-300 any-hover:hover:-translate-y-0.75 any-hover:active:-translate-y-0.75"
+          class="flex flex-auto select-none items-center justify-center px-2 py-3 text-center text-4 text-[var(--text-1)] font-600 indent-2 no-underline transition-transform duration-300 any-hover:hover:-translate-y-0.75 any-hover:active:-translate-y-0.75"
         >
           <img :src="`/imgs/svg/${key}.svg`" class="mr-1.5 h-[7%] w-[7%] align-middle" />
           {{ payment.name }}

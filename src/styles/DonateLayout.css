@@ -16,15 +16,15 @@
 .tip-block {
   padding: var(--vp-custom-block-padding, 16px);
   border-radius: var(--vp-custom-block-radius, 8px);
-  border-left: var(--vp-custom-block-border-width, 4px) solid var(--vp-c-tip-1, #18794e);
-  background: var(--vp-c-tip-soft, rgba(24, 121, 78, 0.14));
+  border-left: var(--vp-custom-block-border-width, 4px) solid var(--tip-1, #18794e);
+  background: var(--tip-soft, rgba(24, 121, 78, 0.14));
   margin: 1.25rem 0 2rem;
 }
 .tip-title {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--vp-c-tip-1, #18794e);
+  color: var(--tip-1, #18794e);
   margin-bottom: 6px;
 }
 .tip-block p {

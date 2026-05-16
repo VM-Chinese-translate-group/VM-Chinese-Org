@@ -23,6 +23,7 @@ export function resourcesPlugin() {
     const statusType = statusBlock.match(/^\s*type:\s*['"]?([^'"\n]+)['"]?/m)?.[1]?.trim() || ''
 
     // 2. 提取版本信息
+    const loader = yamlRaw.match(/loader:\s*['"]?([^'"\n]+)['"]?/)?.[1] || ''
     const mcVersion = yamlRaw.match(/minecraft:\s*['"]?([^'"\n]+)['"]?/)?.[1] || ''
     const packVersion = yamlRaw.match(/pack:\s*['"]?([^'"\n]+)['"]?/)?.[1] || ''
 
@@ -53,6 +54,7 @@ export function resourcesPlugin() {
       displayDate: dateStr,
       status: statusType ? { type: statusType } : undefined,
       versions: {
+        loader,
         mc: mcVersion,
         pack: packVersion,
       },

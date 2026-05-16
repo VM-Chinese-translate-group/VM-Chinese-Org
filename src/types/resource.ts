@@ -12,6 +12,7 @@ export interface ResourceItem {
     type: ResourceStatusType
   }
   versions?: {
+    loader?: string
     mc?: string
     pack?: string
   }

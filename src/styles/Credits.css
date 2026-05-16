@@ -5,15 +5,15 @@
   --credits-panel: var(--bg-white);
   --credits-text: var(--text-dark);
   --credits-muted: var(--text-light);
-  --credits-soft: var(--vp-c-bg-soft);
+  --credits-soft: var(--bg-soft);
   --credits-border: var(--switcher-border);
   --credits-accent: var(--brand-primary);
-  --credits-accent-soft: var(--vp-c-info-soft);
+  --credits-accent-soft: var(--info-soft);
   --credits-line: linear-gradient(
     180deg,
     transparent,
     var(--credits-accent) 12%,
-    var(--vp-c-tip-1) 50%,
+    var(--tip-1) 50%,
     var(--credits-accent) 88%,
     transparent
   );

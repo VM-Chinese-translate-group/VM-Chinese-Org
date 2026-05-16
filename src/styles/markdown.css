@@ -17,8 +17,8 @@ h4[id] {
 }
 
 .markdown-body {
-  background-color: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-1);
+  background-color: var(--bg-alt);
+  color: var(--text-1);
 }
 
 .markdown-body a {
@@ -61,8 +61,8 @@ h4[id] {
   margin: 16px 0;
   padding: var(--vp-custom-block-padding);
   border-radius: var(--vp-custom-block-radius);
-  background-color: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
+  background-color: var(--bg-soft);
+  color: var(--text-1);
   line-height: 1.6;
   border-left: var(--vp-custom-block-border-width) solid transparent;
 }
@@ -83,29 +83,29 @@ h4[id] {
 
 /* Tip */
 .custom-block.tip {
-  border-left-color: var(--vp-c-tip-1);
-  background-color: var(--vp-c-tip-soft);
+  border-left-color: var(--tip-1);
+  background-color: var(--tip-soft);
 }
 .custom-block.tip .custom-block-title {
-  color: var(--vp-c-tip-1);
+  color: var(--tip-1);
 }
 
 /* Info */
 .custom-block.info {
-  border-left-color: var(--vp-c-info-1);
-  background-color: var(--vp-c-info-soft);
+  border-left-color: var(--info-1);
+  background-color: var(--info-soft);
 }
 .custom-block.info .custom-block-title {
-  color: var(--vp-c-info-1);
+  color: var(--info-1);
 }
 
 /* Warning */
 .custom-block.warning {
-  border-left-color: var(--vp-c-warning-1);
-  background-color: var(--vp-c-warning-soft);
+  border-left-color: var(--warning-1);
+  background-color: var(--warning-soft);
 }
 .custom-block.warning .custom-block-title {
-  color: var(--vp-c-warning-1);
+  color: var(--warning-1);
 }
 
 @media (min-width: 960px) {

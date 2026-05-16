@@ -124,6 +124,7 @@ import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers } from '@/utils/zhconv'
 import { useImagePreview } from '@/composables/useImagePreview'
+import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 
 const props = defineProps({
   meta: { type: Object, default: () => ({}) },
@@ -171,17 +172,8 @@ const iconMap: Record<string, string> = {
   modrinth: '/imgs/svg/modrinth.svg',
 }
 
-const loaderIconMap: Record<string, string> = {
-  neoforge: '/imgs/svg/neoforge.svg',
-  fabric: '/imgs/svg/fabric.svg',
-  forge: '/imgs/svg/forge.svg',
-  vanilla: '/imgs/svg/vanilla.svg',
-}
-
 const getIcon = (id: string) => iconMap[id?.toLowerCase()]
-const getLoaderIcon = (loader: string) => loaderIconMap[loader?.toLowerCase()]
 const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
-const getLoaderClass = (loader: string) => `loader-${loader?.toLowerCase()}`
 const getStatusText = (statusType: string) => t(`pack.status.${statusType}`)
 
 const scrollToDownload = () => {

@@ -6,8 +6,8 @@
   align-items: center;
   border-radius: var(--link-radius);
   border: none;
-  background-color: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
+  background-color: var(--bg-soft);
+  color: var(--text-1);
   text-decoration: none;
   transition:
     background-color 0.2s ease,
@@ -65,7 +65,7 @@
 .card-title {
   font-weight: 600;
   font-size: 1.15rem;
-  color: var(--vp-c-info-1);
+  color: var(--info-1);
   margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
