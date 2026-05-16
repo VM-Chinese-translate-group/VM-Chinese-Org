@@ -2,19 +2,26 @@
   <a
     :href="isExternal ? link : withBase(link)"
     :target="isExternal ? '_blank' : '_self'"
-    :class="`card card-theme-medium card-hover`"
+    class="card vm-card-external-icon relative m-0 box-border flex h-full min-h-[112px] w-full flex-row items-center overflow-hidden border-none rounded-[var(--link-radius)] bg-[var(--bg-soft)]! text-[var(--text-1)]! no-underline! transition-[background-color,transform] duration-200 ease-[ease] hover:-translate-y-0.5 hover:bg-[var(--link-bg-hover)]! hover:no-underline!"
     :title="title"
   >
-    <div :class="`card-footer`">
+    <div class="flex h-full w-full flex-row items-center px-6">
       <template v-if="!logoMissing">
-        <img class="card-logo" :src="logoLink" />
+        <img
+          class="mr-5 h-14 w-14 flex-shrink-0 rounded-2 bg-transparent object-cover"
+          :src="logoLink"
+        />
       </template>
 
-      <div class="card-content">
-        <div class="card-title">
+      <div class="flex h-full min-w-0 flex-1 flex-col justify-center pr-6">
+        <div
+          class="mb-1 max-w-full whitespace-normal break-words text-[1.15rem] text-[var(--info-1)]! font-600 no-underline! [overflow-wrap:break-word]"
+        >
           {{ title }}
         </div>
-        <div class="card-desc">
+        <div
+          class="max-w-full overflow-hidden whitespace-normal break-words text-[0.95rem] text-[var(--text-muted)]! leading-[1.4] no-underline! [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [line-clamp:2] [overflow-wrap:break-word]"
+        >
           {{ descText }}
         </div>
       </div>
@@ -71,7 +78,3 @@ const descText = computed(() => {
   return props.link || ''
 })
 </script>
-
-<style scoped>
-@import '@/styles/card.css';
-</style>

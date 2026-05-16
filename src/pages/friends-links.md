@@ -16,35 +16,35 @@ title: 友情链接
 title: 籽岷
 link: https://space.bilibili.com/686127
 logo: /imgs/friend-links/zimin.webp
-desc: 使用我们的FTB OceanBlock2、石头世界4和3、ROTN、永恒的MC、狂乱之境4等汉化
+desc: 使用我们的OceanBlock2、石头世界4和3、ROTN、永恒的MC、狂乱之境4等汉化
 ```
 
 ```card
 title: Pinkfish粉鱼
 link: https://space.bilibili.com/2388153
 logo: /imgs/friend-links/pinkfish.webp
-desc: 使用我们的FTB OceanBlock2整合包汉化
+desc: 使用我们的OceanBlock2整合包汉化
 ```
 
 ```card
 title: 大橙橙橙子
 link: https://space.bilibili.com/1691347
 logo: /imgs/friend-links/dachengzi.webp
-desc: 使用我们的FTB石头世界4和FTB OceanBlock2整合包汉化
+desc: 使用我们的石头世界4和OceanBlock2整合包汉化
 ```
 
 ```card
 title: 少年五之歌
 link: https://space.bilibili.com/860464
 logo: /imgs/friend-links/5ge.webp
-desc: 使用我们的FTB OceanBlock2整合包汉化
+desc: 使用我们的OceanBlock2整合包汉化
 ```
 
 ```card
 title: Sweet秋明
 link: https://space.bilibili.com/32796946
 logo: /imgs/friend-links/qiuming.jpg
-desc: 使用我们的FTB石头世界4和3整合包汉化
+desc: 使用我们的石头世界4和3整合包汉化
 ```
 
 ```card
