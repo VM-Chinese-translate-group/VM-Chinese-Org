@@ -2,9 +2,15 @@
   <a
     :href="isExternal ? link : withBase(link)"
     :target="isExternal ? '_blank' : '_self'"
-    class="card vm-card-external-icon relative m-0 box-border flex h-full min-h-[112px] w-full flex-row items-center overflow-hidden border-none rounded-[var(--link-radius)] bg-[var(--bg-soft)]! text-[var(--text-1)]! no-underline! transition-[background-color,transform] duration-200 ease-[ease] hover:-translate-y-0.5 hover:bg-[var(--link-bg-hover)]! hover:no-underline!"
+    class="card relative m-0 box-border flex h-full min-h-[112px] w-full flex-row items-center overflow-hidden border-none rounded-[var(--link-radius)] bg-[var(--bg-soft)]! text-[var(--text-1)]! no-underline! transition-[background-color,transform] duration-200 ease-[ease] hover:-translate-y-0.5 hover:bg-[var(--link-bg-hover)]! hover:no-underline!"
     :title="title"
   >
+    <Icon
+      v-if="isExternal"
+      icon="lucide:external-link"
+      class="pointer-events-none absolute right-[18px] top-4 h-4 w-4 text-[var(--text-muted)] opacity-40"
+      aria-hidden="true"
+    />
     <div class="flex h-full w-full flex-row items-center px-6">
       <template v-if="!logoMissing">
         <img
@@ -30,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
 
 interface CardProps {
