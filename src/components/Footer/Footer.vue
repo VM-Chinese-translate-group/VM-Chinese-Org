@@ -1,75 +1,89 @@
 <template>
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="logo-section">
-        <img class="logo-icon" v-lazy="'/imgs/logo/logo_long.png'" />
-        <p class="copyright">{{ $t('footer.copyright') }}</p>
+  <footer class="[background:var(--footer-bg-gradient)] text-[var(--text-medium)]">
+    <div
+      class="mx-auto flex max-w-[1200px] items-center justify-between gap-8 px-4 py-8 max-[768px]:flex-col max-[768px]:text-center"
+    >
+      <div class="flex min-w-48 flex-col items-center">
+        <img class="h-40 w-40" v-lazy="'/imgs/logo/logo_long.png'" />
+        <p class="max-w-[300px] break-words text-center max-[768px]:max-w-[200px]">
+          {{ $t('footer.copyright') }}
+        </p>
 
-        <div class="build-info-container">
-          <p class="build-info">
+        <div>
+          <p class="mb-0.5">
             {{ $t('footer.buildInfo', { branch: branchName }) }}@
             <a
               :href="`https://github.com/${repoPath}/commit/${commitId}`"
               target="_blank"
-              class="commit-link"
+              class="text-[var(--text-medium)] no-underline transition-colors duration-300 hover:text-[var(--footer-link-hover)]"
             >
               {{ commitId }}
             </a>
           </p>
-          <p class="build-date">{{ commitDate }}</p>
+          <p class="text-center text-[0.85rem] text-[var(--text-medium)]">{{ commitDate }}</p>
         </div>
       </div>
 
-      <div class="links-section">
+      <div
+        class="flex flex-1 flex-wrap justify-around gap-[clamp(2rem,8vw,5rem)] max-[768px]:justify-center max-[768px]:gap-8"
+      >
         <div class="column">
-          <h3 class="column-title">{{ $t('footer.about') }}</h3>
-          <ul class="link-list">
+          <h3 class="mb-[0.8rem] text-[var(--text-dark)] font-bold">{{ $t('footer.about') }}</h3>
+          <ul class="m-0 list-none p-0">
             <li>
-              <a href="/join" class="link">{{ $t('footer.joinUs') }}</a>
+              <a href="/join" class="vm-link-underline mb-2">{{ $t('footer.joinUs') }}</a>
             </li>
             <li>
-              <a href="/support-us" class="link">{{ $t('footer.supportUs') }}</a>
+              <a href="/support-us" class="vm-link-underline mb-2">{{ $t('footer.supportUs') }}</a>
             </li>
             <li>
-              <a href="/friends-links" class="link">{{ $t('footer.friendsLinks') }}</a>
+              <a href="/friends-links" class="vm-link-underline mb-2">
+                {{ $t('footer.friendsLinks') }}
+              </a>
             </li>
             <li>
-              <a href="/credits" class="link">{{ $t('footer.credits') }}</a>
+              <a href="/credits" class="vm-link-underline mb-2">{{ $t('footer.credits') }}</a>
             </li>
           </ul>
         </div>
         <div class="column">
-          <h3 class="column-title">{{ $t('footer.policy') }}</h3>
-          <ul class="link-list">
+          <h3 class="mb-[0.8rem] text-[var(--text-dark)] font-bold">
+            {{ $t('footer.policy') }}
+          </h3>
+          <ul class="m-0 list-none p-0">
             <li>
-              <a href="/privacy" class="link">{{ $t('footer.privacy') }}</a>
+              <a href="/privacy" class="vm-link-underline mb-2">{{ $t('footer.privacy') }}</a>
             </li>
             <li>
-              <a href="/agreement" class="link">{{ $t('footer.agreement') }}</a>
+              <a href="/agreement" class="vm-link-underline mb-2">
+                {{ $t('footer.agreement') }}
+              </a>
             </li>
           </ul>
         </div>
         <div class="column">
-          <h3 class="column-title">{{ $t('footer.products') }}</h3>
-          <ul class="link-list">
+          <h3 class="mb-[0.8rem] text-[var(--text-dark)] font-bold">
+            {{ $t('footer.products') }}
+          </h3>
+          <ul class="m-0 list-none p-0">
             <li>
-              <a href="/modpacks" class="link">{{ $t('footer.modpacks') }}</a>
+              <a href="/modpacks" class="vm-link-underline mb-2">{{ $t('footer.modpacks') }}</a>
             </li>
             <li>
-              <a href="/map" class="link">{{ $t('footer.maps') }}</a>
+              <a href="/map" class="vm-link-underline mb-2">{{ $t('footer.maps') }}</a>
             </li>
             <li>
-              <a href="/vmtu" class="link">{{ $t('footer.vmtu') }}</a>
+              <a href="/vmtu" class="vm-link-underline mb-2">{{ $t('footer.vmtu') }}</a>
             </li>
             <li>
-              <a href="/tools" class="link">{{ $t('footer.tools') }}</a>
+              <a href="/tools" class="vm-link-underline mb-2">{{ $t('footer.tools') }}</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="bottom-note">
+    <div class="text-center text-[0.85rem] text-[var(--text-medium)]">
       <p>{{ $t('footer.disclaimer') }}</p>
     </div>
   </footer>
@@ -85,7 +99,3 @@ const commitDate = import.meta.env.VITE_GIT_DATE
 
 useI18n()
 </script>
-
-<style scoped>
-@import '@/styles/Footer.css';
-</style>

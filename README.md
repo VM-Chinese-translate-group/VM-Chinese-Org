@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="public/imgs/favicon/favicon.ico"/>
+  <img src="public/imgs/logo/logo_256.png"/>
 </div>
 
-# VM汉化组官方网站 v4
+# VM汉化组官网 v4
 
 立即访问：<https://v4.vmct-cn.top/>
 
