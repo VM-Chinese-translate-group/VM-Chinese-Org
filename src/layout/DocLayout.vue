@@ -47,6 +47,7 @@ import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers, convertInlineText } from '@/utils/zhconv'
 import { useImagePreview } from '@/composables/useImagePreview'
+import ImagePreview from '@/components/ImagePreview.vue'
 
 const props = defineProps<{
   meta?: Record<string, any>
@@ -169,6 +170,7 @@ watch(locale, () => {
 
 onMounted(() => {
   bindPreview()
+  handleConversion()
   window.addEventListener('scroll', onScroll)
   window.addEventListener('resize', extractHeaders)
 })

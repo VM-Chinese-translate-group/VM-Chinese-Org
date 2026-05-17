@@ -7,7 +7,7 @@ import enUS from '@/locales/en-US'
 // 定义 Message Schema 类型，以 zh-CN 为准。使用 t('...') 时会有代码提示，并且 key 会被校验
 type MessageSchema = typeof zhCN
 
-type AvailableLocales = 'zh-CN' | 'zh-TW' | 'en-US'
+export type AvailableLocales = 'zh-CN' | 'zh-TW' | 'en-US'
 
 const SUPPORTED_LOCALES: AvailableLocales[] = ['zh-CN', 'zh-TW', 'en-US']
 
@@ -30,7 +30,9 @@ function matchLocale(lang: string): AvailableLocales | null {
 }
 
 // 获取系统语言（按优先级匹配）
-function getSystemLocale(): AvailableLocales {
+export function getSystemLocale(): AvailableLocales {
+  if (typeof navigator === 'undefined') return 'zh-CN'
+
   const langs = navigator.languages || [navigator.language]
 
   for (const lang of langs) {
@@ -43,7 +45,9 @@ function getSystemLocale(): AvailableLocales {
   return 'zh-CN'
 }
 
-function getSavedLocale(): AvailableLocales | null {
+export function getSavedLocale(): AvailableLocales | null {
+  if (typeof localStorage === 'undefined') return null
+
   const saved = localStorage.getItem('locale') as AvailableLocales | null
   if (saved && SUPPORTED_LOCALES.includes(saved)) {
     return saved
@@ -51,18 +55,22 @@ function getSavedLocale(): AvailableLocales | null {
   return null
 }
 
-const locale: AvailableLocales = getSavedLocale() ?? getSystemLocale()
+export function getClientLocale() {
+  return getSavedLocale() ?? getSystemLocale()
+}
 
-const i18n = createI18n<[MessageSchema], AvailableLocales>({
-  legacy: false,
-  globalInjection: true,
-  locale,
-  fallbackLocale: 'en-US',
-  messages: {
-    'zh-CN': zhCN,
-    'zh-TW': zhTW,
-    'en-US': enUS,
-  },
-})
+export function createI18nInstance(locale: AvailableLocales = 'zh-CN') {
+  return createI18n<[MessageSchema], AvailableLocales>({
+    legacy: false,
+    globalInjection: true,
+    locale,
+    fallbackLocale: 'en-US',
+    messages: {
+      'zh-CN': zhCN,
+      'zh-TW': zhTW,
+      'en-US': enUS,
+    },
+  })
+}
 
-export default i18n
+export default createI18nInstance()

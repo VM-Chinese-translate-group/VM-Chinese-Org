@@ -1,12 +1,7 @@
 const customDict: [string, string][] = [
   ['整合包', '模組包'],
-  ['文件夹', '資料夾'],
-  ['软件', '軟體'],
-  ['程序', '程式'],
-  ['代码', '程式碼'],
   ['配置', '設定'],
-  ['服务端', '伺服端'],
-  ['服务器', '伺服器'],
+  ['服務端', '伺服端'],
 ]
 
 let cachedConverter: ((text: string) => string) | null = null
@@ -14,14 +9,38 @@ let cachedConverter: ((text: string) => string) | null = null
 async function getConverter() {
   if (cachedConverter) return cachedConverter
 
-  const { ConverterFactory } = await import('opencc-js/core')
-  const { from, to } = await import('opencc-js/preset')
+  const OpenCC = (await import('opencc-js')).default
+  const baseConverter = OpenCC.Converter({ from: 'cn', to: 'twp' })
+  const customConverter = OpenCC.CustomConverter(customDict)
 
-  cachedConverter = ConverterFactory(from.cn, to.twp.concat([customDict]))
+  cachedConverter = (text) => customConverter(baseConverter(text))
   return cachedConverter
 }
 
 const cache = new Map<string, string>()
+const preservedText = new Map<string, string>()
+const latinTokenPattern = /[A-Za-z][A-Za-z0-9_+.-]*/g
+
+function preserveLatinTokens(text: string) {
+  let index = 0
+  const tokens: string[] = []
+  const escaped = text.replace(latinTokenPattern, (token) => {
+    const placeholder = `\uE000${index++}\uE001`
+    tokens.push(token)
+    return placeholder
+  })
+
+  return { escaped, tokens }
+}
+
+function restoreLatinTokens(text: string, tokens: string[]) {
+  return text.replace(/\uE000(\d+)\uE001/g, (_, rawIndex) => tokens[Number(rawIndex)] ?? '')
+}
+
+function convertText(converter: (text: string) => string, text: string) {
+  const { escaped, tokens } = preserveLatinTokens(text)
+  return restoreLatinTokens(converter(escaped), tokens)
+}
 
 export async function convertInlineText(text: string, locale: string): Promise<string> {
   if (!text || locale !== 'zh-TW') return text
@@ -30,7 +49,7 @@ export async function convertInlineText(text: string, locale: string): Promise<s
   if (cache.has(key)) return cache.get(key)!
 
   const converter = await getConverter()
-  const result = converter(text)
+  const result = convertText(converter, text)
   cache.set(key, result)
   return result
 }
@@ -81,11 +100,12 @@ export async function convertMarkdownContainers(targetLocale: string, root?: HTM
     containers.forEach((el) => {
       for (const textNode of getTextNodes(el)) {
         const current = textNode.nodeValue || ''
-        const previous = originalTextMap.get(textNode)
-        const source = previous && current === previous.converted ? previous.source : current
-        const converted = converter(source)
+        const source =
+          originalTextMap.get(textNode)?.source || preservedText.get(current) || current
+        const converted = convertText(converter, source)
 
         originalTextMap.set(textNode, { source, converted })
+        preservedText.set(converted, source)
         textNode.nodeValue = converted
       }
     })

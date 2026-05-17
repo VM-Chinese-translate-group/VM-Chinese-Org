@@ -14,6 +14,17 @@ interface SeoMeta {
   title?: string
 }
 
+export interface ResolvedPageSeo {
+  description: string
+  image: string
+  jsonLd: object
+  pageTitle: string
+  robots: string
+  siteName: string
+  url: string
+  locale: string
+}
+
 function normalizeText(value: unknown, fallback = '') {
   if (typeof value !== 'string') return fallback
   return value.replace(/\s+/g, ' ').trim() || fallback
@@ -110,11 +121,11 @@ function getRouteSeo(route: RouteLocationNormalizedLoaded, t: TranslateFn): SeoM
   }
 }
 
-export async function syncPageSeo(
+export async function resolvePageSeo(
   route: RouteLocationNormalizedLoaded,
   locale: string,
   t: TranslateFn,
-) {
+): Promise<ResolvedPageSeo> {
   const siteName = t('navbar.title')
   const defaultDescription = t('seo.defaultDescription')
   const rawSeo = getRouteSeo(route, t)
@@ -128,44 +139,88 @@ export async function syncPageSeo(
   const image = absoluteUrl(rawSeo.image || DEFAULT_IMAGE)
   const robots = rawSeo.noindex ? 'noindex, nofollow' : 'index, follow'
 
-  document.title = pageTitle
+  return {
+    description,
+    image,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': route.name === 'Home' ? 'WebSite' : 'WebPage',
+      name: pageTitle,
+      description,
+      url,
+      image,
+      publisher: {
+        '@type': 'Organization',
+        name: siteName,
+        url: SITE_URL,
+        logo: absoluteUrl('/imgs/logo/logo_512.png'),
+      },
+    },
+    locale,
+    pageTitle,
+    robots,
+    siteName,
+    url,
+  }
+}
 
-  upsertMeta('meta[name="description"]', { name: 'description', content: description })
-  upsertMeta('meta[name="robots"]', { name: 'robots', content: robots })
-  upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: siteName })
+export function renderSeoHead(seo: ResolvedPageSeo) {
+  const escapeAttr = (value: string) =>
+    value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+  const ogLocale = seo.locale === 'zh-TW' ? 'zh_TW' : seo.locale === 'en-US' ? 'en_US' : 'zh_CN'
+
+  return [
+    `<title>${escapeAttr(seo.pageTitle)}</title>`,
+    `<meta name="description" content="${escapeAttr(seo.description)}" />`,
+    `<meta name="robots" content="${escapeAttr(seo.robots)}" />`,
+    `<link rel="canonical" href="${escapeAttr(seo.url)}" />`,
+    `<meta property="og:site_name" content="${escapeAttr(seo.siteName)}" />`,
+    '<meta property="og:type" content="website" />',
+    `<meta property="og:title" content="${escapeAttr(seo.pageTitle)}" />`,
+    `<meta property="og:description" content="${escapeAttr(seo.description)}" />`,
+    `<meta property="og:url" content="${escapeAttr(seo.url)}" />`,
+    `<meta property="og:image" content="${escapeAttr(seo.image)}" />`,
+    `<meta property="og:locale" content="${ogLocale}" />`,
+    '<meta name="twitter:card" content="summary_large_image" />',
+    `<meta name="twitter:title" content="${escapeAttr(seo.pageTitle)}" />`,
+    `<meta name="twitter:description" content="${escapeAttr(seo.description)}" />`,
+    `<meta name="twitter:image" content="${escapeAttr(seo.image)}" />`,
+    `<script id="vmct-jsonld" type="application/ld+json">${JSON.stringify(seo.jsonLd).replace(/</g, '\\u003c')}</script>`,
+  ].join('\n    ')
+}
+
+export async function syncPageSeo(
+  route: RouteLocationNormalizedLoaded,
+  locale: string,
+  t: TranslateFn,
+) {
+  const seo = await resolvePageSeo(route, locale, t)
+
+  document.title = seo.pageTitle
+
+  upsertMeta('meta[name="description"]', { name: 'description', content: seo.description })
+  upsertMeta('meta[name="robots"]', { name: 'robots', content: seo.robots })
+  upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: seo.siteName })
   upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' })
-  upsertMeta('meta[property="og:title"]', { property: 'og:title', content: pageTitle })
+  upsertMeta('meta[property="og:title"]', { property: 'og:title', content: seo.pageTitle })
   upsertMeta('meta[property="og:description"]', {
     property: 'og:description',
-    content: description,
+    content: seo.description,
   })
-  upsertMeta('meta[property="og:url"]', { property: 'og:url', content: url })
-  upsertMeta('meta[property="og:image"]', { property: 'og:image', content: image })
+  upsertMeta('meta[property="og:url"]', { property: 'og:url', content: seo.url })
+  upsertMeta('meta[property="og:image"]', { property: 'og:image', content: seo.image })
   upsertMeta('meta[property="og:locale"]', {
     property: 'og:locale',
-    content: locale === 'zh-TW' ? 'zh_TW' : locale === 'en-US' ? 'en_US' : 'zh_CN',
+    content: seo.locale === 'zh-TW' ? 'zh_TW' : seo.locale === 'en-US' ? 'en_US' : 'zh_CN',
   })
   upsertMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary_large_image' })
-  upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: pageTitle })
+  upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: seo.pageTitle })
   upsertMeta('meta[name="twitter:description"]', {
     name: 'twitter:description',
-    content: description,
+    content: seo.description,
   })
-  upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: image })
-  upsertLink('canonical', url)
-
-  upsertJsonLd('vmct-jsonld', {
-    '@context': 'https://schema.org',
-    '@type': route.name === 'Home' ? 'WebSite' : 'WebPage',
-    name: pageTitle,
-    description,
-    url,
-    image,
-    publisher: {
-      '@type': 'Organization',
-      name: siteName,
-      url: SITE_URL,
-      logo: absoluteUrl('/imgs/logo/logo_512.png'),
-    },
-  })
+  upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: seo.image })
+  upsertLink('canonical', seo.url)
+  upsertJsonLd('vmct-jsonld', seo.jsonLd)
 }
