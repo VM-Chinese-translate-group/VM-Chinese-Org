@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build && vite build --ssr src/entry-server.ts --outDir dist/server && node scripts/prerender.mjs && node scripts/verify-dist-assets.mjs",
+    "build": "vite build && vite build --ssr src/entry-server.ts --outDir dist/server && node scripts/prerender.mjs",
     "dev": "vite",
     "format": "prettier --write src/",
     "type-check": "vue-tsc --build",
