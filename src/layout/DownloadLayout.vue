@@ -125,6 +125,7 @@ import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers } from '@/utils/zhconv'
 import { useImagePreview } from '@/composables/useImagePreview'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
+import ImagePreview from '@/components/ImagePreview.vue'
 
 const props = defineProps({
   meta: { type: Object, default: () => ({}) },

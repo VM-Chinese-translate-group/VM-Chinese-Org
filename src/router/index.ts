@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
 import DefaultLayout from '@/layout/DefaultLayout.vue'
@@ -71,22 +71,22 @@ const routes: RouteRecordRaw[] = [
   },
 ]
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        el: to.hash,
-        behavior: 'smooth',
-        top: 80,
+export function createAppRouter(ssr = false) {
+  return createRouter({
+    history: ssr ? createMemoryHistory() : createWebHistory(),
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      if (to.hash) {
+        return {
+          el: to.hash,
+          behavior: 'smooth',
+          top: 80,
+        }
       }
-    }
-    if (savedPosition) {
-      return savedPosition
-    }
-    return { top: 0 }
-  },
-})
-
-export default router
+      if (savedPosition) {
+        return savedPosition
+      }
+      return { top: 0 }
+    },
+  })
+}

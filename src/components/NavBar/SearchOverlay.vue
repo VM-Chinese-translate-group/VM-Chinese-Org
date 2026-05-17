@@ -71,11 +71,15 @@ let timer: any = null
 let previousBodyOverflow = ''
 
 const lockBodyScroll = () => {
+  if (typeof document === 'undefined') return
+
   previousBodyOverflow = document.body.style.overflow
   document.body.style.overflow = 'hidden'
 }
 
 const unlockBodyScroll = () => {
+  if (typeof document === 'undefined') return
+
   document.body.style.overflow = previousBodyOverflow
 }
 
