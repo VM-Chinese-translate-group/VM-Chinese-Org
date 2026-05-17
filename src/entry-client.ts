@@ -16,21 +16,9 @@ declare global {
   }
 }
 
-const appRoot = document.getElementById('app')
-const hasPrerenderedHtml = Boolean(
-  appRoot &&
-  Array.from(appRoot.childNodes).some((node) => {
-    if (node.nodeType === Node.ELEMENT_NODE) return true
-    if (node.nodeType === Node.TEXT_NODE) return Boolean(node.textContent?.trim())
-    if (node.nodeType === Node.COMMENT_NODE) return (node as Comment).data.trim() !== 'app-html'
-    return false
-  }),
-)
-
 const clientLocale = getClientLocale()
 const { app, i18n, router } = createApp({
-  hydrate: hasPrerenderedHtml,
-  locale: hasPrerenderedHtml ? 'zh-CN' : clientLocale,
+  locale: clientLocale,
 })
 
 const registerImageCache = () => {

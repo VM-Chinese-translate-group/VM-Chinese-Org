@@ -44,7 +44,3 @@ onMounted(() => {
   downloadJump(params, downloadMethod)
 })
 </script>
-
-<style>
-@import '@/styles/DownloadLinks.css';
-</style>
