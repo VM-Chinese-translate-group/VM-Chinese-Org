@@ -1,23 +1,6 @@
 @import './variables.css';
 
-.Link {
-  cursor: pointer;
-  border-radius: 12px;
-  text-decoration: none !important;
-  color: inherit !important;
-  background-color: var(--bg-soft);
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.Link:hover {
-  color: var(--brand) !important;
-  transform: translateY(-2px);
-}
-
-.lazy-text .text-sm,
-.lazy-text .text-xs {
+.lazy-text span {
   animation: textFlow 2s linear infinite;
 }
 

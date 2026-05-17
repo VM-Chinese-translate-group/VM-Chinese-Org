@@ -7,6 +7,15 @@ const convertToTW = ConverterFactory(from.cn, to.twp)
 const VIRTUAL_MODULE_ID = 'virtual:search-index'
 const RESOLVED_VIRTUAL_MODULE_ID = '\0' + VIRTUAL_MODULE_ID
 
+function stripMarkdownCode(content: string) {
+  return content
+    .replace(
+      /(^|\r?\n)[ \t]*(`{3,})[^\r\n]*(?:\r?\n[\s\S]*?)?\r?\n[ \t]*\2[ \t]*(?=\r?\n|$)/g,
+      '\n',
+    )
+    .replace(/`+[^`\r\n]+`+/g, '')
+}
+
 export function searchIndexPlugin() {
   function getSearchIndex() {
     const items: any[] = []
@@ -19,8 +28,7 @@ export function searchIndexPlugin() {
         .replace(/['"]/g, '')
         .trim()
 
-      const textRaw = page.body
-        .replace(/```[\s\S]*?```/g, '') // 去代码块（防止误伤代码里的链接）
+      const textRaw = stripMarkdownCode(page.body) // 去代码块
         .replace(/:::[\s\S]*?:::/g, '') // 去 Container
         .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // 将 [文字](链接) 替换为 "文字"
         .replace(/<[^>]+>/g, '') // 去 HTML

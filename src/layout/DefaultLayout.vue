@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="flex flex-col">
     <NavBar />
 
     <DocLayout v-if="isDocLayout">
@@ -24,10 +24,3 @@ const route = useRoute()
 
 const isDocLayout = computed(() => route.meta.layout === 'doc')
 </script>
-
-<style scoped>
-.layout {
-  display: flex;
-  flex-direction: column;
-}
-</style>

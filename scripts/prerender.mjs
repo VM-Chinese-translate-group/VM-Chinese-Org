@@ -72,6 +72,10 @@ for (const route of routes) {
   fs.writeFileSync(filePath, html)
 }
 
+const notFoundRendered = await render('/404')
+const notFoundHtml = renderTemplate(template, notFoundRendered)
+fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml)
+
 fs.rmSync(path.join(distDir, 'server'), { recursive: true, force: true })
 
-console.log(`Pre-rendered ${routes.length} routes.`)
+console.log(`Pre-rendered ${routes.length} routes and 404.html.`)

@@ -13,6 +13,22 @@ const props = defineProps({
 
 const openLink = (url) => url && window.open(url, '_blank')
 
+const getDownloadType = (item) => (item.id === 'lazy' ? 'lazy' : 'normal')
+
+const trackDownloadChoice = (stage, item, extra = {}) => {
+  window.gtag?.(`event`, `download_choice_${stage}`, {
+    download_type: getDownloadType(item),
+    download_method_id: item.id,
+    download_method_name: item.name,
+    ...extra,
+  })
+}
+
+const openTrackedLink = (item, url = item.link, extra = {}) => {
+  trackDownloadChoice('open', item, extra)
+  openLink(url)
+}
+
 const getSwal = async () => {
   if (!swalPromise) {
     swalPromise = import('sweetalert2').then((module) => module.default)
@@ -153,7 +169,7 @@ async function validateAnswer(input, correct, item) {
         </div>`,
       showCancelButton: false,
       confirmButtonText: '确定',
-    }).then((res) => res.isConfirmed && openLink(item.link))
+    }).then((res) => res.isConfirmed && openTrackedLink(item))
   } else {
     Swal.fire({
       icon: 'error',
@@ -176,7 +192,7 @@ const showProtocolModal = async (item, hasInstallGuide = true) => {
     cancelButtonText: '取消',
     reverseButtons: true,
     didOpen: () => setupButtonCountdown(Swal, 3),
-  }).then((res) => res.isConfirmed && openLink(item.link))
+  }).then((res) => res.isConfirmed && openTrackedLink(item))
 }
 
 const showMultiDriveModal = async (item, hasInstallGuide = true) => {
@@ -202,8 +218,8 @@ const showMultiDriveModal = async (item, hasInstallGuide = true) => {
       setupButtonCountdown(Swal, 3)
     },
   }).then((res) => {
-    if (res.isConfirmed) openLink(item.quarkLink)
-    else if (res.isDenied) openLink(item.lanzouLink)
+    if (res.isConfirmed) openTrackedLink(item, item.quarkLink, { drive: 'quark' })
+    else if (res.isDenied) openTrackedLink(item, item.lanzouLink, { drive: 'lanzou' })
   })
 }
 
@@ -216,27 +232,43 @@ const MODAL_CONFIG = {
 }
 
 function handleClick(item) {
+  trackDownloadChoice('select', item)
+
   const handler = MODAL_CONFIG[item.id]
   if (handler) handler(item)
-  else if (item.link) openLink(item.link)
+  else if (item.link) openTrackedLink(item)
 }
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex flex-wrap justify-center gap-4">
     <div
       v-for="item in items"
       :key="item.name"
-      :class="['Link', { 'lazy-text': item.id === 'lazy' }]"
+      :class="[
+        'group flex h-[140px] w-[160px] cursor-pointer flex-col items-center justify-center border-none rounded-[var(--link-radius)] bg-[var(--link-bg)] p-5 no-underline! transition-[background-color,transform] duration-[250ms] ease-[ease] hover:-translate-y-px hover:bg-[var(--link-bg-hover)] hover:no-underline!',
+        { 'lazy-text': item.id === 'lazy' },
+      ]"
       @click="handleClick(item)"
     >
       <div
         v-if="item.icon && typeof item.icon === 'string' && item.icon.startsWith('i')"
-        :class="item.icon"
+        :class="[
+          item.icon,
+          'mb-2.5 h-11 w-11 object-contain transition-transform duration-[250ms] group-hover:scale-106',
+        ]"
       />
-      <img v-else v-lazy="item.icon" />
-      <span class="text-sm">{{ item.name }}</span>
-      <span class="text-xs">{{ item.secondary }}</span>
+      <img
+        v-else
+        v-lazy="item.icon"
+        class="mb-2.5 h-11 w-11 object-contain transition-transform duration-[250ms] group-hover:scale-106"
+      />
+      <span class="text-[0.92rem] text-[var(--link-title)] font-500 leading-[1.2]">
+        {{ item.name }}
+      </span>
+      <span class="mt-1 text-xs text-[var(--link-desc)] leading-[1.2]">
+        {{ item.secondary }}
+      </span>
     </div>
   </div>
 </template>
