@@ -1,0 +1,11 @@
+minimumReleaseAgeExclude:
+  - '@shikijs/core@4.1.0'
+  - '@shikijs/engine-javascript@4.1.0'
+  - '@shikijs/engine-oniguruma@4.1.0'
+  - '@shikijs/langs@4.1.0'
+  - '@shikijs/markdown-it@4.1.0'
+  - '@shikijs/primitive@4.1.0'
+  - '@shikijs/themes@4.1.0'
+  - '@shikijs/types@4.1.0'
+  - shiki@4.1.0
+  - taze@19.13.0

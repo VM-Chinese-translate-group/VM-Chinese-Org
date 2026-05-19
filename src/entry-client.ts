@@ -5,8 +5,8 @@ import { createApp } from './app'
 import { getClientLocale } from './plugins/i18n'
 import { syncPageSeo } from './plugins/seo'
 import { convertMarkdownContainers } from '@/utils/zhconv'
+import { applyTheme, getPreferredTheme } from '@/utils/theme'
 
-import 'github-markdown-css/github-markdown.css'
 import '@/styles/markdown.css'
 import 'virtual:uno.css'
 
@@ -17,6 +17,8 @@ declare global {
 }
 
 const clientLocale = getClientLocale()
+applyTheme(getPreferredTheme(), false)
+
 const { app, i18n, router } = createApp({
   locale: clientLocale,
 })

@@ -80,6 +80,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
+import { applyTheme, getPreferredTheme } from '@/utils/theme'
 
 type LocaleCode = 'zh-CN' | 'zh-TW' | 'en-US'
 
@@ -113,27 +114,14 @@ const selectLanguage = (code: LocaleCode) => {
 
 const toggleTheme = () => {
   isDark.value = !isDark.value
-  applyTheme(isDark.value)
-}
-
-const applyTheme = (dark: boolean) => {
-  const root = document.documentElement
-  if (dark) {
-    root.classList.add('dark')
-  } else {
-    root.classList.remove('dark')
-  }
-  localStorage.setItem('theme', dark ? 'dark' : 'light')
+  applyTheme(isDark.value ? 'dark' : 'light')
 }
 
 onMounted(() => {
   window.addEventListener('click', closeDropdown)
 
-  const savedTheme = localStorage.getItem('theme')
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-
-  isDark.value = savedTheme === 'dark' || (!savedTheme && prefersDark)
-  applyTheme(isDark.value)
+  isDark.value = getPreferredTheme() === 'dark'
+  applyTheme(isDark.value ? 'dark' : 'light', false)
 })
 
 onUnmounted(() => {
