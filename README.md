@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/imgs/logo/logo_256.png"/>
+  <img src="public/imgs/logo/logo_256.png" alt="VM汉化组" width="128" height="128" />
 </div>
 
 # VM汉化组官网 v4

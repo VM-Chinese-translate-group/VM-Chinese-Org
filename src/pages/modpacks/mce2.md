@@ -9,7 +9,7 @@ status:
 compatibility:
   loader: forge
   minecraft: '1.20.1'
-  pack: '1.2.0.3'
+  pack: '1.2.0.4'
 authors:
   - 'adam98991 (作者)'
   - 'VM汉化组 (翻译)'

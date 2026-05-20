@@ -1,6 +1,11 @@
 import { ConverterFactory } from 'opencc-js/core'
 import { from, to } from 'opencc-js/preset'
-import { getMarkdownPages, invalidateMarkdownPages, isMarkdownPage } from './contentScanner'
+import {
+  getFrontmatterText,
+  getMarkdownPages,
+  invalidateMarkdownPages,
+  isMarkdownPage,
+} from './contentScanner'
 
 const convertToTW = ConverterFactory(from.cn, to.twp)
 
@@ -21,12 +26,9 @@ export function searchIndexPlugin() {
     const items: any[] = []
 
     for (const page of getMarkdownPages()) {
-      const titleMatch = page.yamlRaw.match(/^title:\s*(.*)$/m)
       const h1Match = page.body.match(/^#\s+(.+)$/m)
 
-      const titleRaw = ((titleMatch ? titleMatch[1] : h1Match ? h1Match[1] : '') ?? '')
-        .replace(/['"]/g, '')
-        .trim()
+      const titleRaw = getFrontmatterText(page.yamlRaw, 'title') || h1Match?.[1]?.trim() || ''
 
       const textRaw = stripMarkdownCode(page.body) // 去代码块
         .replace(/:::[\s\S]*?:::/g, '') // 去 Container

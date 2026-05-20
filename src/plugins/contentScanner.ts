@@ -62,6 +62,50 @@ function walkMarkdownPages(dir: string, pages: MarkdownPage[]) {
   }
 }
 
+export function stripYamlQuotes(value: string) {
+  return value.trim().replace(/^['"]|['"]$/g, '')
+}
+
+export function getFrontmatterValue(yamlRaw: string, key: string) {
+  const match = yamlRaw.match(new RegExp(`^${key}:[ \\t]*(.*)`, 'm'))
+  return match?.[1] ? stripYamlQuotes(match[1]) : ''
+}
+
+export function getFrontmatterText(yamlRaw: string, key: string) {
+  const inlineValue = getFrontmatterValue(yamlRaw, key)
+
+  if (inlineValue && !['|', '>', '-'].includes(inlineValue)) {
+    return inlineValue
+  }
+
+  const block = yamlRaw.match(
+    new RegExp(
+      `(?:^|\\r?\\n)${key}:[ \\t]*(?:\\||>|-)?[ \\t]*(?:\\r?\\n)?([\\s\\S]*?)(?=\\r?\\n\\S+:|$)`,
+    ),
+  )
+  return block?.[1]?.replace(/\r?\n/g, ' ').trim() || ''
+}
+
+export function getFrontmatterBlock(yamlRaw: string, key: string) {
+  return (
+    yamlRaw.match(
+      new RegExp(`(?:^|\\r?\\n)${key}:[ \\t]*\\r?\\n([\\s\\S]*?)(?=\\r?\\n\\S|$)`),
+    )?.[1] || ''
+  )
+}
+
+export function getFrontmatterBlockValue(yamlRaw: string, blockKey: string, key: string) {
+  const block = getFrontmatterBlock(yamlRaw, blockKey)
+  const match = block.match(new RegExp(`^[ \\t]*${key}:[ \\t]*(.*)`, 'm'))
+  return match?.[1] ? stripYamlQuotes(match[1]) : ''
+}
+
+export function getFrontmatterFirstListValue(yamlRaw: string, key: string) {
+  const block = getFrontmatterBlock(yamlRaw, key)
+  const match = block.match(/^\s*-\s*['"]?([^(\n'"]+)/m)
+  return match?.[1]?.trim() || ''
+}
+
 export function getMarkdownPages() {
   if (cachedPages) return cachedPages
 

@@ -9,9 +9,12 @@ let cachedConverter: ((text: string) => string) | null = null
 async function getConverter() {
   if (cachedConverter) return cachedConverter
 
-  const OpenCC = (await import('opencc-js')).default
-  const baseConverter = OpenCC.Converter({ from: 'cn', to: 'twp' })
-  const customConverter = OpenCC.CustomConverter(customDict)
+  const [{ ConverterBuilder, CustomConverter }, cn2tPreset] = await Promise.all([
+    import('opencc-js/core'),
+    import('opencc-js/preset/cn2t'),
+  ])
+  const baseConverter = ConverterBuilder(cn2tPreset)({ from: 'cn', to: 'twp' })
+  const customConverter = CustomConverter(customDict)
 
   cachedConverter = (text) => customConverter(baseConverter(text))
   return cachedConverter

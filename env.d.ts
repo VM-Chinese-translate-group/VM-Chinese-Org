@@ -29,11 +29,31 @@ declare module 'virtual:resources' {
   export const maps: ResourceItem[]
 }
 
+declare module 'virtual:route-meta' {
+  export const routeMeta: Record<
+    string,
+    {
+      title?: string
+      description?: string
+      icon?: string
+      image?: string
+    }
+  >
+}
+
 declare module 'opencc-js/core' {
+  export function ConverterBuilder(preset: any): (options: { from: string; to: string }) => (text: string) => string
   export function ConverterFactory(from: any, to: any): (text: string) => string
+  export function CustomConverter(dict: readonly (readonly [string, string])[]): (text: string) => string
 }
 
 declare module 'opencc-js/preset' {
   export const from: { cn: any; tw: any; hk: any; [key: string]: any }
   export const to: { cn: any; tw: any; hk: any; [key: string]: any }
+}
+
+declare module 'opencc-js/preset/cn2t' {
+  export const from: { cn: any; [key: string]: any }
+  export const to: { tw: any; twp: any; hk: any; [key: string]: any }
+  export const configs: Record<string, any>
 }

@@ -21,6 +21,7 @@ import Card from './src/components/Card/card.js'
 import { getGitBranch, getGitCommitHash, getGitEnv, getGitCommitDate } from './src/plugins/git'
 import { getMarkdownRoutes } from './src/plugins/contentScanner'
 import { resourcesPlugin } from './src/plugins/resourcesList'
+import { routeMetaPlugin } from './src/plugins/routeMeta'
 import { searchIndexPlugin } from './src/plugins/searchIndex'
 
 const gitEnv = getGitEnv()
@@ -141,6 +142,8 @@ export default defineConfig({
     }),
 
     resourcesPlugin(),
+
+    routeMetaPlugin(),
 
     searchIndexPlugin(),
 

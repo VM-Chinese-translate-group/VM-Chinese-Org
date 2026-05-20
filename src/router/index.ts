@@ -3,12 +3,9 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import DefaultLayout from '@/layout/DefaultLayout.vue'
 import Home from '@/layout/HomeLayout.vue'
-import NotFound from '@/layout/NotFoundLayout.vue'
-import Credits from '@/pages/credits.vue'
-import Maps from '@/pages/map.vue'
-import Modpacks from '@/pages/modpacks.vue'
+import { routeMeta } from 'virtual:route-meta'
 
-const mdModules = import.meta.glob('../pages/**/*.md', { eager: true }) as Record<string, any>
+const mdComponents = import.meta.glob('../pages/**/*.md')
 
 function fileToRoutePath(file: string) {
   let p = file.replace('../pages', '').replace(/\.md$/, '')
@@ -19,8 +16,7 @@ function fileToRoutePath(file: string) {
 
 const mdRoutes: RouteRecordRaw[] = []
 
-Object.keys(mdModules).forEach((file) => {
-  const module = mdModules[file]
+Object.keys(mdComponents).forEach((file) => {
   const routePath = fileToRoutePath(file)
 
   if (['/', '/modpacks', '/map'].includes(routePath)) return
@@ -30,9 +26,9 @@ Object.keys(mdModules).forEach((file) => {
   mdRoutes.push({
     path: routePath,
     name: routePath.replace(/^\//, '').replace(/\//g, '-') || `md-${Math.random()}`,
-    component: module.default,
+    component: mdComponents[file],
     meta: {
-      ...(module.frontmatter || module.default?.frontmatter || {}),
+      ...(routeMeta[file] || {}),
       layout: isDocLayout ? 'doc' : 'default',
       noindex: routePath.endsWith('/secret'),
     },
@@ -45,12 +41,12 @@ const routes: RouteRecordRaw[] = [
     component: DefaultLayout,
     children: [
       { path: '', name: 'Home', component: Home },
-      { path: 'modpacks', name: 'modpacks-list', component: Modpacks },
-      { path: 'map', name: 'map-list', component: Maps },
+      { path: 'modpacks', name: 'modpacks-list', component: () => import('@/pages/modpacks.vue') },
+      { path: 'map', name: 'map-list', component: () => import('@/pages/map.vue') },
       {
         path: 'credits',
         name: 'credits',
-        component: Credits,
+        component: () => import('@/pages/credits.vue'),
         meta: {
           title: '贡献名单',
           description: '按网页开发、外部贡献人员与 VM汉化组成员分类展示贡献名单。',
@@ -62,7 +58,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/:pathMatch(.*)*',
         name: 'not-found',
-        component: NotFound,
+        component: () => import('@/layout/NotFoundLayout.vue'),
         meta: {
           noindex: true,
         },
