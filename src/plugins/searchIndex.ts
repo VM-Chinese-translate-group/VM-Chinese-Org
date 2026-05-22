@@ -32,6 +32,7 @@ export function searchIndexPlugin() {
 
       const textRaw = stripMarkdownCode(page.body) // 去代码块
         .replace(/:::[\s\S]*?:::/g, '') // 去 Container
+        .replace(/!\[[^\]]*\]\([^)]+\)/g, '') // 去图片
         .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // 将 [文字](链接) 替换为 "文字"
         .replace(/<[^>]+>/g, '') // 去 HTML
         .replace(/[#*`>_\-]/g, '') // 去掉剩余的 MD 符号

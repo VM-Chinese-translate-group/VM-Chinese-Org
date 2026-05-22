@@ -1,47 +1,69 @@
 <template>
   <teleport to="body">
     <transition name="search-fade">
-      <div v-if="visible" class="search-overlay" @click.self="close">
-        <div class="search-panel">
-          <div class="search-header">
-            <div class="search-icon-wrapper">
-              <Icon icon="lucide:search" class="search-icon" />
+      <div
+        v-if="visible"
+        class="fixed inset-0 z-2000 flex justify-center bg-[var(--search-overlay)] pt-[12vh] backdrop-blur-1"
+        @click.self="close"
+      >
+        <div
+          class="flex max-h-[70vh] w-160 max-w-[95%] flex-col overflow-hidden border border-[var(--search-border)] rounded-3 bg-[var(--bg-white)] shadow-[var(--card-shadow)]"
+        >
+          <div class="flex items-center border-b border-b-[var(--search-border)] px-5">
+            <div>
+              <Icon icon="lucide:search" class="text-5 text-[var(--text-muted)]" />
             </div>
             <input
               v-model="keyword"
               @input="onInput"
-              class="search-input"
+              class="flex-1 border-none bg-transparent px-3 py-5 text-[1.1rem] text-[var(--search-input-text)] outline-none"
               :placeholder="$t('search.placeholder')"
               ref="inputRef"
               autofocus
             />
-            <div class="search-kbd" @click="close">{{ $t('search.esc') }}</div>
+            <div
+              class="cursor-pointer border border-[var(--search-border)] rounded-1 bg-[var(--bg-soft)] px-1.5 py-0.5 text-[11px] text-[var(--text-muted)] font-600"
+              @click="close"
+            >
+              {{ $t('search.esc') }}
+            </div>
           </div>
 
-          <div class="results-area">
+          <div class="results-area overflow-y-auto p-2">
             <div v-if="results.length" class="results-list">
               <div
                 v-for="item in results"
                 :key="item.url"
-                class="result-row"
+                class="group mb-0.5 flex cursor-pointer items-center rounded-2 px-4 py-[0.85rem] transition-colors duration-150 hover:bg-[var(--search-row-hover)]"
                 @click="goTo(item.url)"
               >
-                <div class="result-content">
-                  <h4 class="result-title" v-html="highlight(item.title)"></h4>
-                  <p class="result-snippet" v-html="highlight(item.snippet)"></p>
+                <div class="min-w-0 flex-1">
+                  <h4
+                    class="mb-1 mt-0 text-[0.95rem] text-[var(--link-title)] font-600"
+                    v-html="highlight(item.title)"
+                  ></h4>
+                  <p
+                    class="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-[0.85rem] text-[var(--text-light)]"
+                    v-html="highlight(item.snippet)"
+                  ></p>
                 </div>
-                <div class="result-arrow">
+                <div
+                  class="-translate-x-1.25 text-[1.2rem] text-[var(--brand-primary)] opacity-50 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+                >
                   <Icon icon="lucide:chevron-right" />
                 </div>
               </div>
             </div>
 
-            <div v-else-if="keyword" class="search-empty">
-              <Icon icon="lucide:search-x" class="empty-icon" />
+            <div
+              v-else-if="keyword"
+              class="search-empty m-0 px-4 py-16 text-center text-[var(--text-muted)]"
+            >
+              <Icon icon="lucide:search-x" class="mx-auto mb-4 block text-12 opacity-20" />
               <p v-html="$t('search.empty', { query: `<span>${keyword}</span>` })"></p>
             </div>
 
-            <div v-else class="search-placeholder">
+            <div v-else class="m-0 px-4 py-16 text-center text-[var(--text-muted)]">
               <p>{{ $t('search.startSearch') }}</p>
             </div>
           </div>
@@ -177,5 +199,37 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-@import '@/styles/SearchOverlay.css';
+.search-fade-enter-active,
+.search-fade-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.search-fade-enter-from,
+.search-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.search-empty :deep(span) {
+  color: var(--brand-primary);
+  font-weight: 600;
+}
+
+:deep(mark) {
+  background: var(--search-highlight);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.results-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.results-area::-webkit-scrollbar-thumb {
+  background: var(--switcher-border);
+  border-radius: 10px;
+}
 </style>

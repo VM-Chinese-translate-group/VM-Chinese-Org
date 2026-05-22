@@ -9,3 +9,4 @@ minimumReleaseAgeExclude:
   - '@shikijs/types@4.1.0'
   - shiki@4.1.0
   - taze@19.13.0
+  - pnpm@11.2.2
