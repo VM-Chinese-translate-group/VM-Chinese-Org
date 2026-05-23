@@ -4,6 +4,11 @@
   animation: textFlow 2s linear infinite;
 }
 
+.download-method-button {
+  font: inherit;
+  text-align: center;
+}
+
 @keyframes textFlow {
   0%,
   100% {
@@ -67,6 +72,11 @@
   font-weight: normal !important;
 }
 
+.modal-link {
+  color: var(--info-1);
+  text-decoration: underline;
+}
+
 .download-options-list {
   list-style: none;
   padding: 0;
@@ -128,6 +138,31 @@
   font-weight: 500 !important;
   transition: all 0.2s ease !important;
   box-shadow: none !important;
+}
+
+.question-content {
+  color: var(--text-1);
+}
+
+.question-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.question-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.question-input {
+  width: min(80%, 420px) !important;
+  color: var(--text-1) !important;
+  background: var(--bg-soft) !important;
 }
 
 .btn:hover {

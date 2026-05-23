@@ -1,23 +1,5 @@
 [
   {
-    "title": "语文题",
-    "content": "2023北京中考语文2、3。请用连续不加空格的字母作答，忽略大小写。比如AB。",
-    "correctAnswer": "DB",
-    "imageUrl": "/imgs/questions/chinese.png",
-    "isInput": true
-  },
-  {
-    "title": "数学题",
-    "content": "2023北京中考数学8",
-    "correctAnswer": "D",
-    "imageUrl": "/imgs/questions/math.jpg"
-  },
-  {
-    "title": "物理题",
-    "content": "小瑶同学在一次实验中将定值电阻R两端的电压从2V增加到3V，她观察到和R串联的电流表的示数变化了0.1A。下列判断正确的是<br><br>A. 电阻R的阻值为20Ω<br>B. 电阻R的阻值从20Ω变为30Ω<br>C. 电阻R消耗的电功率增加了0.5W<br>D. 电阻R消耗的电功率从0.2W变为0.3W<br>（2023北京通州物理一模11 区得分率50.71%）",
-    "correctAnswer": "C"
-  },
-  {
     "title": "MC科技模组题",
     "content": "以下哪个能量单位没有被科技模组使用过？<br><br>A. LU<br>B. EU<br>C. RF<br>D. PT",
     "correctAnswer": "D"
@@ -36,12 +18,6 @@
     "title": "MC原版题",
     "content": "合成末地烛需要用到什么<br>A. 烈焰棒<br>B. 紫颂果<br>C. 烈焰粉<br>D. 紫珀块",
     "correctAnswer": "A"
-  },
-  {
-    "title": "历史物理题",
-    "content": "漂附在液体中的物体,在自身重力不变的情况下，外来的压力加重力小于浮力时，就会上浮，反之则会下沉。下面与图二的外力有关的史实是<br><br>",
-    "correctAnswer": "A",
-    "imageUrl": "/imgs/questions/history.jpg"
   },
   {
     "title": "MC原版题",
