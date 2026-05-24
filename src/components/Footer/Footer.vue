@@ -4,7 +4,7 @@
       class="mx-auto flex max-w-[1200px] items-center justify-between gap-8 px-4 py-8 max-[768px]:flex-col max-[768px]:text-center"
     >
       <div class="flex min-w-48 flex-col items-center">
-        <img class="h-40 w-40" v-lazy="'/imgs/logo/logo_long.png'" />
+        <img class="h-40 w-40" v-lazy="siteLogo" />
         <p class="max-w-[300px] break-words text-center max-[768px]:max-w-[200px]">
           {{ $t('footer.copyright') }}
         </p>
@@ -91,11 +91,13 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
 
 const commitId = import.meta.env.VITE_GIT_COMMIT
 const branchName = import.meta.env.VITE_GIT_BRANCH
 const repoPath = import.meta.env.VITE_GIT_REPO
 const commitDate = import.meta.env.VITE_GIT_DATE
+const siteLogo = getAprilFoolsLogoPath('long')
 
 useI18n()
 </script>
