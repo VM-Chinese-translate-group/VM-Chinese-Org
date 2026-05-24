@@ -39,8 +39,8 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/chunkblock', quarkLink: 'https://pan.quark.cn/s/c2d804de67d5' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/chunkblock' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/chunkblock', quarkLink: 'https://pan.quark.cn/s/c2d804de67d5' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/chunkblock' }
 ]" />
 
 项目主管 @[Wulian233](https://github.com/Wulian233)

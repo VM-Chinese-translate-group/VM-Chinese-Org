@@ -25,9 +25,9 @@ links:
 原名：Tales of Glarthford
 
 <DownloadLinks :methods="[
-  { id: 'curseforge', text: '下载地图', icon: '/imgs/svg/curseforge.svg', link: 'https://www.crowdford.com/maps/tales_of_glarthford/' },
-  { id: 'lanzou-quark-mapdl', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: '/doing', quarkLink: '/doing' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: '/doing' }
+  { id: 'lanzou-quark-mapdl', text: '下载地图', link: 'https://www.crowdford.com/maps/tales_of_glarthford/' },
+  { id: 'lanzou-quark-mapdl', text: '下载汉化', lanzouLink: '/doing', quarkLink: '/doing' },
+  { id: 'lazy', text: '懒汉下载', link: '/doing' }
 ]" />
 
 <DocSupport />

@@ -29,8 +29,8 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/mmc1-19-2-fabric-vmct', quarkLink: 'https://pan.quark.cn/s/c90aab011784' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/mmc1-19-2-fabric-vmct' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/mmc1-19-2-fabric-vmct', quarkLink: 'https://pan.quark.cn/s/c90aab011784' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzoui.com/s/mmc1-19-2-fabric-vmct' }
 ]" />
 
 ## 整合包介绍

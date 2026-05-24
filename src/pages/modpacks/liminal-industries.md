@@ -44,8 +44,8 @@ links:
 ![图片 =500x](https://media.forgecdn.net/attachments/description/1276799/description_3d7a6cdd-d2b3-4618-8a34-1d39700630a0.png)
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/LI', quarkLink: 'https://pan.quark.cn/s/edb80f4ce6e0' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/LI' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/LI', quarkLink: 'https://pan.quark.cn/s/edb80f4ce6e0' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/LI' }
 ]" />
 
 原名：Liminal Industries

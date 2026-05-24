@@ -54,8 +54,8 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'curseforge', text: '下载地图与汉化', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/minecraft/worlds/wii-party-in-mc/files/all' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://www.curseforge.com/minecraft/worlds/wii-party-in-mc/files/all' }
+  { id: 'curseforge', text: '下载地图与汉化', link: 'https://www.curseforge.com/minecraft/worlds/wii-party-in-mc/files/all' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://www.curseforge.com/minecraft/worlds/wii-party-in-mc/files/all' }
 ]" />
 
 ## 汉化贡献

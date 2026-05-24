@@ -32,8 +32,8 @@ links:
 利用魔法与科技，按你的设计锻造出属于你的领域。
 
 <DownloadLinks :methods="[
-  { id: 'lanzou', text: '下载汉化', icon: '/imgs/svg/lanzou.svg', link: 'https://wulian233.lanzouu.com/iNLBv38skbxe' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://wulian233.lanzouu.com/iNLBv38skbxe' }
+  { id: 'lanzou', text: '下载汉化', link: 'https://wulian233.lanzouu.com/iNLBv38skbxe' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://wulian233.lanzouu.com/iNLBv38skbxe' }
 ]" />
 
 ## 整合包下载与授权

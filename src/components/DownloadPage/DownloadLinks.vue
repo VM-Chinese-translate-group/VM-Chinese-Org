@@ -8,13 +8,14 @@
 import { useUrlSearchParams } from '@vueuse/core'
 import { onMounted } from 'vue'
 import DownloadModal from '@/components/DownloadPage/DownloadModal.vue'
+import { getDownloadMethodIcon } from '@/data/downloadMethodIcons'
 
 function clientLink(method) {
   return {
     id: method.id,
     name: method.text,
     secondary: method.subText || '',
-    icon: method.icon,
+    icon: method.icon || getDownloadMethodIcon(method.id),
     link: method.link,
     lanzouLink: method.lanzouLink,
     quarkLink: method.quarkLink,

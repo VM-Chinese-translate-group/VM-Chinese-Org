@@ -30,8 +30,8 @@ links:
 此外作者制作了很多酷酷的东西，有超过1600种不同外观的生物，超过1300种不同的生物纹理，给你带来不同于其他整合包的冒险体验。
 
 <DownloadLinks :methods="[
-  { id: 'lanzou', text: '下载汉化 密码KparetR', icon: '/imgs/svg/lanzou.svg', link: 'https://paret.lanzoum.com/b031b2uad' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://paret.lanzoum.com/b031b2uad' }
+  { id: 'lanzou', text: '下载汉化 密码KparetR', link: 'https://paret.lanzoum.com/b031b2uad' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://paret.lanzoum.com/b031b2uad' }
 ]" />
 
 ## 贡献人员

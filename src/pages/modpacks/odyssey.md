@@ -36,9 +36,9 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/od', quarkLink: 'https://pan.quark.cn/s/64478aa54f27' },
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/od', quarkLink: 'https://pan.quark.cn/s/64478aa54f27' },
   { id: 'gitee', text: 'FTB整合包下载工具', icon: '/imgs/svg/gitee.svg', link: 'https://gitee.com/flrscn/curse-the-beast/releases' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: '' }
+  { id: 'lazy', text: '懒汉下载', link: '' }
 ]" />
 
 ## 整合包介绍

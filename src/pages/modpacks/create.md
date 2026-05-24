@@ -38,8 +38,8 @@ links:
 齿轮缓缓转动。这颗星球不是你的边界：你必须走向那颗恒星。实现自动化、工业化，最终彻底改变太阳系。
 
 <DownloadLinks :methods="[
-{ id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/astral', quarkLink: 'https://pan.quark.cn/s/50cdb3071277' },
-{ id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouv.com/s/astral' }
+{ id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/astral', quarkLink: 'https://pan.quark.cn/s/50cdb3071277' },
+{ id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouv.com/s/astral' }
 ]" />
 
 ## 注意事项

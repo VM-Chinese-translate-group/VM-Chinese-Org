@@ -44,8 +44,8 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'lanzou-quark-mapdl', text: '下载地图和汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/divinity', quarkLink: 'https://pan.quark.cn/s/a55ef7997323' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/divinity' }
+  { id: 'lanzou-quark-mapdl', text: '下载地图和汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/divinity', quarkLink: 'https://pan.quark.cn/s/a55ef7997323' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/divinity' }
 ]" />
 
 ## 地图下载与授权

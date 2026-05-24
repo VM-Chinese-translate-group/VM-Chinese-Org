@@ -37,8 +37,8 @@ links:
 ✨ **每个人都能在这里找到属于自己的乐趣！**
 
 <DownloadLinks :methods="[
-{ id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: '/doing', quarkLink: '/doing' },
-{ id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: '/doing' }
+{ id: 'quark-lanzou', text: '下载汉化', lanzouLink: '/doing', quarkLink: '/doing' },
+{ id: 'lazy', text: '懒汉下载', link: '/doing' }
 ]" />
 
 ## 📖 **核心特色**

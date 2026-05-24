@@ -47,8 +47,8 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/sb4', quarkLink: 'https://pan.quark.cn/s/e7e23e916087' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/sb4' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/sb4', quarkLink: 'https://pan.quark.cn/s/e7e23e916087' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/sb4' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/16650/leaderboard)

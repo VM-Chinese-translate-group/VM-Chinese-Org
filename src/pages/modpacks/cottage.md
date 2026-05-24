@@ -36,8 +36,8 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/witch', quarkLink: 'https://pan.quark.cn/s/4dee96c836ba' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/witch' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/witch', quarkLink: 'https://pan.quark.cn/s/4dee96c836ba' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/witch' }
 ]" />
 
 ## 关于汉化

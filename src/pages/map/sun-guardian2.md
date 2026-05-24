@@ -44,9 +44,9 @@ links:
 - 地图类型：开放世界 CTM
 
 <DownloadLinks :methods="[
-  { id: 'curseforge', text: '下载地图', icon: '/imgs/svg/curseforge.svg', link: 'https://www.curseforge.com/minecraft/worlds/sun-guardian-2-stranded-ctm-map/files/all' },
-  { id: 'lanzou-quark-mapdl', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/ssg2', quarkLink: 'https://pan.quark.cn/s/21835eedae08' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/ssg2' }
+  { id: 'curseforge', text: '下载地图', link: 'https://www.curseforge.com/minecraft/worlds/sun-guardian-2-stranded-ctm-map/files/all' },
+  { id: 'lanzou-quark-mapdl', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/ssg2', quarkLink: 'https://pan.quark.cn/s/21835eedae08' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/ssg2' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/15705/leaderboard)

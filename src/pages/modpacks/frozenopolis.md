@@ -27,8 +27,8 @@ links:
 ![图片 =500x](/imgs/frozenopolis2.jpg)
 
 <DownloadLinks :methods="[
-  { id: 'lanzou', text: '下载汉化', icon: '/imgs/svg/lanzou.svg', link: 'https://wulian233.lanzouu.com/ifSib2qrvq4h' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://wulian233.lanzouj.com/ibKuk1qy9rbe' }
+  { id: 'lanzou', text: '下载汉化', link: 'https://wulian233.lanzouu.com/ifSib2qrvq4h' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://wulian233.lanzouj.com/ibKuk1qy9rbe' }
 ]" />
 
 ## 整合包介绍

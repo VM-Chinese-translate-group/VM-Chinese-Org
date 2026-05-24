@@ -47,9 +47,9 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/lej6nls9cj1kha6/Final_Paradox_v1.1.15.zip/file' },
-  { id: 'lanzou-quark-mapdl', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouy.com/s/fp-vmct-cn', quarkLink: 'https://pan.quark.cn/s/4047ca438fdd' },
-  { id: 'lazy', text: '懒汉下载汉化', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouy.com/s/fp-vmct-cn' }
+  { id: 'mediafire', text: '下载地图', link: 'https://www.mediafire.com/file/lej6nls9cj1kha6/Final_Paradox_v1.1.15.zip/file' },
+  { id: 'lanzou-quark-mapdl', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouy.com/s/fp-vmct-cn', quarkLink: 'https://pan.quark.cn/s/4047ca438fdd' },
+  { id: 'lazy', text: '懒汉下载汉化', link: 'https://vmhanhuazu.lanzouy.com/s/fp-vmct-cn' }
 ]" />
 
 ## 汉化贡献（排名不分先后）

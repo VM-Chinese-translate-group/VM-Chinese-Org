@@ -50,7 +50,7 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/ilku2vvh3gigi1i/FNaF_4_v1.0.zip/file' },
+  { id: 'mediafire', text: '下载地图', link: 'https://www.mediafire.com/file/ilku2vvh3gigi1i/FNaF_4_v1.0.zip/file' },
   { id: 'planetminecraft', text: '地图原帖', icon: '/imgs/svg/planetminecraft.svg', link: 'https://www.planetminecraft.com/project/fnaf-4-miramappa/' }
 ]" />
 

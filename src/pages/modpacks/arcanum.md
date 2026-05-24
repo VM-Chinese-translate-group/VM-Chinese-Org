@@ -6,7 +6,7 @@ description: |
   在这个濒临毁灭的世界中，体验冒险、神秘与发现的完美融合。古老的力量在召唤，魔法领域的命运岌岌可危，而这一切，都掌握在一名充满热情的学生手中。
 updateDate: 2024年9月6日
 status:
-  type: maintaining
+  type: stopped
 compatibility:
   loader: forge
   minecraft: '1.18.2'
@@ -45,9 +45,9 @@ links:
 **奥术学院**整合包将带你踏上充满魔法力量、危险旅程和无畏精神的迷人故事！
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/asxy-vmct', quarkLink: 'https://pan.quark.cn/s/356f11fbd914' },
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/asxy-vmct', quarkLink: 'https://pan.quark.cn/s/356f11fbd914' },
   { id: 'gitee', text: 'FTB整合包下载工具', icon: '/imgs/svg/gitee.svg', link: 'https://gitee.com/flrscn/curse-the-beast/releases' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/asxy-vmct' }
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/asxy-vmct' }
 ]" />
 
 ## 整合包介绍

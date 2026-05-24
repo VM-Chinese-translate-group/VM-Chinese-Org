@@ -37,8 +37,8 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/MCE-VMCT', quarkLink: 'https://pan.quark.cn/s/30dbcf069bae' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/MCE-VMCT' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/MCE-VMCT', quarkLink: 'https://pan.quark.cn/s/30dbcf069bae' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzoui.com/s/MCE-VMCT' }
 ]" />
 
 译者：虚空、橡树树苗、曲逸、喵呜、X209、cat酱、贪婪、茫氪、自尊寺、逸晨、sine、阿鹉、捂脸、Clark

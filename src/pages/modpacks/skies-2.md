@@ -38,8 +38,8 @@ links:
 在这里，数百小时的内容等待你探索，热门模组与定制内容深度融合，助你直达星辰大海。
 
 <DownloadLinks :methods="[
-{ id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/skies2', quarkLink: 'https://pan.quark.cn/s/5d8815be19ab' },
-{ id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/skies2' }
+{ id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/skies2', quarkLink: 'https://pan.quark.cn/s/5d8815be19ab' },
+{ id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/skies2' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/15051/leaderboard)

@@ -37,8 +37,8 @@ Integrated MC 是[地牢建筑统合（IDAS）系列](https://www.mcmod.cn/class
 ![图片 =500x](https://media.forgecdn.net/attachments/934/485/tremozilla_dread_citadel.png)
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/imc', quarkLink: 'https://pan.quark.cn/s/2d7a269c94de' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/imc' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/imc', quarkLink: 'https://pan.quark.cn/s/2d7a269c94de' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/imc' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/13091/leaderboard)

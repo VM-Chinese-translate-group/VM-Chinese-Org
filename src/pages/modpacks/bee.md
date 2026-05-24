@@ -2,7 +2,7 @@
 title: 蜜蜂空岛2汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/524/59/256/256/637845002112327144.png
 description: |
-  这个包不是以往的mod开局，而是采用蜜蜂来获得在空岛中你需要的资源，你得到你的第一只蜜蜂后你就需要繁殖它们以此获得所有的蜜蜂。一些配方变得更加困难，更具有挑战性。
+  这个包不同以往的模组开局，而是采用蜜蜂来获得在空岛中你需要的资源，你得到你的第一只蜜蜂后你就需要繁殖它们以此获得所有的蜜蜂。一些配方变得更加困难，更具有挑战性。
 updateDate: 2022年10月2日
 status:
   type: stopped
@@ -26,24 +26,22 @@ links:
 
 ![图片 =400x](/imgs/bee.jpg)
 
-这个包不是以往的mod开局，而是采用蜜蜂来获得在空岛中你需要的资源，你得到你的第一只蜜蜂后你就需要繁殖它们以此获得所有的蜜蜂。一些配方变得更加困难，更具有挑战性。
+这个包不同以往的模组开局，而是采用蜜蜂来获得在空岛中你需要的资源，你得到你的第一只蜜蜂后你就需要繁殖它们以此获得所有的蜜蜂。一些配方变得更加困难，更具有挑战性。
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouv.com/S-B-VM-cn-1', quarkLink: 'https://pan.quark.cn/s/f328fb592944' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouv.com/S-B-VM-cn-1' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/S-B-VM-cn-1', quarkLink: 'https://pan.quark.cn/s/f328fb592944' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouv.com/S-B-VM-cn-1' }
 ]" />
 
 ## 整合包介绍
-
-这个包不是以往的mod开局，而是采用蜜蜂来获得在空岛中你需要的资源，你得到你的第一只蜜蜂后你就需要繁殖它们以此获得所有的蜜蜂。一些配方变得更加困难，更具有挑战性。
 
 该包包括：
 
 - 许多定制蜜蜂，例如铁，钻石，锇等。
 
-- 科技mod，如：通用机械，AE2，热力，工业先锋。
+- 科技模组，如：通用机械，AE2，热力，工业先锋。
 
-- 魔法mod，如：星辉魔法，植物魔法，血魔法。
+- 魔法模组，如：星辉魔法，植物魔法，血魔法。
 
 - 一些自定义物品和方块。
 

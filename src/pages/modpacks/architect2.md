@@ -37,8 +37,8 @@ links:
 ![图片 =450x](https://media.forgecdn.net/attachments/918/742/2024-07-17_23.png)
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/pa2', quarkLink: 'https://pan.quark.cn/s/9c7ff45c84b1' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouo.com/s/pa2' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/pa2', quarkLink: 'https://pan.quark.cn/s/9c7ff45c84b1' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/pa2' }
 ]" />
 
 ## 特色

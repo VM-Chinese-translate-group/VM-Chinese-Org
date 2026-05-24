@@ -35,8 +35,8 @@ links:
 **“死亡是我们的债，不得不偿还的债”**
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzouy.com/s/prey-vmct', quarkLink: 'https://pan.quark.cn/s/8dbc98d8e0b5' },
-  { id: 'lazy', text: '懒汉下载', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzouy.com/s/prey-vmct' }
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouy.com/s/prey-vmct', quarkLink: 'https://pan.quark.cn/s/8dbc98d8e0b5' },
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouy.com/s/prey-vmct' }
 ]" />
 
 ## 贡献人员（排名不分先后）

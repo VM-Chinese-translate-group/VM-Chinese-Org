@@ -41,8 +41,8 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/gvlmv0ynnvcafqt/Detective_Stories_1.0.1_2.zip' },
-  { id: 'lazy', text: '懒汉下载汉化', icon: '/imgs/lazydl.png', link: 'https://www.mediafire.com/file/gvlmv0ynnvcafqt/Detective_Stories_1.0.1_2.zip' }
+  { id: 'mediafire', text: '下载地图', link: 'https://www.mediafire.com/file/gvlmv0ynnvcafqt/Detective_Stories_1.0.1_2.zip' },
+  { id: 'lazy', text: '懒汉下载汉化', link: 'https://www.mediafire.com/file/gvlmv0ynnvcafqt/Detective_Stories_1.0.1_2.zip' }
 ]" />
 
 <DocSupport />

@@ -37,9 +37,9 @@ links:
 :::
 
 <DownloadLinks :methods="[
-  { id: 'mediafire', text: '下载地图', icon: '/imgs/svg/mediafire.svg', link: 'https://www.mediafire.com/file/w9gwytz72hbtdyf/Bayville_-_realistic_roleplay_town_v7.2.zip/file' },
-  { id: 'lanzou-quark-mapdl', text: '下载汉化', icon: '/imgs/logo/logo_64.png', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/vmct-Bayville-mapt-cn', quarkLink: 'https://pan.quark.cn/s/e1378993a57f' },
-  { id: 'lazy', text: '懒汉下载汉化', icon: '/imgs/lazydl.png', link: 'https://vmhanhuazu.lanzoui.com/s/vmct-Bayville-mapt-cn' }
+  { id: 'mediafire', text: '下载地图', link: 'https://www.mediafire.com/file/w9gwytz72hbtdyf/Bayville_-_realistic_roleplay_town_v7.2.zip/file' },
+  { id: 'lanzou-quark-mapdl', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/vmct-Bayville-mapt-cn', quarkLink: 'https://pan.quark.cn/s/e1378993a57f' },
+  { id: 'lazy', text: '懒汉下载汉化', link: 'https://vmhanhuazu.lanzoui.com/s/vmct-Bayville-mapt-cn' }
 ]" />
 
 ## 要求：
