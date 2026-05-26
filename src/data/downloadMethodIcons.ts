@@ -1,4 +1,6 @@
-const vmLogoIcon = '/imgs/logo/logo_64.png'
+import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
+
+const vmLogoIcon = getAprilFoolsLogoPath()
 
 const downloadMethodIcons: Record<string, string> = {
   'baidu-drive': '/imgs/svg/baidu-drive.svg',

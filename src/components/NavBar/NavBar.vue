@@ -2,7 +2,7 @@
   <nav class="navbar" :class="{ 'is-menu-open': isMenuOpen }">
     <div class="navbar-container">
       <div class="navbar-brand" @click="goToHome">
-        <img v-lazy="'/imgs/logo/logo_128.png'" alt="Logo" class="navbar-logo" />
+        <img v-lazy="siteLogo" alt="Logo" class="navbar-logo" />
         <span class="navbar-title">{{ $t('navbar.title') }}</span>
       </div>
 
@@ -55,6 +55,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { navItems } from '@/data/navigation'
+import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
 import Switcher from './Switcher.vue'
 import SearchOverlay from './SearchOverlay.vue'
 
@@ -64,6 +65,7 @@ const router = useRouter()
 const route = useRoute()
 const isMenuOpen = ref(false)
 const isSearchOpen = ref(false)
+const siteLogo = getAprilFoolsLogoPath()
 
 const getIsApplePlatform = () => {
   if (typeof navigator === 'undefined') return false

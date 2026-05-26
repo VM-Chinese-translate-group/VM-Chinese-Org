@@ -7,7 +7,7 @@
 
       <div class="hero-inner">
         <div class="hero-copy">
-          <img v-lazy="'/imgs/logo/logo_long.png'" alt="VM Translation Group" class="hero-logo" />
+          <img v-lazy="siteLogo" alt="VM Translation Group" class="hero-logo" />
           <h1 class="hero-title">{{ $t('main.headline') }}</h1>
           <p class="hero-description">{{ $t('main.subheadline') }}</p>
 
@@ -186,10 +186,12 @@
 import { useI18n } from 'vue-i18n'
 import { useResourceCatalog } from '@/composables/useResourceCatalog'
 import type { ResourceStatusType } from '@/types/resource'
+import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
 
 const { t } = useI18n()
 const { browseCards, featuredMaps, featuredModpacks, overviewCards, statCards } =
   useResourceCatalog()
+const siteLogo = getAprilFoolsLogoPath('long')
 
 const infoItems = [
   { title: 'main.qualityTitle', desc: 'main.qualityDesc', icon: 'lucide:badge-check' },

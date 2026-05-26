@@ -1,4 +1,10 @@
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
+import {
+  getAprilFoolsLogoPath,
+  isAprilFoolsDay,
+  isAprilFoolsSkippedPath,
+  transformAprilFoolsText,
+} from '@/utils/aprilFools'
 import { convertInlineText } from '@/utils/zhconv'
 
 const SITE_URL = 'https://v4.vmct-cn.top'
@@ -129,12 +135,18 @@ export async function resolvePageSeo(
   const siteName = t('navbar.title')
   const defaultDescription = t('seo.defaultDescription')
   const rawSeo = getRouteSeo(route, t)
-  const title = await convertInlineText(normalizeText(rawSeo.title, siteName), locale)
-  const description = await convertInlineText(
+  const useAprilFoolsBranding = isAprilFoolsDay() && !isAprilFoolsSkippedPath(route.path)
+  const titleRaw = await convertInlineText(normalizeText(rawSeo.title, siteName), locale)
+  const descriptionRaw = await convertInlineText(
     normalizeText(rawSeo.description, defaultDescription),
     locale,
   )
-  const pageTitle = title === siteName ? siteName : `${title} | ${siteName}`
+  const resolvedSiteName = useAprilFoolsBranding ? transformAprilFoolsText(siteName) : siteName
+  const title = useAprilFoolsBranding ? transformAprilFoolsText(titleRaw) : titleRaw
+  const description = useAprilFoolsBranding
+    ? transformAprilFoolsText(descriptionRaw)
+    : descriptionRaw
+  const pageTitle = title === resolvedSiteName ? resolvedSiteName : `${title} | ${resolvedSiteName}`
   const url = canonicalUrl(route)
   const image = absoluteUrl(rawSeo.image || DEFAULT_IMAGE)
   const robots = rawSeo.noindex ? 'noindex, nofollow' : 'index, follow'
@@ -151,15 +163,17 @@ export async function resolvePageSeo(
       image,
       publisher: {
         '@type': 'Organization',
-        name: siteName,
+        name: resolvedSiteName,
         url: SITE_URL,
-        logo: absoluteUrl('/imgs/logo/logo_512.png'),
+        logo: absoluteUrl(
+          useAprilFoolsBranding ? getAprilFoolsLogoPath(512) : '/imgs/logo/logo_512.png',
+        ),
       },
     },
     locale,
     pageTitle,
     robots,
-    siteName,
+    siteName: resolvedSiteName,
     url,
   }
 }

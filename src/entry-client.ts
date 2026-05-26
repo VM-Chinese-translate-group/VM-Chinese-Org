@@ -4,6 +4,7 @@ import VueLazyload from 'vue-lazyload'
 import { createApp } from './app'
 import { getClientLocale } from './plugins/i18n'
 import { syncPageSeo } from './plugins/seo'
+import { isAprilFoolsDay, syncAprilFoolsBranding } from '@/utils/aprilFools'
 import { convertMarkdownContainers } from '@/utils/zhconv'
 import { applyTheme, getPreferredTheme } from '@/utils/theme'
 
@@ -52,6 +53,16 @@ const syncSeo = () => {
   syncPageSeo(router.currentRoute.value, locale.value, t)
 }
 
+let aprilFoolsFrame = 0
+
+const scheduleAprilFoolsBranding = () => {
+  if (!isAprilFoolsDay()) return
+  cancelAnimationFrame(aprilFoolsFrame)
+  aprilFoolsFrame = requestAnimationFrame(() => {
+    syncAprilFoolsBranding(router.currentRoute.value.path)
+  })
+}
+
 router.isReady().then(async () => {
   app.mount('#app')
 
@@ -64,6 +75,7 @@ router.isReady().then(async () => {
   syncHtmlMeta()
   syncSeo()
   convertMarkdownContainers(locale.value)
+  scheduleAprilFoolsBranding()
 
   watch(
     () => (i18n.global as any).locale.value,
@@ -73,14 +85,22 @@ router.isReady().then(async () => {
 
       await nextTick()
       convertMarkdownContainers(val)
+      scheduleAprilFoolsBranding()
     },
   )
 
-  router.afterEach(() => {
+  router.afterEach(async () => {
     syncSeo()
+    await nextTick()
+    scheduleAprilFoolsBranding()
   })
 
   registerImageCache()
+
+  if (isAprilFoolsDay()) {
+    const observer = new MutationObserver(() => scheduleAprilFoolsBranding())
+    observer.observe(document.body, { childList: true, subtree: true })
+  }
 
   if (import.meta.env.PROD) {
     router.afterEach(async () => {
