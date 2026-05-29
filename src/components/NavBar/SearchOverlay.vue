@@ -3,7 +3,7 @@
     <transition name="search-fade">
       <div
         v-if="visible"
-        class="fixed inset-0 z-2000 flex justify-center bg-[var(--search-overlay)] pt-[12vh] backdrop-blur-1"
+        class="fixed inset-0 z-2000 flex justify-center overscroll-contain bg-[var(--search-overlay)] pt-[12vh] backdrop-blur-1"
         @click.self="close"
       >
         <div
@@ -29,12 +29,19 @@
             </div>
           </div>
 
-          <div class="results-area overflow-y-auto p-2">
+          <div ref="resultsAreaRef" class="results-area overflow-y-auto overscroll-contain p-2">
             <div v-if="results.length" class="results-list">
               <div
-                v-for="item in results"
+                v-for="(item, index) in results"
                 :key="item.url"
-                class="group mb-0.5 flex cursor-pointer items-center rounded-2 px-4 py-[0.85rem] transition-colors duration-150 hover:bg-[var(--search-row-hover)]"
+                :data-result-index="index"
+                :class="[
+                  'group mb-0.5 flex cursor-pointer items-center rounded-2 px-4 py-[0.85rem] transition-colors duration-150 hover:bg-[var(--search-row-hover)]',
+                  index === activeIndex ? 'is-active' : '',
+                ]"
+                role="option"
+                :aria-selected="index === activeIndex"
+                @mouseenter="activeIndex = index"
                 @click="goTo(item.url)"
               >
                 <div class="min-w-0 flex-1">
@@ -48,7 +55,9 @@
                   ></p>
                 </div>
                 <div
-                  class="-translate-x-1.25 text-[1.2rem] text-[var(--brand-primary)] opacity-50 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+                  :class="[
+                    'result-arrow -translate-x-1.25 text-[1.2rem] text-[var(--brand-primary)] opacity-50 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100',
+                  ]"
                 >
                   <Icon icon="lucide:chevron-right" />
                 </div>
@@ -89,20 +98,26 @@ const { locale } = useI18n()
 const keyword = ref('')
 const results = ref<any[]>([])
 const inputRef = ref<HTMLInputElement | null>(null)
+const resultsAreaRef = ref<HTMLElement | null>(null)
+const activeIndex = ref(-1)
 let timer: any = null
 let previousBodyOverflow = ''
+let previousDocumentOverflow = ''
 
 const lockBodyScroll = () => {
   if (typeof document === 'undefined') return
 
   previousBodyOverflow = document.body.style.overflow
+  previousDocumentOverflow = document.documentElement.style.overflow
   document.body.style.overflow = 'hidden'
+  document.documentElement.style.overflow = 'hidden'
 }
 
 const unlockBodyScroll = () => {
   if (typeof document === 'undefined') return
 
   document.body.style.overflow = previousBodyOverflow
+  document.documentElement.style.overflow = previousDocumentOverflow
 }
 
 const currentLocale = computed(() => locale.value)
@@ -111,6 +126,7 @@ const performSearch = async () => {
   const term = keyword.value.trim().toLowerCase()
   if (!term) {
     results.value = []
+    activeIndex.value = -1
     return
   }
 
@@ -144,6 +160,7 @@ const performSearch = async () => {
   )
 
   results.value = translatedResults
+  activeIndex.value = translatedResults.length ? 0 : -1
 }
 
 const onInput = () => {
@@ -164,8 +181,43 @@ const goTo = (url: string) => {
 
 const close = () => emit('close')
 
+const scrollActiveIntoView = () => {
+  nextTick(() => {
+    const area = resultsAreaRef.value
+    if (!area || activeIndex.value < 0) return
+
+    const active = area.querySelector<HTMLElement>(`[data-result-index="${activeIndex.value}"]`)
+    active?.scrollIntoView({ block: 'nearest' })
+  })
+}
+
 const onKeyDown = (e: KeyboardEvent) => {
-  if (e.key === 'Escape') close()
+  if (!props.visible) return
+
+  if (e.key === 'Escape') {
+    e.preventDefault()
+    close()
+    return
+  }
+
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (!results.value.length) return
+
+    const direction = e.key === 'ArrowDown' ? 1 : -1
+    activeIndex.value =
+      (activeIndex.value + direction + results.value.length) % results.value.length
+    scrollActiveIntoView()
+    return
+  }
+
+  if (e.key === 'Enter' && activeIndex.value >= 0) {
+    e.preventDefault()
+    const activeResult = results.value[activeIndex.value]
+    if (activeResult) goTo(activeResult.url)
+  }
 }
 
 watch(
@@ -178,6 +230,7 @@ watch(
       unlockBodyScroll()
       keyword.value = ''
       results.value = []
+      activeIndex.value = -1
     }
   },
   { immediate: true },
@@ -231,5 +284,15 @@ onUnmounted(() => {
 .results-area::-webkit-scrollbar-thumb {
   background: var(--switcher-border);
   border-radius: 10px;
+}
+
+.results-list [role='option'].is-active {
+  background: var(--search-row-hover);
+}
+
+.results-list [role='option'].is-active .result-arrow {
+  color: var(--brand-primary);
+  opacity: 1;
+  transform: translateX(0);
 }
 </style>
