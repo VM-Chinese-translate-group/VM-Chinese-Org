@@ -12,6 +12,15 @@ import {
 
 const VIRTUAL_MODULE_ID = 'virtual:resources'
 const RESOLVED_VIRTUAL_MODULE_ID = '\0' + VIRTUAL_MODULE_ID
+const UPDATE_DATE_PATTERN = /^(\d{4})(?:年|-)(\d{1,2})(?:月|-)(\d{1,2})日?$/
+
+function parseUpdateDate(date: string) {
+  const match = date.trim().match(UPDATE_DATE_PATTERN)
+  if (!match) return new Date(0)
+
+  const [, year, month, day] = match
+  return new Date(Number(year), Number(month) - 1, Number(day))
+}
 
 export function resourcesPlugin() {
   function toResourceItem(page: MarkdownPage) {
@@ -26,11 +35,7 @@ export function resourcesPlugin() {
     const packVersion = getFrontmatterBlockValue(yamlRaw, 'compatibility', 'pack')
 
     const dateStr = getFrontmatterValue(yamlRaw, 'updateDate')
-    const cleanDate = dateStr
-      .replace(/[年月]/g, '-')
-      .replace('日', '')
-      .trim()
-    const date = isNaN(Date.parse(cleanDate)) ? new Date(0) : new Date(cleanDate)
+    const date = parseUpdateDate(dateStr)
 
     const author =
       getFrontmatterFirstListValue(yamlRaw, 'authors') || getFrontmatterValue(yamlRaw, 'author')

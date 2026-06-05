@@ -3,7 +3,7 @@ title: Chunk Block汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/624/209/256/256/638019669339046128.png
 description: |
   这是一款为非专家设计的整合包，游戏开始时你会处于一个16x16方块的区块中，周围是一片虚空！在这个整合包中，你唯一的目标是重建你失去的世界，并在过程中享受乐趣！
-updateDate: 2024年11月9日
+updateDate: 2024-11-9
 status:
   type: stopped
 compatibility:

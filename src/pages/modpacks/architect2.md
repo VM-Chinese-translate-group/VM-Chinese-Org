@@ -3,7 +3,7 @@ title: Project Architect 2汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1042/141/64/64/638568756937008342.png
 description: |
   沉浸于精心打造的整合包，专注于自动化与 EMC 优化。借助等价交换的强大力量，掌握 EMC 管理之道，轻松将原材料转化为珍贵资源。
-updateDate: 2025年2月23日
+updateDate: 2025-2-23
 status:
   type: stopped
 compatibility:

@@ -3,7 +3,7 @@ title: 星辰工厂汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/314/391/256/256/637412276959625556.png
 description: |
   欢迎来到星辰工厂！在这个无尽虚空的世界里，你将面临一个艰巨的任务——从零开始创造整颗恒星！
-updateDate: 2023年5月20日
+updateDate: 2023-5-20
 status:
   type: stopped
 compatibility:

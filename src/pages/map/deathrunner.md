@@ -3,7 +3,7 @@ title: 死亡竞速2汉化下载
 icon: /imgs/maps/deathrunner.webp
 description: |
   死亡竞速2是MC 1.20.1版本的一个小游戏地图。玩家必须在时间耗尽之前到达赛道的尽头！
-updateDate: 2024年4月14日
+updateDate: 2024-4-14
 status:
   type: stopped
 compatibility:

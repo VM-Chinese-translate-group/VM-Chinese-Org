@@ -3,7 +3,7 @@ title: 中世纪的MC 1.19.2 Fabric汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/594/10/64/64/637967185605583019.png
 description: |
   人人都想要的中世纪奇幻RPG冒险与探索整合包！
-updateDate: 2023年9月1日
+updateDate: 2023-9-1
 status:
   type: stopped
 compatibility:

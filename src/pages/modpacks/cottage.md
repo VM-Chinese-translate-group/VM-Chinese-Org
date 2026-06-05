@@ -4,7 +4,7 @@ icon: https://media.forgecdn.net/avatars/thumbnails/623/83/256/256/6380164378514
 description: |
   春晓之巫强调日常事物中的魔力，比如烹饪、手工和装饰周围环境。
   还扩展了烹饪、手工艺和装饰的技艺——当然，还有魔法。它通过改造生物群落和野生动物，增强了你冒险所处的自然世界。
-updateDate: 2024年8月31日
+updateDate: 2024-8-31
 status:
   type: stopped
 compatibility:

@@ -3,7 +3,7 @@ title: 重生之夜汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/334/714/64/64/637468909601280183.png
 description: |
   重生之夜通过全面革新Minecraft及其模组，重现了初次探索Minecraft时的兴奋感，并加入了动态世界、复杂战斗和丰富的背景故事，让每一次冒险都充满新鲜感和挑战。
-updateDate: 2022年10月22日
+updateDate: 2022-10-22
 status:
   type: stopped
 compatibility:

@@ -3,7 +3,7 @@ title: FTB石头世界3汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1068/330/256/256/638602808165369077.png
 description: |
   🔥 在一个被石头包围的世界中，建造你真正硬核的地下王国！
-updateDate: 2025年10月19日
+updateDate: 2025-10-19
 status:
   type: stopped
 compatibility:

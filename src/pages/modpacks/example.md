@@ -2,7 +2,7 @@
 title: VM汉化更新模组整合包页面示例
 description: |
   VM汉化更新模组是一个为 Minecraft 整合包汉化补丁设计的自动化汉化管理工具，涵盖了绝大部分汉化相关的使用场景。
-updateDate: 2026年2月24日
+updateDate: 2026-2-24
 authors:
   - 'TexTrue'
   - '捂脸'

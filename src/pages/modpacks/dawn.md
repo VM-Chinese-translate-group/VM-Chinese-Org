@@ -3,7 +3,7 @@ title: 破晓之界汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/961/81/64/64/638457067445019871_animated.gif
 description: |
   类魂系列的RPG整合包，还有独特的任务系统！
-updateDate: 2025年3月20日
+updateDate: 2025-3-20
 status:
   type: stopped
 compatibility:

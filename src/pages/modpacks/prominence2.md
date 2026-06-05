@@ -3,7 +3,7 @@ title: 卓越2汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1112/755/64/64/638665111298705796_animated.gif
 description: |
   🔥 全面强化的整合包，战斗、探索、魔法与科技的完美平衡，还有丰富的自定义内容！
-updateDate: 2025年9月14日
+updateDate: 2025-9-14
 status:
   type: maintaining
 compatibility:

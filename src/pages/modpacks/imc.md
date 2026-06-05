@@ -3,7 +3,7 @@ title: Integrated MC汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/959/574/256/256/638454692108164316.png
 description: |
   Integrated MC 是地牢建筑统合（IDAS）系列模组的官方整合包，专注于打造最出色的探索体验。
-updateDate: 2026年2月1日
+updateDate: 2026-2-1
 status:
   type: maintaining
 compatibility:

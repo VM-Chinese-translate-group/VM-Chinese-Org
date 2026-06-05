@@ -3,7 +3,7 @@ title: 喷气背包猫汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/564/489/64/64/637920901714546714_animated.gif
 description: |
   一款使用枪械战斗的世界探索冒险包，以12种不同的末影之眼为目标，探索不同维度，推动剧情的发展。
-updateDate: 2024年10月2日
+updateDate: 2024-10-2
 status:
   type: stopped
 compatibility:

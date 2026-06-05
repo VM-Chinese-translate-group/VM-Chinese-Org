@@ -115,7 +115,7 @@
             <div class="catalog-footer">
               <span>
                 <Icon icon="lucide:calendar-days" />
-                {{ item.displayDate || $t('main.unknownDate') }}
+                {{ formatUpdateDate(item.displayDate, locale) || $t('main.unknownDate') }}
               </span>
               <span v-if="item.author">
                 <Icon icon="lucide:user-round" />
@@ -150,7 +150,7 @@
             <div class="catalog-footer">
               <span>
                 <Icon icon="lucide:calendar-days" />
-                {{ item.displayDate || $t('main.unknownDate') }}
+                {{ formatUpdateDate(item.displayDate, locale) || $t('main.unknownDate') }}
               </span>
               <span v-if="item.author">
                 <Icon icon="lucide:user-round" />
@@ -187,8 +187,9 @@ import { useI18n } from 'vue-i18n'
 import { useResourceCatalog } from '@/composables/useResourceCatalog'
 import type { ResourceStatusType } from '@/types/resource'
 import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
+import { formatUpdateDate } from '@/utils/dateFormat'
 
-const { t } = useI18n()
+const { locale, t } = useI18n()
 const { browseCards, featuredMaps, featuredModpacks, overviewCards, statCards } =
   useResourceCatalog()
 const siteLogo = getAprilFoolsLogoPath('long')

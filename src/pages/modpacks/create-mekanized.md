@@ -3,7 +3,7 @@ title: 机械动力：通用机械化汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/817/881/256/256/638196302471619588.png
 description: |
   本整合包旨在融合机械动力与通用机械。玩家将从零开始，逐步实现游戏核心部分的自动化生产，最终突破太阳系的束缚，
-updateDate: 2025年6月22日
+updateDate: 2025-6-22
 status:
   type: stopped
 compatibility:

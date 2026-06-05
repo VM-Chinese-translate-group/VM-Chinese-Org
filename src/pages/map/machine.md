@@ -3,7 +3,7 @@ title: 枢机汉化下载
 icon: /imgs/maps/machine.webp
 description: |
   枢机是一张历时三年打磨的Minecraft解谜地图，拥有超过100个关卡、30首原创音乐。全新编程机制、丰富的解谜系统、三种结局，构成史上最宏大的解谜平台冒险。
-updateDate: 2025年6月11日
+updateDate: 2025-6-11
 status:
   type: stopped
 compatibility:

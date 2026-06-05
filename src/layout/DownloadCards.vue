@@ -228,7 +228,13 @@
 
                     <div class="update-info" v-if="mod.displayDate">
                       <Icon icon="lucide:calendar-days" class="update-icon" />
-                      <span>{{ $t('pack.updateDate', { date: mod.displayDate }) }}</span>
+                      <span>
+                        {{
+                          $t('pack.updateDate', {
+                            date: formatUpdateDate(mod.displayDate, currentLocale),
+                          })
+                        }}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -285,6 +291,7 @@ import { ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
+import { formatUpdateDate } from '@/utils/dateFormat'
 import { convertInlineText } from '@/utils/zhconv'
 import type { ResourceItem } from '@/types/resource'
 

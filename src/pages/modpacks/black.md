@@ -4,7 +4,7 @@ icon: https://media.forgecdn.net/avatars/thumbnails/628/925/64/64/63802635422581
 description: |
   你出生在一个完全由黑石构成的洞穴中，与石头世界整合包相似，你的主世界充满了黑石，只在世界的顶部和底部各有一层基岩。
   想要重见太阳的唯一方法是通过传送门前往亚尔夫海姆维度。为了更好的沉浸感，作者修改了大量的合成表和材质，会有一本任务书指导你
-updateDate: 2022年9月19日
+updateDate: 2022-9-19
 status:
   type: stopped
 compatibility:

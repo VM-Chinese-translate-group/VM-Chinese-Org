@@ -4,7 +4,7 @@ icon: https://cdn.feed-the-beast.com/blob/64/6467e5a02b7fb71b25a9c525cca58594a68
 description: |
   在奥术学院迎接一场充满奇迹与巫术的旅程。探索神秘奥术，与神秘生物建立羁绊，迎接战胜古老黑暗的挑战。
   在这个濒临毁灭的世界中，体验冒险、神秘与发现的完美融合。古老的力量在召唤，魔法领域的命运岌岌可危，而这一切，都掌握在一名充满热情的学生手中。
-updateDate: 2024年9月6日
+updateDate: 2024-9-6
 status:
   type: stopped
 compatibility:

@@ -4,7 +4,7 @@ icon: https://cdn.feed-the-beast.com/blob/e8/e846e5c8f32c16bc4203dde90745168f78f
 description: |
   FTB和Direwolf20将带来一场新的刺激冒险！自2011年以来，FTB和Direwolf20提供了简单而独特的水槽类整合包，适合各种技能水平的玩家。
   现在，1.19 版本来袭，游戏变得更棒了！
-updateDate: 2024年8月18日
+updateDate: 2024-8-18
 status:
   type: stopped
 compatibility:

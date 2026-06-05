@@ -3,7 +3,7 @@ title: 星河边疆汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/942/576/64/64/638425041212652545.png
 description: |
   这只是一个 Minecraft 1.20.1 整合包而已，但它的主题是科幻，还有魔法！
-updateDate: 2025年9月20日
+updateDate: 2025-9-20
 status:
   type: stopped
 compatibility:

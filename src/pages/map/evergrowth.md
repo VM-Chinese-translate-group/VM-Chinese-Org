@@ -3,7 +3,7 @@ title: Evergrowth汉化下载
 icon: /imgs/maps/evergrowth.webp
 description: |
   Evergrowth 是一张以推动方块、烧脑解谜为核心的解谜地图。探索古怪而奇妙的推箱子谜题，揭开巨型发光树背后的秘密。
-updateDate: 2025年10月15日
+updateDate: 2025-10-15
 status:
   type: stopped
 compatibility:

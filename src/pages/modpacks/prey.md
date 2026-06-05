@@ -3,7 +3,7 @@ title: Prey汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/861/833/64/64/638269815319567383.png
 description: |
   在这个高度自定义的独特RPG整合包中，探索5个维度和19个Boss
-updateDate: 2024年5月2日
+updateDate: 2024-5-2
 status:
   type: stopped
 compatibility:

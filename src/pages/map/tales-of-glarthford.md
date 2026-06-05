@@ -3,7 +3,7 @@ title: Tales of Glarthford 汉化下载
 icon: https://www.crowdford.com/content/maps/tales_of_glarthford/slideshow//9%20World.png
 description: |
   Tales of Glarthford 是一张1.19.4版本的冒险地图
-updateDate: 2026年3月21日
+updateDate: 2026-3-21
 status:
   type: maintaining
 compatibility:

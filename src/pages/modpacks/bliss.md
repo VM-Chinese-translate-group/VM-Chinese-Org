@@ -3,7 +3,7 @@ title: Bliss汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/588/681/256/256/637958998429262283.png
 description: |
   Vazkii 继 Crucial 2 后的又一力作！Bliss 是一款精心打造的和平向整合包，正如其名字一样旨在营造一种轻松舒适、幸福快乐的和平游戏模式。
-updateDate: 2022年10月11日
+updateDate: 2022-10-11
 status:
   type: stopped
 compatibility:

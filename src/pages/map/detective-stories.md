@@ -4,7 +4,7 @@ icon: /imgs/maps/detective-stories.webp
 description: |
   侦探故事集是一个以解密为主题的恐怖地图。
   你被困在一家公路边的咖啡馆中，外面正下着暴雪。探索环境，寻找钥匙、阅读笔记、搬动箱子。每走一步，这家咖啡馆就变得越来越不真实……
-updateDate: 2025年5月21日
+updateDate: 2025-5-21
 status:
   type: stopped
 compatibility:

@@ -36,7 +36,7 @@
           </a>
           <span class="update-date" v-if="meta.updateDate">
             <Icon icon="lucide:calendar-clock" />
-            {{ t('pack.updateDate', { date: meta.updateDate }) }}
+            {{ t('pack.updateDate', { date: formatUpdateDate(meta.updateDate, locale) }) }}
           </span>
         </div>
       </div>
@@ -125,6 +125,7 @@ import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers } from '@/utils/zhconv'
 import { useImagePreview } from '@/composables/useImagePreview'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
+import { formatUpdateDate } from '@/utils/dateFormat'
 import ImagePreview from '@/components/ImagePreview.vue'
 
 const props = defineProps({
