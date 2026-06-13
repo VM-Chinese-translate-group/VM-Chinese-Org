@@ -4,13 +4,13 @@ icon: https://media.forgecdn.net/avatars/thumbnails/1559/129/256/256/63901173381
 description: |
   宝藏猎人3是一个基于RPG的整合包，讲述了一个名为宝库的维度的神秘和危险
   玩家可以发展自己的天赋和能力，同时努力实现收集所有25件独特文物以解锁最终挑战的目标！你有能力吗？
-updateDate: 2026-4-12
+updateDate: 2026-6-12
 status:
   type: maintaining
 compatibility:
   loader: forge
   minecraft: '1.18.2'
-  pack: '3.21.4.1'
+  pack: '3.21.5'
 authors:
   - 'Iskall85Team (作者团队)'
   - 'VM汉化组 (翻译)'
@@ -18,9 +18,9 @@ links:
   - id: bilibili
     text: 专栏介绍
     link: https://www.bilibili.com/read/cv20450312
-  - id: curseforge
+  - id: modrinth
     text: 下载i18n模组
-    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
 ---
 
 <DownloadLayout :meta="frontmatter">
@@ -30,7 +30,7 @@ links:
 宝藏猎人3是一个基于RPG的整合包，讲述了一个名为宝库的维度的神秘和危险。它有许多宝藏猎人特有的物品和怪物，如盔甲、武器、图腾、货币和boss。玩家可以发展自己的天赋和能力，同时努力实现收集所有25件独特文物以解锁最终挑战的目标！你有能力吗？
 
 <DownloadLinks :methods="[
-  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/the-Vault-03', quarkLink: 'https://pan.quark.cn/s/208e4d90c8c1' },
+  { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/the-Vault-03', quarkLink: 'https://pan.quark.cn/s/24de8181311e' },
   { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzoui.com/s/the-Vault-03' }
 ]" />
 

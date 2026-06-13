@@ -14,9 +14,9 @@ authors:
   - 'Khazenor (作者)'
   - 'VM汉化组 (翻译)'
 links:
-  - id: curseforge
+  - id: modrinth
     text: 下载i18n模组
-    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
   - id: paratranz
     text: Paratranz
     link: https://paratranz.cn/projects/12586
@@ -33,7 +33,7 @@ links:
 <DownloadLinks :methods="[
   { id: 'curseforge', text: '下载整合包', link: 'https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order' },
   { id: 'vm', text: '整合包wiki（英文）', icon: '/imgs/logo/logo_64.png', link: '/modpacks/fc5-wiki/' },
-  { id: 'curseforge', text: 'i18n自动汉化更新模组', link: 'https://www.curseforge.com/api/v1/mods/297404/files/7173159/download' }
+  { id: 'curseforge', text: 'i18n自动汉化更新模组', link: 'https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar' }
 ]" />
 
 ## 特色

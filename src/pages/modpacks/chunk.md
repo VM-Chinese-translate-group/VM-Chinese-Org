@@ -17,9 +17,9 @@ links:
   - id: bilibili
     text: 介绍视频
     link: https://www.bilibili.com/video/BV1JNDrYEERd
-  - id: curseforge
+  - id: modrinth
     text: 下载i18n模组
-    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
   - id: github
     text: GitHub仓库
     link: https://github.com/Wulian233

@@ -9,7 +9,7 @@ status:
 compatibility:
   loader: forge
   minecraft: '1.20.1'
-  pack: '1.4.0'
+  pack: '1.5.1'
 authors:
   - 'FTB (作者团队)'
   - 'VM汉化组-捂脸 (翻译)'
@@ -17,9 +17,9 @@ links:
   - id: bilibili
     text: 专栏介绍
     link: https://www.bilibili.com/read/cv34152267
-  - id: curseforge
+  - id: modrinth
     text: 下载i18n模组
-    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
 ---
 
 <DownloadLayout :meta="frontmatter">

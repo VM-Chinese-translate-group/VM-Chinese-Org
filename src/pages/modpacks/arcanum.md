@@ -18,12 +18,12 @@ links:
   - id: bilibili
     text: 介绍视频
     link: https://www.bilibili.com/video/BV1UT4m1S7rg
-  - id: curseforge
+  - id: modrinth
     text: 下载i18n模组
-    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
-  - id: curseforge
+    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: modrinth
     text: 下载硬编码汉化VP模组
-    link: https://mediafilez.forgecdn.net/files/7146/784/vaultpatcher-all-1.4.6.jar
+    link: https://cdn.modrinth.com/data/NLV0Mnpu/versions/Z3IIqvHD/vaultpatcher-all-1.5.2.jar
   - id: modrinth
     text: 下载帕秋莉手册翻译PRP-Arch模组
     link: https://cdn.modrinth.com/data/AqeDdB2c/versions/msizLmQ2/PRP-Arch-Forge-1.0.1-Hotfix-1.18.x.jar

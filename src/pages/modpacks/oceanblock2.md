@@ -18,9 +18,9 @@ links:
   - id: bilibili
     text: 安装教程视频
     link: https://www.bilibili.com/video/BV1mCRbYBEc3
-  - id: curseforge
+  - id: modrinth
     text: 下载i18n模组
-    link: https://www.curseforge.com/api/v1/mods/297404/files/7173159/download
+    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/FTB-Oceanblock-2-Chinese
