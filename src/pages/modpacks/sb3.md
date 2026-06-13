@@ -9,7 +9,7 @@ status:
 compatibility:
   loader: forge
   minecraft: '1.18.2'
-  pack: '1.11.5'
+  pack: '1.11.6'
 authors:
   - 'FTB (作者团队)'
   - 'VM汉化组 (翻译)'
