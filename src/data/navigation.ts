@@ -10,5 +10,5 @@ export const navItems: NavItem[] = [
   { key: 'community', labelKey: 'navbar.community', to: '/community' },
   { key: 'support-us', labelKey: 'navbar.supportUs', to: '/support-us' },
   { key: 'tools', labelKey: 'navbar.tools', to: '/tools' },
-  { key: 'rule', labelKey: 'navbar.rule', to: '/rule' },
+  { key: 'rule', labelKey: 'navbar.rule', to: 'https://docs.vmct-cn.top/rule/' },
 ]
