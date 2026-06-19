@@ -73,7 +73,9 @@
               <a href="/map" class="vm-link-underline mb-2">{{ $t('footer.maps') }}</a>
             </li>
             <li>
-              <a href="https://docs.vmct-cn.top/vmtu/" class="vm-link-underline mb-2">{{ $t('footer.vmtu') }}</a>
+              <a href="https://docs.vmct-cn.top/vmtu/" class="vm-link-underline mb-2">
+                {{ $t('footer.vmtu') }}
+              </a>
             </li>
             <li>
               <a href="/tools" class="vm-link-underline mb-2">{{ $t('footer.tools') }}</a>

@@ -9,21 +9,19 @@
 .pack-page-container {
   margin: 0 auto;
   padding: 40px 20px;
+  max-width: 90%;
   min-height: 100vh;
   background-color: var(--bg-off-white);
 }
 
 .pack-header {
-  background: var(--bg-white);
-  border-radius: 16px;
-  padding: 32px;
-  margin-bottom: 24px;
-  box-shadow: var(--card-shadow);
+  padding: 0 0 32px 0;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--switcher-border);
 }
 
 .dark .pack-header {
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .header-content {
@@ -33,21 +31,24 @@
 }
 
 .pack-icon {
-  width: 140px;
-  height: 140px;
+  width: 128px;
+  height: 128px;
   border-radius: 20px;
   object-fit: cover;
   background-color: var(--bg-soft);
   display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--switcher-border);
 }
 
 .dark .pack-icon {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .pack-icon-placeholder {
-  width: 140px;
-  height: 140px;
+  width: 128px;
+  height: 128px;
   border-radius: 20px;
   background: var(--switcher-border);
 }
@@ -75,6 +76,7 @@
   color: var(--text-medium);
   margin-bottom: 16px;
   max-width: 800px;
+  line-height: 1.5;
 }
 
 .author-row {
@@ -82,6 +84,7 @@
   gap: 8px;
   font-size: 0.95rem;
   color: var(--text-muted);
+  align-items: center;
 }
 
 .author-name {
@@ -89,32 +92,39 @@
   font-weight: 600;
 }
 
+.download-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
 .btn-download-main {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 0.85rem 1.8rem;
-  background: var(--btn-primary-bg);
+  padding: 0.75rem 1.8rem;
+  background: var(--btn-primary-bg, #10b981);
   color: #ffffff;
   font-weight: 700;
   font-size: 1.1rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .btn-download-main:hover {
-  background-color: var(--btn-primary-hover);
+  background-color: var(--btn-primary-hover, #059669);
   transform: translateY(-2px);
 }
 
 .update-date {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 6px;
-  margin-top: 10px;
   font-size: 0.85rem;
   color: var(--text-light);
 }
@@ -157,6 +167,7 @@
   text-transform: uppercase;
   color: var(--text-black);
   letter-spacing: 0.08em;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -227,11 +238,6 @@
 .loader-vanilla {
   background: var(--loader-vanilla-bg);
   color: var(--loader-vanilla-color);
-}
-
-.pill-icon {
-  width: 14px;
-  height: 14px;
 }
 
 .external-links {
@@ -320,5 +326,9 @@
   }
   .download-button-wrapper {
     width: 100%;
+    align-items: center;
+  }
+  .update-date {
+    justify-content: center;
   }
 }

@@ -48,7 +48,7 @@
         <slot />
       </section>
 
-      <aside class="pack-sidebar">
+      <aside>
         <div class="sidebar-card">
           <h3 class="sidebar-title">{{ t('pack.compatibilityTitle') }}</h3>
 
