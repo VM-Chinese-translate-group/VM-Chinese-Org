@@ -3,6 +3,8 @@
 .doc-page-container {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
   min-height: 100vh;
   background-color: var(--bg-alt);
   padding: 0 64px;

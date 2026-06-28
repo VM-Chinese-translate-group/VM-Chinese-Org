@@ -11,6 +11,7 @@ compatibility:
   minecraft: '1.19.4'
   pack: '最新版本'
 authors:
+  - 'McTsts, Asometric (主要作者)'
   - 'VM汉化组 (翻译)'
 links:
   - id: curseforge
