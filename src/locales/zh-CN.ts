@@ -8,6 +8,7 @@ export default {
     supportUs: '赞助我们',
     tools: '汉化工具',
     rule: '翻译准则',
+    more: '更多',
   },
   search: {
     placeholder: '搜索...',

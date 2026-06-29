@@ -18,6 +18,11 @@
   overflow-x: clip;
 }
 
+.home-shell,
+.home-shell * {
+  box-sizing: border-box;
+}
+
 .dark .home-shell {
   --home-bg: linear-gradient(180deg, #0d1318 0%, #10171c 40%, #0d1216 100%);
   --home-panel: rgba(15, 20, 27, 0.72);
@@ -44,7 +49,7 @@
 .hero {
   position: relative;
   width: 100%;
-  padding: 40px 0 28px;
+  padding: 38px 0 30px;
 }
 
 .hero-backdrop {
@@ -91,7 +96,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
   gap: 28px;
-  padding: 52px;
+  padding: clamp(28px, 4vw, 52px);
 }
 
 .hero-copy {
@@ -180,8 +185,8 @@
 }
 
 .hero-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
   gap: 14px;
   margin-top: 10px;
 }
@@ -192,6 +197,7 @@
   justify-content: center;
   gap: 10px;
   min-width: 184px;
+  min-height: 54px;
   padding: 14px 22px;
   border-radius: 8px;
   border: 1px solid var(--home-border);
@@ -204,6 +210,10 @@
     box-shadow 0.25s ease,
     border-color 0.25s ease,
     background-color 0.25s ease;
+}
+
+.hero-button:active {
+  transform: translateY(-1px);
 }
 
 .hero-button:hover,
@@ -358,12 +368,14 @@
 
 .spotlight-item {
   align-items: center;
-  padding: 14px 0;
+  padding: 14px 12px;
+  margin-inline: -12px;
   border-top: 1px solid var(--home-border);
+  border-radius: 8px;
   transition:
     background-color 0.24s ease,
     border-color 0.24s ease,
-    padding 0.24s ease,
+    transform 0.24s ease,
     color 0.24s ease;
 }
 
@@ -372,10 +384,8 @@
 }
 
 .spotlight-item:hover {
-  padding-left: 10px;
-  padding-right: 10px;
+  transform: translateX(6px);
   border-top-color: transparent;
-  border-radius: 8px;
   background: var(--home-panel-strong);
 }
 
@@ -659,6 +669,10 @@
   .hero-title {
     max-width: none;
   }
+
+  .hero-actions {
+    grid-template-columns: repeat(2, minmax(0, 220px));
+  }
 }
 
 @media (max-width: 768px) {
@@ -670,7 +684,7 @@
   }
 
   .hero {
-    padding-top: 18px;
+    padding: 14px 0 24px;
   }
 
   .hero-backdrop,
@@ -679,8 +693,8 @@
   }
 
   .hero-inner {
-    width: min(100% - 20px, 1280px);
-    padding: 28px 18px;
+    width: min(100% - 24px, 1280px);
+    padding: 26px 14px;
     gap: 18px;
   }
 
@@ -689,8 +703,7 @@
   }
 
   .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: 1fr;
     width: 100%;
     gap: 12px;
     margin-top: 4px;
@@ -699,6 +712,7 @@
   .hero-button {
     width: 100%;
     min-width: 0;
+    max-width: 100%;
     padding: 13px 16px;
     border-radius: 8px;
     font-size: 0.98rem;
@@ -725,5 +739,15 @@
 
   .spotlight-side {
     align-items: flex-start;
+  }
+
+  .spotlight-item {
+    width: 100%;
+    margin-inline: 0;
+    padding: 14px;
+  }
+
+  .spotlight-item:hover {
+    transform: translateY(-2px);
   }
 }

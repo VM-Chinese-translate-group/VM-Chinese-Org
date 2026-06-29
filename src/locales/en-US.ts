@@ -8,6 +8,7 @@ export default {
     supportUs: 'Donate',
     tools: 'Translation Tools',
     rule: 'Translation Guidelines',
+    more: 'More',
   },
   search: {
     placeholder: 'Search...',

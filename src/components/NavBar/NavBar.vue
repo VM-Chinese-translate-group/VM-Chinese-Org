@@ -7,11 +7,50 @@
       </div>
 
       <div class="navbar-content" :class="{ 'is-active': isMenuOpen }">
-        <ul class="navbar-list">
-          <li v-for="item in navItems" :key="item.key" class="navbar-item">
-            <router-link :to="item.to">{{ $t(item.labelKey) }}</router-link>
-          </li>
-        </ul>
+        <div class="navbar-nav-area" ref="navAreaRef">
+          <ul class="navbar-list">
+            <li v-for="item in visibleNavItems" :key="item.key" class="navbar-item">
+              <router-link :to="item.to">{{ $t(item.labelKey) }}</router-link>
+            </li>
+          </ul>
+
+          <div v-if="overflowNavItems.length" class="navbar-more" @click.stop>
+            <button
+              class="navbar-more-button"
+              type="button"
+              :aria-expanded="isMoreOpen"
+              aria-haspopup="menu"
+              @click="toggleMore"
+            >
+              <span>{{ $t('navbar.more') }}</span>
+              <Icon
+                icon="lucide:chevron-down"
+                class="navbar-more-icon"
+                :class="{ 'is-open': isMoreOpen }"
+              />
+            </button>
+            <ul class="navbar-more-menu" :class="{ 'is-open': isMoreOpen }" role="menu">
+              <li v-for="item in overflowNavItems" :key="item.key" class="navbar-more-item">
+                <router-link :to="item.to" role="menuitem">{{ $t(item.labelKey) }}</router-link>
+              </li>
+            </ul>
+          </div>
+
+          <div class="navbar-measure" aria-hidden="true">
+            <span
+              v-for="item in navItems"
+              :key="item.key"
+              ref="measureItemRefs"
+              class="navbar-item"
+            >
+              <span>{{ $t(item.labelKey) }}</span>
+            </span>
+            <span ref="moreMeasureRef" class="navbar-more-button">
+              <span>{{ $t('navbar.more') }}</span>
+              <Icon icon="lucide:chevron-down" class="navbar-more-icon" />
+            </span>
+          </div>
+        </div>
 
         <div class="navbar-divider"></div>
 
@@ -50,7 +89,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { computed, nextTick, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
@@ -59,13 +98,22 @@ import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
 import Switcher from './Switcher.vue'
 import SearchOverlay from './SearchOverlay.vue'
 
-useI18n()
+const { locale } = useI18n()
 
 const router = useRouter()
 const route = useRoute()
 const isMenuOpen = ref(false)
+const isMoreOpen = ref(false)
 const isSearchOpen = ref(false)
 const siteLogo = getAprilFoolsLogoPath()
+const visibleCount = ref(navItems.length)
+const navAreaRef = ref<HTMLElement | null>(null)
+const measureItemRefs = ref<HTMLElement[]>([])
+const moreMeasureRef = ref<HTMLElement | null>(null)
+let resizeObserver: ResizeObserver | null = null
+
+const visibleNavItems = computed(() => navItems.slice(0, visibleCount.value))
+const overflowNavItems = computed(() => navItems.slice(visibleCount.value))
 
 const getIsApplePlatform = () => {
   if (typeof navigator === 'undefined') return false
@@ -88,6 +136,7 @@ const isApplePlatform = getIsApplePlatform()
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+  isMoreOpen.value = false
   // 阻止底层页面滚动，只允许菜单内部滚动
   if (isMenuOpen.value) {
     document.body.style.overflow = 'hidden'
@@ -98,7 +147,12 @@ const toggleMenu = () => {
 
 const closeMenu = () => {
   isMenuOpen.value = false
+  isMoreOpen.value = false
   document.body.style.overflow = ''
+}
+
+const toggleMore = () => {
+  isMoreOpen.value = !isMoreOpen.value
 }
 
 watch(
@@ -114,14 +168,87 @@ const openSearch = () => {
 }
 
 const handleKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') {
+    isMoreOpen.value = false
+    return
+  }
+
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
     e.preventDefault()
     openSearch()
   }
 }
 
-onMounted(() => window.addEventListener('keydown', handleKeyDown))
-onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
+const calculateVisibleItems = async () => {
+  await nextTick()
+
+  if (typeof window === 'undefined' || window.innerWidth <= 860) {
+    visibleCount.value = navItems.length
+    isMoreOpen.value = false
+    return
+  }
+
+  const navAreaWidth = navAreaRef.value?.clientWidth ?? 0
+  const itemWidths = measureItemRefs.value.map((el) => el.offsetWidth)
+  const moreWidth = moreMeasureRef.value?.offsetWidth ?? 0
+
+  if (!navAreaWidth || itemWidths.length !== navItems.length) {
+    visibleCount.value = navItems.length
+    return
+  }
+
+  const totalWidth = itemWidths.reduce((sum, width) => sum + width, 0)
+  if (totalWidth <= navAreaWidth) {
+    visibleCount.value = navItems.length
+    isMoreOpen.value = false
+    return
+  }
+
+  let usedWidth = moreWidth
+  let nextVisibleCount = 0
+
+  for (const width of itemWidths) {
+    if (usedWidth + width > navAreaWidth) break
+    usedWidth += width
+    nextVisibleCount += 1
+  }
+
+  visibleCount.value = Math.max(0, Math.min(nextVisibleCount, navItems.length - 1))
+}
+
+const handleDocumentClick = () => {
+  isMoreOpen.value = false
+}
+
+const handleResize = () => {
+  void calculateVisibleItems()
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown)
+  window.addEventListener('resize', handleResize)
+  document.addEventListener('click', handleDocumentClick)
+
+  if ('ResizeObserver' in window && navAreaRef.value) {
+    resizeObserver = new ResizeObserver(() => {
+      void calculateVisibleItems()
+    })
+    resizeObserver.observe(navAreaRef.value)
+  }
+
+  void calculateVisibleItems()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown)
+  window.removeEventListener('resize', handleResize)
+  document.removeEventListener('click', handleDocumentClick)
+  resizeObserver?.disconnect()
+})
+
+watch(locale, () => {
+  void calculateVisibleItems()
+})
 
 const goToHome = () => {
   closeMenu()

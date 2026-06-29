@@ -8,6 +8,7 @@ export default {
     supportUs: '贊助我們',
     tools: '漢化工具',
     rule: '漢化準則',
+    more: '更多',
   },
   search: {
     placeholder: '搜尋...',
