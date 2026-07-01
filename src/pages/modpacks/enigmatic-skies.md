@@ -3,17 +3,20 @@ title: 谜之天空汉化下载
 icon: https://media.forgecdn.net/avatars/thumbnails/1740/691/256/256/639108214509278811.jpg
 description: |
   Enigmatic Skies是一款以流程推进为核心的整合包，目标看似简单，但实现过程绝不会轻松——你将在这片寒冷虚空中艰难求生，而水资源更是极其有限。
-updateDate: 2026-6-18
+updateDate: 2026-7-1
 status:
   type: maintaining
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '1.11.0'
+  pack: '1.12.0'
 authors:
   - 'NillerMedDild (作者)'
   - 'VM汉化组 (翻译)'
 links:
+  - id: bilibili
+    text: 安装教程视频
+    link: https://www.bilibili.com/video/BV1t97b66ENA/
   - id: modrinth
     text: 下载i18n模组
     link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
