@@ -1,5 +1,6 @@
 ---
 title: Lumina Complex汉化下载
+originalName: 'Lumina Complex'
 icon: /imgs/maps/lumina1.png
 description: |
   在类银河恶魔城风格的冒险CTM地图中，探索二十世纪初的蒸汽朋克设施，揭秘流明综合体没落的原因。

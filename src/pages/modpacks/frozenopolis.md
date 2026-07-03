@@ -1,5 +1,6 @@
 ---
 title: 冰雪之域汉化下载
+originalName: 'Frozenopolis'
 icon: https://media.forgecdn.net/avatars/thumbnails/804/973/256/256/638171780172331054.png
 description: |
   冰雪之域是一个以冰雪为主题的整合包。世界变成了一个冬季仙境，充满了冰冻的生物群落、冰冻的湖泊和具有挑战性的生物。

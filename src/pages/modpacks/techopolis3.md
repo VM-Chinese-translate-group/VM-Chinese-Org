@@ -1,5 +1,6 @@
 ---
 title: 科技城3汉化下载
+originalName: 'Techopolis 3'
 icon: https://media.forgecdn.net/avatars/thumbnails/1171/344/256/256/638742658199097356.png
 description: |
   欢迎来到科技城3——一个以科技为核心、囊括顶级科技模组的整合包。

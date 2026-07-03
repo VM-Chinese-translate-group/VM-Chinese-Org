@@ -1,5 +1,6 @@
 ---
 title: FTB奥术学院汉化下载
+originalName: 'FTB Arcanum Institute'
 icon: https://cdn.feed-the-beast.com/blob/64/6467e5a02b7fb71b25a9c525cca58594a6895e46a2b3adab2a039236fd9a085b.png
 description: |
   在奥术学院迎接一场充满奇迹与巫术的旅程。探索神秘奥术，与神秘生物建立羁绊，迎接战胜古老黑暗的挑战。

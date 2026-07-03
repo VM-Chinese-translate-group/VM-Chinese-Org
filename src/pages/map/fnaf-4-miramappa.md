@@ -1,5 +1,6 @@
 ---
 title: 玩具熊的五夜后宫4汉化下载
+originalName: "Five Nights at Freddy's 4"
 icon: /imgs/maps/fnaf-4-miramappa.webp
 description: |
   基于经典恐怖游戏玩具熊的五夜后宫4制作的Minecraft地图。午夜，黑暗，空荡荡的房子——一只手电筒和几扇普通的门，能帮你活下来吗？

@@ -1,5 +1,6 @@
 ---
 title: 永恒的MC汉化下载
+originalName: 'MC Eternal'
 icon: https://media.forgecdn.net/avatars/thumbnails/388/926/64/64/637581040113975390.png
 description: |
   欢迎来到永恒的安慕希！这里是麦块福特颇负盛名的水槽整合包！

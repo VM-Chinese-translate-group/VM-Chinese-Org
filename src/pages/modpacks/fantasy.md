@@ -1,5 +1,6 @@
 ---
 title: 幻想领域汉化下载
+originalName: 'Fantasy Realm'
 icon: https://media.forgecdn.net/avatars/thumbnails/549/347/256/256/637886465721227326.png
 description: |
   幻想领域是一个注重质量的RPG冒险和探索整合包！

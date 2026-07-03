@@ -6,87 +6,73 @@
       </div>
 
       <div class="hero-inner">
-        <div class="hero-copy">
+        <section class="hero-card hero-card-main">
           <img v-lazy="siteLogo" alt="VM Translation Group" class="hero-logo" />
-          <h1 class="hero-title">{{ $t('main.headline') }}</h1>
-          <p class="hero-description">{{ $t('main.subheadline') }}</p>
+          <div class="hero-copy">
+            <h1 class="hero-title">{{ $t('main.headline') }}</h1>
+            <p class="hero-description">{{ $t('main.subheadline') }}</p>
 
-          <div class="hero-actions">
-            <RouterLink to="/modpacks" class="hero-button hero-button-primary">
-              <Icon icon="lucide:package" />
-              {{ $t('main.modpackBtn') }}
-            </RouterLink>
-            <RouterLink to="/map" class="hero-button hero-button-secondary">
-              <Icon icon="lucide:map" />
-              {{ $t('main.mapBtn') }}
-            </RouterLink>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat-card" v-for="item in statCards" :key="item.label">
-              <span class="stat-value">{{ item.value }}</span>
-              <span class="stat-label">{{ item.label }}</span>
+            <div class="hero-actions">
+              <RouterLink to="/modpacks" class="hero-button hero-button-primary">
+                <Icon icon="lucide:package" />
+                {{ $t('main.modpackBtn') }}
+              </RouterLink>
+              <RouterLink to="/map" class="hero-button hero-button-secondary">
+                <Icon icon="lucide:map" />
+                {{ $t('main.mapBtn') }}
+              </RouterLink>
             </div>
           </div>
-        </div>
 
-        <div class="hero-panel">
-          <div class="spotlight-card">
-            <div class="spotlight-header">
-              <div>
-                <span class="section-kicker">{{ $t('main.overviewLabel') }}</span>
-                <h2>{{ $t('main.overviewTitle') }}</h2>
-              </div>
+          <div class="hero-metrics" aria-label="site overview">
+            <div class="hero-metric" v-for="item in statCards" :key="item.label">
+              <span class="metric-value">{{ item.value }}</span>
+              <span class="metric-label">{{ item.label }}</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="hero-card hero-rail">
+          <div class="quick-grid">
+            <RouterLink
+              v-for="item in quickLinks"
+              :key="item.link"
+              :to="item.link"
+              class="quick-card"
+            >
+              <span class="quick-icon">
+                <Icon :icon="item.icon" />
+              </span>
+              <span class="quick-title">{{ item.title }}</span>
+              <span class="quick-desc">{{ item.description }}</span>
+            </RouterLink>
+          </div>
+
+          <div class="latest-box">
+            <div class="latest-header">
+              <span class="section-kicker">{{ $t('main.featuredModpacksLabel') }}</span>
+              <RouterLink to="/modpacks" class="latest-more">
+                {{ $t('main.viewAllModpacks') }}
+                <Icon icon="lucide:arrow-up-right" />
+              </RouterLink>
             </div>
 
             <RouterLink
-              v-for="item in overviewCards"
+              v-for="item in featuredModpacks"
               :key="item.link"
               :to="item.link"
-              class="spotlight-item"
+              class="latest-item"
             >
-              <div class="overview-icon">
-                <Icon :icon="item.icon" />
-              </div>
-              <div class="spotlight-meta">
-                <div class="spotlight-name">{{ item.title }}</div>
-                <div class="spotlight-desc">{{ item.description }}</div>
-              </div>
-              <div class="spotlight-side">
-                <span class="overview-value">{{ item.value }}</span>
-              </div>
+              <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" />
+              <span>
+                <strong>{{ item.name }}</strong>
+                <small>
+                  {{ formatUpdateDate(item.displayDate, locale) || $t('main.unknownDate') }}
+                </small>
+              </span>
             </RouterLink>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="browse-section">
-      <div class="section-heading">
-        <span class="section-kicker">{{ $t('main.exploreLabel') }}</span>
-        <h2>{{ $t('main.exploreTitle') }}</h2>
-        <p>{{ $t('main.exploreDesc') }}</p>
-      </div>
-
-      <div class="browse-grid">
-        <RouterLink
-          v-for="item in browseCards"
-          :key="item.title"
-          :to="item.link"
-          class="browse-card"
-        >
-          <div class="browse-icon">
-            <Icon :icon="item.icon" />
-          </div>
-          <div class="browse-body">
-            <div class="browse-title-row">
-              <h3>{{ item.title }}</h3>
-              <span class="browse-badge">{{ item.badge }}</span>
-            </div>
-            <p>{{ item.description }}</p>
-          </div>
-          <Icon icon="lucide:arrow-up-right" class="browse-arrow" />
-        </RouterLink>
+        </aside>
       </div>
     </section>
 
@@ -184,15 +170,42 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
 import { useResourceCatalog } from '@/composables/useResourceCatalog'
 import type { ResourceStatusType } from '@/types/resource'
 import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
 import { formatUpdateDate } from '@/utils/dateFormat'
 
 const { locale, t } = useI18n()
-const { browseCards, featuredMaps, featuredModpacks, overviewCards, statCards } =
-  useResourceCatalog()
+const { featuredMaps, featuredModpacks, statCards } = useResourceCatalog()
 const siteLogo = getAprilFoolsLogoPath('long')
+
+const quickLinks = computed(() => [
+  {
+    title: t('navbar.modpack'),
+    description: t('main.quickModpacksDesc'),
+    icon: 'lucide:package',
+    link: '/modpacks',
+  },
+  {
+    title: t('navbar.map'),
+    description: t('main.quickMapsDesc'),
+    icon: 'lucide:map',
+    link: '/map',
+  },
+  {
+    title: t('navbar.tools'),
+    description: t('main.quickToolsDesc'),
+    icon: 'lucide:wrench',
+    link: '/tools',
+  },
+  {
+    title: t('navbar.community'),
+    description: t('main.quickCommunityDesc'),
+    icon: 'lucide:messages-square',
+    link: '/community',
+  },
+])
 
 const infoItems = [
   { title: 'main.qualityTitle', desc: 'main.qualityDesc', icon: 'lucide:badge-check' },

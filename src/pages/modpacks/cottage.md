@@ -1,5 +1,6 @@
 ---
 title: 春晓之巫汉化下载
+originalName: 'Cottage Witch'
 icon: https://media.forgecdn.net/avatars/thumbnails/623/83/256/256/638016437851477142.png
 description: |
   春晓之巫强调日常事物中的魔力，比如烹饪、手工和装饰周围环境。

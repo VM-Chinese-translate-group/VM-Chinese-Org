@@ -1,5 +1,6 @@
 ---
 title: FTB建筑师天堂2汉化下载
+originalName: 'FTB Builders Paradise 2'
 icon: https://cdn.feed-the-beast.com/blob/0f/0f2ab1c6477005accb3d6a3ba18b94ae15f3c352385a880ec5e25c367f275c34.png
 description: |
   FTB建筑师天堂2延续了前代的传统，与近期以科技导向、目标明确的空岛包形成鲜明对比。FTB自豪地呈现了一个美丽、自由与宏伟的小型整合包。

@@ -1,5 +1,6 @@
 ---
 title: 侦探故事集汉化下载
+originalName: 'Detective Stories: Chapter 1 - Case «Cafe»'
 icon: /imgs/maps/detective-stories.webp
 description: |
   侦探故事集是一个以解密为主题的恐怖地图。

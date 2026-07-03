@@ -486,7 +486,7 @@ async function initSearchIndex() {
     if (searchIndexTW.value[mod.name]) continue
 
     const [nameTW, descTW] = await Promise.all([
-      convertInlineText(mod.name, 'zh-TW'),
+      convertInlineText(getSearchableName(mod), 'zh-TW'),
       convertInlineText(mod.description || '', 'zh-TW'),
     ])
 
@@ -547,6 +547,7 @@ const filteredMods = computed(() => {
 
       const matchOriginal =
         mod.name.toLowerCase().includes(term) ||
+        (mod.originalName || '').toLowerCase().includes(term) ||
         (mod.description || '').toLowerCase().includes(term) ||
         mod.author.toLowerCase().includes(term) ||
         (mod.versions?.mc || '').toLowerCase().includes(term) ||
@@ -702,6 +703,9 @@ const clearSearch = () => {
   searchQuery.value = ''
   currentPage.value = 1
 }
+
+const getSearchableName = (mod: ResourceItem) =>
+  [mod.name, mod.originalName].filter(Boolean).join(' ')
 
 const handlePageSizeChange = (event: Event) => {
   itemsPerPage.value = Number((event.target as HTMLSelectElement).value)

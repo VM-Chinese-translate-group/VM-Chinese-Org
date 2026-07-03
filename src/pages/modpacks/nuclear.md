@@ -1,5 +1,6 @@
 ---
 title: 核荒原汉化下载
+originalName: 'The Nuclear Wasteland'
 icon: https://media.forgecdn.net/avatars/thumbnails/329/200/64/64/637454436361912027.png
 description: |
   探索广阔无垠的核荒地……或者深入地下，探险充满未知的洞穴系统……但要小心，那些在核毁灭后出现的怪物！

@@ -1,5 +1,6 @@
 ---
 title: 洞穴城汉化下载
+originalName: 'Caveopolis'
 icon: https://media.forgecdn.net/avatars/thumbnails/574/212/256/256/637936740640306707.png
 description: |
   洞穴城是一个基于任务的1.18.2的整合包，沿着世界的旅程，沿途制造新的方块和机器，达到世界的不同层来获得新材料并解锁不同的模组。

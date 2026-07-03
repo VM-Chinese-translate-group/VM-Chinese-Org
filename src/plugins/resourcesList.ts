@@ -40,9 +40,11 @@ export function resourcesPlugin() {
     const author =
       getFrontmatterFirstListValue(yamlRaw, 'authors') || getFrontmatterValue(yamlRaw, 'author')
     const description = getFrontmatterText(yamlRaw, 'description')
+    const originalName = getFrontmatterText(yamlRaw, 'originalName')
 
     return {
       name: getFrontmatterText(yamlRaw, 'title').replace('汉化下载', '').trim() || page.fileName,
+      originalName,
       icon: getFrontmatterValue(yamlRaw, 'icon'),
       author,
       description,

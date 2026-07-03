@@ -1,5 +1,6 @@
 ---
 title: 探索者前夜凋灵风暴汉化下载
+originalName: "Explorer's Eve"
 icon: https://media.forgecdn.net/avatars/thumbnails/807/783/256/256/638177271925773405.png
 description: |
   准备好迎接一场宏大的冒险，去挑战一个更为可怕的敌人吧。

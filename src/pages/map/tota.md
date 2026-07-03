@@ -1,5 +1,6 @@
 ---
 title: 艺之神殿汉化下载
+originalName: 'Temple of the Art'
 icon: https://media.forgecdn.net/attachments/901/462/templeoftheart_logo.jpg
 description: |
   艺之神殿是一个受《Noita》启发的施法和魔杖制作类地牢探险地图。穿越古代法师学院，利用300多种法术打造独特魔杖，击败20波越来越强大的敌人。

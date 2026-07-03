@@ -1,5 +1,6 @@
 ---
 title: The Decursio Project Expert汉化下载
+originalName: 'The Decursio Project - Expert'
 icon: https://media.forgecdn.net/avatars/thumbnails/553/92/256/256/637893326243672364.png
 description: |
   这个整合包为各种各样的玩家提供了机会。新玩家将一直受到任务的帮助，而高玩将面临大量魔改合成表和机制的挑战。

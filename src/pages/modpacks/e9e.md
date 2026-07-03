@@ -1,5 +1,6 @@
 ---
 title: Enigmatica 9：Expert E9E汉化下载
+originalName: 'Enigmatica 9: Expert E9E'
 icon: https://media.forgecdn.net/avatars/thumbnails/844/83/64/64/638240908112377505.jpeg
 description: |
   来体验 Enigmatica 团队精心打造的下一代专家整合包吧——在那里，科技与魔法的界限将变得模糊。

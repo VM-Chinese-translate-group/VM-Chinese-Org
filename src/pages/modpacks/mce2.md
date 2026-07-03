@@ -1,5 +1,6 @@
 ---
 title: 永恒的MC 2汉化下载
+originalName: 'MC Eternal 2'
 icon: https://media.forgecdn.net/avatars/thumbnails/1224/862/256/256/638802688260209846.png
 description: |
   在永恒的 MC 中，你将踏上一段充满惊奇™的冒险之旅：魔法、科技、任务、战斗、首领、自动化、探索——还有那些依然能用大炮发射奶酪的老鼠？

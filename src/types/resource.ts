@@ -8,6 +8,7 @@ export interface ResourceItem {
   icon: string
   link: string
   name: string
+  originalName?: string
   status?: {
     type: ResourceStatusType
   }
@@ -16,16 +17,4 @@ export interface ResourceItem {
     mc?: string
     pack?: string
   }
-}
-
-export interface ResourceOverviewCard {
-  description: string
-  icon: string
-  link: string
-  title: string
-  value: string
-}
-
-export interface ResourceBrowseCard extends ResourceOverviewCard {
-  badge: string
 }

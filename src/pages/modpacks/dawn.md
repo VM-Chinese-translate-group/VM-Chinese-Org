@@ -1,5 +1,6 @@
 ---
 title: 破晓之界汉化下载
+originalName: 'DawnCraft'
 icon: https://media.forgecdn.net/avatars/thumbnails/961/81/64/64/638457067445019871_animated.gif
 description: |
   类魂系列的RPG整合包，还有独特的任务系统！

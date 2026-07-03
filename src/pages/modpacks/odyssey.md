@@ -1,5 +1,6 @@
 ---
 title: 天空奥德赛汉化下载
+originalName: 'FTB Sky Odyssey'
 icon: https://cdn.feed-the-beast.com/blob/5a/5abd5d7d2d65b81ca885d44bfde614271fab62a3b6dda6896e273f73a8912e1f.png
 description: |
   天空奥德赛是一个独特的空岛整合包。它拥有几个新的自定义模组。你的目标是打开奥德赛维度的传送门。

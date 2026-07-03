@@ -1,5 +1,6 @@
 ---
 title: Wii派对：棋盘游戏岛汉化下载
+originalName: 'Wii Party: Board Game Island'
 icon: https://media.forgecdn.net/avatars/thumbnails/1167/385/256/256/638737946552833051.png
 description: |
   Minecraft 版Wii派对。在这里，你将体验经典的"棋盘游戏岛"，沿途迎接各种挑战与惊喜。首个通过终极挑战的玩家将成为赢家！

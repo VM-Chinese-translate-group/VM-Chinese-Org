@@ -1,5 +1,6 @@
 ---
 title: Roguelike冒险与地牢2汉化下载
+originalName: 'Roguelike Adventures and Dungeons 2'
 icon: https://media.forgecdn.net/avatars/thumbnails/485/618/256/256/637786105420601729.png
 description: |
   Roguelike冒险与地牢2作为经典模组RAD1的官方精神续作，汲取了大量RPG、Roguelike、Roguelite及地城探索类游戏与模组的精华。

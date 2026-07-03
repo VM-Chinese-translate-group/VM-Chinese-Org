@@ -1,5 +1,6 @@
 ---
 title: 蜜蜂空岛2汉化下载
+originalName: 'Sky Bees 2'
 icon: https://media.forgecdn.net/avatars/thumbnails/524/59/256/256/637845002112327144.png
 description: |
   这个包不同以往的模组开局，而是采用蜜蜂来获得在空岛中你需要的资源，你得到你的第一只蜜蜂后你就需要繁殖它们以此获得所有的蜜蜂。一些配方变得更加困难，更具有挑战性。

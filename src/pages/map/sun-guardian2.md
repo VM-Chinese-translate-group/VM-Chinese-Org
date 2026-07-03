@@ -1,5 +1,6 @@
 ---
 title: 太阳守卫者2：搁浅汉化下载
+originalName: 'Sun Guardian 2: Stranded'
 icon: https://media.forgecdn.net/avatars/thumbnails/1426/275/256/256/638923854948924170.png
 description: |
   太阳守卫者2：搁浅是一张融合了艾尔登法环以及马里奥高尔夫：家庭巡回赛精髓的CTM地图。

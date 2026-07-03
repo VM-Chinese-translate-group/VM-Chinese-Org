@@ -29,6 +29,7 @@ export function searchIndexPlugin() {
       const h1Match = page.body.match(/^#\s+(.+)$/m)
 
       const titleRaw = getFrontmatterText(page.yamlRaw, 'title') || h1Match?.[1]?.trim() || ''
+      const originalNameRaw = getFrontmatterText(page.yamlRaw, 'originalName')
 
       const textRaw = stripMarkdownCode(page.body) // 去代码块
         .replace(/:::[\s\S]*?:::/g, '') // 去 Container
@@ -44,6 +45,7 @@ export function searchIndexPlugin() {
         items.push({
           url: page.route,
           title: titleRaw,
+          originalName: originalNameRaw,
           titleTW: convertToTW(titleRaw),
           text: textRaw,
           textTW: convertToTW(textRaw),

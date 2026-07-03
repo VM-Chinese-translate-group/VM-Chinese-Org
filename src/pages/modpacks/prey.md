@@ -1,5 +1,6 @@
 ---
 title: Prey汉化下载
+originalName: 'Prey'
 icon: https://media.forgecdn.net/avatars/thumbnails/861/833/64/64/638269815319567383.png
 description: |
   在这个高度自定义的独特RPG整合包中，探索5个维度和19个Boss

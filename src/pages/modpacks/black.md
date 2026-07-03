@@ -1,5 +1,6 @@
 ---
 title: 黑石世界汉化下载
+originalName: 'Blackstone Block'
 icon: https://media.forgecdn.net/avatars/thumbnails/628/925/64/64/638026354225814649.png
 description: |
   你出生在一个完全由黑石构成的洞穴中，与石头世界整合包相似，你的主世界充满了黑石，只在世界的顶部和底部各有一层基岩。

@@ -1,5 +1,6 @@
 ---
 title: 最终悖论汉化下载
+originalName: 'Final Paradox'
 icon: /imgs/maps/final.jpg
 description: |
   最终悖论是一个可以玩超40小时的超大型CTM地图！玩家需要收集资源、合成物品，在复杂的悖论循环中找到通关的钥匙。

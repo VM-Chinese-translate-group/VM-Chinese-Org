@@ -1,5 +1,6 @@
 ---
 title: 喂养奇点生存汉化下载
+originalName: 'Feed The Singularity'
 icon: https://media.forgecdn.net/avatars/thumbnails/400/977/64/64/637606612802117954_animated.gif
 description: |
   通过种植、混合、压缩、切割、烹饪和烘焙，实现真正的无限产出。将所有物品投喂给不断增大的黑洞，体验疯狂的自动化过程。

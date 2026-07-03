@@ -1,5 +1,6 @@
 ---
 title: 宝箱猎人3汉化下载
+originalName: 'Vault Hunters 3rd Edition'
 icon: https://media.forgecdn.net/avatars/thumbnails/1559/129/256/256/639011733813077828.png
 description: |
   宝藏猎人3是一个基于RPG的整合包，讲述了一个名为宝库的维度的神秘和危险

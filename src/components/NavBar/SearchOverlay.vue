@@ -133,6 +133,7 @@ const performSearch = async () => {
   const rawResults = searchIndex.filter((i: any) => {
     return (
       (i.title || '').toLowerCase().includes(term) ||
+      (i.originalName || '').toLowerCase().includes(term) ||
       (i.text || '').toLowerCase().includes(term) ||
       (i.titleTW || '').toLowerCase().includes(term) ||
       (i.textTW || '').toLowerCase().includes(term)
@@ -143,6 +144,7 @@ const performSearch = async () => {
     rawResults.slice(0, 15).map(async (i: any) => {
       const displayTitle = await convertInlineText(i.title, currentLocale.value)
       const displayText = await convertInlineText(i.text, currentLocale.value)
+      const title = formatResultTitle(displayTitle || 'Untitled', i.originalName)
 
       const pos = displayText.toLowerCase().indexOf(term)
       const start = Math.max(0, pos - 40)
@@ -153,7 +155,7 @@ const performSearch = async () => {
 
       return {
         url: i.url,
-        title: displayTitle || 'Untitled',
+        title,
         snippet,
       }
     }),
@@ -172,6 +174,11 @@ const highlight = (text: string) => {
   if (!keyword.value) return text
   const reg = new RegExp(`(${keyword.value})`, 'gi')
   return text.replace(reg, '<mark>$1</mark>')
+}
+
+const formatResultTitle = (title: string, originalName?: string) => {
+  if (!originalName || title.includes(originalName)) return title
+  return `${title}（${originalName}）`
 }
 
 const goTo = (url: string) => {

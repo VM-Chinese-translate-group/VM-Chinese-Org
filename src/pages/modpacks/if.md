@@ -1,5 +1,6 @@
 ---
 title: 无限协会汉化下载
+originalName: 'Infinity Foundation'
 icon: https://media.forgecdn.net/avatars/thumbnails/564/314/256/256/637920478481541062.png
 description: |
   无限协会是一款轻量的空岛整合包，它是一个1.18.2“任务”整合包，在很大程度上受到类似整合包的启发，

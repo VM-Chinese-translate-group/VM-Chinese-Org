@@ -1,5 +1,6 @@
 ---
 title: 贝维尔小镇汉化下载
+originalName: 'Bayville Realistic Roleplay Town'
 icon: /imgs/maps/bayville.webp
 description: |
   贝维尔是完美的角色扮演地图。参与工作，然后买房子，汽车，食物（甚至还有一些定制食品）等等。还包含120多座独特的建筑和5个城镇/村庄。

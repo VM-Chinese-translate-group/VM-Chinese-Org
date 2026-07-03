@@ -1,5 +1,6 @@
 ---
 title: Submerged 2汉化下载
+originalName: 'Submerged 2'
 icon: https://media.forgecdn.net/avatars/thumbnails/1524/820/256/256/638990059693043465.png
 description: |
   Submerged 2 将你带入一个绝美的、完全自定义的水下世界。这里充满了全新的挑战、独特的地形和重重惊喜。

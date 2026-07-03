@@ -1,5 +1,6 @@
 ---
 title: Ozone Skyblock Reborn 2汉化下载
+originalName: 'Ozone Skyblock Reborn 2'
 icon: https://media.forgecdn.net/avatars/thumbnails/1465/394/256/256/638951227846325037.png
 description: |
   灵感源自 Project Ozone。极致合成、技术、魔法与自动化！Ozone Skyblock Reborn正统续作。

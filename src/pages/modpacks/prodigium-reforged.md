@@ -1,5 +1,6 @@
 ---
 title: 异域征途汉化下载
+originalName: 'Prodigium Reforged'
 icon: https://media.forgecdn.net/avatars/thumbnails/1364/439/256/256/638886190322728774.png
 description: |
   受《泰拉瑞亚》深度启发，体验一套独特的成长系统：击败Boss以解锁新的矿物、新的怪物，甚至是新的NPC！

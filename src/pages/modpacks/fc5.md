@@ -1,5 +1,6 @@
 ---
 title: 农业森友会5汉化下载
+originalName: 'Farming Crossing 5: Made To Order'
 icon: https://media.forgecdn.net/avatars/thumbnails/1101/154/256/256/638648783830413955.jpeg
 description: |
   耕种、烹饪、钓鱼收集，加上受《动物森友会》启发的创意建造玩法！

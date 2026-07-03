@@ -1,5 +1,6 @@
 ---
 title: 天空工厂5汉化下载
+originalName: 'SkyFactory 5'
 icon: https://media.forgecdn.net/avatars/thumbnails/1146/284/64/64/638712506299204333_animated.gif
 description: |
   SkyFactory® 5：创意的重塑，迎来第五次飞跃！

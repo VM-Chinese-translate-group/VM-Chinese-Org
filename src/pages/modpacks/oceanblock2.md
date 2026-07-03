@@ -1,5 +1,6 @@
 ---
 title: FTB Oceanblock 2汉化下载
+originalName: 'FTB OceanBlock 2'
 icon: https://cdn.feed-the-beast.com/blob/fa/fae647b9fa950ab09081ca6b395ea02dd06c7532b09b22fc3eb035b3092f7f78.png
 description: |
   你的逃生舱坠毁在一个未知的星球上，这是一个水的世界。你不是第一个来到这里的人，但你是孤独的。望向水下，你感受到一股邪恶的能量。
