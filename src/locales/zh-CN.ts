@@ -1,7 +1,6 @@
 export default {
   announcement: {
     label: '站点公告',
-    title: '汉化发布信息',
     body: '5月最新成果！谜之天空汉化现已发布！',
     action: '查看',
   },
@@ -37,8 +36,10 @@ export default {
     mapBtn: '地图汉化',
     homeHub: {
       kicker: 'VM Translation Group',
-      description: '发现整合包、地图、工具与汉化补丁，和 VM 汉化组一起搭建更顺手的方块世界。',
+      description:
+        '一个用爱发电专注于汉化MC整合包与地图的非盈利组织。我们以专注的翻译态度，倾注无尽的心血，为你带来翻译品质的极致体验。',
       browseModpacks: '浏览整合包',
+      browseMaps: '浏览地图',
       siteSearch: '站内搜索',
       emptyFeaturedDesc: '精选汉化资源，进入页面查看下载与说明。',
       statsLabel: '资源统计',

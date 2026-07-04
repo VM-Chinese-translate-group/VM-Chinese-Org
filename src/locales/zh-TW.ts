@@ -1,7 +1,6 @@
 export default {
   announcement: {
     label: '站點公告',
-    title: '漢化發布資訊',
     body: '5月最新成果！謎之天空漢化現已發布！',
     action: '查看',
   },
@@ -40,6 +39,7 @@ export default {
       kicker: 'VM Translation Group',
       description: '發現整合包、地圖、工具與漢化補丁，和 VM 漢化組一起搭建更順手的方塊世界。',
       browseModpacks: '瀏覽整合包',
+      browseMaps: '瀏覽地圖',
       siteSearch: '站內搜尋',
       emptyFeaturedDesc: '精選漢化資源，進入頁面查看下載與說明。',
       statsLabel: '資源統計',

@@ -46,6 +46,7 @@ export function resourcesPlugin() {
       name: getFrontmatterText(yamlRaw, 'title').replace('汉化下载', '').trim() || page.fileName,
       originalName,
       icon: getFrontmatterValue(yamlRaw, 'icon'),
+      image: getFrontmatterValue(yamlRaw, 'image'),
       author,
       description,
       link: page.route,

@@ -14,10 +14,10 @@
             <Icon icon="lucide:package-open" />
             {{ $t('main.homeHub.browseModpacks') }}
           </RouterLink>
-          <button class="hero-button" type="button" @click="isSearchOpen = true">
-            <Icon icon="lucide:search" />
-            {{ $t('main.homeHub.siteSearch') }}
-          </button>
+          <RouterLink to="/map" class="hero-button">
+            <Icon icon="lucide:map" />
+            {{ $t('main.homeHub.browseMaps') }}
+          </RouterLink>
         </div>
       </div>
 
@@ -28,11 +28,11 @@
           :to="item.link"
           class="hero-rail-card"
         >
-          <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" />
+          <img v-lazy="getResourceImage(item)" :alt="item.name" />
         </RouterLink>
 
         <RouterLink v-if="heroMainItem" :to="heroMainItem.link" class="hero-main-card">
-          <img v-lazy="heroMainItem.icon || '/imgs/home.png'" :alt="heroMainItem.name" />
+          <img v-lazy="getResourceImage(heroMainItem, true)" :alt="heroMainItem.name" />
           <span class="hero-main-overlay"></span>
           <span class="hero-main-content">
             <strong>{{ heroMainItem.name }}</strong>
@@ -178,7 +178,7 @@ const sortedModpacks = computed(() =>
 
 const featuredMaps = computed(() => maps.slice(0, 4))
 const heroMainItem = computed(() => sortedModpacks.value[0])
-const heroRailItems = computed(() => sortedModpacks.value.slice(1, 3))
+const heroRailItems = computed(() => sortedModpacks.value.slice(1, 4))
 const resourceCards = computed(() => {
   const list = modpacks.slice()
 
@@ -256,6 +256,11 @@ const getLoaderText = (loader?: string) => {
   const key = `loader.${loader.toLowerCase()}`
   const label = t(key)
   return label === key ? loader : label
+}
+
+const getResourceImage = (item: ResourceItem, preferLarge = false) => {
+  if (preferLarge && item.image) return item.image
+  return item.icon || item.image || '/imgs/missing.png'
 }
 
 const hashNumber = (item: ResourceItem, seed: number, min: number, max: number) => {

@@ -1,7 +1,6 @@
 export default {
   announcement: {
     label: 'Site announcement',
-    title: 'Localization release',
     body: 'Latest May release: Enigmatic Skies localization is now available!',
     action: 'View',
   },
@@ -41,6 +40,7 @@ export default {
       description:
         'Discover modpacks, maps, tools, and localization patches from VM Translation Group.',
       browseModpacks: 'Browse modpacks',
+      browseMaps: 'Browse maps',
       siteSearch: 'Site search',
       emptyFeaturedDesc: 'Featured localization resource. Open the page for downloads and notes.',
       statsLabel: 'Resource stats',
