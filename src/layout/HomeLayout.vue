@@ -1,223 +1,284 @@
 <template>
   <main class="home-shell">
-    <section class="hero">
-      <div class="hero-backdrop">
-        <img v-lazy="'/imgs/home.png'" class="hero-image" alt="Minecraft world background" />
-      </div>
+    <section class="home-hero-panel">
+      <div class="hero-copy">
+        <span class="resource-kicker">
+          <Icon icon="lucide:blocks" />
+          {{ $t('main.homeHub.kicker') }}
+        </span>
+        <h1>{{ $t('main.headline') }}</h1>
+        <p>{{ $t('main.homeHub.description') }}</p>
 
-      <div class="hero-inner">
-        <section class="hero-card hero-card-main">
-          <img v-lazy="siteLogo" alt="VM Translation Group" class="hero-logo" />
-          <div class="hero-copy">
-            <h1 class="hero-title">{{ $t('main.headline') }}</h1>
-            <p class="hero-description">{{ $t('main.subheadline') }}</p>
-
-            <div class="hero-actions">
-              <RouterLink to="/modpacks" class="hero-button hero-button-primary">
-                <Icon icon="lucide:package" />
-                {{ $t('main.modpackBtn') }}
-              </RouterLink>
-              <RouterLink to="/map" class="hero-button hero-button-secondary">
-                <Icon icon="lucide:map" />
-                {{ $t('main.mapBtn') }}
-              </RouterLink>
-            </div>
-          </div>
-
-          <div class="hero-metrics" aria-label="site overview">
-            <div class="hero-metric" v-for="item in statCards" :key="item.label">
-              <span class="metric-value">{{ item.value }}</span>
-              <span class="metric-label">{{ item.label }}</span>
-            </div>
-          </div>
-        </section>
-
-        <aside class="hero-card hero-rail">
-          <div class="quick-grid">
-            <RouterLink
-              v-for="item in quickLinks"
-              :key="item.link"
-              :to="item.link"
-              class="quick-card"
-            >
-              <span class="quick-icon">
-                <Icon :icon="item.icon" />
-              </span>
-              <span class="quick-title">{{ item.title }}</span>
-              <span class="quick-desc">{{ item.description }}</span>
-            </RouterLink>
-          </div>
-
-          <div class="latest-box">
-            <div class="latest-header">
-              <span class="section-kicker">{{ $t('main.featuredModpacksLabel') }}</span>
-              <RouterLink to="/modpacks" class="latest-more">
-                {{ $t('main.viewAllModpacks') }}
-                <Icon icon="lucide:arrow-up-right" />
-              </RouterLink>
-            </div>
-
-            <RouterLink
-              v-for="item in featuredModpacks"
-              :key="item.link"
-              :to="item.link"
-              class="latest-item"
-            >
-              <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" />
-              <span>
-                <strong>{{ item.name }}</strong>
-                <small>
-                  {{ formatUpdateDate(item.displayDate, locale) || $t('main.unknownDate') }}
-                </small>
-              </span>
-            </RouterLink>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="catalog-section">
-      <div class="catalog-column">
-        <div class="section-heading compact">
-          <span class="section-kicker">{{ $t('main.featuredModpacksLabel') }}</span>
-          <h2>{{ $t('main.featuredModpacks') }}</h2>
+        <div class="hero-actions">
+          <RouterLink to="/modpacks" class="hero-button hero-button-primary">
+            <Icon icon="lucide:package-open" />
+            {{ $t('main.homeHub.browseModpacks') }}
+          </RouterLink>
+          <RouterLink to="/map" class="hero-button">
+            <Icon icon="lucide:map" />
+            {{ $t('main.homeHub.browseMaps') }}
+          </RouterLink>
         </div>
+      </div>
 
+      <div class="hero-feature">
         <RouterLink
-          v-for="item in featuredModpacks"
+          v-for="item in heroRailItems"
           :key="item.link"
           :to="item.link"
-          class="catalog-card"
+          class="hero-rail-card"
         >
-          <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" class="catalog-icon" />
-          <div class="catalog-meta">
-            <div class="catalog-topline">
-              <h3>{{ item.name }}</h3>
-              <span v-if="item.status?.type" :class="['status-badge', item.status.type]">
-                {{ getStatusText(item.status?.type) }}
-              </span>
-            </div>
-            <p>{{ item.description || $t('main.emptyDescription') }}</p>
-            <div class="catalog-footer">
-              <span>
-                <Icon icon="lucide:calendar-days" />
-                {{ formatUpdateDate(item.displayDate, locale) || $t('main.unknownDate') }}
-              </span>
-              <span v-if="item.author">
-                <Icon icon="lucide:user-round" />
-                {{ item.author }}
-              </span>
-            </div>
-          </div>
+          <img v-lazy="getResourceImage(item)" :alt="getDisplayName(item)" />
+        </RouterLink>
+
+        <RouterLink v-if="heroMainItem" :to="heroMainItem.link" class="hero-main-card">
+          <img v-lazy="getResourceImage(heroMainItem, true)" :alt="getDisplayName(heroMainItem)" />
+          <span class="hero-main-overlay"></span>
+          <span class="hero-main-content">
+            <strong>{{ getDisplayName(heroMainItem) }}</strong>
+            <small>
+              {{ heroMainItem.description || $t('main.homeHub.emptyFeaturedDesc') }}
+            </small>
+            <em v-if="heroMainItem.status?.type">{{ getStatusText(heroMainItem.status.type) }}</em>
+          </span>
         </RouterLink>
       </div>
 
-      <div class="catalog-column">
-        <div class="section-heading compact">
-          <span class="section-kicker">{{ $t('main.featuredMapsLabel') }}</span>
-          <h2>{{ $t('main.featuredMaps') }}</h2>
-        </div>
-
-        <RouterLink
-          v-for="item in featuredMaps"
-          :key="item.link"
-          :to="item.link"
-          class="catalog-card"
-        >
-          <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" class="catalog-icon" />
-          <div class="catalog-meta">
-            <div class="catalog-topline">
-              <h3>{{ item.name }}</h3>
-              <span v-if="item.status?.type" :class="['status-badge', item.status.type]">
-                {{ getStatusText(item.status?.type) }}
-              </span>
-            </div>
-            <p>{{ item.description || $t('main.emptyDescription') }}</p>
-            <div class="catalog-footer">
-              <span>
-                <Icon icon="lucide:calendar-days" />
-                {{ formatUpdateDate(item.displayDate, locale) || $t('main.unknownDate') }}
-              </span>
-              <span v-if="item.author">
-                <Icon icon="lucide:user-round" />
-                {{ item.author }}
-              </span>
-            </div>
-          </div>
-        </RouterLink>
-      </div>
-    </section>
-
-    <section class="values-section">
-      <div class="section-heading">
-        <span class="section-kicker">{{ $t('main.valuesLabel') }}</span>
-        <h2>{{ $t('main.valuesTitle') }}</h2>
-        <p>{{ $t('main.valuesDesc') }}</p>
-      </div>
-
-      <div class="values-grid">
-        <article class="value-card" v-for="item in infoItems" :key="item.title">
-          <div class="value-icon">
+      <div class="home-stats" :aria-label="$t('main.homeHub.statsLabel')">
+        <article v-for="item in statItems" :key="item.label" class="stat-card">
+          <span class="stat-icon">
             <Icon :icon="item.icon" />
-          </div>
-          <h3>{{ $t(item.title) }}</h3>
-          <p>{{ $t(item.desc) }}</p>
+          </span>
+          <span>
+            <small>{{ item.label }}</small>
+            <strong>{{ item.value }}</strong>
+          </span>
         </article>
       </div>
     </section>
+
+    <section class="resource-layout">
+      <div class="resource-main">
+        <div class="section-title-row">
+          <div class="section-title">
+            <span class="section-icon">
+              <Icon icon="lucide:package" />
+            </span>
+            <span>
+              <h2>{{ $t('navbar.modpack') }}</h2>
+              <small>{{ $t('main.homeHub.modpackSectionDesc') }}</small>
+            </span>
+          </div>
+        </div>
+
+        <div class="resource-tabs" :aria-label="$t('main.homeHub.sortLabel')">
+          <button
+            v-for="tab in resourceTabs"
+            :key="tab.key"
+            type="button"
+            :class="{ active: activeResourceTab === tab.key }"
+            @click="activeResourceTab = tab.key"
+          >
+            <Icon :icon="tab.icon" />
+            {{ tab.label }}
+          </button>
+        </div>
+
+        <div class="resource-grid">
+          <RouterLink
+            v-for="item in resourceCards"
+            :key="item.link"
+            :to="item.link"
+            class="resource-card"
+          >
+            <img
+              v-lazy="item.icon || '/imgs/missing.png'"
+              :alt="getDisplayName(item)"
+              class="resource-img"
+            />
+            <div class="resource-meta">
+              <span v-if="item.displayDate">
+                {{ $t('pack.updateDate', { date: formatUpdateDate(item.displayDate, locale) }) }}
+              </span>
+            </div>
+            <h3>{{ getDisplayName(item) }}</h3>
+            <div class="resource-tags">
+              <span v-if="item.versions?.loader" class="tag strong">
+                <Icon icon="lucide:server" />
+                {{ getLoaderText(item.versions.loader) }}
+              </span>
+              <span v-if="item.versions?.mc" class="tag">{{ item.versions.mc }}</span>
+              <span v-if="item.status?.type" class="tag">
+                {{ getStatusText(item.status.type) }}
+              </span>
+            </div>
+            <p>{{ item.description || $t('main.emptyDescription') }}</p>
+            <div class="resource-footer">
+              <strong>
+                {{ $t('main.homeHub.viewResource') }}
+                <Icon icon="lucide:chevron-right" />
+              </strong>
+            </div>
+          </RouterLink>
+        </div>
+      </div>
+
+      <aside class="resource-sidebar">
+        <section class="sidebar-panel">
+          <h2>{{ $t('main.homeHub.siteSearch') }}</h2>
+          <p>{{ $t('main.homeHub.searchDesc') }}</p>
+          <button class="home-search-field" type="button" @click="isSearchOpen = true">
+            <span>{{ $t('search.placeholder') }}</span>
+            <Icon icon="lucide:search" />
+          </button>
+        </section>
+
+        <section class="sidebar-panel guide-panel">
+          <h2>{{ $t('main.homeHub.guideTitle') }}</h2>
+          <RouterLink
+            v-for="item in guideLinks"
+            :key="item.link"
+            :to="item.link"
+            class="guide-link"
+          >
+            <span class="guide-icon"><Icon :icon="item.icon" /></span>
+            <span>
+              <strong>{{ item.title }}</strong>
+              <small>{{ item.desc }}</small>
+            </span>
+          </RouterLink>
+        </section>
+
+        <section class="sidebar-panel compact-list">
+          <h2>{{ $t('main.featuredMapsLabel') }}</h2>
+          <RouterLink v-for="item in featuredMaps" :key="item.link" :to="item.link">
+            <img v-lazy="item.icon || '/imgs/missing.png'" :alt="getDisplayName(item)" />
+            <span>{{ getDisplayName(item) }}</span>
+          </RouterLink>
+        </section>
+      </aside>
+    </section>
+
+    <SearchOverlay :visible="isSearchOpen" @close="isSearchOpen = false" />
   </main>
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { computed } from 'vue'
-import { useResourceCatalog } from '@/composables/useResourceCatalog'
-import type { ResourceStatusType } from '@/types/resource'
-import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
+import { Icon } from '@iconify/vue'
+import { maps, modpacks } from 'virtual:resources'
+import SearchOverlay from '@/components/NavBar/SearchOverlay.vue'
 import { formatUpdateDate } from '@/utils/dateFormat'
+import { getLocalizedResourceName } from '@/utils/resourceDisplay'
+import type { ResourceItem, ResourceStatusType } from '@/types/resource'
 
 const { locale, t } = useI18n()
-const { featuredMaps, featuredModpacks, statCards } = useResourceCatalog()
-const siteLogo = getAprilFoolsLogoPath('long')
+const isSearchOpen = ref(false)
+const activeResourceTab = ref<'hot' | 'updated'>('hot')
+const HOT_MODPACK_LINKS = [
+  '/modpacks/sb4',
+  '/modpacks/skies-2',
+  '/modpacks/oceanblock2',
+  '/modpacks/deceasedcraft',
+  '/modpacks/enigmatic-skies',
+  '/modpacks/sb3',
+]
 
-const quickLinks = computed(() => [
+const sortedModpacks = computed(() =>
+  modpacks.slice().sort((a, b) => (b.date || 0) - (a.date || 0)),
+)
+
+const featuredMaps = computed(() => maps.slice(0, 4))
+const heroMainItem = computed(() => sortedModpacks.value[0])
+const heroRailItems = computed(() => sortedModpacks.value.slice(1, 4))
+const resourceCards = computed(() => {
+  const list = modpacks.slice()
+
+  if (activeResourceTab.value === 'hot') {
+    return HOT_MODPACK_LINKS.map((link) => list.find((item) => item.link === link)).filter(
+      (item): item is ResourceItem => Boolean(item),
+    )
+  }
+
+  return list.sort((a, b) => (b.date || 0) - (a.date || 0)).slice(0, 6)
+})
+const maintainedCount = computed(
+  () => modpacks.filter((item) => item.status?.type === 'maintaining').length,
+)
+
+const statItems = computed(() => [
   {
-    title: t('navbar.modpack'),
-    description: t('main.quickModpacksDesc'),
-    icon: 'lucide:package',
-    link: '/modpacks',
+    label: t('main.homeHub.totalResources'),
+    value: t('main.homeHub.countValue', { count: modpacks.length + maps.length }),
+    icon: 'lucide:boxes',
   },
   {
-    title: t('navbar.map'),
-    description: t('main.quickMapsDesc'),
+    label: t('main.homeHub.totalModpacks'),
+    value: t('main.homeHub.countValue', { count: modpacks.length }),
+    icon: 'lucide:package',
+  },
+  {
+    label: t('main.homeHub.maintainedProjects'),
+    value: t('main.homeHub.countValue', { count: maintainedCount.value }),
+    icon: 'lucide:badge-check',
+  },
+  {
+    label: t('main.homeHub.mapTranslations'),
+    value: t('main.homeHub.countValue', { count: maps.length }),
     icon: 'lucide:map',
-    link: '/map',
+  },
+  { label: t('main.homeHub.openTools'), value: t('main.homeHub.keepUpdating'), icon: 'lucide:eye' },
+])
+
+const resourceTabs = computed(() =>
+  [
+    { key: 'hot' as const, labelKey: 'main.homeHub.hotModpacks', icon: 'lucide:flame' },
+    { key: 'updated' as const, labelKey: 'main.homeHub.recentlyUpdated', icon: 'lucide:wrench' },
+  ].map((item) => ({ ...item, label: t(item.labelKey) })),
+)
+
+const guideLinks = computed(() => [
+  {
+    title: t('navbar.community'),
+    desc: t('main.quickCommunityDesc'),
+    link: '/community',
+    icon: 'lucide:megaphone',
+  },
+  {
+    title: t('navbar.supportUs'),
+    desc: t('main.homeHub.supportDesc'),
+    link: '/support-us',
+    icon: 'lucide:heart-handshake',
   },
   {
     title: t('navbar.tools'),
-    description: t('main.quickToolsDesc'),
-    icon: 'lucide:wrench',
+    desc: t('main.quickToolsDesc'),
     link: '/tools',
-  },
-  {
-    title: t('navbar.community'),
-    description: t('main.quickCommunityDesc'),
-    icon: 'lucide:messages-square',
-    link: '/community',
+    icon: 'lucide:wrench',
   },
 ])
 
-const infoItems = [
-  { title: 'main.qualityTitle', desc: 'main.qualityDesc', icon: 'lucide:badge-check' },
-  { title: 'main.teamTitle', desc: 'main.teamDesc', icon: 'lucide:users' },
-  { title: 'main.copyrightTitle', desc: 'main.copyrightDesc', icon: 'lucide:shield-check' },
-  { title: 'main.techTitle', desc: 'main.techDesc', icon: 'lucide:wrench' },
-]
-
 const getStatusText = (statusType?: ResourceStatusType) => {
   if (!statusType) return ''
-  return t(`pack.status.${statusType}`)
+  const key = `pack.status.${statusType}`
+  const label = t(key)
+  return label === key ? statusType : label
 }
+
+const getLoaderText = (loader?: string) => {
+  if (!loader) return ''
+  const key = `loader.${loader.toLowerCase()}`
+  const label = t(key)
+  return label === key ? loader : label
+}
+
+const getResourceImage = (item: ResourceItem, preferLarge = false) => {
+  if (preferLarge && item.image) return item.image
+  return item.icon || item.image || '/imgs/missing.png'
+}
+
+const getDisplayName = (item: ResourceItem) => getLocalizedResourceName(item, locale.value)
 </script>
 
 <style scoped>

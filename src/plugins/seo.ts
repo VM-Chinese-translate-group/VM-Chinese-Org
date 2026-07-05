@@ -5,6 +5,7 @@ import {
   isAprilFoolsSkippedPath,
   transformAprilFoolsText,
 } from '@/utils/aprilFools'
+import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import { convertInlineText } from '@/utils/zhconv'
 
 const SITE_URL = 'https://v4.vmct-cn.top'
@@ -17,6 +18,7 @@ interface SeoMeta {
   icon?: string
   image?: string
   noindex?: boolean
+  originalName?: string
   title?: string
 }
 
@@ -136,7 +138,12 @@ export async function resolvePageSeo(
   const defaultDescription = t('seo.defaultDescription')
   const rawSeo = getRouteSeo(route, t)
   const useAprilFoolsBranding = isAprilFoolsDay() && !isAprilFoolsSkippedPath(route.path)
-  const titleRaw = await convertInlineText(normalizeText(rawSeo.title, siteName), locale)
+  const localizedTitle = getLocalizedResourceName(
+    { title: normalizeText(rawSeo.title, siteName), originalName: rawSeo.originalName },
+    locale,
+    siteName,
+  )
+  const titleRaw = await convertInlineText(localizedTitle, locale)
   const descriptionRaw = await convertInlineText(
     normalizeText(rawSeo.description, defaultDescription),
     locale,

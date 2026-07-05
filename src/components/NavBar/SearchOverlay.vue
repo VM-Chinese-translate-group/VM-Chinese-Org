@@ -88,6 +88,7 @@ import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { searchIndex } from 'virtual:search-index'
+import { isEnglishLocale } from '@/utils/resourceDisplay'
 import { convertInlineText } from '@/utils/zhconv'
 
 const props = defineProps<{ visible: boolean }>()
@@ -144,7 +145,11 @@ const performSearch = async () => {
     rawResults.slice(0, 15).map(async (i: any) => {
       const displayTitle = await convertInlineText(i.title, currentLocale.value)
       const displayText = await convertInlineText(i.text, currentLocale.value)
-      const title = formatResultTitle(displayTitle || 'Untitled', i.originalName)
+      const title = formatResultTitle(
+        displayTitle || 'Untitled',
+        i.originalName,
+        currentLocale.value,
+      )
 
       const pos = displayText.toLowerCase().indexOf(term)
       const start = Math.max(0, pos - 40)
@@ -176,7 +181,8 @@ const highlight = (text: string) => {
   return text.replace(reg, '<mark>$1</mark>')
 }
 
-const formatResultTitle = (title: string, originalName?: string) => {
+const formatResultTitle = (title: string, originalName?: string, locale = currentLocale.value) => {
+  if (isEnglishLocale(locale) && originalName) return originalName
   if (!originalName || title.includes(originalName)) return title
   return `${title}（${originalName}）`
 }

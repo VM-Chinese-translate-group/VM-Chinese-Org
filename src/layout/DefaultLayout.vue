@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col">
     <NavBar />
+    <SiteAnnouncement />
 
     <DocLayout v-if="isDocLayout">
       <router-view />
@@ -17,6 +18,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 import NavBar from '@/components/NavBar/NavBar.vue'
+import SiteAnnouncement from '@/components/SiteAnnouncement.vue'
 import Footer from '@/components/Footer/Footer.vue'
 import DocLayout from '@/layout/DocLayout.vue'
 

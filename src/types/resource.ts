@@ -6,6 +6,7 @@ export interface ResourceItem {
   description?: string
   displayDate?: string
   icon: string
+  image?: string
   link: string
   name: string
   originalName?: string
