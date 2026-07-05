@@ -28,14 +28,14 @@
           :to="item.link"
           class="hero-rail-card"
         >
-          <img v-lazy="getResourceImage(item)" :alt="item.name" />
+          <img v-lazy="getResourceImage(item)" :alt="getDisplayName(item)" />
         </RouterLink>
 
         <RouterLink v-if="heroMainItem" :to="heroMainItem.link" class="hero-main-card">
-          <img v-lazy="getResourceImage(heroMainItem, true)" :alt="heroMainItem.name" />
+          <img v-lazy="getResourceImage(heroMainItem, true)" :alt="getDisplayName(heroMainItem)" />
           <span class="hero-main-overlay"></span>
           <span class="hero-main-content">
-            <strong>{{ heroMainItem.name }}</strong>
+            <strong>{{ getDisplayName(heroMainItem) }}</strong>
             <small>
               {{ heroMainItem.description || $t('main.homeHub.emptyFeaturedDesc') }}
             </small>
@@ -91,13 +91,17 @@
             :to="item.link"
             class="resource-card"
           >
-            <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" class="resource-img" />
+            <img
+              v-lazy="item.icon || '/imgs/missing.png'"
+              :alt="getDisplayName(item)"
+              class="resource-img"
+            />
             <div class="resource-meta">
               <span v-if="item.displayDate">
                 {{ $t('pack.updateDate', { date: formatUpdateDate(item.displayDate, locale) }) }}
               </span>
             </div>
-            <h3>{{ item.name }}</h3>
+            <h3>{{ getDisplayName(item) }}</h3>
             <div class="resource-tags">
               <span v-if="item.versions?.loader" class="tag strong">
                 <Icon icon="lucide:server" />
@@ -148,8 +152,8 @@
         <section class="sidebar-panel compact-list">
           <h2>{{ $t('main.featuredMapsLabel') }}</h2>
           <RouterLink v-for="item in featuredMaps" :key="item.link" :to="item.link">
-            <img v-lazy="item.icon || '/imgs/missing.png'" :alt="item.name" />
-            <span>{{ item.name }}</span>
+            <img v-lazy="item.icon || '/imgs/missing.png'" :alt="getDisplayName(item)" />
+            <span>{{ getDisplayName(item) }}</span>
           </RouterLink>
         </section>
       </aside>
@@ -166,6 +170,7 @@ import { Icon } from '@iconify/vue'
 import { maps, modpacks } from 'virtual:resources'
 import SearchOverlay from '@/components/NavBar/SearchOverlay.vue'
 import { formatUpdateDate } from '@/utils/dateFormat'
+import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import type { ResourceItem, ResourceStatusType } from '@/types/resource'
 
 const { locale, t } = useI18n()
@@ -262,6 +267,8 @@ const getResourceImage = (item: ResourceItem, preferLarge = false) => {
   if (preferLarge && item.image) return item.image
   return item.icon || item.image || '/imgs/missing.png'
 }
+
+const getDisplayName = (item: ResourceItem) => getLocalizedResourceName(item, locale.value)
 
 const hashNumber = (item: ResourceItem, seed: number, min: number, max: number) => {
   const source = `${item.name}-${item.author}-${seed}`

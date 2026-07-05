@@ -292,6 +292,7 @@ import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { formatUpdateDate } from '@/utils/dateFormat'
+import { getLocalizedResourceName, isEnglishLocale } from '@/utils/resourceDisplay'
 import { convertInlineText } from '@/utils/zhconv'
 import type { ResourceItem } from '@/types/resource'
 
@@ -498,8 +499,11 @@ async function refreshDisplayTranslations() {
   const targetLocale = currentLocale.value
 
   const tasks = paginatedMods.value.map(async (mod) => {
+    const localizedName = getLocalizedResourceName(mod, targetLocale)
     const [name, desc] = await Promise.all([
-      convertInlineText(mod.name, targetLocale),
+      isEnglishLocale(targetLocale)
+        ? Promise.resolve(localizedName)
+        : convertInlineText(localizedName, targetLocale),
       convertInlineText(mod.description || '', targetLocale),
     ])
 

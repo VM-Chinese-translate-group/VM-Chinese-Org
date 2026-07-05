@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown-body">
+  <div class="markdown-body resource-list-page">
     <DownloadCards :mods="maps" :show-loader-filter="false" />
   </div>
 </template>
@@ -8,3 +8,9 @@
 import DownloadCards from '@/layout/DownloadCards.vue'
 import { maps } from 'virtual:resources'
 </script>
+
+<style scoped>
+.resource-list-page {
+  background: var(--bg-off-white);
+}
+</style>

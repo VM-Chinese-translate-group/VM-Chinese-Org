@@ -3,13 +3,13 @@
     <header class="pack-header">
       <div class="header-content">
         <div class="pack-icon-wrapper">
-          <img v-if="meta.icon" v-lazy="meta.icon" :alt="meta.title" class="pack-icon" />
+          <img v-if="meta.icon" v-lazy="meta.icon" :alt="displayTitle" class="pack-icon" />
           <div v-else class="pack-icon-placeholder"></div>
         </div>
 
         <div class="pack-title-area">
           <div class="title-row">
-            <h1>{{ meta.title || t('pack.defaultTitle') }}</h1>
+            <h1>{{ displayTitle }}</h1>
             <div class="pack-status-tags" v-if="meta.status?.type">
               <span :class="['status-tag', meta.status.type || 'info']">
                 {{ getStatusText(meta.status.type) }}
@@ -119,13 +119,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers } from '@/utils/zhconv'
 import { useImagePreview } from '@/composables/useImagePreview'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { formatUpdateDate } from '@/utils/dateFormat'
+import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import ImagePreview from '@/components/ImagePreview.vue'
 
 const props = defineProps({
@@ -134,6 +135,9 @@ const props = defineProps({
 
 const { t, locale } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
+const displayTitle = computed(() =>
+  getLocalizedResourceName(props.meta, locale.value, t('pack.defaultTitle')),
+)
 const {
   bindPreview,
   closePreview,

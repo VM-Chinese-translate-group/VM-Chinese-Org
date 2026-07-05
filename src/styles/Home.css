@@ -472,7 +472,7 @@
 
 .guide-link {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   min-width: 0;
   padding: 12px;
@@ -482,17 +482,20 @@
   text-decoration: none;
 }
 
+.guide-link > span:last-child {
+  min-width: 0;
+}
+
 .guide-link strong,
 .guide-link small {
   display: block;
 }
 
 .guide-link small {
-  overflow: hidden;
   margin-top: 4px;
   font-size: 0.82rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .compact-list {

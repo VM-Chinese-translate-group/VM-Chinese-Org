@@ -11,6 +11,7 @@ interface RouteMetaEntry {
   description?: string
   icon?: string
   image?: string
+  originalName?: string
   title?: string
 }
 
@@ -24,6 +25,7 @@ function toRouteMeta(page: MarkdownPage) {
 
   return {
     title: getFrontmatterText(yamlRaw, 'title'),
+    originalName: getFrontmatterText(yamlRaw, 'originalName'),
     description: getFrontmatterText(yamlRaw, 'description'),
     icon: getFrontmatterValue(yamlRaw, 'icon'),
     image: getFrontmatterValue(yamlRaw, 'image'),

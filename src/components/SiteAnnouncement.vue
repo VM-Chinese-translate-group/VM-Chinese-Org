@@ -31,12 +31,13 @@ const isHomePage = computed(() => route.path === '/')
 .site-announcement {
   box-sizing: border-box;
   width: 100%;
-  padding: 12px 0 0;
-  background: transparent;
+  padding: 18px 20px 0;
+  background: var(--bg-off-white);
   overflow: hidden;
 }
 
 .site-announcement.is-home {
+  padding: 12px 0 0;
   background: radial-gradient(circle at 12% 0%, rgba(57, 132, 68, 0.1), transparent 26%), #eef3f2;
 }
 
@@ -45,7 +46,7 @@ const isHomePage = computed(() => route.path === '/')
   align-items: center;
   gap: 12px;
   box-sizing: border-box;
-  width: min(1320px, calc(100% - 40px));
+  width: min(1440px, 100%);
   min-height: 44px;
   margin: 0 auto;
   padding: 7px 12px;
@@ -53,6 +54,10 @@ const isHomePage = computed(() => route.path === '/')
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.5);
   color: #277038;
+}
+
+.site-announcement.is-home .site-announcement-inner {
+  width: min(1320px, calc(100% - 40px));
 }
 
 .site-announcement-icon {
@@ -109,7 +114,11 @@ const isHomePage = computed(() => route.path === '/')
 
 @media (max-width: 720px) {
   .site-announcement {
-    padding-top: 12px;
+    padding: 12px 10px 0;
+  }
+
+  .site-announcement.is-home {
+    padding: 12px 0 0;
   }
 
   .site-announcement-inner {
