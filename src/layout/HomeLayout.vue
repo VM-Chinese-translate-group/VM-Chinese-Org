@@ -176,6 +176,14 @@ import type { ResourceItem, ResourceStatusType } from '@/types/resource'
 const { locale, t } = useI18n()
 const isSearchOpen = ref(false)
 const activeResourceTab = ref<'hot' | 'updated'>('hot')
+const HOT_MODPACK_LINKS = [
+  '/modpacks/sb4',
+  '/modpacks/skies-2',
+  '/modpacks/oceanblock2',
+  '/modpacks/deceasedcraft',
+  '/modpacks/enigmatic-skies',
+  '/modpacks/sb3',
+]
 
 const sortedModpacks = computed(() =>
   modpacks.slice().sort((a, b) => (b.date || 0) - (a.date || 0)),
@@ -188,7 +196,9 @@ const resourceCards = computed(() => {
   const list = modpacks.slice()
 
   if (activeResourceTab.value === 'hot') {
-    return list.sort((a, b) => getPopularityScore(b) - getPopularityScore(a)).slice(0, 6)
+    return HOT_MODPACK_LINKS.map((link) => list.find((item) => item.link === link)).filter(
+      (item): item is ResourceItem => Boolean(item),
+    )
   }
 
   return list.sort((a, b) => (b.date || 0) - (a.date || 0)).slice(0, 6)
@@ -269,14 +279,6 @@ const getResourceImage = (item: ResourceItem, preferLarge = false) => {
 }
 
 const getDisplayName = (item: ResourceItem) => getLocalizedResourceName(item, locale.value)
-
-const hashNumber = (item: ResourceItem, seed: number, min: number, max: number) => {
-  const source = `${item.name}-${item.author}-${seed}`
-  const hash = Array.from(source).reduce((sum, char) => sum + char.charCodeAt(0), 0)
-  return min + (hash % (max - min + 1))
-}
-
-const getPopularityScore = (item: ResourceItem) => hashNumber(item, 23, 1000, 9999)
 </script>
 
 <style scoped>
