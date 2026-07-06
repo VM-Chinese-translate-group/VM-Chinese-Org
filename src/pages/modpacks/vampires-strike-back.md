@@ -4,7 +4,7 @@ originalName: 'Vampires Strike Back'
 icon: https://media.forgecdn.net/avatars/thumbnails/1830/112/256/256/639154943273143696_animated.gif
 description: |
   吸血鬼的反击是一个硬核肉鸽整合包，目标是大幅改变MC的核心玩法与进度流程。你可以选择扮演试图拯救世界的流亡人类，也可以选择扮演最后的吸血鬼之一，立志统治世界。
-updateDate: 待定
+updateDate: 2026-7-02
 status:
   type: maintaining
 compatibility:
@@ -36,7 +36,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/b009i5g50f', quarkLink: 'https://pan.quark.cn/s/b397bc587ec0' },
-  { id: 'lazy', text: '懒汉下载', link: '[/doing](https://vmhanhuazu.lanzouv.com/b009i5g50f)' }
+  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouv.com/b009i5g50f' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/19520/leaderboard)

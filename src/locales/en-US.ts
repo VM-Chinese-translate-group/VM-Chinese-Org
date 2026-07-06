@@ -107,6 +107,7 @@ export default {
     products: 'Products',
     modpacks: 'Modpack Translation',
     maps: 'Map Translation',
+    dict: 'Mod Translation Dictionary',
     vmtu: 'VM Translation Update Mod',
     tools: 'Translation Tools',
     disclaimer:

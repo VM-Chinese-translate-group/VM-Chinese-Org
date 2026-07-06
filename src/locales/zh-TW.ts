@@ -105,6 +105,7 @@ export default {
     products: '產品',
     modpacks: '模組包漢化',
     maps: '地圖漢化',
+    dict: '模組翻譯參考詞典',
     vmtu: 'VM漢化更新模組',
     tools: '漢化工具',
     disclaimer:

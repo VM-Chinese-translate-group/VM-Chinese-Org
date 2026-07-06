@@ -39,7 +39,6 @@
             <small>
               {{ heroMainItem.description || $t('main.homeHub.emptyFeaturedDesc') }}
             </small>
-            <em v-if="heroMainItem.status?.type">{{ getStatusText(heroMainItem.status.type) }}</em>
           </span>
         </RouterLink>
       </div>
@@ -103,8 +102,20 @@
             </div>
             <h3>{{ getDisplayName(item) }}</h3>
             <div class="resource-tags">
-              <span v-if="item.versions?.loader" class="tag strong">
-                <Icon icon="lucide:server" />
+              <span
+                v-if="item.versions?.loader"
+                :class="['tag', 'strong', getLoaderClass(item.versions.loader)]"
+              >
+                <span
+                  v-if="getLoaderIcon(item.versions.loader)"
+                  class="tag-loader-icon"
+                  :style="{
+                    WebkitMaskImage: `url(${getLoaderIcon(item.versions.loader)})`,
+                    maskImage: `url(${getLoaderIcon(item.versions.loader)})`,
+                  }"
+                  aria-hidden="true"
+                />
+                <Icon v-else icon="lucide:layers" />
                 {{ getLoaderText(item.versions.loader) }}
               </span>
               <span v-if="item.versions?.mc" class="tag">{{ item.versions.mc }}</span>
@@ -169,6 +180,7 @@ import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { maps, modpacks } from 'virtual:resources'
 import SearchOverlay from '@/components/NavBar/SearchOverlay.vue'
+import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { formatUpdateDate } from '@/utils/dateFormat'
 import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import type { ResourceItem, ResourceStatusType } from '@/types/resource'
@@ -182,7 +194,7 @@ const HOT_MODPACK_LINKS = [
   '/modpacks/oceanblock2',
   '/modpacks/deceasedcraft',
   '/modpacks/enigmatic-skies',
-  '/modpacks/sb3',
+  '/modpacks/vampires-strike-back',
 ]
 
 const sortedModpacks = computed(() =>
