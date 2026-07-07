@@ -50,7 +50,7 @@ links:
 
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/dece', quarkLink: 'https://pan.quark.cn/s/4f8d739dbaa0' },
-{ id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/dece' }
+{ id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/dece' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/15705/leaderboard)

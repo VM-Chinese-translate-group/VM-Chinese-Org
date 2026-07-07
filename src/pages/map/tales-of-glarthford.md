@@ -29,7 +29,7 @@ links:
 <DownloadLinks :methods="[
   { id: 'lanzou-quark-mapdl', text: '下载地图', link: 'https://www.crowdford.com/maps/tales_of_glarthford/' },
   { id: 'lanzou-quark-mapdl', text: '下载汉化', lanzouLink: '/doing', quarkLink: '/doing' },
-  { id: 'lazy', text: '懒汉下载', link: '/doing' }
+  { id: 'lazy', link: '/doing' }
 ]" />
 
 <DocSupport />

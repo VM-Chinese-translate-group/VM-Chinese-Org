@@ -43,7 +43,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'lanzou-quark-mapdl', text: '下载地图和汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/deathrunner', quarkLink: 'https://pan.quark.cn/s/1f33349ea6b5' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/deathrunner' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/deathrunner' }
 ]" />
 
 ## 要求：

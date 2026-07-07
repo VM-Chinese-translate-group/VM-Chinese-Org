@@ -33,7 +33,7 @@ FTB和Direwolf20将带来一场新的刺激冒险！自2011年以来，FTB和Dir
 <DownloadLinks :methods="[
   { id: 'lanzou', text: '下载汉化', link: 'https://wulian233.lanzouu.com/isX0E27rys7g' },
   { id: 'gitee', text: 'FTB整合包下载工具', icon: '/imgs/svg/gitee.svg', link: 'https://gitee.com/flrscn/curse-the-beast/releases' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://wulian233.lanzouu.com/isX0E27rys7g' }
+  { id: 'lazy', link: 'https://wulian233.lanzouu.com/isX0E27rys7g' }
 ]" />
 
 译者：捂脸，sine，X209，虚空，Chark_TSC

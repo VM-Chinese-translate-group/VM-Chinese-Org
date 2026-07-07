@@ -38,7 +38,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/Rotn-cn-4', quarkLink: 'https://pan.quark.cn/s/456a49f2c27a' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouv.com/Rotn-cn-4' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouv.com/Rotn-cn-4' }
 ]" />
 
 ## 贡献人员

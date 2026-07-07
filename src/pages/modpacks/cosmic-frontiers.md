@@ -42,7 +42,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/cf-gt', quarkLink: 'https://pan.quark.cn/s/f181b9f4acbb' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/cf-gt' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/cf-gt' }
 ]" />
 
 原名：Cosmic Frontiers

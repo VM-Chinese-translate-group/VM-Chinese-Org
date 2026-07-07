@@ -38,7 +38,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/tech3', quarkLink: 'https://pan.quark.cn/s/0ba3be3a835d' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouv.com/s/tech3' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouv.com/s/tech3' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/14287/leaderboard)

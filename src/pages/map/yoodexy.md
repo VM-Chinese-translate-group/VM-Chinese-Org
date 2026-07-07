@@ -39,7 +39,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'lanzou-quark-mapdl', text: '下载地图和汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/yoodexy', quarkLink: 'https://pan.quark.cn/s/70e76ea75729' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouv.com/s/yoodexy' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouv.com/s/yoodexy' }
 ]" />
 
 ## 欢迎来到 ISO-9 综合设施

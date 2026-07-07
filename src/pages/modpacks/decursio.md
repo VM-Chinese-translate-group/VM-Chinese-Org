@@ -31,7 +31,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/Decursio-Projectt-VMTT-1165', quarkLink: 'https://pan.quark.cn/s/7bf1b90bc4bf' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzoui.com/s/Decursio-Projectt-VMTT-1165' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzoui.com/s/Decursio-Projectt-VMTT-1165' }
 ]" />
 
 ## 整合包介绍

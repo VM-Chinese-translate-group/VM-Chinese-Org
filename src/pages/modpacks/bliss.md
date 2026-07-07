@@ -29,7 +29,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'lanzou', text: '下载汉化', link: 'https://wwn.lanzoux.com/ic4Kx0dmof2h' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://wwn.lanzoux.com/ic4Kx0dmof2h' }
+  { id: 'lazy', link: 'https://wwn.lanzoux.com/ic4Kx0dmof2h' }
 ]" />
 
 ## 整合包介绍

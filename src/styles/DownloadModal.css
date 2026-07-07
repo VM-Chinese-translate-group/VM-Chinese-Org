@@ -4,6 +4,11 @@
   animation: textFlow 2s linear infinite;
 }
 
+.lazy-rainbow span {
+  animation: textFlow 2s linear infinite;
+  animation-delay: calc(var(--char-index) * 0.08s);
+}
+
 .download-method-button {
   font: inherit;
   text-align: center;
@@ -89,13 +94,21 @@
   background-color: var(--bg-soft);
   border: 1px solid var(--switcher-border);
   border-radius: 8px;
+  cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
-.option-item:hover {
+.option-item:hover,
+.option-item:focus-visible {
   border-color: var(--nav-primary);
   box-shadow: var(--card-shadow);
+  outline: none;
   transform: translateY(-2px);
+}
+
+.option-item.is-disabled {
+  pointer-events: none;
+  opacity: 0.65;
 }
 
 .option-title {
@@ -103,6 +116,33 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 6px;
+}
+
+.option-title-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.option-emoji,
+.option-icon {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+}
+
+.option-emoji {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.option-icon {
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 .option-title strong {
@@ -121,11 +161,17 @@
 .option-item.lanzou {
   border-left: 4px solid #3498db;
 }
+.option-item.lazy-option {
+  border-left: 4px solid #f59e0b;
+}
 .option-item.recommended:hover {
   border-color: #e74c3c !important;
 }
 .option-item.lanzou:hover {
   border-color: #3498db !important;
+}
+.option-item.lazy-option:hover {
+  border-color: #f59e0b !important;
 }
 
 .btn {

@@ -38,7 +38,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: '/doing', quarkLink: '/doing' },
-  { id: 'lazy', text: '懒汉下载', link: '/doing' }
+  { id: 'lazy', link: '/doing' }
 ]" />
 
 ## 🌱 成长系统

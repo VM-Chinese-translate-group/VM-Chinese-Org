@@ -41,7 +41,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'mediafire', text: '下载地图', link: 'https://www.mediafire.com/file/6jsa2peu3o34pop/Lumina_Complex.zip' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://www.mediafire.com/file/6jsa2peu3o34pop/Lumina_Complex.zip' }
+  { id: 'lazy', link: 'https://www.mediafire.com/file/6jsa2peu3o34pop/Lumina_Complex.zip' }
 ]" />
 
 <DocSupport />

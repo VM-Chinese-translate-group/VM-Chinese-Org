@@ -29,7 +29,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'baidu-drive', text: '下载汉化', link: 'https://pan.baidu.com/s/1OI533N2IMHssFsoGm5o0lg?pwd=x068#list/path=%2F%E8%87%AA%E5%B0%8A%E5%AF%BA%E6%B1%89%E5%8C%96%E5%85%A8%E9%9B%86%2F1.20.x' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://pan.baidu.com/s/1OI533N2IMHssFsoGm5o0lg?pwd=x068#list/path=%2F%E8%87%AA%E5%B0%8A%E5%AF%BA%E6%B1%89%E5%8C%96%E5%85%A8%E9%9B%86%2F1.20.x' }
+  { id: 'lazy', link: 'https://pan.baidu.com/s/1OI533N2IMHssFsoGm5o0lg?pwd=x068#list/path=%2F%E8%87%AA%E5%B0%8A%E5%AF%BA%E6%B1%89%E5%8C%96%E5%85%A8%E9%9B%86%2F1.20.x' }
 ]" />
 
 ## 整合包介绍

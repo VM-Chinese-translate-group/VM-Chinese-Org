@@ -43,7 +43,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/infernalorigin', quarkLink: 'https://pan.quark.cn/s/b2becfd4faaa' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/infernalorigin' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/infernalorigin' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/10136/leaderboard)

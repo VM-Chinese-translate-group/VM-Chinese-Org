@@ -1,27 +1,14 @@
 <template>
-  <div>
+  <div v-if="downloadMethod.length > 1">
     <DownloadModal :items="downloadMethod" />
   </div>
 </template>
 
 <script setup>
 import { useUrlSearchParams } from '@vueuse/core'
-import { onMounted } from 'vue'
+import { nextTick, onMounted } from 'vue'
 import DownloadModal from '@/components/DownloadPage/DownloadModal.vue'
-import { getDownloadMethodIcon } from '@/data/downloadMethodIcons'
-
-function clientLink(method) {
-  return {
-    id: method.id,
-    name: method.text,
-    secondary: method.subText || '',
-    icon: method.icon || getDownloadMethodIcon(method.id),
-    link: method.link,
-    lanzouLink: method.lanzouLink,
-    quarkLink: method.quarkLink,
-    target: method.link && method.link.startsWith('http') ? '_blank' : '_self',
-  }
-}
+import { getPageDownloadMethods } from '@/components/DownloadPage/downloadMethods'
 
 function downloadJump(params, downloadMethod) {
   if (!params.q) return
@@ -39,9 +26,16 @@ const props = defineProps({
 })
 
 const params = useUrlSearchParams('history')
-const downloadMethod = props.methods.map((method) => clientLink(method))
+const downloadMethod = getPageDownloadMethods(props.methods)
 
 onMounted(() => {
+  nextTick(() => {
+    window.dispatchEvent(
+      new CustomEvent('vm-download-methods-ready', {
+        detail: { methods: downloadMethod },
+      }),
+    )
+  })
   downloadJump(params, downloadMethod)
 })
 </script>

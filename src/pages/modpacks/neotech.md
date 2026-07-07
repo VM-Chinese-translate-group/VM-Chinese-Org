@@ -44,7 +44,7 @@ links:
 
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/neotech', quarkLink: 'https://pan.quark.cn/s/e74bd572a6fe' },
-{ id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzoui.com/s/neotech' }
+{ id: 'lazy', link: 'https://vmhanhuazu.lanzoui.com/s/neotech' }
 ]" />
 
 项目主管 @[Cactusstudent](https://github.com/Cactusstudent) @[Wulian233](https://github.com/Wulian233)

@@ -35,7 +35,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://wwz.lanzouv.com/hehuangyuan1shumiao024', quarkLink: 'https://pan.quark.cn/s/162b312c22b8' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://wwz.lanzouv.com/hehuangyuan1shumiao024' }
+  { id: 'lazy', link: 'https://wwz.lanzouv.com/hehuangyuan1shumiao024' }
 ]" />
 
 ## 整合包下载

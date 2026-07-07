@@ -128,6 +128,8 @@ import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { formatUpdateDate } from '@/utils/dateFormat'
 import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import ImagePreview from '@/components/ImagePreview.vue'
+import { useDownloadModal } from '@/components/DownloadPage/useDownloadModal'
+import type { DownloadMethodItem } from '@/components/DownloadPage/downloadMethods'
 
 const props = defineProps({
   meta: { type: Object, default: () => ({}) },
@@ -135,6 +137,8 @@ const props = defineProps({
 
 const { t, locale } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
+const downloadMethods = ref<DownloadMethodItem[]>([])
+const { handleDownloadMethod } = useDownloadModal({ locale, t })
 const displayTitle = computed(() =>
   getLocalizedResourceName(props.meta, locale.value, t('pack.defaultTitle')),
 )
@@ -155,11 +159,13 @@ const handleConvert = async () => {
 }
 
 onMounted(() => {
+  window.addEventListener('vm-download-methods-ready', handleDownloadMethodsReady)
   bindPreview()
   handleConvert()
 })
 
 onUnmounted(() => {
+  window.removeEventListener('vm-download-methods-ready', handleDownloadMethodsReady)
   unbindPreview()
 })
 watch(
@@ -182,7 +188,17 @@ const getIcon = (id: string) => iconMap[id?.toLowerCase()]
 const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
 const getStatusText = (statusType: string) => t(`pack.status.${statusType}`)
 
+const handleDownloadMethodsReady = (event: Event) => {
+  const customEvent = event as CustomEvent<{ methods?: DownloadMethodItem[] }>
+  downloadMethods.value = customEvent.detail?.methods || []
+}
+
 const scrollToDownload = () => {
+  if (downloadMethods.value.length === 1) {
+    handleDownloadMethod(downloadMethods.value[0])
+    return
+  }
+
   const el = document.getElementById('download-section')
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }

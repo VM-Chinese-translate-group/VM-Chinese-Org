@@ -32,7 +32,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'lanzou', text: '下载汉化 密码KparetR', link: 'https://paret.lanzoum.com/b031b2uad' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://paret.lanzoum.com/b031b2uad' }
+  { id: 'lazy', link: 'https://paret.lanzoum.com/b031b2uad' }
 ]" />
 
 ## 贡献人员

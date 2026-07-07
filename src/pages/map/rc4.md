@@ -52,7 +52,7 @@ links:
 <DownloadLinks :methods="[
   { id: '123pan', text: '下载汉化', icon: '/imgs/svg/123.svg', link: 'https://www.123pan.com/s/99kKVv-zYVQh.html' },
   { id: 'mediafire', text: '备用下载', link: 'https://www.mediafire.com/folder/jurnv77qvvaf0' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://www.123pan.com/s/99kKVv-zYVQh.html' }
+  { id: 'lazy', link: 'https://www.123pan.com/s/99kKVv-zYVQh.html' }
 ]" />
 
 ### 🌐 语言设置

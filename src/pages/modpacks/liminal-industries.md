@@ -46,7 +46,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/LI', quarkLink: 'https://pan.quark.cn/s/edb80f4ce6e0' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/LI' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/LI' }
 ]" />
 
 原名：Liminal Industries

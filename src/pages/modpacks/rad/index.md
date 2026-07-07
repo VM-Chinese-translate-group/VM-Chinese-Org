@@ -33,7 +33,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/Rad-vmct-114', quarkLink: 'https://pan.quark.cn/s/cc6a992b5956' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzoui.com/s/Rad-vmct-114' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzoui.com/s/Rad-vmct-114' }
 ]" />
 
 ## 整合包介绍

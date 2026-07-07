@@ -31,7 +31,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/S-B-VM-cn-1', quarkLink: 'https://pan.quark.cn/s/f328fb592944' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouv.com/S-B-VM-cn-1' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouv.com/S-B-VM-cn-1' }
 ]" />
 
 ## 整合包介绍

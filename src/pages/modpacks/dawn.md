@@ -47,7 +47,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/DawnCraft-VMct', quarkLink: 'https://pan.quark.cn/s/e60d5ec60233' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzoui.com/s/DawnCraft-VMct' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzoui.com/s/DawnCraft-VMct' }
 ]" />
 
 ## 整合包介绍

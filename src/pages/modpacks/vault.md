@@ -32,7 +32,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzoui.com/s/the-Vault-03', quarkLink: 'https://pan.quark.cn/s/24de8181311e' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzoui.com/s/the-Vault-03' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzoui.com/s/the-Vault-03' }
 ]" />
 
 ## 🔧配置要求

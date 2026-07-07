@@ -48,7 +48,7 @@ links:
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/asxy-vmct', quarkLink: 'https://pan.quark.cn/s/356f11fbd914' },
   { id: 'gitee', text: 'FTB整合包下载工具', icon: '/imgs/svg/gitee.svg', link: 'https://gitee.com/flrscn/curse-the-beast/releases' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/asxy-vmct' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/asxy-vmct' }
 ]" />
 
 ## 整合包介绍

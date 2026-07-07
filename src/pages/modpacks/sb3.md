@@ -34,7 +34,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'lanzou', text: '下载汉化', link: 'https://wulian233.lanzouu.com/iNLBv38skbxe' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://wulian233.lanzouu.com/iNLBv38skbxe' }
+  { id: 'lazy', link: 'https://wulian233.lanzouu.com/iNLBv38skbxe' }
 ]" />
 
 ## 整合包下载与授权

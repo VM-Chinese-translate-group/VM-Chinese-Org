@@ -40,7 +40,7 @@ links:
 
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/skies2', quarkLink: 'https://pan.quark.cn/s/5d8815be19ab' },
-{ id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/skies2' }
+{ id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/skies2' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/15051/leaderboard)

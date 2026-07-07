@@ -37,7 +37,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'lanzou', text: '下载汉化', icon: '/imgs/quark.jpg', link: 'https://pan.quark.cn/s/37de6b2d081e' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://pan.quark.cn/s/37de6b2d081e' }
+  { id: 'lazy', link: 'https://pan.quark.cn/s/37de6b2d081e' }
 ]" />
 
 ## 特色

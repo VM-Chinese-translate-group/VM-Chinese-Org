@@ -35,7 +35,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: '/doing', quarkLink: '/doing' },
-  { id: 'lazy', text: '懒汉下载', link: '/doing' }
+  { id: 'lazy', link: '/doing' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/17732/leaderboard)

@@ -44,7 +44,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: '123pan', text: '下载地图和汉化', icon: '/imgs/svg/123.svg', link: 'https://www.123684.com/s/99kKVv-0JdEh' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://www.123684.com/s/99kKVv-0JdEh' }
+  { id: 'lazy', link: 'https://www.123684.com/s/99kKVv-0JdEh' }
 ]" />
 
 ## 要求：

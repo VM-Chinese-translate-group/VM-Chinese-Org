@@ -40,7 +40,7 @@ links:
 
 <DownloadLinks :methods="[
 { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/astral', quarkLink: 'https://pan.quark.cn/s/50cdb3071277' },
-{ id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouv.com/s/astral' }
+{ id: 'lazy', link: 'https://vmhanhuazu.lanzouv.com/s/astral' }
 ]" />
 
 ## 注意事项

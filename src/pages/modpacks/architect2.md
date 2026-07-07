@@ -39,7 +39,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/pa2', quarkLink: 'https://pan.quark.cn/s/9c7ff45c84b1' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/pa2' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/pa2' }
 ]" />
 
 ## 特色

@@ -42,7 +42,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'quark-lanzou', text: '下载汉化', lanzouLink: 'https://vmhanhuazu.lanzouo.com/s/prominence2', quarkLink: 'https://pan.quark.cn/s/29e3994b9d1d' },
-  { id: 'lazy', text: '懒汉下载', link: 'https://vmhanhuazu.lanzouo.com/s/prominence2' }
+  { id: 'lazy', link: 'https://vmhanhuazu.lanzouo.com/s/prominence2' }
 ]" />
 
 译者：[查看贡献人员排行榜](https://paratranz.cn/projects/13782/leaderboard)
