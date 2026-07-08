@@ -1,7 +1,7 @@
 export default {
   announcement: {
     label: 'Site announcement',
-    body: 'Latest May release: Enigmatic Skies localization is now available!',
+    body: 'Latest July release: Vampires Strike Back localization is now available!',
     action: 'View',
   },
   navbar: {
@@ -60,44 +60,15 @@ export default {
       keepUpdating: 'Updating',
       countValue: '{count}',
     },
-    featuredModpacksLabel: 'Featured modpacks',
-    featuredModpacks: 'Recently updated modpacks',
     featuredMapsLabel: 'Featured maps',
-    featuredMaps: 'Recently updated maps',
-    valuesLabel: 'Why us',
-    valuesTitle: 'Reliable maintenance, clear delivery, respect for creators',
-    valuesDesc:
-      'Translation quality, team collaboration, and tooling are still the foundations behind everything on this site.',
-    modpackCount: 'Modpack projects',
-    mapCount: 'Map projects',
-    maintainedCount: 'Maintained projects',
-    modpackCountBadge: '{total} projects',
-    mapCountBadge: '{total} projects',
-    viewAllModpacks: 'View all',
-    quickModpacksDesc: 'Browse patches, versions, and downloads',
-    quickMapsDesc: 'Explore translated maps and notes',
     quickToolsDesc: 'Find public tools and helper resources',
     quickCommunityDesc: 'Join the community and follow progress',
-    emptyDescription: 'No description has been added yet.',
-    unknownDate: 'Unknown date',
-    qualityTitle: 'Strict Quality Control',
-    qualityDesc:
-      'VM Chinese Translation Group adheres to strict quality control, elevating translation quality to new heights. With a meticulous attitude, we pursue perfection in every detail. From translation accuracy to cultural localization, each step undergoes rigorous review and proofreading.',
-    teamTitle: 'Passion and Unity',
-    teamDesc:
-      'VM Chinese Translation Group consists of partners with the same interests. We work together with passion. We support each other and become an unbreakable team.',
-    copyrightTitle: 'Respect for Copyright',
-    copyrightDesc:
-      "We are fully aware of the efforts of the authors and the importance of protecting intellectual property rights. The vast majority of our translation projects have received official authorization from the authors. We promise not to distribute the original games, only to provide Chinese localization patch downloads, in order to maximize the protection of the authors' rights.",
-    techTitle: 'Technology Driven',
-    techDesc:
-      'We fully understand that technology is an indispensable part of the localization process. To better promote community development, we have made all our original tools, mods, and the entire translation workflow open source.',
   },
   footer: {
     copyright: '© 2026 VM Chinese Translation Group Web Dev Team',
     buildInfo: 'Build: {branch}',
     about: 'About',
-    joinUs: 'Join Us',
+    joinUs: 'Join Community',
     supportUs: 'Support Us',
     friendsLinks: 'Friend Links',
     credits: 'Credits',
@@ -192,7 +163,7 @@ export default {
     supportParagraph2:
       'We are a community-driven, non-profit team. If you are able, you can support us on {afd}! You can also follow us on Bilibili for updates.',
 
-    joinTitle: 'Join Us',
+    joinTitle: 'Join Community',
     joinParagraph1:
       'Through our {community}, you can stay updated on translation progress and the latest news.',
     joinParagraph2:

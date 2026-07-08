@@ -1,7 +1,7 @@
 export default {
   announcement: {
     label: '站点公告',
-    body: '5月最新成果！谜之天空汉化现已发布！',
+    body: '7月最新成果！吸血鬼的反击汉化现已发布！',
     action: '查看',
   },
   navbar: {
@@ -59,43 +59,15 @@ export default {
       keepUpdating: '持续更新',
       countValue: '{count} 个',
     },
-    featuredModpacksLabel: '整合包精选',
-    featuredModpacks: '近期更新的整合包',
     featuredMapsLabel: '地图精选',
-    featuredMaps: '近期更新的地图',
-    valuesLabel: '为什么选择我们',
-    valuesTitle: '稳定维护，清晰分发，尊重创作',
-    valuesDesc: '翻译质量、团队协作和工具链建设，仍然是这个站点最重要的底层能力。',
-    modpackCount: '整合包项目',
-    mapCount: '地图项目',
-    maintainedCount: '维护中项目',
-    modpackCountBadge: '{total} 个项目',
-    mapCountBadge: '{total} 个项目',
-    viewAllModpacks: '查看全部',
-    quickModpacksDesc: '浏览补丁、版本与下载入口',
-    quickMapsDesc: '查看地图汉化与玩法介绍',
     quickToolsDesc: '获取公开工具与辅助资源',
     quickCommunityDesc: '加入社区、了解进度与招募',
-    emptyDescription: '暂时还没有补充描述。',
-    unknownDate: '日期未知',
-    qualityTitle: '严格的质量把关',
-    qualityDesc:
-      'VM 汉化组坚守严格的质量把关，将翻译质量提升至新的高度。我们以精益求精的态度，追求每一个细节的完美。从翻译准确性到文化本土化，每一个环节都经过严密的审查与校对。',
-    teamTitle: '热爱与团结',
-    teamDesc:
-      'VM 汉化组由一群志同道合的小伙伴组成。我们携手并肩，为爱发电，在相互支持中建立起一个紧密协作的团队。',
-    copyrightTitle: '尊重版权️',
-    copyrightDesc:
-      '我们深知作者的付出和保护知识产权的重要性。绝大多数翻译项目均已获得作者官方授权。我们承诺不分发游戏本体，仅提供汉化补丁下载，最大程度保障作者权益。',
-    techTitle: '技术驱动',
-    techDesc:
-      '我们深知技术是汉化环节中必不可少的部分。为更好地推动社区发展，我们公开开源了所有我们原创的工具、模组和整套翻译工作流',
   },
   footer: {
     copyright: '© 2026 VM汉化组官网开发团队',
     buildInfo: '构建号：{branch}',
     about: '关于',
-    joinUs: '加入我们',
+    joinUs: '加入社区',
     supportUs: '赞助我们',
     friendsLinks: '友情链接',
     credits: '贡献名单',
@@ -189,7 +161,7 @@ export default {
     supportParagraph2:
       '我们一直在用爱发电。如果在您条件允许的情况下，可以在 {afd} 支持我们！还可以在 B 站关注我们的账号！',
 
-    joinTitle: '加入我们',
+    joinTitle: '加入社区',
     joinParagraph1: '通过我们的 {community}，可以进一步了解翻译进度等最新消息。',
     joinParagraph2:
       '我们诚邀各位小伙伴加入我们一起参与贡献，您可以通过加入我们的 {review} 并填写审核表单加入 VM 汉化组！',

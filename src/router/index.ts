@@ -43,6 +43,7 @@ const routes: RouteRecordRaw[] = [
       { path: '', name: 'Home', component: Home },
       { path: 'modpacks', name: 'modpacks-list', component: () => import('@/pages/modpacks.vue') },
       { path: 'map', name: 'map-list', component: () => import('@/pages/map.vue') },
+      { path: 'join', name: 'join-redirect', redirect: '/community#加入我们' },
       {
         path: 'credits',
         name: 'credits',

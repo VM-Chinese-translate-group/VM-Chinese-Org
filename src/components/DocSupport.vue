@@ -31,7 +31,7 @@
     <p>
       <i18n-t keypath="supportUs.joinParagraph2">
         <template #review>
-          <router-link to="/join">
+          <router-link to="/community/">
             {{ $t('supportUs.reviewText') }}
           </router-link>
         </template>

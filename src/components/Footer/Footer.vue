@@ -31,7 +31,9 @@
           <h3 class="mb-[0.8rem] text-[var(--text-dark)] font-bold">{{ $t('footer.about') }}</h3>
           <ul class="m-0 list-none p-0">
             <li>
-              <a href="/join" class="vm-link-underline mb-2">{{ $t('footer.joinUs') }}</a>
+              <a href="/community" class="vm-link-underline mb-2">
+                {{ $t('footer.joinUs') }}
+              </a>
             </li>
             <li>
               <a href="/support-us" class="vm-link-underline mb-2">{{ $t('footer.supportUs') }}</a>

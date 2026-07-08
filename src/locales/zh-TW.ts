@@ -1,7 +1,7 @@
 export default {
   announcement: {
     label: '站點公告',
-    body: '5月最新成果！謎之天空漢化現已發布！',
+    body: '7月最新成果！吸血鬼的反擊漢化現已發布！',
     action: '查看',
   },
   navbar: {
@@ -59,43 +59,15 @@ export default {
       keepUpdating: '持續更新',
       countValue: '{count} 個',
     },
-    featuredModpacksLabel: '模組包精選',
-    featuredModpacks: '近期更新的模組包',
     featuredMapsLabel: '地圖精選',
-    featuredMaps: '近期更新的地圖',
-    valuesLabel: '為什麼選擇我們',
-    valuesTitle: '穩定維護，清晰分發，尊重創作',
-    valuesDesc: '翻譯品質、團隊協作與工具鏈建設，仍然是這個站點最重要的基礎能力。',
-    modpackCount: '模組包項目',
-    mapCount: '地圖項目',
-    maintainedCount: '維護中項目',
-    modpackCountBadge: '{total} 個項目',
-    mapCountBadge: '{total} 個項目',
-    viewAllModpacks: '查看全部',
-    quickModpacksDesc: '瀏覽補丁、版本與下載入口',
-    quickMapsDesc: '查看地圖漢化與玩法介紹',
     quickToolsDesc: '取得公開工具與輔助資源',
     quickCommunityDesc: '加入社群、了解進度與招募',
-    emptyDescription: '暫時還沒有補充描述。',
-    unknownDate: '日期未知',
-    qualityTitle: '嚴格的質量把關',
-    qualityDesc:
-      'VM 漢化組堅守嚴格的質量把關，將漢化品質提升至新的高度。我們以精益求精的態度，追求每一個細節的完美。從漢化準確性到在地化，每一個環節都經過嚴密的審查與校對。',
-    teamTitle: '熱愛與團結',
-    teamDesc:
-      'VM 漢化組由一群志同道合的小夥伴組成。我們攜手並肩，為愛發電，在相互支持中建立起一個緊密協作的團隊。',
-    copyrightTitle: '尊重版權',
-    copyrightDesc:
-      '我們深知作者的付出和保護知識產權的重要性。絕大多數翻譯項目均已獲得作者官方授權。我們承諾不分發遊戲本體，僅提供漢化補丁下載，最大程度保障作者權益。',
-    techTitle: '技術驅動',
-    techDesc:
-      '我們深知技術是漢化環節中必不可少的部分。為更好地推動社區發展，我們公開開源了所有我們原創的工具、模組和整套漢化工作流。',
   },
   footer: {
     copyright: '© 2026 VM漢化組官網開發團隊',
     buildInfo: '構建號：{branch}',
     about: '關於',
-    joinUs: '加入我們',
+    joinUs: '加入社區',
     supportUs: '贊助我們',
     friendsLinks: '友情連結',
     credits: '貢獻名單',
@@ -189,7 +161,7 @@ export default {
     supportParagraph2:
       '我們一直在用愛發電。如果在您條件允許的情況下，可以在 {afd} 支持我們！也歡迎在 B 站關注我們的帳號！',
 
-    joinTitle: '加入我們',
+    joinTitle: '加入社區',
     joinParagraph1: '透過我們的 {community}，可以進一步了解翻譯進度等最新消息。',
     joinParagraph2:
       '我們誠邀各位夥伴加入我們一起參與貢獻，您可以透過加入我們的 {review} 並填寫審核表單加入 VM 漢化組！',

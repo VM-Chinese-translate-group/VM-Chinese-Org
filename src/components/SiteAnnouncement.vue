@@ -1,7 +1,11 @@
 <template>
   <section
     class="site-announcement"
-    :class="{ 'is-home': isHomePage }"
+    :class="{
+      'is-home': isHomePage,
+      'is-doc-surface': isDocSurface,
+      'is-plain-surface': isPlainSurface,
+    }"
     :aria-label="$t('announcement.label')"
   >
     <div class="site-announcement-inner">
@@ -11,7 +15,7 @@
       <p>
         <span>{{ $t('announcement.body') }}</span>
       </p>
-      <RouterLink class="site-announcement-link" to="/modpacks/enigmatic-skies">
+      <RouterLink class="site-announcement-link" to="/modpacks/vampires-strike-back">
         {{ $t('announcement.action') }}
       </RouterLink>
     </div>
@@ -25,6 +29,18 @@ import { Icon } from '@iconify/vue'
 
 const route = useRoute()
 const isHomePage = computed(() => route.path === '/')
+const docSurfacePaths = new Set([
+  '/agreement',
+  '/community',
+  '/doing',
+  '/friends-links',
+  '/privacy',
+  '/support-us',
+  '/tools',
+])
+
+const isDocSurface = computed(() => route.meta.layout === 'doc' || docSurfacePaths.has(route.path))
+const isPlainSurface = computed(() => route.name === 'not-found')
 </script>
 
 <style scoped>
@@ -34,6 +50,14 @@ const isHomePage = computed(() => route.path === '/')
   padding: 18px 20px 0;
   background: var(--bg-off-white);
   overflow: hidden;
+}
+
+.site-announcement.is-doc-surface {
+  background: var(--bg-alt);
+}
+
+.site-announcement.is-plain-surface {
+  background: var(--bg-white);
 }
 
 .site-announcement.is-home {

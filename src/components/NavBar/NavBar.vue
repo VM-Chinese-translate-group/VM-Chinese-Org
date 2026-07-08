@@ -10,7 +10,16 @@
         <div class="navbar-nav-area" ref="navAreaRef">
           <ul class="navbar-list">
             <li v-for="item in visibleNavItems" :key="item.key" class="navbar-item">
-              <router-link :to="item.to">{{ $t(item.labelKey) }}</router-link>
+              <a
+                v-if="isExternalLink(item.to)"
+                :href="item.to"
+                target="_blank"
+                rel="noopener"
+                @click="closeMenu"
+              >
+                {{ $t(item.labelKey) }}
+              </a>
+              <router-link v-else :to="item.to">{{ $t(item.labelKey) }}</router-link>
             </li>
           </ul>
 
@@ -31,7 +40,19 @@
             </button>
             <ul class="navbar-more-menu" :class="{ 'is-open': isMoreOpen }" role="menu">
               <li v-for="item in overflowNavItems" :key="item.key" class="navbar-more-item">
-                <router-link :to="item.to" role="menuitem">{{ $t(item.labelKey) }}</router-link>
+                <a
+                  v-if="isExternalLink(item.to)"
+                  :href="item.to"
+                  target="_blank"
+                  rel="noopener"
+                  role="menuitem"
+                  @click="closeMenu"
+                >
+                  {{ $t(item.labelKey) }}
+                </a>
+                <router-link v-else :to="item.to" role="menuitem">
+                  {{ $t(item.labelKey) }}
+                </router-link>
               </li>
             </ul>
           </div>
@@ -114,6 +135,7 @@ let resizeObserver: ResizeObserver | null = null
 
 const visibleNavItems = computed(() => navItems.slice(0, visibleCount.value))
 const overflowNavItems = computed(() => navItems.slice(visibleCount.value))
+const isExternalLink = (url: string) => /^https?:\/\//.test(url)
 
 const getIsApplePlatform = () => {
   if (typeof navigator === 'undefined') return false
