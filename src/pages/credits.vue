@@ -57,7 +57,7 @@
                 :alt="`${person.displayName} 的头像`"
                 loading="lazy"
                 referrerpolicy="no-referrer"
-                @error="onAvatarError"
+                @error="onAvatarError(person.uidText)"
               />
               <span>{{ person.initial }}</span>
             </a>
@@ -100,8 +100,12 @@ import type { CreditPerson, DisplayCreditPerson } from '@/types/credit'
 
 const rawCategories = creditCategories
 
+const BILIBILI_AVATAR_API = 'https://vmct-cn.top/api/bilibili'
+const BILIBILI_UID_BATCH_SIZE = 30
+
 const avatarMap = reactive<Record<string, string>>({})
-const pendingUids = new Set<string>()
+
+let avatarRequestPending = false
 
 const categories = computed(() =>
   rawCategories.map((category) => ({
@@ -146,35 +150,75 @@ function splitName(rawName: string) {
   }
 }
 
-async function loadBilibiliAvatar(uid: string) {
-  if (!uid || avatarMap[uid] || pendingUids.has(uid)) return
+async function loadBilibiliAvatars(uids: string[]) {
+  const missedUids = uids.filter((uid) => uid && !avatarMap[uid])
 
-  pendingUids.add(uid)
+  if (!missedUids.length || avatarRequestPending) return
+
+  avatarRequestPending = true
 
   try {
-    const response = await fetch(`https://vmct-cn.top/api/bilibili/?uid=${encodeURIComponent(uid)}`)
+    const batches = chunkArray(missedUids, BILIBILI_UID_BATCH_SIZE)
 
-    if (!response.ok) return
-
-    const face = (await response.text()).trim()
-
-    if (/^https:\/\/.+/i.test(face)) {
-      avatarMap[uid] = face
+    for (const batch of batches) {
+      await loadBilibiliAvatarBatch(batch)
     }
-  } catch {
-    // 头像不是核心内容，失败时保留首字母占位。
   } finally {
-    pendingUids.delete(uid)
+    avatarRequestPending = false
   }
 }
 
-function onAvatarError(event: Event) {
-  const image = event.currentTarget as HTMLImageElement
-  image.hidden = true
+async function loadBilibiliAvatarBatch(uids: string[]) {
+  if (!uids.length) return
+
+  try {
+    const apiUrl = new URL(BILIBILI_AVATAR_API)
+
+    // 保留你说的拼 uid/uids：批量用 uids=1,2,3
+    apiUrl.searchParams.set('uids', uids.join(','))
+
+    const response = await fetch(apiUrl.toString(), {
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+
+    if (!response.ok) return
+
+    const faces = (await response.json()) as Record<string, unknown>
+
+    for (const uid of uids) {
+      const face = typeof faces[uid] === 'string' ? faces[uid].trim() : ''
+
+      if (/^https:\/\/.+/i.test(face)) {
+        avatarMap[uid] = face
+      }
+    }
+  } catch (error) {
+    console.warn('Load Bilibili avatar batch failed:', error)
+  }
+}
+
+function chunkArray<T>(items: T[], size: number) {
+  const chunks: T[][] = []
+
+  for (let i = 0; i < items.length; i += size) {
+    chunks.push(items.slice(i, i + size))
+  }
+
+  return chunks
+}
+
+function onAvatarError(uid: string) {
+  if (!uid) return
+  delete avatarMap[uid]
 }
 
 onMounted(() => {
-  allUids.value.forEach(loadBilibiliAvatar)
+  void loadBilibiliAvatars(allUids.value)
 })
 </script>
 
