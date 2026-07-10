@@ -18,9 +18,7 @@ links:
   - id: bilibili
     text: 介绍与汉化安装教程
     link: https://www.bilibili.com/video/BV1Zc3XzQEu7
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: modrinth
     text: 下载VP模组
     link: https://www.curseforge.com/api/v1/mods/967052/files/6482746/download
@@ -28,8 +26,7 @@ links:
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Prominence-II-Chinese
   - id: paratranz
-    text: Paratranz
-    link: https://paratranz.cn/projects/13782
+    project: 13782
 ---
 
 <DownloadLayout :meta="frontmatter">

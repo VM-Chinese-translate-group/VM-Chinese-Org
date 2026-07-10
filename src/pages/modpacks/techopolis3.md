@@ -4,13 +4,13 @@ originalName: 'Techopolis 3'
 icon: https://media.forgecdn.net/avatars/thumbnails/1171/344/256/256/638742658199097356.png
 description: |
   欢迎来到科技城3——一个以科技为核心、囊括顶级科技模组的整合包。
-updateDate: 2026-6-12
+updateDate: 2026-7-10
 status:
   type: maintaining
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '12.0'
+  pack: '12.3'
 authors:
   - 'benbenlaw (作者)'
   - 'VM汉化组 (翻译)'
@@ -18,15 +18,12 @@ links:
   - id: bilibili
     text: 安装教程视频
     link: https://www.bilibili.com/video/BV1NDFSzaENL
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Techopolis-3
   - id: paratranz
-    text: Paratranz
-    link: https://paratranz.cn/projects/14287/leaderboard
+    project: 14287
 ---
 
 <DownloadLayout :meta="frontmatter">

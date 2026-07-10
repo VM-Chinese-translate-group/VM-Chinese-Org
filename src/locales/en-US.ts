@@ -155,6 +155,9 @@ export default {
     },
     authorsTitle: 'Authors',
     relatedLinks: 'Related Links',
+    links: {
+      i18n: 'Download i18nUpdate Mod',
+    },
   },
   supportUs: {
     supportTitle: 'Support Us',

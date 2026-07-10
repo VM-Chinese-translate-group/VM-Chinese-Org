@@ -153,6 +153,9 @@ export default {
     },
     authorsTitle: '作者',
     relatedLinks: '相关链接',
+    links: {
+      i18n: '下载i18n模组',
+    },
   },
   supportUs: {
     supportTitle: '支持我们',

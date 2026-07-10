@@ -15,15 +15,12 @@ authors:
   - 'DenLille_ (作者)'
   - 'VM汉化组-琪露诺 (翻译)'
 links:
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Prodigium-Reforged-Chinese
   - id: paratranz
-    text: Paratranz
-    link: https://paratranz.cn/projects/13356
+    project: 13356
 ---
 
 <DownloadLayout :meta="frontmatter">

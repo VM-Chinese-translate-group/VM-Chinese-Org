@@ -19,9 +19,7 @@ links:
   - id: bilibili
     text: 介绍视频
     link: https://www.bilibili.com/video/BV1UT4m1S7rg
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: modrinth
     text: 下载硬编码汉化VP模组
     link: https://cdn.modrinth.com/data/NLV0Mnpu/versions/Z3IIqvHD/vaultpatcher-all-1.5.2.jar

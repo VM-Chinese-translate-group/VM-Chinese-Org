@@ -153,6 +153,9 @@ export default {
     },
     authorsTitle: '作者',
     relatedLinks: '相關連結',
+    links: {
+      i18n: '下載i18nUpdateMod',
+    },
   },
   supportUs: {
     supportTitle: '支持我們',

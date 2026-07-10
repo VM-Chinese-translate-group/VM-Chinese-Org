@@ -21,9 +21,7 @@ links:
   - id: bilibili
     text: 汉化教程
     link: https://www.bilibili.com/video/BV1nH4y1w7CQ
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: modrinth
     text: 下载硬编码汉化VP模组
     link: https://cdn.modrinth.com/data/NLV0Mnpu/versions/Z3IIqvHD/vaultpatcher-all-1.5.2.jar
@@ -31,8 +29,7 @@ links:
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Infernal-Origins
   - id: paratranz
-    text: Paratranz
-    link: https://paratranz.cn/projects/10136
+    project: 10136
 ---
 
 <DownloadLayout :meta="frontmatter">

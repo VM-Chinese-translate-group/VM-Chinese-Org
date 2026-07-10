@@ -21,15 +21,12 @@ links:
   - id: bilibili
     text: 宣传片教程
     link: https://www.bilibili.com/video/BV1T2tszKEh4
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Cosmic-Frontiers-Chinese
   - id: paratranz
-    text: Paratranz
-    link: https://paratranz.cn/projects/14073
+    project: 14073
 ---
 
 <DownloadLayout :meta="frontmatter">

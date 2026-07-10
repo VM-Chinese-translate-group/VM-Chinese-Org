@@ -7,7 +7,7 @@ description: |
   便是在这片似真似幻的空间中心，亲手建造属于你的自动化工厂。
 updateDate: 2026-1-1
 status:
-  type: maintaining
+  type: stopped
 compatibility:
   loader: forge
   minecraft: '1.20.1'
@@ -19,15 +19,12 @@ links:
   - id: bilibili
     text: 介绍视频
     link: https://www.bilibili.com/video/BV1KyYYzMEkP/
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Liminal-Industries-Chinese
   - id: paratranz
-    text: Paratranz
-    link: https://paratranz.cn/projects/15786
+    project: 15786
 ---
 
 <DownloadLayout :meta="frontmatter">

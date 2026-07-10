@@ -15,9 +15,7 @@ authors:
   - 'dreams01 (作者)'
   - 'VM汉化组-choco_takey (翻译)'
 links:
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: github
     text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Roguelike-Adventures-and-Dungeons-2

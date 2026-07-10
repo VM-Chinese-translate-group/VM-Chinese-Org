@@ -18,9 +18,7 @@ links:
   - id: bilibili
     text: 专栏介绍
     link: https://www.bilibili.com/read/cv21297910
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://www.curseforge.com/minecraft/modpacks/caveopolis
+  - id: i18n
 ---
 
 <DownloadLayout :meta="frontmatter">

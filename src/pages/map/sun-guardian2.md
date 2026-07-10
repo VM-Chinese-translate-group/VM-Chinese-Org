@@ -25,8 +25,7 @@ links:
     text: 宣传片
     link: https://www.bilibili.com/video/BV1kWaGzTEoi/
   - id: paratranz
-    text: Paratranz
-    link: https://paratranz.cn/projects/15705
+    project: 15705
 ---
 
 <DownloadLayout :meta="frontmatter">

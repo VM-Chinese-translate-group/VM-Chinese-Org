@@ -21,9 +21,7 @@ links:
   - id: bilibili
     text: 宣传片
     link: https://www.bilibili.com/video/BV1jP4y1o7jy
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
 ---
 
 <DownloadLayout :meta="frontmatter">

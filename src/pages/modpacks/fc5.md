@@ -15,12 +15,9 @@ authors:
   - 'Khazenor (作者)'
   - 'VM汉化组 (翻译)'
 links:
-  - id: modrinth
-    text: 下载i18n模组
-    link: https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar
+  - id: i18n
   - id: paratranz
-    text: Paratranz
-    link: https://paratranz.cn/projects/12586
+    project: 12586
 ---
 
 <DownloadLayout :meta="frontmatter">

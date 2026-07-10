@@ -89,17 +89,17 @@
           </div>
         </div>
 
-        <div class="sidebar-card" v-if="meta.links && meta.links.length">
+        <div class="sidebar-card" v-if="relatedLinks.length">
           <h3 class="sidebar-title">{{ t('pack.relatedLinks') }}</h3>
           <div class="external-links">
             <a
-              v-for="(item, index) in meta.links"
-              :key="index"
+              v-for="(item, index) in relatedLinks"
+              :key="`${item.id}-${index}`"
               :href="item.link"
               class="link-pill"
               target="_blank"
             >
-              <img v-if="getIcon(item.id)" v-lazy="getIcon(item.id)" class="link-icon" />
+              <img v-if="item.icon" v-lazy="item.icon" class="link-icon" />
               <span>{{ item.text }}</span>
               <Icon icon="lucide:external-link" class="external-icon" />
             </a>
@@ -127,6 +127,7 @@ import { useImagePreview } from '@/composables/useImagePreview'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { formatUpdateDate } from '@/utils/dateFormat'
 import { getLocalizedResourceName } from '@/utils/resourceDisplay'
+import { resolveRelatedLink, type RelatedLinkInput } from '@/data/relatedLinks'
 import ImagePreview from '@/components/ImagePreview.vue'
 import { useDownloadModal } from '@/components/DownloadPage/useDownloadModal'
 import type { DownloadMethodItem } from '@/components/DownloadPage/downloadMethods'
@@ -142,6 +143,12 @@ const { handleDownloadMethod } = useDownloadModal({ locale, t })
 const displayTitle = computed(() =>
   getLocalizedResourceName(props.meta, locale.value, t('pack.defaultTitle')),
 )
+const relatedLinks = computed(() => {
+  void locale.value
+  return ((props.meta.links || []) as RelatedLinkInput[])
+    .map((item) => resolveRelatedLink(item, t))
+    .filter((item) => item.text && item.link)
+})
 const {
   bindPreview,
   closePreview,
@@ -175,16 +182,6 @@ watch(
 )
 watch(locale, () => handleConvert())
 
-// 图标映射
-const iconMap: Record<string, string> = {
-  bilibili: '/imgs/svg/bilibili.svg',
-  curseforge: '/imgs/svg/curseforge.svg',
-  github: '/imgs/svg/github.svg',
-  paratranz: '/imgs/svg/paratranz.svg',
-  modrinth: '/imgs/svg/modrinth.svg',
-}
-
-const getIcon = (id: string) => iconMap[id?.toLowerCase()]
 const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
 const getStatusText = (statusType: string) => t(`pack.status.${statusType}`)
 

@@ -177,6 +177,7 @@
     'avatar name'
     'avatar account';
   gap: 3px 14px;
+  align-content: center;
   align-items: center;
   min-height: 76px;
   padding: 15px 16px;
