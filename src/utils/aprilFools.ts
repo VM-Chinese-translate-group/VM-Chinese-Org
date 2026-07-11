@@ -4,6 +4,7 @@ const EMAIL_PATTERN = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi
 const SKIPPED_PAGE_PATTERN = /^\/(?:agreement|privacy)(?:\/|$)/
 
 export const SITE_LOGO_128 = '/imgs/logo/logo_128.png'
+export const APRIL_FOOLS_FAVICON = '/imgs/logo/fool/favicon.ico'
 export const APRIL_FOOLS_LOGO_128 = '/imgs/logo/fool/logo_128.png'
 export const APRIL_FOOLS_LOGO_LONG = '/imgs/logo/fool/logo_long.png'
 
@@ -84,7 +85,7 @@ function syncImages(root: ParentNode) {
 
 function syncHead() {
   const favicon = document.head.querySelector<HTMLLinkElement>('link[rel="icon"]')
-  if (favicon) favicon.href = APRIL_FOOLS_LOGO_128
+  if (favicon) favicon.href = APRIL_FOOLS_FAVICON
 }
 
 export function syncAprilFoolsBranding(path: string, root: ParentNode = document.body) {
