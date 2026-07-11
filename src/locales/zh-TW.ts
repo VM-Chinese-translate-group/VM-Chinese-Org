@@ -111,6 +111,12 @@ export default {
   downloadModal: {
     agreement: 'VM漢化組用戶協議',
     answerPlaceholder: '請輸入答案',
+    downloadTypeTitle: '選擇下載方式',
+    downloadTypeIntro: '請選擇您偏好的下載方式：',
+    normalDownload: '普通下載',
+    normalDownloadDesc: '選擇網盤下載',
+    lazyDownload: '懶漢下載',
+    lazyDownloadDesc: '和普通下載一樣（？）',
     cancel: '取消',
     correctBody:
       '您可以下載中文化補丁了！懶漢下載和普通下載的連結一樣，只是為了增加娛樂用途。<br><br>不過在此之前，請您先閱讀並接受{agreement}，並仔細閱讀 {installGuide}。',
@@ -120,7 +126,7 @@ export default {
     driveTitle: '網盤選擇',
     installGuide: '中文化補丁安裝說明',
     installGuideJoiner: '，並仔細查閱{installGuide}。',
-    lazyDesc: '推薦懶漢首選，連結檔案和上面一樣',
+    lazyDesc: '連結檔案和上面一樣',
     lazyTitle: '懶漢下載',
     lanzouButton: '藍奏雲',
     lanzouDesc: '無需客戶端，點擊連結直接下載，輕量快捷。',
@@ -177,7 +183,7 @@ export default {
     title: '頁面導覽',
   },
   loader: {
-    neoforge: 'Neoforge',
+    neoforge: 'NeoForge',
     fabric: 'Fabric',
     forge: 'Forge',
     vanilla: '原版',

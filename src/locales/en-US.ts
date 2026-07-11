@@ -112,6 +112,12 @@ export default {
   downloadModal: {
     agreement: 'VM Chinese Translation Group User Agreement',
     answerPlaceholder: 'Enter your answer',
+    downloadTypeTitle: 'Choose Download Type',
+    downloadTypeIntro: 'Choose your preferred download method:',
+    normalDownload: 'Normal Download',
+    normalDownloadDesc: 'Choose a cloud drive to download',
+    lazyDownload: 'Lazy Download',
+    lazyDownloadDesc: 'Same as normal download (?)',
     cancel: 'Cancel',
     correctBody:
       'You can download the localization patch now. The lazy download uses the same link as the normal download; it is only here for fun.<br><br>Before continuing, please read and accept the {agreement}, and read the {installGuide}.',
@@ -121,7 +127,7 @@ export default {
     driveTitle: 'Choose download drive',
     installGuide: 'localization patch installation guide',
     installGuideJoiner: ', and read the {installGuide}.',
-    lazyDesc: 'Recommended for lazy users, the link is the same as above',
+    lazyDesc: 'The link is the same as above',
     lazyTitle: 'Lazy Download',
     lanzouButton: 'Lanzou Cloud',
     lanzouDesc: 'No client required. Open the link and download directly.',
@@ -180,7 +186,7 @@ export default {
     title: 'On this page',
   },
   loader: {
-    neoforge: 'Neoforge',
+    neoforge: 'NeoForge',
     fabric: 'Fabric',
     forge: 'Forge',
     vanilla: 'Vanilla',

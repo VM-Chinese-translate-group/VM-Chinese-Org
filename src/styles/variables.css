@@ -12,9 +12,9 @@
   --text-black: #111827;
 
   /* Hero Buttons */
-  --btn-primary-bg: #3451b2;
-  --btn-primary-hover: #1a6ac4;
-  --btn-primary-active: #06a3fe;
+  --btn-primary-bg: #0079BF;
+  --btn-primary-hover: #006aad;
+  --btn-primary-active: #008ad9;
 
   /* ===========================
      Info Section
@@ -30,16 +30,16 @@
      Footer
      =========================== */
   --footer-bg-gradient: linear-gradient(to bottom, #eef1f7 0%, #cee2da 100%);
-  --footer-link-hover: #007bff;
-  --footer-underline-gradient: linear-gradient(90deg, #007bff, #00d4ff);
+  --footer-link-hover: #0079BF;
+  --footer-underline-gradient: linear-gradient(90deg, #0079BF, #00d4ff);
 
   /* ===========================
      NavBar Variables
      =========================== */
-  --nav-primary: #4f8cff;
+  --nav-primary: #0079BF;
   --nav-text: #000;
   --nav-bg: #fff;
-  --nav-shadow: rgba(79, 140, 255, 0.12);
+  --nav-shadow: rgba(0, 121, 191, 0.12);
   --nav-hover-bg: rgba(255, 255, 255, 0.18);
 
   /* NavBar Sizing */
@@ -75,8 +75,8 @@
   --tip-soft: rgba(24, 121, 78, 0.14);
 
   /* info */
-  --info-1: #3451b2;
-  --info-soft: rgba(52, 81, 178, 0.14);
+  --info-1: #0079BF;
+  --info-soft: rgba(0, 121, 191, 0.14);
 
   /* warning */
   --warning-1: #9f6000;
@@ -166,7 +166,7 @@
 
   /* --- Footer --- */
   --footer-bg-gradient: linear-gradient(to bottom, #101813 0%, #17261c 100%);
-  --footer-link-hover: #4f8cff;
+  --footer-link-hover: #0079BF;
 
   /* --- Info Section --- */
   --card-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
@@ -181,8 +181,8 @@
   --tip-1: #3dd68c;
   --tip-soft: rgba(61, 214, 140, 0.16);
 
-  --info-1: #7aa2ff;
-  --info-soft: rgba(122, 162, 255, 0.16);
+  --info-1: #4da6e0;
+  --info-soft: rgba(77, 166, 224, 0.16);
 
   --warning-1: #f9b44d;
   --warning-soft: rgba(249, 180, 77, 0.18);
@@ -212,7 +212,7 @@
   --link-bg: #26272e;
   --link-bg-hover: #303138;
 
-  --link-title: #9db2ff;
+  --link-title: #4da6e0;
   --link-desc: #9a9aa0;
 
   img[src*='github.svg'],

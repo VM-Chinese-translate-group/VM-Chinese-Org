@@ -118,47 +118,62 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       ? t('downloadModal.installGuideJoiner', { installGuide: installGuideLink() })
       : t('downloadModal.noticeEnd')
 
-  const colorText = (text: string) =>
-    text
-      .split('')
-      .map((char, index) => `<span style="--char-index:${index}">${char}</span>`)
-      .join('')
+  const getDownloadTypeModalHtml = () => `
+    <div class="modal-content-container">
+      <p class="intro-text">${t('downloadModal.downloadTypeIntro')}</p>
+      <ul class="download-options-list">
+        <li class="option-item" data-type="normal" role="button" tabindex="0">
+          <div class="option-content">
+            <div class="option-title">
+              <span class="option-title-content">
+                <strong>${t('downloadModal.normalDownload')}</strong>
+              </span>
+            </div>
+            <div class="option-desc">${t('downloadModal.normalDownloadDesc')}</div>
+          </div>
+        </li>
+        <li class="option-item" data-type="lazy" role="button" tabindex="0">
+          <div class="option-content">
+            <div class="option-title">
+              <span class="option-title-content">
+                <strong>${t('downloadModal.lazyDownload')}</strong>
+              </span>
+            </div>
+            <div class="option-desc">${t('downloadModal.lazyDownloadDesc')}</div>
+          </div>
+        </li>
+      </ul>
+      <p class="important-notice">
+        <strong>${t('downloadModal.noticeTitle')}</strong>${t('downloadModal.noticeRead', {
+          agreement: agreementLink(),
+        })}${installGuideNotice(true)}
+      </p>
+    </div>`
 
   const getDownloadModalHtml = (item: any, showInstallLink = true) => `
     <div class="modal-content-container">
       <p class="intro-text">${t('downloadModal.driveIntro')}</p>
       <ul class="download-options-list">
         <li class="option-item recommended" data-drive="quark" role="button" tabindex="0">
-          <div class="option-title">
-            <span class="option-title-content">
-              <span class="option-emoji">📂</span>
-              <strong>${t('downloadModal.quarkTitle')}</strong>
-            </span>
+          <div class="option-content">
+            <div class="option-title">
+              <span class="option-title-content">
+                <strong>${t('downloadModal.quarkTitle')}</strong>
+              </span>
+            </div>
+            <div class="option-desc">${t('downloadModal.quarkDesc')}</div>
           </div>
-          <div class="option-desc">${t('downloadModal.quarkDesc')}</div>
         </li>
         <li class="option-item lanzou" data-drive="lanzou" role="button" tabindex="0">
-          <div class="option-title">
-            <span class="option-title-content">
-              <span class="option-emoji">🚀</span>
-              <strong>${t('downloadModal.lanzouTitle')}</strong>
-            </span>
+          <div class="option-content">
+            <div class="option-title">
+              <span class="option-title-content">
+                <strong>${t('downloadModal.lanzouTitle')}</strong>
+              </span>
+            </div>
+            <div class="option-desc">${t('downloadModal.lanzouDesc')}</div>
           </div>
-          <div class="option-desc">${t('downloadModal.lanzouDesc')}</div>
         </li>
-        ${
-          item.lazyLink
-            ? `<li class="option-item lazy-option" data-drive="lazy" role="button" tabindex="0">
-                <div class="option-title">
-                  <span class="option-title-content">
-                    <img src="/imgs/lazydl.png" class="option-icon" alt="" />
-                    <strong class="lazy-rainbow">${colorText(t('downloadModal.lazyTitle'))}</strong>
-                  </span>
-                </div>
-                <div class="option-desc">${t('downloadModal.lazyDesc')}</div>
-              </li>`
-            : ''
-        }
       </ul>
       <p class="important-notice">
         <strong>${t('downloadModal.noticeTitle')}</strong>${t('downloadModal.noticeRead', {
@@ -209,7 +224,15 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
             })}
           </div>`,
         showCancelButton: false,
+        showCloseButton: true,
         confirmButtonText: t('downloadModal.ok'),
+        buttonsStyling: false,
+        showClass: {
+          popup: 'swal2-noanimation',
+        },
+        hideClass: {
+          popup: '',
+        },
       }).then((res: any) => res.isConfirmed && openTrackedLink(item))
     } else {
       Swal.fire({
@@ -217,6 +240,14 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
         title: t('downloadModal.wrongTitle'),
         customClass: { popup: 'vm-swal-popup' },
         text: t('downloadModal.wrongText'),
+        showCloseButton: true,
+        buttonsStyling: false,
+        showClass: {
+          popup: 'swal2-noanimation',
+        },
+        hideClass: {
+          popup: '',
+        },
       }).then(() => {
         showQuestionModal(item)
       })
@@ -231,6 +262,16 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
         title: t('downloadModal.questionLoadErrorTitle'),
         customClass: { popup: 'vm-swal-popup' },
         text: t('downloadModal.questionLoadErrorText'),
+        showCloseButton: true,
+        buttonsStyling: false,
+        confirmButton: 'btn btn-lanzou',
+        confirmButtonText: t('downloadModal.ok'),
+        showClass: {
+          popup: 'swal2-noanimation',
+        },
+        hideClass: {
+          popup: '',
+        },
       })
       return
     }
@@ -255,6 +296,13 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       confirmButtonText: t('downloadModal.submit'),
       showCancelButton: false,
       showCloseButton: true,
+      buttonsStyling: false,
+      showClass: {
+        popup: 'swal2-noanimation',
+      },
+      hideClass: {
+        popup: '',
+      },
       didOpen: () => {
         const container = Swal.getHtmlContainer()
         container.querySelectorAll('.q-btn').forEach((btn: HTMLButtonElement) => {
@@ -285,6 +333,65 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
     })
   }
 
+  const showDownloadTypeModal = async (item: any) => {
+    const Swal = await getSwal()
+
+    Swal.fire({
+      title: t('downloadModal.downloadTypeTitle'),
+      html: getDownloadTypeModalHtml(),
+      showConfirmButton: false,
+      showDenyButton: false,
+      showCancelButton: false,
+      showCloseButton: true,
+      buttonsStyling: false,
+      customClass: {
+        popup: 'vm-swal-popup',
+        htmlContainer: 'vm-swal-html-container',
+      },
+      showClass: {
+        popup: 'swal2-noanimation',
+      },
+      hideClass: {
+        popup: '',
+      },
+      didOpen: (modal: HTMLElement) => {
+        let hasChosen = false
+        const chooseType = (type: string | null) => {
+          if (hasChosen) return
+          hasChosen = true
+          modal.querySelectorAll('.option-item[data-type]').forEach((option: Element) => {
+            option.classList.add('is-disabled')
+            option.setAttribute('aria-disabled', 'true')
+          })
+
+          Swal.close()
+          if (type === 'normal') {
+            showMultiDriveModal(item)
+          } else if (type === 'lazy') {
+            const lazyItem = {
+              ...item,
+              id: 'lazy',
+              name: t('downloadModal.lazyTitle'),
+              link: item.lazyLink,
+            }
+            showQuestionModal(lazyItem)
+          }
+        }
+
+        modal.querySelectorAll('.option-item[data-type]').forEach((option: Element) => {
+          const type = option.getAttribute('data-type')
+          option.addEventListener('click', () => chooseType(type))
+          option.addEventListener('keydown', (event) => {
+            const keyboardEvent = event as KeyboardEvent
+            if (keyboardEvent.key !== 'Enter' && keyboardEvent.key !== ' ') return
+            keyboardEvent.preventDefault()
+            chooseType(type)
+          })
+        })
+      },
+    })
+  }
+
   const showProtocolModal = async (item: any, hasInstallGuide = true) => {
     const Swal = await getSwal()
 
@@ -295,13 +402,21 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
         agreement: agreementLink(),
       })}${installGuideNotice(hasInstallGuide)}`,
       showCancelButton: true,
+      showCloseButton: true,
       confirmButtonText: t('downloadModal.ok'),
       cancelButtonText: t('downloadModal.cancel'),
       reverseButtons: true,
+      buttonsStyling: false,
       customClass: {
         popup: 'vm-swal-popup',
         confirmButton: 'btn btn-lanzou',
         cancelButton: 'btn btn-cancel',
+      },
+      showClass: {
+        popup: 'swal2-noanimation',
+      },
+      hideClass: {
+        popup: '',
       },
       didOpen: () => setupButtonCountdown(Swal, 3),
     }).then((res: any) => res.isConfirmed && openTrackedLink(item))
@@ -310,13 +425,6 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
   const showMultiDriveModal = async (item: any, hasInstallGuide = true) => {
     const Swal = await getSwal()
 
-    const lazyItem = {
-      ...item,
-      id: 'lazy',
-      name: t('downloadModal.lazyTitle'),
-      link: item.lazyLink,
-    }
-
     Swal.fire({
       title: t('downloadModal.driveTitle'),
       html: getDownloadModalHtml(item, hasInstallGuide),
@@ -324,9 +432,16 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       showDenyButton: false,
       showCancelButton: false,
       showCloseButton: true,
+      buttonsStyling: false,
       customClass: {
         popup: 'vm-swal-popup',
         htmlContainer: 'vm-swal-html-container',
+      },
+      showClass: {
+        popup: 'swal2-noanimation',
+      },
+      hideClass: {
+        popup: '',
       },
       didOpen: (modal: HTMLElement) => {
         const icon = modal.querySelector('.swal2-icon')
@@ -348,10 +463,6 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
             trackDownloadChoice('select', item, { drive: 'lanzou' })
             Swal.close()
             openTrackedLink(item, item.lanzouLink, { drive: 'lanzou' })
-          } else if (drive === 'lazy') {
-            trackDownloadChoice('select', lazyItem, { drive: 'lazy' })
-            Swal.close()
-            showQuestionModal(lazyItem)
           }
         }
 
@@ -373,8 +484,8 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
     lanzou: (item) => showProtocolModal(item, true),
     mapdl: (item) => showProtocolModal(item, false),
     lazy: (item) => showQuestionModal(item),
-    'quark-lanzou': (item) => showMultiDriveModal(item, true),
-    'lanzou-quark-mapdl': (item) => showMultiDriveModal(item, false),
+    'quark-lanzou': (item) => (item.lazyLink ? showDownloadTypeModal(item) : showMultiDriveModal(item, true)),
+    'lanzou-quark-mapdl': (item) => (item.lazyLink ? showDownloadTypeModal(item) : showMultiDriveModal(item, false)),
   }
 
   const handleDownloadMethod = (item: any) => {

@@ -11,6 +11,10 @@ import { modpacks } from 'virtual:resources'
 
 <style scoped>
 .resource-list-page {
+  background: #f5f5f5;
+}
+
+.dark .resource-list-page {
   background: var(--bg-off-white);
 }
 </style>

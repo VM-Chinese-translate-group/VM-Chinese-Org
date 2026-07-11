@@ -117,8 +117,7 @@
 }
 
 .btn-download-main:hover {
-  background-color: var(--btn-primary-hover, #059669);
-  transform: translateY(-2px);
+  background-color: var(--btn-primary-hover);
 }
 
 .update-date {

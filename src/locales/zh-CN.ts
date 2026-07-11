@@ -111,6 +111,12 @@ export default {
   downloadModal: {
     agreement: 'VM汉化组用户服务协议',
     answerPlaceholder: '请输入答案',
+    downloadTypeTitle: '选择下载方式',
+    downloadTypeIntro: '请选择您偏好的下载方式：',
+    normalDownload: '普通下载',
+    normalDownloadDesc: '选择网盘下载',
+    lazyDownload: '懒汉下载',
+    lazyDownloadDesc: '和普通下载一样（？）',
     cancel: '取消',
     correctBody:
       '您可以下载汉化了！懒汉下载和普通下载的链接一样，只是为了增加娱乐用途。<br><br>不过在此之前，请您先阅读并接受{agreement}，并仔细阅读 {installGuide}。',
@@ -120,7 +126,7 @@ export default {
     driveTitle: '网盘选择',
     installGuide: '汉化补丁安装说明',
     installGuideJoiner: '，并仔细查阅{installGuide}。',
-    lazyDesc: '推荐懒汉首选，链接文件和上面一样',
+    lazyDesc: '链接文件和上面一样',
     lazyTitle: '懒汉下载',
     lanzouButton: '蓝奏云',
     lanzouDesc: '无需客户端，点击链接直接下载，轻量快捷。',
@@ -177,7 +183,7 @@ export default {
     title: '页面导航',
   },
   loader: {
-    neoforge: 'Neoforge',
+    neoforge: 'NeoForge',
     fabric: 'Fabric',
     forge: 'Forge',
     vanilla: '原版',
