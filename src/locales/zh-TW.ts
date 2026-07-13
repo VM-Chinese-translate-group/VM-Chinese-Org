@@ -115,8 +115,10 @@ export default {
     downloadTypeIntro: '請選擇您偏好的下載方式：',
     normalDownload: '普通下載',
     normalDownloadDesc: '選擇網盤下載',
+    selectDrive: '請選擇下載渠道',
     lazyDownload: '懶漢下載',
     lazyDownloadDesc: '和普通下載一樣（？）',
+    or: '或',
     cancel: '取消',
     correctBody:
       '您可以下載中文化補丁了！懶漢下載和普通下載的連結一樣，只是為了增加娛樂用途。<br><br>不過在此之前，請您先閱讀並接受{agreement}，並仔細閱讀 {installGuide}。',

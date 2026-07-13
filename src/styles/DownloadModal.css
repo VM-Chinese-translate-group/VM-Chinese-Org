@@ -61,6 +61,11 @@
   gap: 8px !important;
 }
 
+/* Single button - center */
+.vm-swal-popup-single-btn .swal2-actions {
+  justify-content: center !important;
+}
+
 /* Dark Mode - Fluent UI */
 .dark .swal2-input {
   background-color: var(--bg-soft) !important;
@@ -181,6 +186,195 @@
   text-decoration: underline;
 }
 
+/* Custom Fluent UI Dropdown */
+.download-type-select-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.fluent-select {
+  position: relative;
+  flex: 1;
+}
+
+.fluent-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-1);
+  background-color: #f5f5f5;
+  border: 1px solid var(--switcher-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.fluent-select-trigger:hover {
+  background-color: #e8e8e8;
+}
+
+.fluent-select.open .fluent-select-trigger {
+  border-radius: 4px 4px 0 0;
+  background-color: #f5f5f5;
+}
+
+.fluent-select-trigger .select-value.placeholder {
+  color: var(--text-muted);
+}
+
+.fluent-select-trigger .select-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  transition: transform 0.2s ease;
+  color: #616161;
+}
+
+.fluent-select.open .fluent-select-trigger .select-arrow {
+  transform: rotate(180deg);
+}
+
+.fluent-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #f5f5f5;
+  border: 1px solid var(--switcher-border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+}
+
+.fluent-select.open .fluent-select-dropdown {
+  display: block;
+}
+
+.fluent-select-option {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-1);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.fluent-select-option:hover {
+  background-color: #e8e8e8;
+}
+
+.fluent-select-option.selected {
+  background-color: #e0e0e0;
+  color: var(--info-1);
+  font-weight: 600;
+}
+
+.fluent-select-option.disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fluent-select-option .option-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.fluent-select-option .option-desc {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-2);
+  margin-top: 2px;
+}
+
+.fluent-select-option:hover .option-desc {
+  color: var(--text-1);
+}
+
+.fluent-select-option.selected .option-desc {
+  color: var(--info-1);
+}
+
+/* Dark mode - Custom Dropdown */
+.dark .fluent-select-trigger {
+  background-color: #2a2a30;
+  color: var(--text-1);
+  border-color: var(--switcher-border);
+  border-radius: 4px;
+}
+
+.dark .fluent-select-trigger:hover {
+  background-color: #353535;
+}
+
+.dark .fluent-select.open .fluent-select-trigger {
+  border-radius: 4px 4px 0 0;
+  background-color: #2a2a30;
+}
+
+.dark .fluent-select-trigger .select-arrow {
+  border-top-color: #a0a0a0;
+}
+
+.dark .fluent-select-dropdown {
+  background: #2a2a30;
+  border-color: var(--switcher-border);
+  border-top: none;
+}
+
+.dark .fluent-select-option {
+  color: var(--text-1);
+}
+
+.dark .fluent-select-option:hover {
+  background-color: #353535;
+}
+
+.dark .fluent-select-option.selected {
+  background-color: #3d3d3d;
+  color: var(--info-1);
+}
+
+.dark .fluent-select-option.disabled {
+  color: var(--text-muted);
+}
+
+.download-type-btn {
+  white-space: nowrap;
+}
+
+.download-type-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.download-type-divider::before,
+.download-type-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--switcher-border);
+}
+
 /* Fluent UI List */
 .download-options-list {
   list-style: none;
@@ -210,28 +404,34 @@
   background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-/* Lazy option - visually de-emphasized */
+/* Lazy option - outlined button style */
 .option-item.lazy-option {
   background-color: transparent;
   background-image: none;
+  border: 1px solid var(--info-1);
   opacity: 0.6;
-  border-style: dashed;
+  padding: 10px 16px;
+  color: var(--info-1);
+  font-weight: 500;
+  border-radius: 4px;
 }
 
 .option-item.lazy-option:hover {
   opacity: 0.8;
-  filter: brightness(0.9);
+  background-color: rgba(0, 121, 191, 0.08);
 }
 
 .dark .option-item.lazy-option {
   background-color: transparent;
   background-image: none;
+  border: 1px solid var(--info-1);
   opacity: 0.5;
+  color: var(--info-1);
 }
 
 .dark .option-item.lazy-option:hover {
   opacity: 0.7;
-  filter: brightness(0.9);
+  background-color: rgba(0, 121, 191, 0.12);
 }
 
 .option-item:hover,
@@ -317,6 +517,13 @@
   font-weight: 600;
   font-size: 15px;
   line-height: 1.4;
+}
+
+.option-desc-inline {
+  font-size: 13px;
+  color: var(--text-2);
+  font-weight: 400;
+  margin-left: 8px;
 }
 
 .option-desc {
@@ -516,7 +723,7 @@
 
 /* Primary Button (Filled) - Fluent UI Accent */
 .btn-quark {
-  background-color: var(--info-1) !important;
+  background-color: var(--btn-primary-bg) !important;
   color: #fff !important;
   border: 1px solid transparent !important;
 }

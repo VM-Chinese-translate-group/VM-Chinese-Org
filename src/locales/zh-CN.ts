@@ -115,8 +115,10 @@ export default {
     downloadTypeIntro: '请选择您偏好的下载方式：',
     normalDownload: '普通下载',
     normalDownloadDesc: '选择网盘下载',
+    selectDrive: '请选择下载渠道',
     lazyDownload: '懒汉下载',
     lazyDownloadDesc: '和普通下载一样（？）',
+    or: '或',
     cancel: '取消',
     correctBody:
       '您可以下载汉化了！懒汉下载和普通下载的链接一样，只是为了增加娱乐用途。<br><br>不过在此之前，请您先阅读并接受{agreement}，并仔细阅读 {installGuide}。',

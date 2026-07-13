@@ -121,25 +121,39 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
   const getDownloadTypeModalHtml = () => `
     <div class="modal-content-container">
       <p class="intro-text">${t('downloadModal.downloadTypeIntro')}</p>
-      <ul class="download-options-list">
-        <li class="option-item" data-type="normal" role="button" tabindex="0">
-          <div class="option-content">
-            <div class="option-title">
-              <span class="option-title-content">
-                <strong>${t('downloadModal.normalDownload')}</strong>
-              </span>
-            </div>
-            <div class="option-desc">${t('downloadModal.normalDownloadDesc')}</div>
+      <div class="download-type-select-wrapper">
+        <div class="fluent-select" id="download-drive-select">
+          <div class="fluent-select-trigger" tabindex="0">
+            <span class="select-value placeholder">${t('downloadModal.selectDrive')}</span>
+            <span class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
           </div>
-        </li>
-        <li class="option-item" data-type="lazy" role="button" tabindex="0">
+          <div class="fluent-select-dropdown">
+            <div class="fluent-select-option" data-value="quark">
+              <span class="option-name">${t('downloadModal.quarkTitle')}</span>
+              <span class="option-desc">${t('downloadModal.quarkDesc')}</span>
+            </div>
+            <div class="fluent-select-option" data-value="lanzou">
+              <span class="option-name">${t('downloadModal.lanzouTitle')}</span>
+              <span class="option-desc">${t('downloadModal.lanzouDesc')}</span>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="normal-download-btn" class="btn btn-quark download-type-btn">
+          ${t('downloadModal.normalDownload')}
+        </button>
+      </div>
+      <div class="download-type-divider">
+        <span>${t('downloadModal.or')}</span>
+      </div>
+      <ul class="download-options-list">
+        <li class="option-item lazy-option" data-type="lazy" role="button" tabindex="0">
           <div class="option-content">
             <div class="option-title">
               <span class="option-title-content">
                 <strong>${t('downloadModal.lazyDownload')}</strong>
+                <span class="option-desc-inline">${t('downloadModal.lazyDownloadDesc')}</span>
               </span>
             </div>
-            <div class="option-desc">${t('downloadModal.lazyDownloadDesc')}</div>
           </div>
         </li>
       </ul>
@@ -211,11 +225,6 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       Swal.fire({
         title: t('downloadModal.correctTitle'),
         icon: 'success',
-        customClass: {
-          popup: 'vm-swal-popup',
-          htmlContainer: 'vm-swal-html-container',
-          confirmButton: 'btn btn-lanzou',
-        },
         html: `
           <div class="modal-content-container">
             ${t('downloadModal.correctBody', {
@@ -227,6 +236,11 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
         showCloseButton: true,
         confirmButtonText: t('downloadModal.ok'),
         buttonsStyling: false,
+        customClass: {
+          popup: 'vm-swal-popup vm-swal-popup-single-btn',
+          htmlContainer: 'vm-swal-html-container',
+          confirmButton: 'btn btn-quark',
+        },
         showClass: {
           popup: 'swal2-noanimation',
         },
@@ -238,10 +252,15 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       Swal.fire({
         icon: 'error',
         title: t('downloadModal.wrongTitle'),
-        customClass: { popup: 'vm-swal-popup' },
         text: t('downloadModal.wrongText'),
         showCloseButton: true,
+        showCancelButton: false,
+        confirmButtonText: t('downloadModal.ok'),
         buttonsStyling: false,
+        customClass: {
+          popup: 'vm-swal-popup vm-swal-popup-single-btn',
+          confirmButton: 'btn btn-quark',
+        },
         showClass: {
           popup: 'swal2-noanimation',
         },
@@ -260,12 +279,15 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       await Swal.fire({
         icon: 'error',
         title: t('downloadModal.questionLoadErrorTitle'),
-        customClass: { popup: 'vm-swal-popup' },
         text: t('downloadModal.questionLoadErrorText'),
         showCloseButton: true,
-        buttonsStyling: false,
-        confirmButton: 'btn btn-lanzou',
+        showCancelButton: false,
         confirmButtonText: t('downloadModal.ok'),
+        buttonsStyling: false,
+        customClass: {
+          popup: 'vm-swal-popup vm-swal-popup-single-btn',
+          confirmButton: 'btn btn-quark',
+        },
         showClass: {
           popup: 'swal2-noanimation',
         },
@@ -356,38 +378,82 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       },
       didOpen: (modal: HTMLElement) => {
         let hasChosen = false
-        const chooseType = (type: string | null) => {
-          if (hasChosen) return
-          hasChosen = true
-          modal.querySelectorAll('.option-item[data-type]').forEach((option: Element) => {
-            option.classList.add('is-disabled')
-            option.setAttribute('aria-disabled', 'true')
+        let selectedDrive = 'quark'
+
+        // Custom Fluent UI Dropdown
+        const selectEl = modal.querySelector('#download-drive-select') as HTMLElement
+        const trigger = selectEl?.querySelector('.fluent-select-trigger') as HTMLElement
+        const options = selectEl?.querySelectorAll('.fluent-select-option') as NodeListOf<HTMLElement>
+        const valueDisplay = selectEl?.querySelector('.select-value') as HTMLElement
+
+        if (trigger) {
+          trigger.addEventListener('click', () => {
+            selectEl.classList.toggle('open')
           })
 
-          Swal.close()
-          if (type === 'normal') {
-            showMultiDriveModal(item)
-          } else if (type === 'lazy') {
+          // Close dropdown when clicking outside
+          modal.addEventListener('click', (e) => {
+            if (!selectEl.contains(e.target as Node)) {
+              selectEl.classList.remove('open')
+            }
+          })
+        }
+
+        options.forEach((option) => {
+          option.addEventListener('click', () => {
+            selectedDrive = option.dataset.value || 'quark'
+            valueDisplay.textContent = option.textContent
+            valueDisplay.classList.remove('placeholder')
+            options.forEach((opt) => opt.classList.remove('selected'))
+            option.classList.add('selected')
+            selectEl.classList.remove('open')
+          })
+        })
+
+        // Normal download button
+        const normalBtn = modal.querySelector('#normal-download-btn') as HTMLButtonElement
+
+        if (normalBtn) {
+          normalBtn.addEventListener('click', () => {
+            if (hasChosen) return
+            hasChosen = true
+            Swal.close()
+
+            if (selectedDrive === 'quark') {
+              trackDownloadChoice('select', item, { drive: 'quark' })
+              openTrackedLink(item, item.quarkLink, { drive: 'quark' })
+            } else if (selectedDrive === 'lanzou') {
+              trackDownloadChoice('select', item, { drive: 'lanzou' })
+              openTrackedLink(item, item.lanzouLink, { drive: 'lanzou' })
+            }
+          })
+        }
+
+        // Lazy download
+        const lazyOption = modal.querySelector('.option-item[data-type="lazy"]')
+        if (lazyOption) {
+          const chooseLazy = () => {
+            if (hasChosen) return
+            hasChosen = true
+            Swal.close()
             const lazyItem = {
               ...item,
               id: 'lazy',
               name: t('downloadModal.lazyTitle'),
               link: item.lazyLink,
             }
+            trackDownloadChoice('select', lazyItem, { drive: 'lazy' })
             showQuestionModal(lazyItem)
           }
-        }
 
-        modal.querySelectorAll('.option-item[data-type]').forEach((option: Element) => {
-          const type = option.getAttribute('data-type')
-          option.addEventListener('click', () => chooseType(type))
-          option.addEventListener('keydown', (event) => {
+          lazyOption.addEventListener('click', chooseLazy)
+          lazyOption.addEventListener('keydown', (event) => {
             const keyboardEvent = event as KeyboardEvent
             if (keyboardEvent.key !== 'Enter' && keyboardEvent.key !== ' ') return
             keyboardEvent.preventDefault()
-            chooseType(type)
+            chooseLazy()
           })
-        })
+        }
       },
     })
   }

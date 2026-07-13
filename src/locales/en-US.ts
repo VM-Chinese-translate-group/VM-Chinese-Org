@@ -116,8 +116,10 @@ export default {
     downloadTypeIntro: 'Choose your preferred download method:',
     normalDownload: 'Normal Download',
     normalDownloadDesc: 'Choose a cloud drive to download',
+    selectDrive: 'Select download channel',
     lazyDownload: 'Lazy Download',
     lazyDownloadDesc: 'Same as normal download (?)',
+    or: 'or',
     cancel: 'Cancel',
     correctBody:
       'You can download the localization patch now. The lazy download uses the same link as the normal download; it is only here for fun.<br><br>Before continuing, please read and accept the {agreement}, and read the {installGuide}.',
