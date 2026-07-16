@@ -1,7 +1,7 @@
 export default {
   announcement: {
     label: '站點公告',
-    body: '7月最新成果！吸血鬼的反擊漢化現已發布！',
+    body: '7月最新成果！FTB Skies2: Aero漢化現已發布！',
     action: '查看',
   },
   navbar: {

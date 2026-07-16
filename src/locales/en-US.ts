@@ -1,7 +1,7 @@
 export default {
   announcement: {
     label: 'Site announcement',
-    body: 'Latest July release: Vampires Strike Back localization is now available!',
+    body: 'Latest July release: FTB Skies2: Aero localization is now available!',
     action: 'View',
   },
   navbar: {

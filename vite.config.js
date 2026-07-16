@@ -159,9 +159,6 @@ export default defineConfig({
 
   build: {
     rolldownOptions: {
-      devtools: {
-        enabled: true,
-      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules/vue')) return 'vue'

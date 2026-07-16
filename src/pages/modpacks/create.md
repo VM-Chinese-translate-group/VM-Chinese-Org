@@ -6,7 +6,7 @@ description: |
   一觉醒来，你发现自己躺在一个奇怪的星球，它的卫星已经破碎，一切都是那样的不同。
 updateDate: 2026-2-8
 status:
-  type: maintaining
+  type: stopped
 compatibility:
   loader: fabric
   minecraft: '1.18.2'
