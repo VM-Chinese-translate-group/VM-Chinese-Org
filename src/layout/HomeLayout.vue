@@ -191,7 +191,7 @@ const activeResourceTab = ref<'hot' | 'updated'>('hot')
 const HOT_MODPACK_LINKS = [
   '/modpacks/sb4',
   '/modpacks/skies-2',
-  '/modpacks/oceanblock2',
+  '/modpacks/skies2-aero',
   '/modpacks/deceasedcraft',
   '/modpacks/enigmatic-skies',
   '/modpacks/vampires-strike-back',
