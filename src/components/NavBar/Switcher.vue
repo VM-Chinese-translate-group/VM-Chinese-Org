@@ -6,9 +6,9 @@
     <div
       class="relative flex h-full items-center max-[860px]:h-auto max-[860px]:flex-col max-[860px]:items-stretch"
     >
-      <div
-        class="flex h-10 cursor-pointer items-center gap-2 rounded-2 px-3 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.1)] max-[860px]:h-12.5 max-[860px]:w-full max-[860px]:justify-between max-[860px]:border-b max-[860px]:border-b-[rgba(0,0,0,0.05)] max-[860px]:px-0"
-        role="button"
+      <button
+        type="button"
+        class="flex h-10 cursor-pointer items-center gap-2 border-none rounded-2 bg-transparent px-3 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.1)] max-[860px]:h-12.5 max-[860px]:w-full max-[860px]:justify-between max-[860px]:border-b max-[860px]:border-b-[rgba(0,0,0,0.05)] max-[860px]:px-0"
         aria-haspopup="listbox"
         :aria-expanded="isDropdownOpen"
         @click.stop="toggleDropdown"
@@ -20,7 +20,7 @@
           class="text-3.2 opacity-50 transition-transform duration-300"
           :class="{ 'rotate-180': isDropdownOpen }"
         />
-      </div>
+      </button>
 
       <ul
         class="absolute right-0 top-[calc(100%+8px)] m-0 min-w-40 list-none rounded-3 border border-[rgba(0,0,0,0.1)] bg-[var(--nav-bg,#fff)] p-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.1)] transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] max-[860px]:static max-[860px]:w-full max-[860px]:border-none max-[860px]:bg-transparent max-[860px]:p-0 max-[860px]:shadow-none"
@@ -42,7 +42,11 @@
           "
           role="option"
           :aria-selected="locale === lang.code"
+          :tabindex="isDropdownOpen ? 0 : -1"
           @click.stop="selectLanguage(lang.code)"
+          @keydown.enter.prevent.stop="selectLanguage(lang.code)"
+          @keydown.space.prevent.stop="selectLanguage(lang.code)"
+          @keydown.esc.stop="closeDropdown"
         >
           <span>{{ lang.name }}</span>
           <Icon

@@ -2,10 +2,11 @@
 import { useI18n } from 'vue-i18n'
 import DownloadMethodGrid from './DownloadMethodGrid.vue'
 import { useDownloadModal } from './useDownloadModal'
+import type { DownloadMethodItem } from './downloadMethods'
 import type { DownloadQuestion } from '@/types/downloadQuestion'
 
 const props = defineProps<{
-  items?: any[]
+  items?: DownloadMethodItem[]
   questions?: DownloadQuestion[]
   questionLoader?: (() => Promise<DownloadQuestion[]>) | null
 }>()

@@ -1,9 +1,11 @@
 import type { Ref } from 'vue'
 import { downloadQuestions } from '@/data/downloadQuestions'
+import type { DownloadMethodItem } from './downloadMethods'
 import type { DownloadQuestion } from '@/types/downloadQuestion'
 import { convertInlineText } from '@/utils/zhconv'
 
 type Translate = (key: string, params?: Record<string, unknown>) => string
+type SweetAlert = (typeof import('sweetalert2'))['default']
 
 interface UseDownloadModalOptions {
   locale: Ref<string>
@@ -13,7 +15,30 @@ interface UseDownloadModalOptions {
 }
 
 const QUESTION_OPTIONS = ['A', 'B', 'C', 'D']
-let swalPromise: Promise<any> | undefined
+let swalPromise: Promise<SweetAlert> | undefined
+
+const escapeHtml = (value: string) =>
+  value.replace(
+    /[&<>"']/g,
+    (character) =>
+      ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      })[character] || character,
+  )
+
+const sanitizeQuestionContent = (content: string) =>
+  escapeHtml(content).replace(/&lt;br\s*\/?&gt;/gi, '<br>')
+
+const renderLineBreaks = (content: string) => content.replace(/\n/g, '<br>')
+
+const getSafeImageUrl = (url?: string) => {
+  if (!url || !/^(?:\/(?!\/)|https?:\/\/)/i.test(url)) return ''
+  return escapeHtml(url)
+}
 
 const getQuestionKey = (question: DownloadQuestion) =>
   [question.title, question.content, question.correctAnswer].join('\n')
@@ -25,15 +50,24 @@ const getSwal = async () => {
   return swalPromise
 }
 
-const openLink = (url?: string) => url && window.open(url, '_blank')
+const openLink = (url?: string) => {
+  if (!url) return
 
-const getDownloadType = (item: any) => (item.id === 'lazy' ? 'lazy' : 'normal')
+  const openedWindow = window.open(url, '_blank')
+  if (openedWindow) openedWindow.opener = null
+}
+
+const getDownloadType = (item: DownloadMethodItem) => (item.id === 'lazy' ? 'lazy' : 'normal')
 
 export function useDownloadModal(options: UseDownloadModalOptions) {
   const { locale, questionLoader, questions, t } = options
   const usedQuestionKeys = new Set<string>()
 
-  const trackDownloadChoice = (stage: string, item: any, extra: Record<string, unknown> = {}) => {
+  const trackDownloadChoice = (
+    stage: string,
+    item: DownloadMethodItem,
+    extra: Record<string, unknown> = {},
+  ) => {
     window.gtag?.(`event`, `download_choice_${stage}`, {
       download_type: getDownloadType(item),
       download_method_id: item.id,
@@ -42,7 +76,11 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
     })
   }
 
-  const openTrackedLink = (item: any, url = item.link, extra: Record<string, unknown> = {}) => {
+  const openTrackedLink = (
+    item: DownloadMethodItem,
+    url = item.link,
+    extra: Record<string, unknown> = {},
+  ) => {
     trackDownloadChoice('open', item, extra)
     openLink(url)
   }
@@ -68,13 +106,13 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
     return question
   }
 
-  const setupButtonCountdown = (Swal: any, seconds = 3) => {
+  const setupButtonCountdown = (Swal: SweetAlert, seconds = 3) => {
     const confirmBtn = Swal.getConfirmButton()
     const denyBtn = Swal.getDenyButton()
-    if (!confirmBtn) return
+    if (!confirmBtn) return () => {}
 
     const originalConfirm = confirmBtn.innerText
-    const originalDeny = denyBtn?.innerText
+    const originalDeny = denyBtn?.innerText || ''
 
     let remaining = seconds
     const update = () => {
@@ -105,13 +143,15 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
         update()
       }
     }, 1000)
+
+    return () => clearInterval(timer)
   }
 
   const agreementLink = () =>
-    `<a href="/agreement/" target="_blank" class="modal-link">${t('downloadModal.agreement')}</a>`
+    `<a href="/agreement/" target="_blank" rel="noopener noreferrer" class="modal-link">${t('downloadModal.agreement')}</a>`
 
   const installGuideLink = () =>
-    `<a href="/modpacks/" target="_blank" class="modal-link">${t('downloadModal.installGuide')}</a>`
+    `<a href="/modpacks/" target="_blank" rel="noopener noreferrer" class="modal-link">${t('downloadModal.installGuide')}</a>`
 
   const installGuideNotice = (hasInstallGuide = true) =>
     hasInstallGuide
@@ -121,10 +161,10 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
   const colorText = (text: string) =>
     text
       .split('')
-      .map((char, index) => `<span style="--char-index:${index}">${char}</span>`)
+      .map((char, index) => `<span style="--char-index:${index}">${escapeHtml(char)}</span>`)
       .join('')
 
-  const getDownloadModalHtml = (item: any, showInstallLink = true) => `
+  const getDownloadModalHtml = (item: DownloadMethodItem, showInstallLink = true) => `
     <div class="modal-content-container">
       <p class="intro-text">${t('downloadModal.driveIntro')}</p>
       <ul class="download-options-list">
@@ -135,7 +175,9 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
               <strong>${t('downloadModal.quarkTitle')}</strong>
             </span>
           </div>
-          <div class="option-desc">${t('downloadModal.quarkDesc')}</div>
+          <div class="option-desc">${t('downloadModal.quarkDesc', {
+            emphasis: `<strong>${escapeHtml(t('downloadModal.quarkEmphasis'))}</strong>`,
+          })}</div>
         </li>
         <li class="option-item lanzou" data-drive="lanzou" role="button" tabindex="0">
           <div class="option-title">
@@ -170,17 +212,17 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
   const buildQuestionHtml = (question: DownloadQuestion, content: string) => `
     <div class="modal-content-container">
       <div class="question-content">
-        ${content}
+        ${sanitizeQuestionContent(content)}
       </div>
       ${
-        question.imageUrl
-          ? `<img loading="lazy" src="${question.imageUrl}" class="question-image" alt=""/>`
+        getSafeImageUrl(question.imageUrl)
+          ? `<img loading="lazy" src="${getSafeImageUrl(question.imageUrl)}" class="question-image" alt=""/>`
           : ''
       }
       <div class="question-actions">
         ${
           question.isInput
-            ? `<input type="text" id="swal-input" class="swal2-input question-input" placeholder="${t('downloadModal.answerPlaceholder')}">`
+            ? `<input type="text" id="swal-input" class="swal2-input question-input" placeholder="${escapeHtml(t('downloadModal.answerPlaceholder'))}">`
             : QUESTION_OPTIONS.map(
                 (option) =>
                   `<button class="btn btn-lanzou q-btn" data-value="${option}">${option}</button>`,
@@ -189,7 +231,7 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       </div>
     </div>`
 
-  const validateAnswer = async (input: string, correct: string, item: any) => {
+  const validateAnswer = async (input: string, correct: string, item: DownloadMethodItem) => {
     const Swal = await getSwal()
 
     if (input.trim().toUpperCase() === correct.toUpperCase()) {
@@ -203,14 +245,16 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
         },
         html: `
           <div class="modal-content-container">
-            ${t('downloadModal.correctBody', {
-              agreement: agreementLink(),
-              installGuide: installGuideLink(),
-            })}
+            ${renderLineBreaks(
+              t('downloadModal.correctBody', {
+                agreement: agreementLink(),
+                installGuide: installGuideLink(),
+              }),
+            )}
           </div>`,
         showCancelButton: false,
         confirmButtonText: t('downloadModal.ok'),
-      }).then((res: any) => res.isConfirmed && openTrackedLink(item))
+      }).then((result) => result.isConfirmed && openTrackedLink(item))
     } else {
       Swal.fire({
         icon: 'error',
@@ -223,7 +267,7 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
     }
   }
 
-  const showQuestionModal = async (item: any) => {
+  const showQuestionModal = async (item: DownloadMethodItem) => {
     const [Swal, allQuestions] = await Promise.all([getSwal(), getQuestions()])
     if (!allQuestions.length) {
       await Swal.fire({
@@ -257,11 +301,13 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
       showCloseButton: true,
       didOpen: () => {
         const container = Swal.getHtmlContainer()
-        container.querySelectorAll('.q-btn').forEach((btn: HTMLButtonElement) => {
+        if (!container) return
+
+        container.querySelectorAll<HTMLButtonElement>('.q-btn').forEach((btn) => {
           btn.onclick = () => {
             if (hasAnswered) return
             hasAnswered = true
-            container.querySelectorAll('.q-btn').forEach((button: HTMLButtonElement) => {
+            container.querySelectorAll<HTMLButtonElement>('.q-btn').forEach((button) => {
               button.disabled = true
             })
             Swal.close()
@@ -276,8 +322,8 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
         }
       },
       preConfirm: () => (question.isInput ? tempInput : null),
-    }).then((res: any) => {
-      if (res.isConfirmed && question.isInput) {
+    }).then((result) => {
+      if (result.isConfirmed && question.isInput) {
         if (hasAnswered) return
         hasAnswered = true
         validateAnswer(tempInput, question.correctAnswer, item)
@@ -285,8 +331,9 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
     })
   }
 
-  const showProtocolModal = async (item: any, hasInstallGuide = true) => {
+  const showProtocolModal = async (item: DownloadMethodItem, hasInstallGuide = true) => {
     const Swal = await getSwal()
+    let stopCountdown = () => {}
 
     Swal.fire({
       title: t('downloadModal.protocolTitle'),
@@ -303,11 +350,14 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
         confirmButton: 'btn btn-lanzou',
         cancelButton: 'btn btn-cancel',
       },
-      didOpen: () => setupButtonCountdown(Swal, 3),
-    }).then((res: any) => res.isConfirmed && openTrackedLink(item))
+      didOpen: () => {
+        stopCountdown = setupButtonCountdown(Swal, 3)
+      },
+      willClose: () => stopCountdown(),
+    }).then((result) => result.isConfirmed && openTrackedLink(item))
   }
 
-  const showMultiDriveModal = async (item: any, hasInstallGuide = true) => {
+  const showMultiDriveModal = async (item: DownloadMethodItem, hasInstallGuide = true) => {
     const Swal = await getSwal()
 
     const lazyItem = {
@@ -369,7 +419,7 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
     })
   }
 
-  const modalConfig: Record<string, (item: any) => void> = {
+  const modalConfig: Record<string, (item: DownloadMethodItem) => void> = {
     lanzou: (item) => showProtocolModal(item, true),
     mapdl: (item) => showProtocolModal(item, false),
     lazy: (item) => showQuestionModal(item),
@@ -377,8 +427,8 @@ export function useDownloadModal(options: UseDownloadModalOptions) {
     'lanzou-quark-mapdl': (item) => showMultiDriveModal(item, false),
   }
 
-  const handleDownloadMethod = (item: any) => {
-    const handler = modalConfig[item.id]
+  const handleDownloadMethod = (item: DownloadMethodItem) => {
+    const handler = item.id ? modalConfig[item.id] : undefined
     if (handler) {
       if (!item.quarkLink || !item.lanzouLink) trackDownloadChoice('select', item)
       handler(item)

@@ -13,13 +13,9 @@ declare module '*.md' {
 }
 
 declare module 'virtual:search-index' {
-  export const searchIndex: Array<{
-    url: string
-    title: string
-    titleTW: string
-    text: string
-    textTW: string
-  }>
+  import type { SearchIndexItem } from '@/types/search'
+
+  export const searchIndex: SearchIndexItem[]
 }
 
 declare module 'virtual:resources' {

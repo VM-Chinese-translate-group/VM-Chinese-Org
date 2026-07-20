@@ -63,6 +63,7 @@ interface ConvertedText {
 }
 
 const originalTextMap = new WeakMap<Text, ConvertedText>()
+const containerConversionVersions = new WeakMap<Element, number>()
 
 function shouldConvertTextNode(node: Text) {
   const value = node.nodeValue
@@ -93,15 +94,23 @@ function getTextNodes(root: Element) {
 }
 
 export async function convertMarkdownContainers(targetLocale: string, root?: HTMLElement) {
-  const containers = root ? [root] : document.querySelectorAll('.markdown-body')
+  const containers = Array.from(root ? [root] : document.querySelectorAll('.markdown-body'))
 
   if (!containers.length) return
+
+  const requests = containers.map((container) => {
+    const version = (containerConversionVersions.get(container) || 0) + 1
+    containerConversionVersions.set(container, version)
+    return { container, version }
+  })
 
   if (targetLocale === 'zh-TW') {
     const converter = await getConverter()
 
-    containers.forEach((el) => {
-      for (const textNode of getTextNodes(el)) {
+    requests.forEach(({ container, version }) => {
+      if (containerConversionVersions.get(container) !== version) return
+
+      for (const textNode of getTextNodes(container)) {
         const current = textNode.nodeValue || ''
         const source =
           originalTextMap.get(textNode)?.source || preservedText.get(current) || current
@@ -113,8 +122,10 @@ export async function convertMarkdownContainers(targetLocale: string, root?: HTM
       }
     })
   } else {
-    containers.forEach((el) => {
-      for (const textNode of getTextNodes(el)) {
+    requests.forEach(({ container, version }) => {
+      if (containerConversionVersions.get(container) !== version) return
+
+      for (const textNode of getTextNodes(container)) {
         const original = originalTextMap.get(textNode)
 
         if (original) {

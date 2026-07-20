@@ -1,4 +1,4 @@
-import { onBeforeUnmount, ref, type Ref } from 'vue'
+import { onBeforeUnmount, ref, watch, type Ref } from 'vue'
 
 interface LightboxImage {
   src: string
@@ -18,6 +18,7 @@ export function useImagePreview(containerRef: Ref<HTMLElement | null>) {
   const visible = ref(false)
   const index = ref(0)
   const images = ref<LightboxImage[]>([])
+  let boundContainer: HTMLElement | null = null
 
   const openPreview = (target: HTMLImageElement) => {
     const container = containerRef.value
@@ -41,18 +42,18 @@ export function useImagePreview(containerRef: Ref<HTMLElement | null>) {
     const target = event.target
 
     if (!(target instanceof HTMLImageElement)) return
-    if (!containerRef.value?.contains(target)) return
+    if (!boundContainer?.contains(target)) return
 
     event.preventDefault()
     openPreview(target)
   }
 
-  const bindPreview = () => {
-    containerRef.value?.addEventListener('click', onContainerClick)
-  }
+  const bindPreview = (container: HTMLElement | null) => {
+    if (container === boundContainer) return
 
-  const unbindPreview = () => {
-    containerRef.value?.removeEventListener('click', onContainerClick)
+    boundContainer?.removeEventListener('click', onContainerClick)
+    boundContainer = container
+    boundContainer?.addEventListener('click', onContainerClick)
   }
 
   const closePreview = () => {
@@ -63,17 +64,15 @@ export function useImagePreview(containerRef: Ref<HTMLElement | null>) {
     visible.value = value
   }
 
-  onBeforeUnmount(() => {
-    unbindPreview()
-  })
+  watch(containerRef, bindPreview, { flush: 'post' })
+
+  onBeforeUnmount(() => bindPreview(null))
 
   return {
-    bindPreview,
     closePreview,
     images,
     index,
     onVisibleChange,
-    unbindPreview,
     visible,
   }
 }

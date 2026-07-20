@@ -98,6 +98,7 @@
               :href="item.link"
               class="link-pill"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img v-if="item.icon" v-lazy="item.icon" class="link-icon" />
               <span>{{ item.text }}</span>
@@ -119,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { computed, ref, provide, watch, nextTick } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 import { convertMarkdownContainers } from '@/utils/zhconv'
@@ -130,7 +131,10 @@ import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import { resolveRelatedLink, type RelatedLinkInput } from '@/data/relatedLinks'
 import ImagePreview from '@/components/ImagePreview.vue'
 import { useDownloadModal } from '@/components/DownloadPage/useDownloadModal'
-import type { DownloadMethodItem } from '@/components/DownloadPage/downloadMethods'
+import {
+  DOWNLOAD_METHODS_REGISTRAR,
+  type DownloadMethodItem,
+} from '@/components/DownloadPage/downloadMethods'
 
 const props = defineProps({
   meta: { type: Object, default: () => ({}) },
@@ -139,6 +143,9 @@ const props = defineProps({
 const { t, locale } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
 const downloadMethods = ref<DownloadMethodItem[]>([])
+provide(DOWNLOAD_METHODS_REGISTRAR, (methods) => {
+  downloadMethods.value = methods
+})
 const { handleDownloadMethod } = useDownloadModal({ locale, t })
 const displayTitle = computed(() =>
   getLocalizedResourceName(props.meta, locale.value, t('pack.defaultTitle')),
@@ -150,12 +157,10 @@ const relatedLinks = computed(() => {
     .filter((item) => item.text && item.link)
 })
 const {
-  bindPreview,
   closePreview,
   images: previewImages,
   index: previewIndex,
   onVisibleChange: onPreviewVisibleChange,
-  unbindPreview,
   visible: previewVisible,
 } = useImagePreview(contentRef)
 
@@ -165,30 +170,15 @@ const handleConvert = async () => {
   await convertMarkdownContainers(locale.value, contentRef.value)
 }
 
-onMounted(() => {
-  window.addEventListener('vm-download-methods-ready', handleDownloadMethodsReady)
-  bindPreview()
-  handleConvert()
-})
-
-onUnmounted(() => {
-  window.removeEventListener('vm-download-methods-ready', handleDownloadMethodsReady)
-  unbindPreview()
-})
 watch(
   () => props.meta,
   () => handleConvert(),
-  { deep: true },
+  { deep: true, immediate: true },
 )
 watch(locale, () => handleConvert())
 
 const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
 const getStatusText = (statusType: string) => t(`pack.status.${statusType}`)
-
-const handleDownloadMethodsReady = (event: Event) => {
-  const customEvent = event as CustomEvent<{ methods?: DownloadMethodItem[] }>
-  downloadMethods.value = customEvent.detail?.methods || []
-}
 
 const scrollToDownload = () => {
   if (downloadMethods.value.length === 1) {

@@ -136,25 +136,25 @@
             </button>
           </div>
 
-          <label class="select-field">
+          <div class="select-field">
             <span>{{ $t('DownloadCards.sortBy') }}</span>
-            <select v-model="sortKey" class="page-size-select">
-              <option v-for="option in sortOptions" :key="option.value" :value="option.value">
-                {{ option.label }}
-              </option>
-            </select>
-          </label>
+            <SelectMenu
+              v-model="sortKey"
+              class="catalog-select sort-select"
+              :aria-label="$t('DownloadCards.sortBy')"
+              :options="sortOptions"
+            />
+          </div>
 
-          <label class="select-field">
+          <div class="select-field">
             <span>{{ $t('DownloadCards.itemsPerPage') }}</span>
-            <select
-              :value="itemsPerPage"
-              @change="handlePageSizeChange($event)"
-              class="page-size-select"
-            >
-              <option v-for="size in pageSizeOptions" :key="size" :value="size">{{ size }}</option>
-            </select>
-          </label>
+            <SelectMenu
+              v-model="itemsPerPage"
+              class="catalog-select page-count-select"
+              :aria-label="$t('DownloadCards.itemsPerPage')"
+              :options="pageSizeOptions"
+            />
+          </div>
 
           <button class="mobile-filter-toggle" type="button" @click="openFilterDrawer">
             <Icon icon="lucide:list-filter" />
@@ -177,13 +177,7 @@
 
         <div class="container">
           <div v-if="displayMods.length" class="grid-layout">
-            <div
-              v-for="mod in displayMods"
-              :key="mod.name"
-              class="card-item"
-              :class="{ 'is-clickable': mod.link }"
-              @click="handleCardClick(mod.link)"
-            >
+            <RouterLink v-for="mod in displayMods" :key="mod.name" :to="mod.link" class="card-item">
               <div class="card-box">
                 <figure class="card-icon">
                   <img v-lazy="mod.icon" :alt="mod.name" />
@@ -239,7 +233,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </RouterLink>
           </div>
           <div v-else class="empty-state">
             <Icon icon="lucide:search-x" />
@@ -290,10 +284,12 @@
 import { ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
+import SelectMenu from '@/components/SelectMenu.vue'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { formatUpdateDate } from '@/utils/dateFormat'
 import { getLocalizedResourceName, isEnglishLocale } from '@/utils/resourceDisplay'
 import { convertInlineText } from '@/utils/zhconv'
+import { usePageScrollLock } from '@/composables/usePageScrollLock'
 import type { ResourceItem } from '@/types/resource'
 
 const props = withDefaults(
@@ -315,7 +311,7 @@ const itemsPerPage = ref(12)
 const sortKey = ref('updated-desc')
 const showAllMcVersions = ref(false)
 const COLLAPSED_OPTION_LIMIT = 3
-const pageSizeOptions = [6, 12, 18]
+const pageSizeOptions = [6, 12, 18].map((value) => ({ label: String(value), value }))
 const selectedMcVersions = ref<string[]>([])
 const selectedLoaders = ref<string[]>([])
 const selectedStatuses = ref<string[]>([])
@@ -325,23 +321,12 @@ const openGroups = reactive({
   loader: true,
   status: true,
 })
-let previousBodyOverflow = ''
-let previousDocumentOverflow = ''
-
-const lockPageScroll = () => {
-  previousBodyOverflow = document.body.style.overflow
-  previousDocumentOverflow = document.documentElement.style.overflow
-  document.body.style.overflow = 'hidden'
-  document.documentElement.style.overflow = 'hidden'
-}
-
-const unlockPageScroll = () => {
-  document.body.style.overflow = previousBodyOverflow
-  document.documentElement.style.overflow = previousDocumentOverflow
-}
+const { lock: lockPageScroll, unlock: unlockPageScroll } = usePageScrollLock()
 
 const searchIndexTW = ref<Record<string, { name: string; desc: string }>>({})
 const convertedDisplayData = ref<Record<string, { name: string; desc: string; status: string }>>({})
+let searchIndexRequestId = 0
+let displayTranslationRequestId = 0
 
 type FilterOption = {
   count: number
@@ -483,20 +468,25 @@ function compareMods(a: ResourceItem, b: ResourceItem) {
 }
 
 async function initSearchIndex() {
-  for (const mod of props.mods) {
-    if (searchIndexTW.value[mod.name]) continue
+  const requestId = ++searchIndexRequestId
+  const nextSearchIndex: Record<string, { name: string; desc: string }> = {}
 
+  for (const mod of props.mods) {
     const [nameTW, descTW] = await Promise.all([
       convertInlineText(getSearchableName(mod), 'zh-TW'),
       convertInlineText(mod.description || '', 'zh-TW'),
     ])
 
-    searchIndexTW.value[mod.name] = { name: nameTW, desc: descTW }
+    if (requestId !== searchIndexRequestId) return
+    nextSearchIndex[mod.name] = { name: nameTW, desc: descTW }
   }
+
+  searchIndexTW.value = nextSearchIndex
 }
 
 async function refreshDisplayTranslations() {
   const targetLocale = currentLocale.value
+  const requestId = ++displayTranslationRequestId
 
   const tasks = paginatedMods.value.map(async (mod) => {
     const localizedName = getLocalizedResourceName(mod, targetLocale)
@@ -511,6 +501,8 @@ async function refreshDisplayTranslations() {
   })
 
   const results = await Promise.all(tasks)
+
+  if (requestId !== displayTranslationRequestId || targetLocale !== currentLocale.value) return
 
   results.forEach((item) => {
     convertedDisplayData.value[item.id] = {
@@ -637,13 +629,13 @@ const resetFilters = () => {
 }
 
 onMounted(() => {
-  initSearchIndex()
+  void initSearchIndex()
 })
 
 watch(
   () => props.mods,
   () => {
-    initSearchIndex()
+    void initSearchIndex()
   },
   { deep: true },
 )
@@ -651,14 +643,17 @@ watch(
 watch(
   [paginatedMods, currentLocale],
   () => {
-    refreshDisplayTranslations()
+    void refreshDisplayTranslations()
   },
   { immediate: true },
 )
 
-watch([searchQuery, sortKey, selectedMcVersions, selectedLoaders, selectedStatuses], () => {
-  currentPage.value = 1
-})
+watch(
+  [searchQuery, sortKey, itemsPerPage, selectedMcVersions, selectedLoaders, selectedStatuses],
+  () => {
+    currentPage.value = 1
+  },
+)
 
 watch(
   () => props.showLoaderFilter,
@@ -677,6 +672,8 @@ watch(filterDrawerOpen, (isOpen) => {
 })
 
 onUnmounted(() => {
+  searchIndexRequestId += 1
+  displayTranslationRequestId += 1
   unlockPageScroll()
 })
 
@@ -695,10 +692,6 @@ const goToPage = (page: number) => {
   }
 }
 
-const handleCardClick = (link?: string) => {
-  if (link) window.open(link, '_blank')
-}
-
 const handleSearchInput = () => {
   currentPage.value = 1
 }
@@ -710,11 +703,6 @@ const clearSearch = () => {
 
 const getSearchableName = (mod: ResourceItem) =>
   [mod.name, mod.originalName].filter(Boolean).join(' ')
-
-const handlePageSizeChange = (event: Event) => {
-  itemsPerPage.value = Number((event.target as HTMLSelectElement).value)
-  currentPage.value = 1
-}
 </script>
 
 <style scoped>

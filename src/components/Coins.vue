@@ -82,9 +82,7 @@ const qrcode = useQRCode(
 
 const updatePaymentType = () => {
   const hash = window.location.hash.slice(1)
-  if (hash && coins.value[hash]) {
-    selectedPayment.value = hash
-  }
+  selectedPayment.value = hash && coins.value[hash] ? hash : ''
 }
 
 onMounted(() => {

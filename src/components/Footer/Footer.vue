@@ -15,6 +15,7 @@
             <a
               :href="`https://github.com/${repoPath}/commit/${commitId}`"
               target="_blank"
+              rel="noopener noreferrer"
               class="text-[var(--text-medium)] no-underline transition-colors duration-300 hover:text-[var(--footer-link-hover)]"
             >
               {{ commitId }}

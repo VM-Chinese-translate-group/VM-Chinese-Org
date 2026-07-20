@@ -6,44 +6,12 @@ const root = process.cwd()
 const distDir = path.resolve(root, 'dist')
 const clientTemplatePath = path.join(distDir, 'index.html')
 const serverEntryPath = path.join(distDir, 'server', 'entry-server.js')
-const pagesDir = path.join(root, 'src', 'pages')
+const routesPath = path.join(distDir, 'prerender-routes.json')
 const warn = console.warn.bind(console)
 
 console.warn = (...args) => {
   if (args.some((arg) => String(arg).includes('[intlify] Not found parent scope'))) return
   warn(...args)
-}
-
-function normalizePath(value) {
-  return value.replace(/\\/g, '/')
-}
-
-function routeFromPage(file) {
-  let route = normalizePath(path.relative(pagesDir, file)).replace(/\.md$/, '')
-  if (route.endsWith('/index')) route = route.replace(/\/index$/, '')
-  return route ? `/${route}` : '/'
-}
-
-function collectMarkdownRoutes(dir, routes = []) {
-  if (!fs.existsSync(dir)) return routes
-
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name.startsWith('.')) continue
-
-    const fullPath = path.join(dir, entry.name)
-
-    if (entry.isDirectory()) {
-      collectMarkdownRoutes(fullPath, routes)
-      continue
-    }
-
-    if (entry.isFile() && entry.name.endsWith('.md')) {
-      const route = routeFromPage(fullPath)
-      if (!['/', '/modpacks', '/map'].includes(route)) routes.push(route)
-    }
-  }
-
-  return routes
 }
 
 function filePathForRoute(route) {
@@ -59,9 +27,13 @@ function renderTemplate(template, { appHtml, head, htmlAttrs }) {
 }
 
 const template = fs.readFileSync(clientTemplatePath, 'utf-8')
-const { render } = await import(pathToFileURL(serverEntryPath).href)
+const routes = JSON.parse(fs.readFileSync(routesPath, 'utf-8'))
 
-const routes = [...new Set(['/', '/modpacks', '/map', '/credits', ...collectMarkdownRoutes(pagesDir)])]
+if (!Array.isArray(routes) || routes.some((route) => typeof route !== 'string')) {
+  throw new TypeError(`Invalid pre-render route manifest: ${routesPath}`)
+}
+
+const { render } = await import(pathToFileURL(serverEntryPath).href)
 
 for (const route of routes) {
   const rendered = await render(route)
@@ -73,5 +45,6 @@ for (const route of routes) {
 }
 
 fs.rmSync(path.join(distDir, 'server'), { recursive: true, force: true })
+fs.rmSync(routesPath, { force: true })
 
 console.log(`Pre-rendered ${routes.length} routes.`)

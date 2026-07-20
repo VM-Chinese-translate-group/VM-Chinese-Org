@@ -1,3 +1,5 @@
+import type { InjectionKey } from 'vue'
+
 import { getDownloadMethodIcon } from '@/data/downloadMethodIcons'
 
 export interface DownloadMethodSource {
@@ -22,6 +24,9 @@ export interface DownloadMethodItem {
   secondary?: string
   target?: string
 }
+
+export const DOWNLOAD_METHODS_REGISTRAR: InjectionKey<(methods: DownloadMethodItem[]) => void> =
+  Symbol('download-methods-registrar')
 
 function clientLink(method: DownloadMethodSource): DownloadMethodItem {
   const id = method.id?.toLowerCase()

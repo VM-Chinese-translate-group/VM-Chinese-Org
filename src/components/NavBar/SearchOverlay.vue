@@ -14,22 +14,27 @@
               <Icon icon="lucide:search" class="text-5 text-[var(--text-muted)]" />
             </div>
             <input
+              ref="inputRef"
               v-model="keyword"
-              @input="onInput"
               class="flex-1 border-none bg-transparent px-3 py-5 text-[1.1rem] text-[var(--search-input-text)] outline-none"
               :placeholder="$t('search.placeholder')"
-              ref="inputRef"
-              autofocus
+              aria-controls="site-search-results"
+              aria-autocomplete="list"
+              aria-keyshortcuts="Escape"
+              role="combobox"
+              @input="onInput"
             />
-            <div
-              class="cursor-pointer border border-[var(--search-border)] rounded-1 bg-[var(--bg-soft)] px-1.5 py-0.5 text-[11px] text-[var(--text-muted)] font-600"
-              @click="close"
-            >
+            <kbd class="search-shortcut" aria-hidden="true">
               {{ $t('search.esc') }}
-            </div>
+            </kbd>
           </div>
 
-          <div ref="resultsAreaRef" class="results-area overflow-y-auto overscroll-contain p-2">
+          <div
+            id="site-search-results"
+            ref="resultsAreaRef"
+            class="results-area overflow-y-auto overscroll-contain p-2"
+            role="listbox"
+          >
             <div v-if="results.length" class="results-list">
               <div
                 v-for="(item, index) in results"
@@ -45,14 +50,20 @@
                 @click="goTo(item.url)"
               >
                 <div class="min-w-0 flex-1">
-                  <h4
-                    class="mb-1 mt-0 text-[0.95rem] text-[var(--link-title)] font-600"
-                    v-html="highlight(item.title)"
-                  ></h4>
+                  <h4 class="mb-1 mt-0 text-[0.95rem] text-[var(--link-title)] font-600">
+                    <template v-for="(part, partIndex) in highlight(item.title)" :key="partIndex">
+                      <mark v-if="part.highlighted">{{ part.text }}</mark>
+                      <template v-else>{{ part.text }}</template>
+                    </template>
+                  </h4>
                   <p
                     class="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-[0.85rem] text-[var(--text-light)]"
-                    v-html="highlight(item.snippet)"
-                  ></p>
+                  >
+                    <template v-for="(part, partIndex) in highlight(item.snippet)" :key="partIndex">
+                      <mark v-if="part.highlighted">{{ part.text }}</mark>
+                      <template v-else>{{ part.text }}</template>
+                    </template>
+                  </p>
                 </div>
                 <div
                   :class="[
@@ -69,7 +80,7 @@
               class="search-empty m-0 px-4 py-16 text-center text-[var(--text-muted)]"
             >
               <Icon icon="lucide:search-x" class="mx-auto mb-4 block text-12 opacity-20" />
-              <p v-html="$t('search.empty', { query: `<span>${keyword}</span>` })"></p>
+              <p>{{ $t('search.empty', { query: keyword }) }}</p>
             </div>
 
             <div v-else class="m-0 px-4 py-16 text-center text-[var(--text-muted)]">
@@ -90,81 +101,73 @@ import { Icon } from '@iconify/vue'
 import { searchIndex } from 'virtual:search-index'
 import { isEnglishLocale } from '@/utils/resourceDisplay'
 import { convertInlineText } from '@/utils/zhconv'
+import { createSearchSnippet, normalizeSearchText, rankSearchIndex } from '@/utils/search'
+import { usePageScrollLock } from '@/composables/usePageScrollLock'
+
+interface SearchResult {
+  snippet: string
+  title: string
+  url: string
+}
+
+interface HighlightPart {
+  highlighted: boolean
+  text: string
+}
 
 const props = defineProps<{ visible: boolean }>()
-const emit = defineEmits(['close'])
+const emit = defineEmits<{ close: [] }>()
 const router = useRouter()
 const { locale } = useI18n()
+const { lock: lockBodyScroll, unlock: unlockBodyScroll } = usePageScrollLock()
 
 const keyword = ref('')
-const results = ref<any[]>([])
+const results = ref<SearchResult[]>([])
 const inputRef = ref<HTMLInputElement | null>(null)
 const resultsAreaRef = ref<HTMLElement | null>(null)
 const activeIndex = ref(-1)
-let timer: any = null
-let previousBodyOverflow = ''
-let previousDocumentOverflow = ''
-
-const lockBodyScroll = () => {
-  if (typeof document === 'undefined') return
-
-  previousBodyOverflow = document.body.style.overflow
-  previousDocumentOverflow = document.documentElement.style.overflow
-  document.body.style.overflow = 'hidden'
-  document.documentElement.style.overflow = 'hidden'
-}
-
-const unlockBodyScroll = () => {
-  if (typeof document === 'undefined') return
-
-  document.body.style.overflow = previousBodyOverflow
-  document.documentElement.style.overflow = previousDocumentOverflow
-}
+let timer: ReturnType<typeof setTimeout> | undefined
+let searchRequestId = 0
 
 const currentLocale = computed(() => locale.value)
 
 const performSearch = async () => {
-  const term = keyword.value.trim().toLowerCase()
-  if (!term) {
+  const query = keyword.value.trim()
+  const normalizedQuery = normalizeSearchText(query)
+  const targetLocale = currentLocale.value
+  const requestId = ++searchRequestId
+
+  if (!normalizedQuery) {
     results.value = []
     activeIndex.value = -1
     return
   }
 
-  const rawResults = searchIndex.filter((i: any) => {
-    return (
-      (i.title || '').toLowerCase().includes(term) ||
-      (i.originalName || '').toLowerCase().includes(term) ||
-      (i.text || '').toLowerCase().includes(term) ||
-      (i.titleTW || '').toLowerCase().includes(term) ||
-      (i.textTW || '').toLowerCase().includes(term)
-    )
-  })
+  const rankedResults = rankSearchIndex(searchIndex, query, targetLocale)
 
   const translatedResults = await Promise.all(
-    rawResults.slice(0, 15).map(async (i: any) => {
-      const displayTitle = await convertInlineText(i.title, currentLocale.value)
-      const displayText = await convertInlineText(i.text, currentLocale.value)
-      const title = formatResultTitle(
-        displayTitle || 'Untitled',
-        i.originalName,
-        currentLocale.value,
-      )
-
-      const pos = displayText.toLowerCase().indexOf(term)
-      const start = Math.max(0, pos - 40)
-      const end = pos + 60
-      let snippet = displayText.slice(start, end)
-      if (start > 0) snippet = '...' + snippet
-      if (end < displayText.length) snippet = snippet + '...'
+    rankedResults.map(async ({ item }) => {
+      const [displayTitle, displayText] = await Promise.all([
+        convertInlineText(item.title, targetLocale),
+        convertInlineText(item.text, targetLocale),
+      ])
+      const title = formatResultTitle(displayTitle || 'Untitled', item.originalName, targetLocale)
 
       return {
-        url: i.url,
+        url: item.url,
         title,
-        snippet,
+        snippet: createSearchSnippet(displayText, query),
       }
     }),
   )
+
+  if (
+    requestId !== searchRequestId ||
+    normalizedQuery !== normalizeSearchText(keyword.value) ||
+    targetLocale !== currentLocale.value
+  ) {
+    return
+  }
 
   results.value = translatedResults
   activeIndex.value = translatedResults.length ? 0 : -1
@@ -175,10 +178,51 @@ const onInput = () => {
   timer = setTimeout(performSearch, 150)
 }
 
-const highlight = (text: string) => {
-  if (!keyword.value) return text
-  const reg = new RegExp(`(${keyword.value})`, 'gi')
-  return text.replace(reg, '<mark>$1</mark>')
+const highlight = (text: string): HighlightPart[] => {
+  const terms = [...new Set(keyword.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean))]
+  if (!terms.length) return [{ highlighted: false, text }]
+
+  const ranges: Array<{ start: number; end: number }> = []
+  const normalizedText = text.toLocaleLowerCase()
+
+  for (const term of terms) {
+    let matchIndex = normalizedText.indexOf(term)
+
+    while (matchIndex >= 0) {
+      ranges.push({ start: matchIndex, end: matchIndex + term.length })
+      matchIndex = normalizedText.indexOf(term, matchIndex + term.length)
+    }
+  }
+
+  if (!ranges.length) return [{ highlighted: false, text }]
+
+  ranges.sort((left, right) => left.start - right.start || right.end - left.end)
+  const mergedRanges = ranges.reduce<Array<{ start: number; end: number }>>((merged, range) => {
+    const previous = merged.at(-1)
+    if (previous && range.start <= previous.end) {
+      previous.end = Math.max(previous.end, range.end)
+    } else {
+      merged.push({ ...range })
+    }
+    return merged
+  }, [])
+  const parts: HighlightPart[] = []
+  let cursor = 0
+
+  for (const range of mergedRanges) {
+    if (range.start > cursor) {
+      parts.push({ highlighted: false, text: text.slice(cursor, range.start) })
+    }
+
+    parts.push({ highlighted: true, text: text.slice(range.start, range.end) })
+    cursor = range.end
+  }
+
+  if (cursor < text.length) {
+    parts.push({ highlighted: false, text: text.slice(cursor) })
+  }
+
+  return parts.length ? parts : [{ highlighted: false, text }]
 }
 
 const formatResultTitle = (title: string, originalName?: string, locale = currentLocale.value) => {
@@ -240,6 +284,8 @@ watch(
       lockBodyScroll()
       nextTick(() => inputRef.value?.focus())
     } else {
+      searchRequestId += 1
+      clearTimeout(timer)
       unlockBodyScroll()
       keyword.value = ''
       results.value = []
@@ -265,6 +311,29 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.search-shortcut {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 24px;
+  flex: 0 0 auto;
+  padding: 0 7px;
+  appearance: none;
+  border: 1px solid var(--search-border);
+  border-radius: 6px;
+  background: var(--bg-soft);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  user-select: none;
+}
+
 .search-fade-enter-active,
 .search-fade-leave-active {
   transition:
@@ -276,11 +345,6 @@ onUnmounted(() => {
 .search-fade-leave-to {
   opacity: 0;
   transform: translateY(-10px);
-}
-
-.search-empty :deep(span) {
-  color: var(--brand-primary);
-  font-weight: 600;
 }
 
 :deep(mark) {

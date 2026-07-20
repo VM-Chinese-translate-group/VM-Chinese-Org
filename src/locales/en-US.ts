@@ -14,6 +14,7 @@ export default {
     tools: 'Translation Tools',
     rule: 'Translation Guidelines',
     more: 'More',
+    menu: 'Main menu',
   },
   search: {
     placeholder: 'Search...',
@@ -114,7 +115,7 @@ export default {
     answerPlaceholder: 'Enter your answer',
     cancel: 'Cancel',
     correctBody:
-      'You can download the localization patch now. The lazy download uses the same link as the normal download; it is only here for fun.<br><br>Before continuing, please read and accept the {agreement}, and read the {installGuide}.',
+      'You can download the localization patch now. The lazy download uses the same link as the normal download; it is only here for fun.\n\nBefore continuing, please read and accept the {agreement}, and read the {installGuide}.',
     correctTitle: 'Correct!',
     countdown: '{label} ({seconds})',
     driveIntro: 'Choose your preferred download method. The file contents are the same.',
@@ -132,8 +133,8 @@ export default {
     ok: 'OK',
     protocolTitle: 'Please read and accept first',
     quarkButton: 'Quark Drive',
-    quarkDesc:
-      'Save it to your drive to <strong>receive future updates automatically</strong>. Your support keeps our work going ❤️',
+    quarkDesc: 'Save it to your drive to {emphasis}. Your support keeps our work going ❤️',
+    quarkEmphasis: 'receive future updates automatically',
     quarkTitle: 'Quark Drive',
     questionLoadErrorText: 'Questions are temporarily unavailable. Please try again later.',
     questionLoadErrorTitle: 'Failed to load questions',

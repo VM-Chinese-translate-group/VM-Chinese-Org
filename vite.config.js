@@ -23,6 +23,7 @@ import { getMarkdownRoutes } from './src/plugins/contentScanner'
 import { resourcesPlugin } from './src/plugins/resourcesList'
 import { routeMetaPlugin } from './src/plugins/routeMeta'
 import { searchIndexPlugin } from './src/plugins/searchIndex'
+import { prerenderRoutesPlugin } from './src/plugins/prerenderRoutes'
 
 const gitEnv = getGitEnv()
 
@@ -146,6 +147,8 @@ export default defineConfig({
     routeMetaPlugin(),
 
     searchIndexPlugin(),
+
+    prerenderRoutesPlugin(),
 
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',

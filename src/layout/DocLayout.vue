@@ -49,27 +49,32 @@ import { convertMarkdownContainers, convertInlineText } from '@/utils/zhconv'
 import { useImagePreview } from '@/composables/useImagePreview'
 import ImagePreview from '@/components/ImagePreview.vue'
 
-const props = defineProps<{
-  meta?: Record<string, any>
-}>()
+interface DocMeta {
+  description?: string
+  sidebar?: boolean
+  title?: string
+  [key: string]: unknown
+}
+
+const props = defineProps<{ meta?: DocMeta }>()
 
 const { t, locale } = useI18n()
 
 const contentRef = ref<HTMLElement | null>(null)
 const {
-  bindPreview,
   closePreview,
   images: previewImages,
   index: previewIndex,
   onVisibleChange: onPreviewVisibleChange,
-  unbindPreview,
   visible: previewVisible,
 } = useImagePreview(contentRef)
 
-const pageTitle = computed(() => (props.meta?.title as string) || '')
-const pageDescription = computed(() => (props.meta?.description as string) || '')
+const pageTitle = computed(() => props.meta?.title || '')
+const pageDescription = computed(() => props.meta?.description || '')
 const convertedPageTitle = ref('')
 const convertedPageDescription = ref('')
+let conversionRequestId = 0
+let headerRequestId = 0
 
 interface Heading {
   id: string
@@ -87,32 +92,42 @@ const showSidebar = computed(() => {
 })
 
 const handleConversion = async () => {
+  const requestId = ++conversionRequestId
+  const targetLocale = locale.value
   await nextTick()
+
   if (contentRef.value) {
-    await convertMarkdownContainers(locale.value, contentRef.value)
+    await convertMarkdownContainers(targetLocale, contentRef.value)
   }
 
-  convertedPageTitle.value = await convertInlineText(pageTitle.value, locale.value)
-  convertedPageDescription.value = await convertInlineText(pageDescription.value, locale.value)
+  const [title, description] = await Promise.all([
+    convertInlineText(pageTitle.value, targetLocale),
+    convertInlineText(pageDescription.value, targetLocale),
+  ])
 
-  await extractHeaders()
+  if (requestId !== conversionRequestId || targetLocale !== locale.value) return
+
+  convertedPageTitle.value = title
+  convertedPageDescription.value = description
+  await extractHeaders(targetLocale)
 }
 
-const extractHeaders = async () => {
+const extractHeaders = async (targetLocale = locale.value) => {
   if (!contentRef.value) return
 
+  const requestId = ++headerRequestId
   const headingElements = Array.from(contentRef.value.querySelectorAll('h2, h3'))
 
-  headers.value = await Promise.all(
+  const nextHeaders = await Promise.all(
     headingElements.map(async (el) => {
-      let rawText = el.textContent || ''
-      let cleanText = rawText
+      const rawText = el.textContent || ''
+      const cleanText = rawText
         .replace(/^#+\s*/, '')
         .replace(/#\s*$/, '')
         .replace(/\{#.*?\}/g, '')
         .trim()
 
-      const translatedText = await convertInlineText(cleanText, locale.value)
+      const translatedText = await convertInlineText(cleanText, targetLocale)
 
       if (!el.id) {
         const customIdMatch = rawText.match(/\{#([^}]+)\}/)
@@ -129,6 +144,10 @@ const extractHeaders = async () => {
       }
     }),
   )
+
+  if (requestId !== headerRequestId || targetLocale !== locale.value) return
+  headers.value = nextHeaders
+  onScroll()
 }
 
 const onScroll = () => {
@@ -159,27 +178,30 @@ const scrollToHeading = (id: string) => {
 watch(
   () => props.meta,
   () => {
-    handleConversion()
+    void handleConversion()
   },
   { immediate: true, deep: true },
 )
 
 watch(locale, () => {
-  handleConversion()
+  void handleConversion()
 })
 
 onMounted(() => {
-  bindPreview()
-  handleConversion()
   window.addEventListener('scroll', onScroll)
-  window.addEventListener('resize', extractHeaders)
+  window.addEventListener('resize', handleResize)
 })
 
 onUnmounted(() => {
-  unbindPreview()
+  conversionRequestId += 1
+  headerRequestId += 1
   window.removeEventListener('scroll', onScroll)
-  window.removeEventListener('resize', extractHeaders)
+  window.removeEventListener('resize', handleResize)
 })
+
+const handleResize = () => {
+  void extractHeaders()
+}
 </script>
 
 <style scoped>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import type { DownloadMethodItem } from './downloadMethods'
+
 defineProps<{
-  items: any[]
+  items: DownloadMethodItem[]
 }>()
 
 const emit = defineEmits<{
-  select: [item: any]
+  select: [item: DownloadMethodItem]
 }>()
 </script>
 

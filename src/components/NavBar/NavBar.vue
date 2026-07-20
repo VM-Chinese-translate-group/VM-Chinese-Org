@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar" :class="{ 'is-menu-open': isMenuOpen }">
     <div class="navbar-container">
-      <div class="navbar-brand" @click="goToHome">
+      <a class="navbar-brand" href="/" @click.prevent="goToHome">
         <img v-lazy="siteLogo" alt="Logo" class="navbar-logo" />
         <span class="navbar-title">{{ $t('navbar.title') }}</span>
-      </div>
+      </a>
 
       <div class="navbar-content" :class="{ 'is-active': isMenuOpen }">
         <div class="navbar-nav-area" ref="navAreaRef">
@@ -14,7 +14,7 @@
                 v-if="isExternalLink(item.to)"
                 :href="item.to"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 @click="closeMenu"
               >
                 {{ $t(item.labelKey) }}
@@ -44,7 +44,7 @@
                   v-if="isExternalLink(item.to)"
                   :href="item.to"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   role="menuitem"
                   @click="closeMenu"
                 >
@@ -76,7 +76,7 @@
         <div class="navbar-divider"></div>
 
         <div class="navbar-utils">
-          <div class="search-box-trigger desktop-search" @click="openSearch">
+          <button type="button" class="search-box-trigger desktop-search" @click="openSearch">
             <Icon icon="lucide:search" class="search-icon" />
             <span class="search-text">{{ $t('search.placeholder') }}</span>
             <span class="search-shortcut" :aria-label="isApplePlatform ? 'Command K' : 'Ctrl K'">
@@ -89,16 +89,28 @@
               <span v-else>Ctrl</span>
               <span>K</span>
             </span>
-          </div>
+          </button>
           <Switcher />
         </div>
       </div>
 
       <div class="navbar-mobile-actions">
-        <button class="mobile-search-btn" @click="openSearch">
+        <button
+          type="button"
+          class="mobile-search-btn"
+          :aria-label="$t('search.placeholder')"
+          @click="openSearch"
+        >
           <Icon icon="lucide:search" class="search-icon" />
         </button>
-        <button class="hamburger" @click="toggleMenu" :class="{ 'is-active': isMenuOpen }">
+        <button
+          type="button"
+          class="hamburger"
+          :class="{ 'is-active': isMenuOpen }"
+          :aria-expanded="isMenuOpen"
+          :aria-label="$t('navbar.menu')"
+          @click="toggleMenu"
+        >
           <span class="line"></span>
           <span class="line"></span>
           <span class="line"></span>
@@ -116,6 +128,7 @@ import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { navItems } from '@/data/navigation'
 import { getAprilFoolsLogoPath } from '@/utils/aprilFools'
+import { usePageScrollLock } from '@/composables/usePageScrollLock'
 import Switcher from './Switcher.vue'
 import SearchOverlay from './SearchOverlay.vue'
 
@@ -131,6 +144,7 @@ const visibleCount = ref(navItems.length)
 const navAreaRef = ref<HTMLElement | null>(null)
 const measureItemRefs = ref<HTMLElement[]>([])
 const moreMeasureRef = ref<HTMLElement | null>(null)
+const { lock: lockPageScroll, unlock: unlockPageScroll } = usePageScrollLock()
 let resizeObserver: ResizeObserver | null = null
 
 const visibleNavItems = computed(() => navItems.slice(0, visibleCount.value))
@@ -159,18 +173,17 @@ const isApplePlatform = getIsApplePlatform()
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
   isMoreOpen.value = false
-  // 阻止底层页面滚动，只允许菜单内部滚动
   if (isMenuOpen.value) {
-    document.body.style.overflow = 'hidden'
+    lockPageScroll()
   } else {
-    document.body.style.overflow = ''
+    unlockPageScroll()
   }
 }
 
 const closeMenu = () => {
   isMenuOpen.value = false
   isMoreOpen.value = false
-  document.body.style.overflow = ''
+  unlockPageScroll()
 }
 
 const toggleMore = () => {

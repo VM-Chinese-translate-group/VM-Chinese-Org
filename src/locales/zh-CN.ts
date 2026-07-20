@@ -14,6 +14,7 @@ export default {
     tools: '汉化工具',
     rule: '翻译准则',
     more: '更多',
+    menu: '主菜单',
   },
   search: {
     placeholder: '搜索...',
@@ -113,7 +114,7 @@ export default {
     answerPlaceholder: '请输入答案',
     cancel: '取消',
     correctBody:
-      '您可以下载汉化了！懒汉下载和普通下载的链接一样，只是为了增加娱乐用途。<br><br>不过在此之前，请您先阅读并接受{agreement}，并仔细阅读 {installGuide}。',
+      '您可以下载汉化了！懒汉下载和普通下载的链接一样，只是为了增加娱乐用途。\n\n不过在此之前，请您先阅读并接受{agreement}，并仔细阅读 {installGuide}。',
     correctTitle: '回答正确！',
     countdown: '{label} ({seconds})',
     driveIntro: '请选择您偏好的下载方式（文件内容一致）：',
@@ -131,7 +132,8 @@ export default {
     ok: '确定',
     protocolTitle: '请您先阅读并接受',
     quarkButton: '夸克网盘',
-    quarkDesc: '转存即可<strong>自动获取后续更新</strong>。您的支持是我们持续用爱发电的动力 ❤️',
+    quarkDesc: '转存即可{emphasis}。您的支持是我们持续用爱发电的动力 ❤️',
+    quarkEmphasis: '自动获取后续更新',
     quarkTitle: '夸克网盘',
     questionLoadErrorText: '暂时无法获取题目，请稍后再试。',
     questionLoadErrorTitle: '题目加载失败',

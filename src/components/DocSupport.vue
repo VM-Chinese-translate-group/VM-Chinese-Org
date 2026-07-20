@@ -7,9 +7,9 @@
     </p>
 
     <p>
-      <i18n-t keypath="supportUs.supportParagraph2">
+      <i18n-t keypath="supportUs.supportParagraph2" scope="global">
         <template #afd>
-          <a href="https://afdian.com" target="_blank">
+          <a href="https://afdian.com" target="_blank" rel="noopener noreferrer">
             {{ $t('supportUs.afdText') }}
           </a>
         </template>
@@ -19,9 +19,9 @@
     <h2>{{ $t('supportUs.joinTitle') }}</h2>
 
     <p>
-      <i18n-t keypath="supportUs.joinParagraph1">
+      <i18n-t keypath="supportUs.joinParagraph1" scope="global">
         <template #community>
-          <a :href="communityLink" target="_blank">
+          <a :href="communityLink" target="_blank" rel="noopener noreferrer">
             {{ $t('supportUs.communityText') }}
           </a>
         </template>
@@ -29,7 +29,7 @@
     </p>
 
     <p>
-      <i18n-t keypath="supportUs.joinParagraph2">
+      <i18n-t keypath="supportUs.joinParagraph2" scope="global">
         <template #review>
           <router-link to="/community/">
             {{ $t('supportUs.reviewText') }}

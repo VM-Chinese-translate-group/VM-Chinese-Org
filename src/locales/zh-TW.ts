@@ -14,6 +14,7 @@ export default {
     tools: '漢化工具',
     rule: '漢化準則',
     more: '更多',
+    menu: '主選單',
   },
   search: {
     placeholder: '搜尋...',
@@ -113,7 +114,7 @@ export default {
     answerPlaceholder: '請輸入答案',
     cancel: '取消',
     correctBody:
-      '您可以下載中文化補丁了！懶漢下載和普通下載的連結一樣，只是為了增加娛樂用途。<br><br>不過在此之前，請您先閱讀並接受{agreement}，並仔細閱讀 {installGuide}。',
+      '您可以下載中文化補丁了！懶漢下載和普通下載的連結一樣，只是為了增加娛樂用途。\n\n不過在此之前，請您先閱讀並接受{agreement}，並仔細閱讀 {installGuide}。',
     correctTitle: '回答正確！',
     countdown: '{label} ({seconds})',
     driveIntro: '請選擇您偏好的下載方式（檔案內容一致）：',
@@ -131,7 +132,8 @@ export default {
     ok: '確定',
     protocolTitle: '請您先閱讀並接受',
     quarkButton: '夸克網盤',
-    quarkDesc: '轉存即可<strong>自動獲取後續更新</strong>。您的支持是我們持續用愛發電的動力 ❤️',
+    quarkDesc: '轉存即可{emphasis}。您的支持是我們持續用愛發電的動力 ❤️',
+    quarkEmphasis: '自動獲取後續更新',
     quarkTitle: '夸克網盤',
     questionLoadErrorText: '暫時無法獲取題目，請稍後再試。',
     questionLoadErrorTitle: '題目載入失敗',

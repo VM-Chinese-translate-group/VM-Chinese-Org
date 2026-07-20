@@ -1,41 +1,58 @@
 <template>
-  <div v-if="downloadMethod.length > 1">
-    <DownloadModal :items="downloadMethod" />
+  <div v-if="downloadMethods.length > 1">
+    <DownloadModal :items="downloadMethods" />
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useUrlSearchParams } from '@vueuse/core'
-import { nextTick, onMounted } from 'vue'
+import { computed, inject, onBeforeUnmount, onMounted, watch } from 'vue'
 import DownloadModal from '@/components/DownloadPage/DownloadModal.vue'
-import { getPageDownloadMethods } from '@/components/DownloadPage/downloadMethods'
+import {
+  DOWNLOAD_METHODS_REGISTRAR,
+  getPageDownloadMethods,
+  type DownloadMethodItem,
+  type DownloadMethodSource,
+} from '@/components/DownloadPage/downloadMethods'
 
-function downloadJump(params, downloadMethod) {
-  if (!params.q) return
+const props = withDefaults(
+  defineProps<{
+    methods?: DownloadMethodSource[]
+  }>(),
+  {
+    methods: () => [],
+  },
+)
 
-  const targetId = Array.isArray(params.q) ? params.q[0].toLowerCase() : params.q.toLowerCase()
-  const target = downloadMethod.find((val) => val.id === targetId)
+const params = useUrlSearchParams('history')
+const registerDownloadMethods = inject(DOWNLOAD_METHODS_REGISTRAR, null)
+const downloadMethods = computed(() => getPageDownloadMethods(props.methods))
 
-  if (target && target.link) {
+function downloadJump(methods: DownloadMethodItem[]) {
+  const query = Array.isArray(params.q) ? params.q[0] : params.q
+  if (typeof query !== 'string') return
+
+  const targetId = query.toLowerCase()
+  const target = methods.find((method) => method.id?.toLowerCase() === targetId)
+
+  if (target?.link) {
     location.href = target.link
   }
 }
 
-const props = defineProps({
-  methods: { type: Array, default: () => [] },
-})
-
-const params = useUrlSearchParams('history')
-const downloadMethod = getPageDownloadMethods(props.methods)
+watch(
+  downloadMethods,
+  (methods) => {
+    registerDownloadMethods?.(methods)
+  },
+  { immediate: true },
+)
 
 onMounted(() => {
-  nextTick(() => {
-    window.dispatchEvent(
-      new CustomEvent('vm-download-methods-ready', {
-        detail: { methods: downloadMethod },
-      }),
-    )
-  })
-  downloadJump(params, downloadMethod)
+  downloadJump(downloadMethods.value)
+})
+
+onBeforeUnmount(() => {
+  registerDownloadMethods?.([])
 })
 </script>
