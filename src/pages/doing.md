@@ -18,7 +18,7 @@ description: 这是一个正在进行中的项目
 好吧，既然你来了，为什么不看看我们的主页呢？我们其他汉化的质量也非常优质。
 
 <DownloadLinks :methods="[
-  { id: 'vm', text: '返回我们的主页', icon: '/imgs/logo/logo_64.png', link: '/' }
+  { id: 'vm', text: '返回我们的主页', icon: '/imgs/logo/logo_128.png', link: '/' }
 ]" />
 
 </DocLayout>

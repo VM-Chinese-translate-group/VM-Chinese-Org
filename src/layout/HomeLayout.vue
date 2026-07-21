@@ -28,11 +28,17 @@
           :to="item.link"
           class="hero-rail-card"
         >
-          <img v-lazy="getResourceImage(item)" :alt="getDisplayName(item)" />
+          <img v-lazy="getResourceImage(item)" :alt="getDisplayName(item)" decoding="async" />
         </RouterLink>
 
         <RouterLink v-if="heroMainItem" :to="heroMainItem.link" class="hero-main-card">
-          <img v-lazy="getResourceImage(heroMainItem, true)" :alt="getDisplayName(heroMainItem)" />
+          <img
+            :src="getResourceImage(heroMainItem, true)"
+            :alt="getDisplayName(heroMainItem)"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
           <span class="hero-main-overlay"></span>
           <span class="hero-main-content">
             <strong>{{ getDisplayName(heroMainItem) }}</strong>
@@ -170,20 +176,21 @@
       </aside>
     </section>
 
-    <SearchOverlay :visible="isSearchOpen" @close="isSearchOpen = false" />
+    <SearchOverlay v-if="isSearchOpen" :visible="true" @close="isSearchOpen = false" />
   </main>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { maps, modpacks } from 'virtual:resources'
-import SearchOverlay from '@/components/NavBar/SearchOverlay.vue'
 import { getLoaderClass, getLoaderIcon } from '@/data/loaderIcons'
 import { formatUpdateDate } from '@/utils/dateFormat'
 import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import type { ResourceItem, ResourceStatusType } from '@/types/resource'
+
+const SearchOverlay = defineAsyncComponent(() => import('@/components/NavBar/SearchOverlay.vue'))
 
 const { locale, t } = useI18n()
 const isSearchOpen = ref(false)

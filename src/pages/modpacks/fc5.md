@@ -4,7 +4,7 @@ originalName: 'Farming Crossing 5: Made To Order'
 icon: https://media.forgecdn.net/avatars/thumbnails/1101/154/256/256/638648783830413955.jpeg
 description: |
   耕种、烹饪、钓鱼收集，加上受《动物森友会》启发的创意建造玩法！
-updateDate: 2025年1月
+updateDate: 2025-1-21
 status:
   type: stopped
 compatibility:
@@ -30,8 +30,7 @@ links:
 
 <DownloadLinks :methods="[
   { id: 'curseforge', text: '下载整合包', link: 'https://www.curseforge.com/minecraft/modpacks/farming-crossing-5-made-to-order' },
-  { id: 'vm', text: '整合包wiki（英文）', icon: '/imgs/logo/logo_64.png', link: '/modpacks/fc5-wiki/' },
-  { id: 'curseforge', text: 'i18n自动汉化更新模组', link: 'https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar' }
+  { id: 'vm', text: '整合包wiki（英文）', icon: '/imgs/logo/logo_128.png', link: '/modpacks/fc5-wiki/' }
 ]" />
 
 ## 特色

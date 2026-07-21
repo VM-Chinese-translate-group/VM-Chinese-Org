@@ -3,7 +3,17 @@
     <header class="pack-header">
       <div class="header-content">
         <div class="pack-icon-wrapper">
-          <img v-if="meta.icon" v-lazy="meta.icon" :alt="displayTitle" class="pack-icon" />
+          <img
+            v-if="meta.icon"
+            :src="meta.icon"
+            :alt="displayTitle"
+            class="pack-icon"
+            width="128"
+            height="128"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
           <div v-else class="pack-icon-placeholder"></div>
         </div>
 

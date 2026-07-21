@@ -20,9 +20,14 @@ function filePathForRoute(route) {
 }
 
 function renderTemplate(template, { appHtml, head, htmlAttrs }) {
+  const priorityImage = appHtml.match(/<img[^>]+src="([^"]+)"[^>]+fetchpriority="high"/i)?.[1]
+  const priorityImagePreload = priorityImage
+    ? `<link rel="preload" as="image" href="${priorityImage}" fetchpriority="high" />\n`
+    : ''
+
   return template
     .replace('<html lang="zh-CN">', `<html ${htmlAttrs}>`)
-    .replace('<!--seo-head-->', head)
+    .replace('<!--seo-head-->', `${head}${priorityImagePreload}`)
     .replace('<!--app-html-->', appHtml)
 }
 

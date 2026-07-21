@@ -164,11 +164,11 @@ export default defineConfig({
     rolldownOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules/vue')) return 'vue'
+          if (id.includes('/node_modules/vue/')) return 'vue'
           if (id.includes('markdown-it')) return 'markdown'
           if (id.includes('@shikijs')) return 'shiki'
           if (id.includes('opencc')) return 'opencc'
-        }
+        },
       },
     },
   },
