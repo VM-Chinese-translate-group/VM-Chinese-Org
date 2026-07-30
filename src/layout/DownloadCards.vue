@@ -109,11 +109,7 @@
               ]"
               @click="toggleFilter(selectedStatuses, option.value)"
             >
-              <Icon
-                :icon="
-                  option.value === 'maintaining' ? 'lucide:check-circle-2' : 'lucide:pause-circle'
-                "
-              />
+              <Icon :icon="getStatusIcon(option.value)" />
               <span>{{ option.label }}</span>
               <span class="filter-count">{{ option.count }}</span>
             </button>
@@ -199,7 +195,7 @@
                       </span>
 
                       <span
-                        v-if="mod.versions?.loader"
+                        v-if="showLoaderFilter && mod.versions?.loader"
                         :class="['loader-badge', getLoaderClass(mod.versions.loader)]"
                       >
                         <img
@@ -344,6 +340,12 @@ const getStatusText = (statusType?: string) => {
   return t(`pack.status.${statusType}`)
 }
 
+const getStatusIcon = (statusType?: string) => {
+  if (statusType === 'maintaining') return 'lucide:check-circle-2'
+  if (statusType === 'translating') return 'lucide:languages'
+  return 'lucide:pause-circle'
+}
+
 const getLoaderText = (loader?: string) => {
   if (!loader) return ''
   const key = loader.toLowerCase()
@@ -402,7 +404,7 @@ const statusOptions = computed(() =>
   makeOptions(
     props.mods.map((mod) => getStatusValue(mod)),
     (value) => getStatusText(value),
-  ),
+  ).reverse(),
 )
 
 const activeFilterCount = computed(

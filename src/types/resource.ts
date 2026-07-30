@@ -1,4 +1,4 @@
-export type ResourceStatusType = 'maintaining' | 'stopped' | string
+export type ResourceStatusType = 'maintaining' | 'translating' | 'stopped' | string
 
 export interface ResourceItem {
   author: string

@@ -303,6 +303,12 @@
   border: none;
 }
 
+.status-tag.translating {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+}
+
 .status-tag.stopped {
   background: #ff4d4f;
   color: white;
@@ -310,6 +316,12 @@
 
 .dark .status-tag.maintaining {
   border: 1px solid rgba(61, 214, 140, 0.3);
+}
+
+.dark .status-tag.translating {
+  background: #422006;
+  color: #fbbf24;
+  border-color: #92400e;
 }
 
 .dark .status-tag.stopped {

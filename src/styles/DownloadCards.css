@@ -134,12 +134,20 @@
   color: #007bff;
 }
 
+.filter-option.status-translating {
+  color: #b45309;
+}
+
 .filter-option.status-stopped {
   color: #ef4444;
 }
 
 .dark .filter-option.status-maintaining {
   color: #338cff;
+}
+
+.dark .filter-option.status-translating {
+  color: #fbbf24;
 }
 
 .dark .filter-option.status-stopped {
@@ -552,6 +560,11 @@
 .status-badge.maintaining {
   background-color: #007bff;
 }
+
+.status-badge.translating {
+  background-color: #b45309;
+}
+
 .status-badge.stopped {
   background-color: #ef4444;
 }
@@ -559,6 +572,11 @@
 .dark .status-badge.maintaining {
   background-color: #338cff;
   color: #fafafa;
+}
+
+.dark .status-badge.translating {
+  background-color: #fbbf24;
+  color: #291800;
 }
 
 .dark .status-badge.stopped {

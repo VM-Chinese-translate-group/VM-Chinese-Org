@@ -151,6 +151,7 @@ export default {
     packVersion: '适配版本',
     status: {
       maintaining: '维护中',
+      translating: '翻译中',
       stopped: '停止维护',
     },
     authorsTitle: '作者',

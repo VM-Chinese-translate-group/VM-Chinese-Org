@@ -26,6 +26,8 @@ const relatedLinkIcons: Record<string, string> = {
   github: '/imgs/svg/github.svg',
   paratranz: '/imgs/svg/paratranz.svg',
   modrinth: '/imgs/svg/modrinth.svg',
+  minecraftmaps: '/imgs/svg/minecraftmaps.ico',
+  xisumavoid: '/imgs/svg/xisumavoid.ico',
 }
 
 export const sharedRelatedLinks: Record<string, SharedRelatedLink> = {

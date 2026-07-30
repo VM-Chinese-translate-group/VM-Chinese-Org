@@ -6,7 +6,7 @@ description: |
   Roguelike冒险与地牢2作为经典模组RAD1的官方精神续作，汲取了大量RPG、Roguelike、Roguelite及地城探索类游戏与模组的精华。
 updateDate: 待定
 status:
-  type: maintaining
+  type: translating
 compatibility:
   loader: forge
   minecraft: '1.16.5'

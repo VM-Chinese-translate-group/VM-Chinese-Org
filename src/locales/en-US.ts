@@ -152,6 +152,7 @@ export default {
     packVersion: 'Compatible Version',
     status: {
       maintaining: 'Maintaining',
+      translating: 'Translating',
       stopped: 'No Longer Maintained',
     },
     authorsTitle: 'Authors',

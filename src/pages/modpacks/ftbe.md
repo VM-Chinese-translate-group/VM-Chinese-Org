@@ -7,7 +7,7 @@ description: |
   这款整合包融合了科技与幻想的精华，以极致的自由度鼓励玩家在多个领域中施展创意、磨砺技艺。
 updateDate: 待定
 status:
-  type: maintaining
+  type: translating
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
