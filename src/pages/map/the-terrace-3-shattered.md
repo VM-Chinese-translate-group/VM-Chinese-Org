@@ -1,12 +1,12 @@
 ---
-title: The Terrace 3：SHATTERED 汉化下载
+title: 露台3：碎裂汉化下载
 originalName: 'The Terrace 3: SHATTERED'
 icon: /imgs/maps/the-terrace-3-shattered.webp
 description: |
   灵感源自见证者，你所要做的只是连接两个点。虽然每道谜题乍看之下都很简单，但每个房间都有独特的视觉规律和机关规则，迫使你重新审视眼前的一切。
-updateDate: 待定
+updateDate: 2026-8-1
 status:
-  type: translating
+  type: maintaining
 compatibility:
   loader: vanilla
   minecraft: '26.1.2'
@@ -26,6 +26,8 @@ links:
 <DownloadLayout :meta="frontmatter">
 
 ## 地图信息
+
+原名：The Terrace 3: SHATTERED
 
 灵感源自见证者，你所要做的只是连接两个点。
 虽然每道谜题乍看之下都很简单，但每个房间都有独特的视觉规律和机关规则，迫使你重新审视眼前的一切。

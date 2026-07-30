@@ -13,7 +13,7 @@ compatibility:
   pack: '1.17'
 authors:
   - 'dreams01 (作者)'
-  - 'VM汉化组-choco_takey (翻译)'
+  - 'VM汉化组-choko-takey (翻译)'
 links:
   - id: i18n
   - id: github
