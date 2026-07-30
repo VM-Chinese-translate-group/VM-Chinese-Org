@@ -40,7 +40,8 @@ links:
 1. 服务端正常安装地图。
 2. 将地图文件夹中的 `resources.zip` 分发给所有玩家，放入各自游戏版本的 `.minecraft\resourcepacks` 文件夹。
 3. 玩家进入游戏后，在“选项”→“资源包”中启用该资源包。
-   :::
+
+:::
 
 <DownloadLinks :methods="[
   { id: 'lanzou-quark-mapdl', text: '下载地图和汉化', lanzouLink: '/doing', quarkLink: '/doing' },
