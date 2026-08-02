@@ -4,13 +4,13 @@ originalName: 'FTB Skies 2 Aero'
 icon: https://media.forgecdn.net/avatars/thumbnails/1921/361/256/256/639197158506762262.png
 description: |
   Aero 是一款以空岛生存为基础、着重拓展航空玩法的整合包，旨在提供精心设计且无须反复刷取的成长体验。
-updateDate: 2026-7-29
+updateDate: 2026-8-1
 status:
   type: maintaining
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '1.2.1'
+  pack: '1.3.0'
 authors:
   - 'FTB (作者团队)'
   - 'VM汉化组 (翻译)'

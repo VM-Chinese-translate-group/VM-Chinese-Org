@@ -18,6 +18,9 @@ links:
   - id: bilibili
     text: 介绍视频
     link: https://www.bilibili.com/video/BV1AKGg6AETB/
+  - id: github
+    text: GitHub仓库
+    link: https://github.com/VM-Chinese-translate-group/The-Terrace-3-SHATTERED-Chinese
   - id: minecraftmaps
     text: 地图原帖
     link: https://www.minecraftmaps.com/52344-the-terrace-3-shattered
@@ -35,8 +38,6 @@ links:
 探索 4 个风格迥异的主题世界，解开超过 150 道精心设计的谜题，并寻找隐藏在地图各处的可选秘密谜题。
 谜题验证和提示功能等新机制能够在不降低挑战性的前提下为玩家提供引导，
 而通过算法验证解法的谜题则带来了更加流畅、稳定的解谜体验。
-
-:::
 
 <DownloadLinks :methods="[
   { id: 'lanzou-quark-mapdl', text: '下载地图和汉化', lanzouLink: 'https://vmhanhuazu.lanzouv.com/s/terrace3', quarkLink: 'https://pan.quark.cn/s/be63f4d9075f' },

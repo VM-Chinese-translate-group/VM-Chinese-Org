@@ -15,7 +15,7 @@
       <p>
         <span>{{ $t('announcement.body') }}</span>
       </p>
-      <RouterLink class="site-announcement-link" to="/modpacks/skies2-aero">
+      <RouterLink class="site-announcement-link" to="/maps/the-terrace-3-shatteredW">
         {{ $t('announcement.action') }}
       </RouterLink>
     </div>
