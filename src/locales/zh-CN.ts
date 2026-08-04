@@ -1,7 +1,7 @@
 export default {
   announcement: {
     label: '站点公告',
-    body: '8月最新成果！露台3：碎裂汉化现已发布！',
+    body: '8月最新成果！破碎城汉化现已发布！',
     action: '查看',
   },
   navbar: {
