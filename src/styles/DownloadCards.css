@@ -856,6 +856,43 @@
 }
 
 @media (max-width: 768px) {
+  .controls-bar {
+    grid-template-columns: minmax(0, 1.4fr) minmax(116px, 0.6fr);
+    align-items: end;
+  }
+
+  .search-field {
+    display: none;
+  }
+
+  .select-field {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .select-field > span {
+    width: 100%;
+    overflow: visible;
+    color: var(--text-2);
+    font-size: 12px;
+    line-height: 1.2;
+    text-overflow: clip;
+  }
+
+  .mobile-filter-toggle {
+    height: 40px;
+  }
+
+  .results-info {
+    min-height: 40px;
+    justify-content: flex-end;
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: right;
+  }
+
   .card-item {
     min-width: 0;
   }

@@ -18,12 +18,17 @@ import Shiki from '@shikijs/markdown-it'
 
 import Card from './src/components/Card/card.js'
 
-import { getGitBranch, getGitCommitHash, getGitEnv, getGitCommitDate } from './src/plugins/git'
-import { getMarkdownRoutes } from './src/plugins/contentScanner'
-import { resourcesPlugin } from './src/plugins/resourcesList'
-import { routeMetaPlugin } from './src/plugins/routeMeta'
-import { searchIndexPlugin } from './src/plugins/searchIndex'
-import { prerenderRoutesPlugin } from './src/plugins/prerenderRoutes'
+import {
+  getGitBranch,
+  getGitCommitHash,
+  getGitEnv,
+  getGitCommitDate,
+} from './src/plugins/git.ts'
+import { getMarkdownRoutes } from './src/plugins/contentScanner.ts'
+import { resourcesPlugin } from './src/plugins/resourcesList.ts'
+import { routeMetaPlugin } from './src/plugins/routeMeta.ts'
+import { searchIndexPlugin } from './src/plugins/searchIndex.ts'
+import { prerenderRoutesPlugin } from './src/plugins/prerenderRoutes.ts'
 
 const gitEnv = getGitEnv()
 
@@ -42,7 +47,7 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': path.resolve(import.meta.dirname, 'src'),
     },
   },
 

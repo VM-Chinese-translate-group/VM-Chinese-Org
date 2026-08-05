@@ -5,7 +5,7 @@ import {
   invalidateMarkdownPages,
   isMarkdownPage,
   type MarkdownPage,
-} from './contentScanner'
+} from './contentScanner.ts'
 
 interface RouteMetaEntry {
   description?: string

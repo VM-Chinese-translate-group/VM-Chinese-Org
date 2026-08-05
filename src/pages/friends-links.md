@@ -85,7 +85,7 @@ desc: 一个致力于收集整合包汉化的网站
 title: CFPA整合包
 link: http://modpack.cfpa.team/
 logo: https://avatars1.githubusercontent.com/u/34183279
-desc: 与i18nUpdateMod出自同一团队，但已超过4年未活动，都不支持最新版
+desc: 与i18nUpdateMod同源，但已超过5年未活动，均不支持最新版
 ```
 
 ```card
@@ -93,18 +93,6 @@ title: 钉宫翻译组
 link: https://github.com/TeamKugimiya
 logo: https://avatars.githubusercontent.com/u/118149830?s=200&v=4
 desc: 来自台湾的繁体中文翻译组，制作了很多整合包和模组的繁体中文翻译。
-```
-
-</div>
-
-## 社区论坛
-
-<div card-grid>
-
-```card
-title: XyeBBS 论坛
-link: https://www.xyebbs.com/languages
-logo: https://www.xyebbs.com/favicon.png
 ```
 
 </div>

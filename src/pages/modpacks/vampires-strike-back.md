@@ -5,6 +5,7 @@ icon: https://media.forgecdn.net/avatars/thumbnails/1830/112/256/256/63915494327
 description: |
   吸血鬼的反击是一个硬核肉鸽整合包，目标是大幅改变MC的核心玩法与进度流程。你可以选择扮演试图拯救世界的流亡人类，也可以选择扮演最后的吸血鬼之一，立志统治世界。
 updateDate: 2026-7-02
+featured: true
 status:
   type: maintaining
 compatibility:

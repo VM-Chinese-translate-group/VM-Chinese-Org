@@ -12,7 +12,7 @@ export default {
     community: '加入社区',
     supportUs: '赞助我们',
     tools: '汉化工具',
-    rule: '翻译准则',
+    installGuide: '安装教程',
     more: '更多',
     menu: '主菜单',
   },
@@ -31,14 +31,13 @@ export default {
   },
   main: {
     headline: 'VM汉化组',
-    subheadline: '一个用爱发电专注于汉化MC整合包与地图的非盈利组织',
-    slogan: '一个用爱发电专注于汉化MC整合包与地图的非盈利组织',
+    subheadline: '一个专注于 Minecraft 整合包与地图汉化的非盈利组织，为爱发电',
+    slogan: '一个专注于 Minecraft 整合包与地图汉化的非盈利组织，为爱发电',
     modpackBtn: '整合包汉化',
     mapBtn: '地图汉化',
     homeHub: {
-      kicker: 'VM Translation Group',
-      description:
-        '一个用爱发电专注于汉化MC整合包与地图的非盈利组织。我们以专注的翻译态度，倾注无尽的心血，为你带来翻译品质的极致体验。',
+      kicker: 'VM Chinese Translation Group',
+      description: '一个专注于 Minecraft 整合包与地图汉化的非盈利组织，为爱发电',
       browseModpacks: '浏览整合包',
       browseMaps: '浏览地图',
       siteSearch: '站内搜索',

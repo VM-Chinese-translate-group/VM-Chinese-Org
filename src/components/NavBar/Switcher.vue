@@ -8,7 +8,7 @@
     >
       <button
         type="button"
-        class="flex h-10 cursor-pointer items-center gap-2 border-none rounded-2 bg-transparent px-3 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.1)] max-[860px]:h-12.5 max-[860px]:w-full max-[860px]:justify-between max-[860px]:border-b max-[860px]:border-b-[rgba(0,0,0,0.05)] max-[860px]:px-0"
+        class="flex h-10 cursor-pointer items-center gap-2 border-none rounded-2 bg-transparent px-3 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[var(--nav-hover-bg)] max-[860px]:h-12.5 max-[860px]:w-full max-[860px]:justify-between max-[860px]:border-b max-[860px]:border-b-[rgba(0,0,0,0.05)] max-[860px]:px-0"
         aria-haspopup="listbox"
         :aria-expanded="isDropdownOpen"
         @click.stop="toggleDropdown"
@@ -23,7 +23,7 @@
       </button>
 
       <ul
-        class="absolute right-0 top-[calc(100%+8px)] m-0 min-w-40 list-none rounded-3 border border-[rgba(0,0,0,0.1)] bg-[var(--nav-bg,#fff)] p-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.1)] transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] max-[860px]:static max-[860px]:w-full max-[860px]:border-none max-[860px]:bg-transparent max-[860px]:p-0 max-[860px]:shadow-none"
+        class="absolute right-0 top-[calc(100%+8px)] m-0 min-w-40 list-none rounded-3 border border-[rgba(0,0,0,0.1)] bg-[var(--nav-menu-bg,#fff)] p-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.1)] transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] max-[860px]:static max-[860px]:w-full max-[860px]:border-none max-[860px]:bg-transparent max-[860px]:p-0 max-[860px]:shadow-none"
         :class="
           isDropdownOpen
             ? 'visible translate-y-0 opacity-100 max-[860px]:mb-2.5 max-[860px]:block'
@@ -34,7 +34,7 @@
         <li
           v-for="lang in AVAILABLE_LANGUAGES"
           :key="lang.code"
-          class="flex cursor-pointer items-center justify-between rounded-2 px-3 py-2.5 text-3.6 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.08)] max-[860px]:rounded-0 max-[860px]:border-l-2 max-[860px]:border-l-transparent max-[860px]:px-4 max-[860px]:py-3"
+          class="flex cursor-pointer items-center justify-between rounded-2 px-3 py-2.5 text-3.6 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[var(--switcher-item-hover)] max-[860px]:rounded-0 max-[860px]:border-l-2 max-[860px]:border-l-transparent max-[860px]:px-4 max-[860px]:py-3"
           :class="
             locale === lang.code
               ? 'bg-[rgba(64,158,255,0.1)] text-[var(--nav-primary)] font-600 max-[860px]:border-l-[var(--nav-primary)] max-[860px]:bg-transparent'
@@ -59,7 +59,7 @@
     </div>
 
     <button
-      class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-visible border-none rounded-2 bg-transparent p-0 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[rgba(128,128,128,0.1)] max-[860px]:w-full max-[860px]:justify-start max-[860px]:gap-3 max-[860px]:py-3"
+      class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-visible border-none rounded-2 bg-transparent p-0 text-[var(--nav-text)] transition-colors duration-200 hover:bg-[var(--nav-hover-bg)] max-[860px]:w-full max-[860px]:justify-start max-[860px]:gap-3 max-[860px]:py-3"
       :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
       @click="toggleTheme"
     >

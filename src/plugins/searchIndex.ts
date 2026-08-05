@@ -5,7 +5,7 @@ import {
   getMarkdownPages,
   invalidateMarkdownPages,
   isMarkdownPage,
-} from './contentScanner'
+} from './contentScanner.ts'
 
 const convertToTW = ConverterFactory(from.cn, to.twp)
 

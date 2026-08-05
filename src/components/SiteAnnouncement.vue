@@ -138,26 +138,34 @@ const isPlainSurface = computed(() => route.name === 'not-found')
 
 @media (max-width: 720px) {
   .site-announcement {
-    padding: 12px 10px 0;
+    padding: 10px 10px 0;
   }
 
   .site-announcement.is-home {
-    padding: 12px 0 0;
+    padding: 10px 0 0;
   }
 
   .site-announcement-inner {
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
     width: calc(100% - 20px);
-    gap: 10px;
-    flex-wrap: wrap;
+    min-height: 52px;
+    gap: 8px;
+    padding: 7px 9px;
   }
 
   .site-announcement p {
-    font-size: 0.88rem;
+    display: block;
+    font-size: 0.84rem;
+    line-height: 1.4;
   }
 
   .site-announcement-link {
-    width: 100%;
+    width: auto;
+    min-height: 32px;
+    padding: 5px 10px;
+    font-size: 0.82rem;
   }
 }
 </style>

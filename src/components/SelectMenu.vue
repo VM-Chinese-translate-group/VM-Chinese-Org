@@ -190,6 +190,8 @@ onUnmounted(() => document.removeEventListener('pointerdown', handleOutsidePoint
 
 .select-menu-value {
   min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 

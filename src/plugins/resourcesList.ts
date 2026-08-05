@@ -8,7 +8,7 @@ import {
   invalidateMarkdownPages,
   isMarkdownPage,
   type MarkdownPage,
-} from './contentScanner'
+} from './contentScanner.ts'
 
 const VIRTUAL_MODULE_ID = 'virtual:resources'
 const RESOLVED_VIRTUAL_MODULE_ID = '\0' + VIRTUAL_MODULE_ID
@@ -36,6 +36,9 @@ export function resourcesPlugin() {
 
     const dateStr = getFrontmatterValue(yamlRaw, 'updateDate')
     const date = parseUpdateDate(dateStr)
+    const featured = ['true', 'yes', '1'].includes(
+      getFrontmatterValue(yamlRaw, 'featured').toLowerCase(),
+    )
 
     const author =
       getFrontmatterFirstListValue(yamlRaw, 'authors') || getFrontmatterValue(yamlRaw, 'author')
@@ -49,6 +52,7 @@ export function resourcesPlugin() {
       image: getFrontmatterValue(yamlRaw, 'image'),
       author,
       description,
+      featured,
       link: page.route,
       date: date.getTime(),
       displayDate: dateStr,

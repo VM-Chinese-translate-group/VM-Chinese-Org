@@ -12,7 +12,7 @@ export default {
     community: 'Join Community',
     supportUs: 'Donate',
     tools: 'Translation Tools',
-    rule: 'Translation Guidelines',
+    installGuide: 'Installation Guide',
     more: 'More',
     menu: 'Main menu',
   },
@@ -31,15 +31,17 @@ export default {
       'Browse Minecraft map localization projects maintained by VM Chinese Translation Group, including gameplay notes, requirements, and download links.',
   },
   main: {
-    headline: 'VM Translation Group',
-    subheadline: 'A non-profit organization dedicated to translating Minecraft modpacks and maps.',
-    slogan: 'A non-profit organization dedicated to translating Minecraft modpacks and maps',
+    headline: 'VM Chinese Translation Group',
+    subheadline:
+      'A non-profit organization focused on localizing Minecraft modpacks and maps, powered by love.',
+    slogan:
+      'A non-profit organization focused on localizing Minecraft modpacks and maps, powered by love.',
     modpackBtn: 'Modpack Translation',
     mapBtn: 'Map Translation',
     homeHub: {
-      kicker: 'VM Translation Group',
+      kicker: 'VM汉化组',
       description:
-        'Discover modpacks, maps, tools, and localization patches from VM Translation Group.',
+        'A non-profit organization focused on localizing Minecraft modpacks and maps, powered by love.',
       browseModpacks: 'Browse modpacks',
       browseMaps: 'Browse maps',
       siteSearch: 'Site search',

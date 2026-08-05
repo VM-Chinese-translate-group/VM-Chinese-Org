@@ -38,7 +38,7 @@
     "markdown-it-table-of-contents": "^1.2.0",
     "pnpm": "11.13.1",
     "prettier": "3.9.5",
-    "taze": "^19.16.0",
+    "taze": "^19.17.1",
     "typescript": "^7.0.2",
     "unocss": "^66.7.5",
     "unplugin-vue-components": "^32.1.0",
@@ -48,5 +48,5 @@
     "vite-plugin-sitemap": "^0.8.2",
     "vue-tsc": "^3.3.9"
   },
-  "packageManager": "pnpm@11.18.0"
+  "packageManager": "pnpm@11.20.0"
 }

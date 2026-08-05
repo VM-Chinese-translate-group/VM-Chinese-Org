@@ -333,21 +333,125 @@
   .pack-main {
     grid-template-columns: 1fr;
   }
+
   .header-content {
     flex-direction: column;
     text-align: center;
   }
+
+  .pack-title-area {
+    width: 100%;
+  }
+
   .title-row {
     justify-content: center;
   }
+
   .author-row {
     justify-content: center;
   }
+
   .download-button-wrapper {
     width: 100%;
     align-items: center;
   }
+
   .update-date {
     justify-content: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .pack-page-container {
+    min-height: auto;
+    padding: 24px 14px 36px;
+  }
+
+  .pack-header {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .header-content {
+    gap: 18px;
+  }
+
+  .pack-icon,
+  .pack-icon-placeholder {
+    width: 104px;
+    height: 104px;
+    border-radius: 16px;
+  }
+
+  .title-row {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .title-row h1 {
+    width: 100%;
+    font-size: clamp(1.75rem, 8vw, 2.05rem);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .pack-status-tags {
+    display: flex;
+    justify-content: center;
+  }
+
+  .status-tag {
+    padding: 4px 9px;
+    font-size: 0.68rem;
+  }
+
+  .pack-description {
+    max-width: none;
+    margin: 0 0 14px;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  .author-row {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .download-button-wrapper {
+    gap: 9px;
+  }
+
+  .btn-download-main {
+    width: min(100%, 280px);
+    padding: 0.72rem 1.4rem;
+    font-size: 1rem;
+  }
+
+  .update-date {
+    font-size: 0.8rem;
+  }
+
+  .pack-main {
+    gap: 16px;
+  }
+
+  .pack-content-body {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .sidebar-card {
+    margin-bottom: 16px;
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .sidebar-title {
+    margin-bottom: 16px;
   }
 }

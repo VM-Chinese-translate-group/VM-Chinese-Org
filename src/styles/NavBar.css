@@ -4,9 +4,9 @@
   position: sticky;
   top: 0;
   width: 100%;
-  background: var(--nav-bg, rgba(255, 255, 255, 0.8));
-  backdrop-filter: saturate(80%) blur(12px);
-  -webkit-backdrop-filter: saturate(80%) blur(12px);
+  background-color: var(--nav-bg, rgba(247, 250, 249, 0.8));
+  backdrop-filter: saturate(140%) blur(18px);
+  -webkit-backdrop-filter: saturate(140%) blur(18px);
   box-shadow: 0 1px 2px var(--nav-shadow, rgba(0, 0, 0, 0.05));
   z-index: 1000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -96,7 +96,7 @@
 
 .navbar-item a:hover {
   color: var(--nav-primary);
-  background-color: var(--bg-white, rgba(0, 0, 0, 0.03));
+  background-color: var(--nav-hover-bg, #ffffff);
 }
 
 .navbar-item a.router-link-active {
@@ -142,7 +142,7 @@
 }
 
 .search-box-trigger:hover {
-  background-color: var(--search-trigger-hover, rgba(0, 0, 0, 0.08));
+  background-color: var(--nav-hover-bg, #ffffff);
   border-color: var(--nav-primary);
 }
 
@@ -259,7 +259,7 @@
 
 .navbar-more-button:hover {
   color: var(--nav-primary);
-  background-color: var(--bg-white, rgba(0, 0, 0, 0.03));
+  background-color: var(--nav-hover-bg, #ffffff);
 }
 
 .navbar-more-icon {
@@ -283,7 +283,7 @@
   padding: 0.45rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  background: var(--nav-bg, #fff);
+  background: var(--nav-menu-bg, #fff);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   opacity: 0;
   visibility: hidden;
@@ -315,7 +315,7 @@
 .navbar-more-item a:hover,
 .navbar-more-item a.router-link-active {
   color: var(--nav-primary);
-  background-color: var(--bg-white, rgba(0, 0, 0, 0.03));
+  background-color: var(--nav-hover-bg, #ffffff);
 }
 
 .navbar-measure {
@@ -363,7 +363,7 @@
     left: 0;
     width: 100%;
     height: calc(100vh - 64px);
-    background-color: var(--nav-bg);
+    background-color: var(--nav-menu-bg, #f7faf9);
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;

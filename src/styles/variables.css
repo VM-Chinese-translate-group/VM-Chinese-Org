@@ -38,9 +38,10 @@
      =========================== */
   --nav-primary: #4f8cff;
   --nav-text: #000;
-  --nav-bg: #fff;
-  --nav-shadow: rgba(79, 140, 255, 0.12);
-  --nav-hover-bg: rgba(255, 255, 255, 0.18);
+  --nav-bg: rgba(247, 250, 249, 0.8);
+  --nav-menu-bg: #f7faf9;
+  --nav-shadow: rgba(38, 64, 49, 0.1);
+  --nav-hover-bg: #ffffff;
 
   /* NavBar Sizing */
   --nav-font-size-link: 0.95rem;
@@ -159,10 +160,11 @@
   --switcher-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
 
   /* --- NavBar --- */
-  --nav-bg: #18191d;
+  --nav-bg: rgba(18, 20, 23, 0.94);
+  --nav-menu-bg: #18191d;
   --nav-text: #ebebf5;
   --nav-shadow: rgba(0, 0, 0, 0.5);
-  --nav-hover-bg: rgba(255, 255, 255, 0.1);
+  --nav-hover-bg: #292a31;
 
   /* --- Footer --- */
   --footer-bg-gradient: linear-gradient(to bottom, #101813 0%, #17261c 100%);

@@ -21,32 +21,47 @@
         </div>
       </div>
 
-      <div class="hero-feature">
-        <RouterLink
-          v-for="item in heroRailItems"
-          :key="item.link"
-          :to="item.link"
-          class="hero-rail-card"
-        >
-          <img v-lazy="getResourceImage(item)" :alt="getDisplayName(item)" decoding="async" />
-        </RouterLink>
-
-        <RouterLink v-if="heroMainItem" :to="heroMainItem.link" class="hero-main-card">
-          <img
-            :src="getResourceImage(heroMainItem, true)"
-            :alt="getDisplayName(heroMainItem)"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
+      <div
+        class="hero-feature"
+        @mouseenter="pauseCarousel"
+        @mouseleave="resumeCarousel"
+        @focusin="pauseCarousel"
+        @focusout="resumeCarousel"
+      >
+        <Transition name="hero-slide" mode="out-in">
+          <RouterLink
+            v-if="heroCarouselItem"
+            :key="heroCarouselItem.link"
+            :to="heroCarouselItem.link"
+            class="hero-main-card"
+          >
+            <img
+              :src="getResourceImage(heroCarouselItem, true)"
+              :alt="getDisplayName(heroCarouselItem)"
+              :loading="heroCarouselIndex === 0 ? 'eager' : 'lazy'"
+              :fetchpriority="heroCarouselIndex === 0 ? 'high' : 'auto'"
+              decoding="async"
+            />
+            <span class="hero-main-overlay"></span>
+            <span class="hero-main-content">
+              <strong>{{ getDisplayName(heroCarouselItem) }}</strong>
+              <small>
+                {{ heroCarouselItem.description || $t('main.homeHub.emptyFeaturedDesc') }}
+              </small>
+            </span>
+          </RouterLink>
+        </Transition>
+        <div v-if="heroCarouselItems.length > 1" class="hero-carousel-indicators">
+          <button
+            v-for="(item, index) in heroCarouselItems"
+            :key="item.link"
+            type="button"
+            :class="{ active: index === heroCarouselIndex }"
+            :aria-label="getDisplayName(item)"
+            :aria-current="index === heroCarouselIndex ? 'true' : undefined"
+            @click="heroCarouselIndex = index"
           />
-          <span class="hero-main-overlay"></span>
-          <span class="hero-main-content">
-            <strong>{{ getDisplayName(heroMainItem) }}</strong>
-            <small>
-              {{ heroMainItem.description || $t('main.homeHub.emptyFeaturedDesc') }}
-            </small>
-          </span>
-        </RouterLink>
+        </div>
       </div>
 
       <div class="home-stats" :aria-label="$t('main.homeHub.statsLabel')">
@@ -176,12 +191,12 @@
       </aside>
     </section>
 
-    <SearchOverlay v-if="isSearchOpen" :visible="true" @close="isSearchOpen = false" />
+    <SearchOverlay :visible="isSearchOpen" @close="isSearchOpen = false" />
   </main>
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent, ref } from 'vue'
+import { computed, defineAsyncComponent, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { maps, modpacks } from 'virtual:resources'
@@ -195,32 +210,25 @@ const SearchOverlay = defineAsyncComponent(() => import('@/components/NavBar/Sea
 const { locale, t } = useI18n()
 const isSearchOpen = ref(false)
 const activeResourceTab = ref<'hot' | 'updated'>('hot')
-const HOT_MODPACK_LINKS = [
-  '/modpacks/sb4',
-  '/modpacks/skies-2',
-  '/modpacks/skies2-aero',
-  '/modpacks/deceasedcraft',
-  '/modpacks/enigmatic-skies',
-  '/modpacks/vampires-strike-back',
-]
+const heroCarouselIndex = ref(0)
+const isCarouselPaused = ref(false)
+let carouselTimer: ReturnType<typeof setInterval> | undefined
 
 const sortedModpacks = computed(() =>
   modpacks.slice().sort((a, b) => (b.date || 0) - (a.date || 0)),
 )
 
 const featuredMaps = computed(() => maps.slice(0, 4))
-const heroMainItem = computed(() => sortedModpacks.value[0])
-const heroRailItems = computed(() => sortedModpacks.value.slice(1, 4))
+const heroCarouselItems = computed<ResourceItem[]>(() =>
+  [...modpacks, ...maps].sort((a, b) => (b.date || 0) - (a.date || 0)).slice(0, 6),
+)
+const heroCarouselItem = computed(() => heroCarouselItems.value[heroCarouselIndex.value])
 const resourceCards = computed(() => {
-  const list = modpacks.slice()
+  if (activeResourceTab.value === 'updated') return sortedModpacks.value.slice(0, 6)
 
-  if (activeResourceTab.value === 'hot') {
-    return HOT_MODPACK_LINKS.map((link) => list.find((item) => item.link === link)).filter(
-      (item): item is ResourceItem => Boolean(item),
-    )
-  }
-
-  return list.sort((a, b) => (b.date || 0) - (a.date || 0)).slice(0, 6)
+  const featured = sortedModpacks.value.filter((item) => item.featured)
+  const fallback = sortedModpacks.value.filter((item) => !item.featured)
+  return [...featured, ...fallback].slice(0, 6)
 })
 const maintainedCount = computed(
   () => modpacks.filter((item) => item.status?.type === 'maintaining').length,
@@ -298,6 +306,36 @@ const getResourceImage = (item: ResourceItem, preferLarge = false) => {
 }
 
 const getDisplayName = (item: ResourceItem) => getLocalizedResourceName(item, locale.value)
+
+const showNextCarouselItem = () => {
+  const itemCount = heroCarouselItems.value.length
+  if (isCarouselPaused.value || itemCount < 2) return
+
+  heroCarouselIndex.value = (heroCarouselIndex.value + 1) % itemCount
+}
+
+const pauseCarousel = () => {
+  isCarouselPaused.value = true
+}
+
+const resumeCarousel = () => {
+  isCarouselPaused.value = false
+}
+
+watch(
+  () => heroCarouselItems.value.length,
+  (itemCount) => {
+    if (heroCarouselIndex.value >= itemCount) heroCarouselIndex.value = 0
+  },
+)
+
+onMounted(() => {
+  carouselTimer = setInterval(showNextCarouselItem, 6000)
+})
+
+onUnmounted(() => {
+  if (carouselTimer) clearInterval(carouselTimer)
+})
 </script>
 
 <style scoped>

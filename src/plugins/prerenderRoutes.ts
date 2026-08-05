@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite'
 
-import { getMarkdownRoutes } from './contentScanner'
+import { getMarkdownRoutes } from './contentScanner.ts'
 
 const STATIC_ROUTES = ['/', '/modpacks', '/map', '/credits']
 

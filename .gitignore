@@ -1,4 +1,3 @@
-# Logs
 logs
 *.log
 pnpm-debug.log*
@@ -9,12 +8,8 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 
 *.tsbuildinfo
-
-search-index.json
-sitemap.xml

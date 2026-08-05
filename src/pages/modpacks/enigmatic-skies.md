@@ -5,6 +5,7 @@ icon: https://media.forgecdn.net/avatars/thumbnails/1740/691/256/256/63910821450
 description: |
   Enigmatic Skies是一款以流程推进为核心的整合包，目标看似简单，但实现过程绝不会轻松——你将在这片寒冷虚空中艰难求生，而水资源更是极其有限。
 updateDate: 2026-7-28
+featured: true
 status:
   type: maintaining
 compatibility:

@@ -5,6 +5,7 @@ icon: https://media.forgecdn.net/avatars/thumbnails/1921/361/256/256/63919715850
 description: |
   Aero 是一款以空岛生存为基础、着重拓展航空玩法的整合包，旨在提供精心设计且无须反复刷取的成长体验。
 updateDate: 2026-8-1
+featured: true
 status:
   type: maintaining
 compatibility:
