@@ -19,13 +19,6 @@
             {{ $t('main.homeHub.browseMaps') }}
           </RouterLink>
         </div>
-
-        <ul class="hero-trust-list" :aria-label="$t('main.homeHub.trustLabel')">
-          <li v-for="item in trustItems" :key="item.label">
-            <Icon :icon="item.icon" />
-            <span>{{ item.label }}</span>
-          </li>
-        </ul>
       </div>
 
       <div
@@ -265,12 +258,6 @@ const statItems = computed(() => [
     icon: 'lucide:download',
   },
   { label: t('main.homeHub.openTools'), value: t('main.homeHub.keepUpdating'), icon: 'lucide:eye' },
-])
-
-const trustItems = computed(() => [
-  { label: t('main.homeHub.trustSince'), icon: 'lucide:calendar-heart' },
-  { label: t('main.homeHub.trustTranslation'), icon: 'lucide:languages' },
-  { label: t('main.homeHub.trustCopyright'), icon: 'lucide:badge-check' },
 ])
 
 const resourceTabs = computed(() =>

@@ -43,10 +43,10 @@
         </div>
 
         <div class="download-button-wrapper">
-          <a href="#download-section" class="btn-download-main" @click.prevent="scrollToDownload">
+          <button type="button" class="btn-download-main" @click="scrollToDownload">
             <Icon icon="lucide:download" />
             {{ t('pack.downloadPatch') }}
-          </a>
+          </button>
           <span class="update-date" v-if="meta.updateDate">
             <Icon icon="lucide:calendar-clock" />
             {{ t('pack.updateDate', { date: formatUpdateDate(meta.updateDate, locale) }) }}
@@ -130,11 +130,11 @@
     @update:visible="onPreviewVisibleChange"
   />
 
-  <DownloadChoiceDialog
+  <DownloadModal
+    ref="downloadModalRef"
     :items="downloadMethods"
-    :visible="downloadChoiceVisible"
-    @close="downloadChoiceVisible = false"
-    @select="handleDownloadMethod"
+    :visible="downloadModalVisible"
+    @close="downloadModalVisible = false"
   />
 </template>
 
@@ -149,8 +149,7 @@ import { formatUpdateDate } from '@/utils/dateFormat'
 import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import { resolveRelatedLink, type RelatedLinkInput } from '@/data/relatedLinks'
 import ImagePreview from '@/components/ImagePreview.vue'
-import DownloadChoiceDialog from '@/components/DownloadPage/DownloadChoiceDialog.vue'
-import { useDownloadModal } from '@/components/DownloadPage/useDownloadModal'
+import DownloadModal from '@/components/DownloadPage/DownloadModal.vue'
 import {
   DOWNLOAD_METHODS_REGISTRAR,
   type DownloadMethodItem,
@@ -163,11 +162,13 @@ const props = defineProps({
 const { t, locale } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
 const downloadMethods = ref<DownloadMethodItem[]>([])
-const downloadChoiceVisible = ref(false)
+const downloadModalVisible = ref(false)
+const downloadModalRef = ref<{
+  activateDownload: (item: DownloadMethodItem) => void
+} | null>(null)
 provide(DOWNLOAD_METHODS_REGISTRAR, (methods) => {
   downloadMethods.value = methods
 })
-const { handleDownloadMethod } = useDownloadModal({ locale, t })
 const displayTitle = computed(() =>
   getLocalizedResourceName(props.meta, locale.value, t('pack.defaultTitle')),
 )
@@ -205,11 +206,11 @@ const getStatusDescription = (statusType: string) =>
 
 const scrollToDownload = () => {
   if (downloadMethods.value.length === 1) {
-    handleDownloadMethod(downloadMethods.value[0])
+    downloadModalRef.value?.activateDownload(downloadMethods.value[0])
     return
   }
 
-  if (downloadMethods.value.length > 1) downloadChoiceVisible.value = true
+  if (downloadMethods.value.length > 1) downloadModalVisible.value = true
 }
 </script>
 

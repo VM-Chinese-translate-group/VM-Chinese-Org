@@ -111,36 +111,6 @@
   margin-top: 32px;
 }
 
-.hero-trust-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin: 24px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.hero-trust-list li {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 32px;
-  padding: 6px 10px;
-  border: 1px solid var(--home-border);
-  border-radius: 8px;
-  background: var(--home-accent-soft);
-  color: var(--home-text);
-  font-size: 0.8rem;
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.hero-trust-list svg {
-  flex: 0 0 auto;
-  color: var(--home-accent);
-  font-size: 0.95rem;
-}
-
 .hero-button {
   display: inline-flex;
   align-items: center;
@@ -771,18 +741,6 @@
 
   .hero-actions {
     display: grid;
-  }
-
-  .hero-trust-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  }
-
-  .hero-trust-list li {
-    justify-content: center;
-    min-width: 0;
-    padding-inline: 7px;
-    text-align: center;
   }
 
   .hero-button {

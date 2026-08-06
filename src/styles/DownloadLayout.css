@@ -121,8 +121,10 @@
   color: #ffffff;
   font-weight: 700;
   font-size: 1.1rem;
+  font-family: inherit;
   border-radius: 12px;
   border: 1px solid transparent;
+  cursor: pointer;
   transition: all 0.25s ease;
   white-space: nowrap;
 }
