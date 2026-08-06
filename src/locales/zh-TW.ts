@@ -55,6 +55,9 @@ export default {
       openTools: '開源工具',
       keepUpdating: '持續更新',
       countValue: '{count} 個',
+      trustSince: '始於 2022',
+      trustTranslation: '人工精翻',
+      trustCopyright: '尊重版權'
     },
     featuredMapsLabel: '地圖精選',
     quickToolsDesc: '取得公開工具與輔助資源',

@@ -54,6 +54,9 @@ export default {
       openTools: '开源工具',
       keepUpdating: '持续更新',
       countValue: '{count} 个',
+      trustSince: '始于 2022',
+      trustTranslation: '人工精翻',
+      trustCopyright: '尊重版权'
     },
     featuredMapsLabel: '地图精选',
     quickToolsDesc: '获取公开工具与辅助资源',

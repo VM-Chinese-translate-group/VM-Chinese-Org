@@ -58,6 +58,9 @@ export default {
       openTools: 'Open-source tools',
       keepUpdating: 'Updating',
       countValue: '{count}',
+      trustSince: 'Since 2022',
+      trustTranslation: 'Human-crafted translations',
+      trustCopyright: 'Copyright-respecting'
     },
     featuredMapsLabel: 'Featured maps',
     quickToolsDesc: 'Find public tools and helper resources',
