@@ -1,9 +1,4 @@
 export default {
-  announcement: {
-    label: 'Site announcement',
-    body: 'Latest July release: FTB Skies2: Aero localization is now available!',
-    action: 'View',
-  },
   navbar: {
     title: 'VM Translation Group',
     appearance: 'Appearance',
@@ -33,15 +28,15 @@ export default {
   main: {
     headline: 'VM Chinese Translation Group',
     subheadline:
-      'A non-profit organization focused on localizing Minecraft modpacks and maps, powered by love.',
+      'A community-powered, non-profit organization focused on localizing Minecraft modpacks and maps.',
     slogan:
-      'A non-profit organization focused on localizing Minecraft modpacks and maps, powered by love.',
+      'A community-powered, non-profit organization focused on localizing Minecraft modpacks and maps.',
     modpackBtn: 'Modpack Translation',
     mapBtn: 'Map Translation',
     homeHub: {
-      kicker: 'VM汉化组',
+      kicker: 'VM Chinese Translation Group',
       description:
-        'A non-profit organization focused on localizing Minecraft modpacks and maps, powered by love.',
+        'A community-powered, non-profit organization focused on localizing Minecraft modpacks and maps.',
       browseModpacks: 'Browse modpacks',
       browseMaps: 'Browse maps',
       siteSearch: 'Site search',
@@ -56,12 +51,17 @@ export default {
       hotModpacks: 'Popular modpacks',
       recentlyUpdated: 'Recently updated',
       totalResources: 'Total resources',
-      totalModpacks: 'Total modpacks',
-      maintainedProjects: 'Maintained projects',
+      totalModpacks: 'Modpack translations',
+      patchDownloads: 'Localization patch downloads',
+      downloadTotalValue: '2M+',
       mapTranslations: 'Map translations',
       openTools: 'Open-source tools',
       keepUpdating: 'Updating',
       countValue: '{count}',
+      trustSince: 'Since 2022',
+      trustTranslation: 'Human-crafted translations',
+      trustCopyright: 'Copyright-respecting',
+      trustLabel: 'What we stand for',
     },
     featuredMapsLabel: 'Featured maps',
     quickToolsDesc: 'Find public tools and helper resources',
@@ -116,12 +116,16 @@ export default {
     agreement: 'VM Chinese Translation Group User Agreement',
     answerPlaceholder: 'Enter your answer',
     cancel: 'Cancel',
+    close: 'Close',
     correctBody:
       'You can download the localization patch now. The lazy download uses the same link as the normal download; it is only here for fun.\n\nBefore continuing, please read and accept the {agreement}, and read the {installGuide}.',
     correctTitle: 'Correct!',
     countdown: '{label} ({seconds})',
     driveIntro: 'Choose your preferred download method. The file contents are the same.',
     driveTitle: 'Choose download drive',
+    resourceIntro:
+      'Choose the resource you need. Separate items such as the original map and its localization patch are all preserved.',
+    resourceTitle: 'Choose download content',
     installGuide: 'localization patch installation guide',
     installGuideJoiner: ', and read the {installGuide}.',
     lazyDesc: 'Recommended for lazy users, the link is the same as above',
@@ -153,9 +157,13 @@ export default {
     loader: 'Loader',
     packVersion: 'Compatible Version',
     status: {
-      maintaining: 'Maintaining',
-      translating: 'Translating',
-      stopped: 'No Longer Maintained',
+      maintaining: 'Following updates',
+      translating: 'Translation in progress',
+      stopped: 'Updates paused',
+    },
+    statusDescription: {
+      stopped:
+        'Active version tracking is currently paused. Existing localization files remain available according to the page notes.',
     },
     authorsTitle: 'Authors',
     relatedLinks: 'Related Links',

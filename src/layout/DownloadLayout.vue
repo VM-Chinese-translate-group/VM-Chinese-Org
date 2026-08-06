@@ -2,7 +2,7 @@
   <div class="pack-page-container">
     <header class="pack-header">
       <div class="header-content">
-        <div class="pack-icon-wrapper">
+        <div class="pack-icon-wrapper" :class="{ 'image-loading-frame': Boolean(meta.icon) }">
           <img
             v-if="meta.icon"
             :src="meta.icon"
@@ -21,7 +21,10 @@
           <div class="title-row">
             <h1>{{ displayTitle }}</h1>
             <div class="pack-status-tags" v-if="meta.status?.type">
-              <span :class="['status-tag', meta.status.type || 'info']">
+              <span
+                :class="['status-tag', meta.status.type || 'info']"
+                :title="getStatusDescription(meta.status.type)"
+              >
                 {{ getStatusText(meta.status.type) }}
               </span>
             </div>
@@ -54,7 +57,6 @@
 
     <main class="pack-main">
       <section class="pack-content-body markdown-body" ref="contentRef">
-        <div id="download-section"></div>
         <slot />
       </section>
 
@@ -127,6 +129,13 @@
     @hide="closePreview"
     @update:visible="onPreviewVisibleChange"
   />
+
+  <DownloadChoiceDialog
+    :items="downloadMethods"
+    :visible="downloadChoiceVisible"
+    @close="downloadChoiceVisible = false"
+    @select="handleDownloadMethod"
+  />
 </template>
 
 <script setup lang="ts">
@@ -140,6 +149,7 @@ import { formatUpdateDate } from '@/utils/dateFormat'
 import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import { resolveRelatedLink, type RelatedLinkInput } from '@/data/relatedLinks'
 import ImagePreview from '@/components/ImagePreview.vue'
+import DownloadChoiceDialog from '@/components/DownloadPage/DownloadChoiceDialog.vue'
 import { useDownloadModal } from '@/components/DownloadPage/useDownloadModal'
 import {
   DOWNLOAD_METHODS_REGISTRAR,
@@ -153,6 +163,7 @@ const props = defineProps({
 const { t, locale } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
 const downloadMethods = ref<DownloadMethodItem[]>([])
+const downloadChoiceVisible = ref(false)
 provide(DOWNLOAD_METHODS_REGISTRAR, (methods) => {
   downloadMethods.value = methods
 })
@@ -189,6 +200,8 @@ watch(locale, () => handleConvert())
 
 const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
 const getStatusText = (statusType: string) => t(`pack.status.${statusType}`)
+const getStatusDescription = (statusType: string) =>
+  statusType === 'stopped' ? t('pack.statusDescription.stopped') : undefined
 
 const scrollToDownload = () => {
   if (downloadMethods.value.length === 1) {
@@ -196,8 +209,7 @@ const scrollToDownload = () => {
     return
   }
 
-  const el = document.getElementById('download-section')
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  if (downloadMethods.value.length > 1) downloadChoiceVisible.value = true
 }
 </script>
 

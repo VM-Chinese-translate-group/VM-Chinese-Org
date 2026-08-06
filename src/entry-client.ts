@@ -5,9 +5,11 @@ import { createApp } from './app'
 import { getClientLocale } from './plugins/i18n'
 import { syncPageSeo } from './plugins/seo'
 import { isAprilFoolsDay, syncAprilFoolsBranding } from '@/utils/aprilFools'
+import { startImageLoadingFrames, syncImageLoadingLabel } from '@/utils/imageLoading'
 import { convertMarkdownContainers } from '@/utils/zhconv'
 import { applyTheme, getPreferredTheme } from '@/utils/theme'
 
+import '@/styles/imageLoading.css'
 import '@/styles/markdown.css'
 import 'virtual:uno.css'
 
@@ -19,6 +21,8 @@ declare global {
 
 const clientLocale = getClientLocale()
 applyTheme(getPreferredTheme(), false)
+void syncImageLoadingLabel(clientLocale)
+startImageLoadingFrames()
 
 const { app, i18n, router } = createApp({
   locale: clientLocale,
@@ -28,18 +32,17 @@ const registerImageCache = () => {
   if (!import.meta.env.PROD) return
   if (!('serviceWorker' in navigator)) return
 
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/image-cache-sw.js').catch(() => {
-      // 图片缓存只是加速层，注册失败不影响页面内容。
-    })
+  navigator.serviceWorker.register('/image-cache-sw.js').catch(() => {
+    // 图片缓存只是加速层，注册失败不影响页面内容。
   })
 }
 
 app.use(VueLazyload as any, {
-  preLoad: 1.3,
+  preLoad: 1,
   error: '/imgs/missing.png',
   attempt: 3,
-  observer: true,
+  // 预渲染页面的布局在 hydration 期间仍可能变化，使用滚动监听避免观察器误判首屏外图片。
+  observer: false,
   observerOptions: { rootMargin: '0px', threshold: 0.1 },
 })
 
@@ -82,6 +85,7 @@ router.isReady().then(async () => {
     async (val) => {
       syncHtmlMeta()
       syncSeo()
+      void syncImageLoadingLabel(val)
 
       await nextTick()
       convertMarkdownContainers(val)

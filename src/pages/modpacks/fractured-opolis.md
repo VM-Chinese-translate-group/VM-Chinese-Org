@@ -15,9 +15,9 @@ authors:
   - 'benbenlaw (作者)'
   - 'VM汉化组-冰琳 (翻译)'
 links:
-  # - id: bilibili
-  #   text: 介绍视频
-  #   link: https://www.bilibili.com/video/BV1vYKF6GEoC
+  - id: bilibili
+    text: 介绍视频
+    link: https://www.bilibili.com/video/BV1Ziuw6ZE9y
   - id: i18n
   - id: github
     text: GitHub仓库

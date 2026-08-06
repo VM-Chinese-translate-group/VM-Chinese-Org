@@ -27,6 +27,16 @@ h4[id] {
 
 .markdown-body img[data-md-image-preview='true'] {
   cursor: zoom-in;
+  transition: filter 0.25s ease;
+}
+
+.dark .markdown-body img[data-md-image-preview='true'] {
+  filter: var(--content-image-filter);
+}
+
+.dark .markdown-body img[data-md-image-preview='true']:hover,
+.dark .markdown-body img[data-md-image-preview='true']:focus-visible {
+  filter: var(--content-image-hover-filter);
 }
 
 .markdown-body [card-grid] {
