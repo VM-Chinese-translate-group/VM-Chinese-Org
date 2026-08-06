@@ -1,33 +1,67 @@
 <template>
   <section
+    v-if="announcementConfig.enabled"
     class="site-announcement"
     :class="{
       'is-home': isHomePage,
       'is-doc-surface': isDocSurface,
       'is-plain-surface': isPlainSurface,
     }"
-    :aria-label="$t('announcement.label')"
+    :aria-label="announcement.label"
   >
     <div class="site-announcement-inner">
       <span class="site-announcement-icon" aria-hidden="true">
         <Icon icon="lucide:megaphone" />
       </span>
       <p>
-        <span>{{ $t('announcement.body') }}</span>
+        <span>{{ announcement.body }}</span>
       </p>
-      <RouterLink class="site-announcement-link" to="/modpacks/fractured-opolis">
-        {{ $t('announcement.action') }}
+      <RouterLink class="site-announcement-link" :to="announcementConfig.link">
+        {{ announcement.action }}
       </RouterLink>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { Icon } from '@iconify/vue'
+import { announcementConfig } from '@/locales/announcement'
+import { convertInlineText } from '@/utils/zhconv'
 
 const route = useRoute()
+const { locale } = useI18n()
+const announcement = ref({ ...announcementConfig.messages['zh-CN'] })
+let conversionVersion = 0
+
+watch(
+  locale,
+  async (targetLocale) => {
+    const currentVersion = ++conversionVersion
+    const source =
+      targetLocale === 'en-US'
+        ? announcementConfig.messages['en-US']
+        : announcementConfig.messages['zh-CN']
+
+    if (targetLocale !== 'zh-TW') {
+      announcement.value = { ...source }
+      return
+    }
+
+    const [label, body, action] = await Promise.all([
+      convertInlineText(source.label, targetLocale),
+      convertInlineText(source.body, targetLocale),
+      convertInlineText(source.action, targetLocale),
+    ])
+
+    if (currentVersion !== conversionVersion) return
+    announcement.value = { label, body, action }
+  },
+  { immediate: true },
+)
+
 const isHomePage = computed(() => route.path === '/')
 const docSurfacePaths = new Set([
   '/agreement',

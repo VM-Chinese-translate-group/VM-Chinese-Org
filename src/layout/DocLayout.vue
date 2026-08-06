@@ -45,6 +45,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute, useRouter } from 'vue-router'
 import { convertMarkdownContainers, convertInlineText } from '@/utils/zhconv'
 import { useImagePreview } from '@/composables/useImagePreview'
 import ImagePreview from '@/components/ImagePreview.vue'
@@ -59,6 +60,8 @@ interface DocMeta {
 const props = defineProps<{ meta?: DocMeta }>()
 
 const { t, locale } = useI18n()
+const route = useRoute()
+const router = useRouter()
 
 const contentRef = ref<HTMLElement | null>(null)
 const {
@@ -75,6 +78,8 @@ const convertedPageTitle = ref('')
 const convertedPageDescription = ref('')
 let conversionRequestId = 0
 let headerRequestId = 0
+let headerRefreshFrame = 0
+let resizeObserver: ResizeObserver | undefined
 
 interface Heading {
   id: string
@@ -116,7 +121,7 @@ const extractHeaders = async (targetLocale = locale.value) => {
   if (!contentRef.value) return
 
   const requestId = ++headerRequestId
-  const headingElements = Array.from(contentRef.value.querySelectorAll('h2, h3'))
+  const headingElements = Array.from(contentRef.value.querySelectorAll('h1, h2, h3'))
 
   const nextHeaders = await Promise.all(
     headingElements.map(async (el) => {
@@ -140,7 +145,7 @@ const extractHeaders = async (targetLocale = locale.value) => {
         id: el.id,
         text: translatedText,
         level: Number(el.tagName.charAt(1)),
-        top: (el as HTMLElement).offsetTop,
+        top: (el as HTMLElement).getBoundingClientRect().top + window.scrollY,
       }
     }),
   )
@@ -153,6 +158,14 @@ const extractHeaders = async (targetLocale = locale.value) => {
 const onScroll = () => {
   if (headers.value.length === 0 || !showSidebar.value) return
   const scrollTop = window.scrollY || document.documentElement.scrollTop
+  const reachedPageEnd =
+    Math.ceil(scrollTop + window.innerHeight) >= document.documentElement.scrollHeight - 2
+
+  if (reachedPageEnd) {
+    activeId.value = headers.value.at(-1)?.id || ''
+    return
+  }
+
   const offset = 100
   let currentId = headers.value[0]?.id
   for (let i = 0; i < headers.value.length; i++) {
@@ -167,12 +180,23 @@ const onScroll = () => {
 
 const scrollToHeading = (id: string) => {
   const target = document.getElementById(id)
-  if (target) {
-    const offset = 80
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset
+  if (!target) return
+
+  activeId.value = id
+  const hash = `#${id}`
+
+  if (route.hash === hash) {
+    const top = target.getBoundingClientRect().top + window.scrollY - 80
     window.scrollTo({ top, behavior: 'smooth' })
-    history.pushState(null, '', `#${id}`)
+    return
   }
+
+  void router.push({ hash })
+}
+
+const scheduleHeaderRefresh = () => {
+  cancelAnimationFrame(headerRefreshFrame)
+  headerRefreshFrame = requestAnimationFrame(() => void extractHeaders())
 }
 
 watch(
@@ -188,13 +212,20 @@ watch(locale, () => {
 })
 
 onMounted(() => {
-  window.addEventListener('scroll', onScroll)
+  window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', handleResize)
+  if (contentRef.value) {
+    resizeObserver = new ResizeObserver(scheduleHeaderRefresh)
+    resizeObserver.observe(contentRef.value)
+  }
+  void document.fonts?.ready.then(scheduleHeaderRefresh)
 })
 
 onUnmounted(() => {
   conversionRequestId += 1
   headerRequestId += 1
+  cancelAnimationFrame(headerRefreshFrame)
+  resizeObserver?.disconnect()
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', handleResize)
 })

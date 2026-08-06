@@ -1,7 +1,7 @@
 <template>
   <main class="home-shell">
     <section class="home-hero-panel">
-      <div class="hero-copy">
+      <div class="hero-copy" :class="{ 'is-english': locale === 'en-US' }">
         <span class="resource-kicker">
           <Icon icon="lucide:blocks" />
           {{ $t('main.homeHub.kicker') }}
@@ -19,6 +19,13 @@
             {{ $t('main.homeHub.browseMaps') }}
           </RouterLink>
         </div>
+
+        <ul class="hero-trust-list">
+          <li v-for="item in trustItems" :key="item.label">
+            <Icon :icon="item.icon" />
+            <span>{{ item.label }}</span>
+          </li>
+        </ul>
       </div>
 
       <div
@@ -33,7 +40,7 @@
             v-if="heroCarouselItem"
             :key="heroCarouselItem.link"
             :to="heroCarouselItem.link"
-            class="hero-main-card"
+            class="hero-main-card image-loading-frame"
           >
             <img
               :src="getResourceImage(heroCarouselItem, true)"
@@ -111,11 +118,13 @@
             :to="item.link"
             class="resource-card"
           >
-            <img
-              v-lazy="item.icon || '/imgs/missing.png'"
-              :alt="getDisplayName(item)"
-              class="resource-img"
-            />
+            <span class="image-loading-frame resource-image-loading-frame">
+              <img
+                v-lazy="item.icon || '/imgs/missing.png'"
+                :alt="getDisplayName(item)"
+                class="resource-img"
+              />
+            </span>
             <div class="resource-meta">
               <span v-if="item.displayDate">
                 {{ $t('pack.updateDate', { date: formatUpdateDate(item.displayDate, locale) }) }}
@@ -140,7 +149,11 @@
                 {{ getLoaderText(item.versions.loader) }}
               </span>
               <span v-if="item.versions?.mc" class="tag">{{ item.versions.mc }}</span>
-              <span v-if="item.status?.type" class="tag">
+              <span
+                v-if="item.status?.type"
+                :class="['tag', 'status-tag', `status-${item.status.type}`]"
+                :title="getStatusDescription(item.status.type)"
+              >
                 {{ getStatusText(item.status.type) }}
               </span>
             </div>
@@ -230,10 +243,6 @@ const resourceCards = computed(() => {
   const fallback = sortedModpacks.value.filter((item) => !item.featured)
   return [...featured, ...fallback].slice(0, 6)
 })
-const maintainedCount = computed(
-  () => modpacks.filter((item) => item.status?.type === 'maintaining').length,
-)
-
 const statItems = computed(() => [
   {
     label: t('main.homeHub.totalResources'),
@@ -246,16 +255,22 @@ const statItems = computed(() => [
     icon: 'lucide:package',
   },
   {
-    label: t('main.homeHub.maintainedProjects'),
-    value: t('main.homeHub.countValue', { count: maintainedCount.value }),
-    icon: 'lucide:badge-check',
-  },
-  {
     label: t('main.homeHub.mapTranslations'),
     value: t('main.homeHub.countValue', { count: maps.length }),
     icon: 'lucide:map',
   },
+  {
+    label: t('main.homeHub.patchDownloads'),
+    value: t('main.homeHub.downloadTotalValue'),
+    icon: 'lucide:download',
+  },
   { label: t('main.homeHub.openTools'), value: t('main.homeHub.keepUpdating'), icon: 'lucide:eye' },
+])
+
+const trustItems = computed(() => [
+  { label: t('main.homeHub.trustSince'), icon: 'lucide:calendar-heart' },
+  { label: t('main.homeHub.trustTranslation'), icon: 'lucide:languages' },
+  { label: t('main.homeHub.trustCopyright'), icon: 'lucide:badge-check' },
 ])
 
 const resourceTabs = computed(() =>
@@ -291,6 +306,11 @@ const getStatusText = (statusType?: ResourceStatusType) => {
   const key = `pack.status.${statusType}`
   const label = t(key)
   return label === key ? statusType : label
+}
+
+const getStatusDescription = (statusType?: ResourceStatusType) => {
+  if (statusType !== 'stopped') return undefined
+  return t('pack.statusDescription.stopped')
 }
 
 const getLoaderText = (loader?: string) => {

@@ -139,7 +139,7 @@
 }
 
 .filter-option.status-stopped {
-  color: #ef4444;
+  color: var(--status-paused-color);
 }
 
 .dark .filter-option.status-maintaining {
@@ -151,7 +151,7 @@
 }
 
 .dark .filter-option.status-stopped {
-  color: #ff6b70;
+  color: var(--status-paused-color);
 }
 
 .filter-more {
@@ -432,6 +432,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 0.25s ease;
+}
+
+.dark .card-icon img {
+  filter: var(--content-image-filter);
+}
+
+.dark .card-item:hover .card-icon img,
+.dark .card-item:focus-visible .card-icon img {
+  filter: var(--content-image-hover-filter);
 }
 
 .card-content {
@@ -566,7 +576,9 @@
 }
 
 .status-badge.stopped {
-  background-color: #ef4444;
+  border: 1px solid var(--status-paused-border);
+  background-color: var(--status-paused-bg);
+  color: var(--status-paused-color);
 }
 
 .dark .status-badge.maintaining {
@@ -580,8 +592,9 @@
 }
 
 .dark .status-badge.stopped {
-  background-color: #ff6b70;
-  color: #ffffff;
+  border-color: var(--status-paused-border);
+  background-color: var(--status-paused-bg);
+  color: var(--status-paused-color);
 }
 
 .version-badge {

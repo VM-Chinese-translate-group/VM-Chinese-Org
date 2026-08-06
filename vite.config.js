@@ -18,12 +18,7 @@ import Shiki from '@shikijs/markdown-it'
 
 import Card from './src/components/Card/card.js'
 
-import {
-  getGitBranch,
-  getGitCommitHash,
-  getGitEnv,
-  getGitCommitDate,
-} from './src/plugins/git.ts'
+import { getGitBranch, getGitCommitHash, getGitEnv, getGitCommitDate } from './src/plugins/git.ts'
 import { getMarkdownRoutes } from './src/plugins/contentScanner.ts'
 import { resourcesPlugin } from './src/plugins/resourcesList.ts'
 import { routeMetaPlugin } from './src/plugins/routeMeta.ts'
@@ -79,7 +74,8 @@ export default defineConfig({
 
         md.renderer.rules.image = (tokens, idx, options, env, self) => {
           tokens[idx].attrSet('data-md-image-preview', 'true')
-          return defaultImageRenderer(tokens, idx, options, env, self)
+          const image = defaultImageRenderer(tokens, idx, options, env, self)
+          return `<span class="image-loading-frame markdown-image-loading-frame">${image}</span>`
         }
 
         md.use(anchor, {
@@ -118,9 +114,7 @@ export default defineConfig({
             openRender: (tokens, index) => {
               const info = tokens[index].info
               const title =
-                info.length > type.length
-                  ? info.slice(type.length + 1)
-                  : type.toUpperCase()
+                info.length > type.length ? info.slice(type.length + 1) : type.toUpperCase()
 
               if (type === 'details') {
                 return `<details class="custom-block details"><summary>${title}</summary>\n`
@@ -129,8 +123,7 @@ export default defineConfig({
               return `<div class="custom-block ${type}"><p class="custom-block-title">${title}</p>\n`
             },
 
-            closeRender: () =>
-              type === 'details' ? '</details>\n' : '</div>\n',
+            closeRender: () => (type === 'details' ? '</details>\n' : '</div>\n'),
           })
         })
       },
@@ -141,7 +134,7 @@ export default defineConfig({
     }),
 
     Components({
-      dirs: ['src/components', 'src/layout'], 
+      dirs: ['src/components', 'src/layout'],
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.md$/],
       dts: false,

@@ -5,11 +5,15 @@ import App from './App.vue'
 import { createAppRouter } from './router'
 import { createI18nInstance, type AvailableLocales } from './plugins/i18n'
 
+const LAZY_IMAGE_PLACEHOLDER =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+
 const ssrLazyDirective: Directive<HTMLImageElement, string> = {
   getSSRProps(binding) {
     return {
       loading: 'lazy',
-      src: binding.value,
+      src: LAZY_IMAGE_PLACEHOLDER,
+      'data-src': binding.value,
     }
   },
 }

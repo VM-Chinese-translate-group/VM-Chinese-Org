@@ -46,16 +46,17 @@ function clientLink(method: DownloadMethodSource): DownloadMethodItem {
 
 function mergeLazyDownload(methods: DownloadMethodSource[]) {
   const lazyMethod = methods.find((method) => method.id === 'lazy' && method.link)
+  const driveChooserIds = new Set(['quark-lanzou', 'lanzou-quake', 'lanzou-quark-mapdl'])
   const hasDriveChooser = methods.some((method) => {
     const id = method.id?.toLowerCase()
-    return id === 'quark-lanzou' || id === 'lanzou-quake'
+    return Boolean(id && driveChooserIds.has(id))
   })
 
   return methods
     .filter((method) => !(hasDriveChooser && method.id === 'lazy'))
     .map((method) => {
       const id = method.id?.toLowerCase()
-      if (!lazyMethod || (id !== 'quark-lanzou' && id !== 'lanzou-quake')) return method
+      if (!lazyMethod || !id || !driveChooserIds.has(id)) return method
 
       return {
         ...method,

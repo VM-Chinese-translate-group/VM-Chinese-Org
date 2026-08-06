@@ -2,7 +2,7 @@
   <div class="pack-page-container">
     <header class="pack-header">
       <div class="header-content">
-        <div class="pack-icon-wrapper">
+        <div class="pack-icon-wrapper" :class="{ 'image-loading-frame': Boolean(meta.icon) }">
           <img
             v-if="meta.icon"
             :src="meta.icon"
@@ -21,7 +21,10 @@
           <div class="title-row">
             <h1>{{ displayTitle }}</h1>
             <div class="pack-status-tags" v-if="meta.status?.type">
-              <span :class="['status-tag', meta.status.type || 'info']">
+              <span
+                :class="['status-tag', meta.status.type || 'info']"
+                :title="getStatusDescription(meta.status.type)"
+              >
                 {{ getStatusText(meta.status.type) }}
               </span>
             </div>
@@ -40,10 +43,10 @@
         </div>
 
         <div class="download-button-wrapper">
-          <a href="#download-section" class="btn-download-main" @click.prevent="scrollToDownload">
+          <button type="button" class="btn-download-main" @click="scrollToDownload">
             <Icon icon="lucide:download" />
             {{ t('pack.downloadPatch') }}
-          </a>
+          </button>
           <span class="update-date" v-if="meta.updateDate">
             <Icon icon="lucide:calendar-clock" />
             {{ t('pack.updateDate', { date: formatUpdateDate(meta.updateDate, locale) }) }}
@@ -54,7 +57,6 @@
 
     <main class="pack-main">
       <section class="pack-content-body markdown-body" ref="contentRef">
-        <div id="download-section"></div>
         <slot />
       </section>
 
@@ -127,6 +129,13 @@
     @hide="closePreview"
     @update:visible="onPreviewVisibleChange"
   />
+
+  <DownloadModal
+    ref="downloadModalRef"
+    :items="downloadMethods"
+    :visible="downloadModalVisible"
+    @close="downloadModalVisible = false"
+  />
 </template>
 
 <script setup lang="ts">
@@ -140,7 +149,7 @@ import { formatUpdateDate } from '@/utils/dateFormat'
 import { getLocalizedResourceName } from '@/utils/resourceDisplay'
 import { resolveRelatedLink, type RelatedLinkInput } from '@/data/relatedLinks'
 import ImagePreview from '@/components/ImagePreview.vue'
-import { useDownloadModal } from '@/components/DownloadPage/useDownloadModal'
+import DownloadModal from '@/components/DownloadPage/DownloadModal.vue'
 import {
   DOWNLOAD_METHODS_REGISTRAR,
   type DownloadMethodItem,
@@ -153,10 +162,13 @@ const props = defineProps({
 const { t, locale } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
 const downloadMethods = ref<DownloadMethodItem[]>([])
+const downloadModalVisible = ref(false)
+const downloadModalRef = ref<{
+  activateDownload: (item: DownloadMethodItem) => void
+} | null>(null)
 provide(DOWNLOAD_METHODS_REGISTRAR, (methods) => {
   downloadMethods.value = methods
 })
-const { handleDownloadMethod } = useDownloadModal({ locale, t })
 const displayTitle = computed(() =>
   getLocalizedResourceName(props.meta, locale.value, t('pack.defaultTitle')),
 )
@@ -189,15 +201,16 @@ watch(locale, () => handleConvert())
 
 const getLoaderText = (loader: string) => t(`loader.${loader?.toLowerCase()}`)
 const getStatusText = (statusType: string) => t(`pack.status.${statusType}`)
+const getStatusDescription = (statusType: string) =>
+  statusType === 'stopped' ? t('pack.statusDescription.stopped') : undefined
 
 const scrollToDownload = () => {
   if (downloadMethods.value.length === 1) {
-    handleDownloadMethod(downloadMethods.value[0])
+    downloadModalRef.value?.activateDownload(downloadMethods.value[0])
     return
   }
 
-  const el = document.getElementById('download-section')
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  if (downloadMethods.value.length > 1) downloadModalVisible.value = true
 }
 </script>
 

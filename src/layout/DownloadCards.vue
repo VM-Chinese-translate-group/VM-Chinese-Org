@@ -41,6 +41,7 @@
                 'mc-filter-option',
                 { active: selectedMcVersions.includes(option.value) },
               ]"
+              :title="getStatusDescription(option.value)"
               @click="toggleFilter(selectedMcVersions, option.value)"
             >
               <span>{{ option.label }}</span>
@@ -175,7 +176,7 @@
           <div v-if="displayMods.length" class="grid-layout">
             <RouterLink v-for="mod in displayMods" :key="mod.name" :to="mod.link" class="card-item">
               <div class="card-box">
-                <figure class="card-icon">
+                <figure class="card-icon image-loading-frame">
                   <img v-lazy="mod.icon" :alt="mod.name" />
                 </figure>
 
@@ -190,7 +191,11 @@
 
                   <div class="card-footer">
                     <div class="tag-group">
-                      <span v-if="mod.status?.type" :class="['status-badge', mod.status.type]">
+                      <span
+                        v-if="mod.status?.type"
+                        :class="['status-badge', mod.status.type]"
+                        :title="getStatusDescription(mod.status.type)"
+                      >
                         {{ mod.displayStatus }}
                       </span>
 
@@ -338,6 +343,11 @@ type SortOption = {
 const getStatusText = (statusType?: string) => {
   if (!statusType) return ''
   return t(`pack.status.${statusType}`)
+}
+
+const getStatusDescription = (statusType?: string) => {
+  if (statusType !== 'stopped') return undefined
+  return t('pack.statusDescription.stopped')
 }
 
 const getStatusIcon = (statusType?: string) => {

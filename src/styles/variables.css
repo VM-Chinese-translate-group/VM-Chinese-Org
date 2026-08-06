@@ -83,6 +83,12 @@
   --warning-1: #9f6000;
   --warning-soft: rgba(255, 193, 7, 0.18);
 
+  --status-paused-color: #52677a;
+  --status-paused-bg: #e8eef3;
+  --status-paused-border: #c6d2dc;
+  --content-image-filter: none;
+  --content-image-hover-filter: none;
+
   --loader-fabric-color: #8a7b71;
   --loader-fabric-bg: var(--warning-soft);
   --loader-fabric-icon-filter: brightness(0) saturate(100%) invert(50%) sepia(10%) saturate(545%)
@@ -188,6 +194,12 @@
 
   --warning-1: #f9b44d;
   --warning-soft: rgba(249, 180, 77, 0.18);
+
+  --status-paused-color: #b7c7d4;
+  --status-paused-bg: #2b3640;
+  --status-paused-border: #455665;
+  --content-image-filter: brightness(0.86) saturate(0.9);
+  --content-image-hover-filter: brightness(0.96) saturate(0.97);
 
   --loader-fabric-color: #ffd08a;
   --loader-fabric-bg: var(--warning-soft);
