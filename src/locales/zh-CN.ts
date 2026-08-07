@@ -230,7 +230,6 @@ export default {
     createdSuccess: '已创建新的候选项目。谢谢你的建议！',
     existingVoteSuccess: '已为这个项目点赞，谢谢你的支持！',
     submitError: '提交失败，请检查链接后重试。',
-    listKicker: '大家的期待',
     listTitle: '正在征集的项目',
     refresh: '刷新',
     allTypes: '全部类型',

@@ -46,22 +46,13 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'translation-feedback',
         name: 'translation-feedback',
-        component: () => import('@/pages/translation-feedback.vue'),
-        meta: {
-          title: '汉化意见征集',
-          description:
-            '提交你希望 VM 汉化组处理的整合包、地图或其他 Minecraft 内容，并为已有项目点赞。',
-        },
+        component: () => import('@/layout/TranslationFeedbackLayout.vue'),
       },
       { path: 'join', name: 'join-redirect', redirect: '/community#加入我们' },
       {
         path: 'credits',
         name: 'credits',
         component: () => import('@/pages/credits.vue'),
-        meta: {
-          title: '贡献名单',
-          description: '按网页开发、外部贡献人员与 VM汉化组成员分类展示贡献名单。',
-        },
       },
 
       ...mdRoutes,

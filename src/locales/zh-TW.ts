@@ -231,7 +231,6 @@ export default {
     createdSuccess: '已建立新的候選項目。謝謝你的建議！',
     existingVoteSuccess: '已為這個項目點讚，謝謝你的支持！',
     submitError: '提交失敗，請檢查連結後重試。',
-    listKicker: '大家的期待',
     listTitle: '正在徵集的項目',
     refresh: '重新整理',
     allTypes: '全部類型',

@@ -238,7 +238,6 @@ export default {
     createdSuccess: 'A new candidate project was created. Thank you!',
     existingVoteSuccess: 'Your vote has been added to this project. Thank you!',
     submitError: 'Submission failed. Check the links and try again.',
-    listKicker: 'Community demand',
     listTitle: 'Projects being requested',
     refresh: 'Refresh',
     allTypes: 'All types',

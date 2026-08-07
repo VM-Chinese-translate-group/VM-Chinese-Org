@@ -2,35 +2,35 @@
   <div
     v-if="visible"
     ref="widgetElement"
-    class="feedback-widget group"
+    class="group fixed right-[max(1rem,env(safe-area-inset-right))] top-[clamp(11rem,40vh,26rem)] z-30 inline-flex min-h-12 cursor-grab touch-none select-none items-center gap-2 border border-[color-mix(in_srgb,#c4b5fd_62%,transparent)] bg-[color-mix(in_srgb,#7c3aed_88%,transparent)] text-white shadow-[var(--vp-shadow-1)] backdrop-blur-sm transition-colors lt-sm:right-[max(0.75rem,env(safe-area-inset-right))] lt-sm:top-[7rem] lt-sm:max-w-[calc(100vw_-_1.5rem)] lt-sm:text-sm"
     :class="widgetClasses"
     :style="widgetStyle"
     @pointerdown="startDrag"
   >
     <button
-      class="feedback-widget-main"
-      :class="{ 'feedback-widget-docked-main': dock !== null }"
+      class="inline-flex min-h-9 cursor-pointer items-center justify-center gap-2 whitespace-nowrap border-0 bg-transparent px-2 py-2 pl-0 font-inherit text-inherit focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+      :class="{ 'h-full w-full p-0': dock !== null }"
       type="button"
       :aria-label="$t('translationFeedback.widgetLabel')"
       @click="openPage"
     >
-      <Icon
-        class="text-[1.2rem] text-white"
-        icon="lucide:message-heart"
-        aria-hidden="true"
-      />
+      <Icon class="text-[1.2rem] text-white" icon="lucide:message-heart" aria-hidden="true" />
       <span v-if="dock === null">{{ $t('translationFeedback.widgetLabel') }}</span>
     </button>
     <button
       v-if="dock === null"
-      class="feedback-widget-close"
+      data-widget-close
+      class="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded border-0 bg-transparent p-0 text-white/70 hover:bg-white/20 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
       type="button"
       :aria-label="$t('translationFeedback.dismiss')"
       @click="dismiss"
     >
       <Icon icon="lucide:x" aria-hidden="true" />
     </button>
-    <span class="feedback-widget-tooltip" role="tooltip">
+    <span
+      class="pointer-events-none invisible absolute bottom-[calc(100%+0.5rem)] left-1/2 z-40 w-max max-w-[min(18rem,calc(100vw_-_2rem))] -translate-x-1/2 rounded-lg border border-white/20 bg-[color-mix(in_srgb,var(--text-dark)_92%,transparent)] px-3 py-2 text-xs font-500 leading-snug text-white opacity-0 shadow-[var(--vp-shadow-1)] transition-opacity group-hover:visible group-hover:opacity-100"
+      role="tooltip"
+    >
       {{ $t('translationFeedback.widgetTooltip') }}
     </span>
   </div>
@@ -63,14 +63,14 @@ const dragState = {
 }
 
 const visible = computed(() => !dismissed.value && !isFeedbackPage.value)
-const widgetClasses = computed(() => ({
-  'feedback-widget-dragging': dragging.value,
-  'feedback-widget-hoverable': !dragging.value && dock.value === null,
-  'feedback-widget-docked': dock.value !== null,
-  'feedback-widget-docked-hoverable': !dragging.value && dock.value !== null,
-  'feedback-widget-docked-left': dock.value === 'left',
-  'feedback-widget-docked-right': dock.value === 'right',
-}))
+const widgetClasses = computed(() => [
+  dragging.value
+    ? 'cursor-grabbing opacity-80 transition-none'
+    : 'hover:border-[#c4b5fd] hover:bg-[#6d28d9]',
+  dock.value === null ? 'rounded-full px-2 py-1.5 pl-3' : 'h-12 w-12 justify-center p-0',
+  dock.value === 'left' ? 'rounded-r-full' : '',
+  dock.value === 'right' ? 'rounded-l-full' : '',
+])
 const widgetStyle = computed(() => {
   if (!position.value) return undefined
 
@@ -102,7 +102,7 @@ function dismiss() {
 
 function startDrag(event: PointerEvent) {
   const target = event.target as Element | null
-  if (event.button !== 0 || event.isPrimary === false || target?.closest('.feedback-widget-close'))
+  if (event.button !== 0 || event.isPrimary === false || target?.closest('[data-widget-close]'))
     return
 
   const element = widgetElement.value
