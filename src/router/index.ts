@@ -43,6 +43,16 @@ const routes: RouteRecordRaw[] = [
       { path: '', name: 'Home', component: Home },
       { path: 'modpacks', name: 'modpacks-list', component: () => import('@/pages/modpacks.vue') },
       { path: 'map', name: 'map-list', component: () => import('@/pages/map.vue') },
+      {
+        path: 'translation-feedback',
+        name: 'translation-feedback',
+        component: () => import('@/pages/translation-feedback.vue'),
+        meta: {
+          title: '汉化意见征集',
+          description:
+            '提交你希望 VM 汉化组处理的整合包、地图或其他 Minecraft 内容，并为已有项目点赞。',
+        },
+      },
       { path: 'join', name: 'join-redirect', redirect: '/community#加入我们' },
       {
         path: 'credits',

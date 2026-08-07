@@ -2,7 +2,7 @@ import type { Plugin } from 'vite'
 
 import { getMarkdownRoutes } from './contentScanner.ts'
 
-const STATIC_ROUTES = ['/', '/modpacks', '/map', '/credits']
+const STATIC_ROUTES = ['/', '/modpacks', '/map', '/credits', '/translation-feedback']
 
 export function prerenderRoutesPlugin(): Plugin {
   return {
