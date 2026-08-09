@@ -215,6 +215,8 @@ export default {
     sourceUrlLabel: 'Source links',
     sourceUrlHint:
       'Only CurseForge, Modrinth, Planet Minecraft, Minecraft Maps, and MapVerse are supported.',
+    sourceUrlContact:
+      'If your project has none of these links, please contact us directly in our group.',
     sourceUrlPlaceholder: 'Paste the project page URL',
     removeUrl: 'Remove this link',
     addUrl: 'Add another source link',

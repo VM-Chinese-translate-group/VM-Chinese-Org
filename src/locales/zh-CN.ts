@@ -207,6 +207,7 @@ export default {
     originalNamePlaceholder: '例如：Create: Above and Beyond',
     sourceUrlLabel: '来源链接',
     sourceUrlHint: '仅支持 CurseForge、Modrinth、Planet Minecraft、Minecraft Maps、MapVerse',
+    sourceUrlContact: '如果想让我们汉化的项目没有这些链接，请单独加群联系我们。',
     sourceUrlPlaceholder: '粘贴项目页面链接',
     removeUrl: '移除这个链接',
     addUrl: '添加另一个来源链接',

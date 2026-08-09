@@ -2,36 +2,34 @@
   <div
     v-if="visible"
     ref="widgetElement"
-    class="group fixed right-[max(1rem,env(safe-area-inset-right))] top-[clamp(11rem,40vh,26rem)] z-30 inline-flex min-h-12 cursor-grab touch-none select-none items-center gap-2 border border-[color-mix(in_srgb,#c4b5fd_62%,transparent)] bg-[color-mix(in_srgb,#7c3aed_88%,transparent)] text-white shadow-[var(--vp-shadow-1)] backdrop-blur-sm transition-colors lt-sm:right-[max(0.75rem,env(safe-area-inset-right))] lt-sm:top-[7rem] lt-sm:max-w-[calc(100vw_-_1.5rem)] lt-sm:text-sm"
-    :class="widgetClasses"
+    class="group fixed bottom-[max(2rem,env(safe-area-inset-bottom))] right-[max(4rem,env(safe-area-inset-right))] z-30 h-14 w-14 cursor-grab touch-none select-none text-white shadow-[var(--vp-shadow-1)] transition-[box-shadow,opacity] hover:shadow-lg lt-sm:bottom-[max(1.5rem,env(safe-area-inset-bottom))] lt-sm:right-[max(2.5rem,env(safe-area-inset-right))]"
+    :class="dragging ? 'cursor-grabbing opacity-80 transition-none' : ''"
     :style="widgetStyle"
     @pointerdown="startDrag"
   >
     <button
-      class="inline-flex min-h-9 cursor-pointer items-center justify-center gap-2 whitespace-nowrap border-0 bg-transparent px-2 py-2 pl-0 font-inherit text-inherit focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
-      :class="{ 'h-full w-full p-0': dock !== null }"
+      class="block h-full w-full cursor-pointer overflow-hidden border-0 bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2"
       type="button"
       :aria-label="$t('translationFeedback.widgetLabel')"
       @click="openPage"
     >
-      <Icon class="text-[1.2rem] text-white" icon="lucide:message-heart" aria-hidden="true" />
-      <span v-if="dock === null">{{ $t('translationFeedback.widgetLabel') }}</span>
-    </button>
-    <button
-      v-if="dock === null"
-      data-widget-close
-      class="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded border-0 bg-transparent p-0 text-white/70 hover:bg-white/20 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
-      type="button"
-      :aria-label="$t('translationFeedback.dismiss')"
-      @click="dismiss"
-    >
-      <Icon icon="lucide:x" aria-hidden="true" />
+      <img
+        class="h-full w-full object-cover [image-rendering:pixelated]"
+        src="/imgs/wulian.png"
+        alt=""
+        draggable="false"
+      />
     </button>
     <span
-      class="pointer-events-none invisible absolute bottom-[calc(100%+0.5rem)] left-1/2 z-40 w-max max-w-[min(18rem,calc(100vw_-_2rem))] -translate-x-1/2 rounded-lg border border-white/20 bg-[color-mix(in_srgb,var(--text-dark)_92%,transparent)] px-3 py-2 text-xs font-500 leading-snug text-white opacity-0 shadow-[var(--vp-shadow-1)] transition-opacity group-hover:visible group-hover:opacity-100"
+      class="pointer-events-none absolute bottom-[calc(100%+0.5rem)] left-1/2 z-40 w-max max-w-[min(18rem,calc(100vw_-_2rem))] -translate-x-1/2 rounded-lg border border-white/20 bg-[color-mix(in_srgb,var(--text-dark)_92%,transparent)] px-3 py-2 text-xs font-500 leading-snug text-white shadow-[var(--vp-shadow-1)] transition-opacity"
+      :class="
+        showIntro
+          ? 'visible opacity-100'
+          : 'invisible opacity-0 group-hover:visible group-hover:opacity-100'
+      "
       role="tooltip"
     >
-      {{ $t('translationFeedback.widgetTooltip') }}
+      {{ $t('translationFeedback.widgetLabel') }}
     </span>
   </div>
 </template>
@@ -41,18 +39,17 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const DRAG_THRESHOLD = 5
-const EDGE_DISTANCE = 28
 const MIN_VIEWPORT_MARGIN = 8
 
 const route = useRoute()
 const router = useRouter()
-const dismissed = ref(false)
 const isFeedbackPage = computed(() => route.path === '/translation-feedback')
 const widgetElement = ref<HTMLElement | null>(null)
 const dragging = ref(false)
 const suppressClick = ref(false)
-const dock = ref<'left' | 'right' | null>(null)
+const showIntro = ref(false)
 const position = ref<{ x: number; y: number } | null>(null)
+let introTimer: number | undefined
 
 const dragState = {
   pointerId: -1,
@@ -62,28 +59,24 @@ const dragState = {
   startY: 0,
 }
 
-const visible = computed(() => !dismissed.value && !isFeedbackPage.value)
-const widgetClasses = computed(() => [
-  dragging.value
-    ? 'cursor-grabbing opacity-80 transition-none'
-    : 'hover:border-[#c4b5fd] hover:bg-[#6d28d9]',
-  dock.value === null ? 'rounded-full px-2 py-1.5 pl-3' : 'h-12 w-12 justify-center p-0',
-  dock.value === 'left' ? 'rounded-r-full' : '',
-  dock.value === 'right' ? 'rounded-l-full' : '',
-])
+const visible = computed(() => !isFeedbackPage.value)
 const widgetStyle = computed(() => {
   if (!position.value) return undefined
 
-  const top = `${position.value.y}px`
-  if (dock.value === 'left') return { left: '0px', right: 'auto', top }
-  if (dock.value === 'right') return { left: 'auto', right: '0px', top }
-  return { left: `${position.value.x}px`, right: 'auto', top }
+  return { left: `${position.value.x}px`, right: 'auto', top: `${position.value.y}px` }
 })
 
-onMounted(() => window.addEventListener('resize', keepWidgetInViewport))
+onMounted(() => {
+  window.addEventListener('resize', keepWidgetInViewport)
+  showIntro.value = true
+  introTimer = window.setTimeout(() => {
+    showIntro.value = false
+  }, 3500)
+})
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', keepWidgetInViewport)
+  if (introTimer !== undefined) window.clearTimeout(introTimer)
   stopPointerTracking()
 })
 
@@ -96,14 +89,8 @@ function openPage() {
   void router.push('/translation-feedback')
 }
 
-function dismiss() {
-  dismissed.value = true
-}
-
 function startDrag(event: PointerEvent) {
-  const target = event.target as Element | null
-  if (event.button !== 0 || event.isPrimary === false || target?.closest('[data-widget-close]'))
-    return
+  if (event.button !== 0 || event.isPrimary === false) return
 
   const element = widgetElement.value
   if (!element) return
@@ -132,7 +119,6 @@ function moveDrag(event: PointerEvent) {
 
     const bounds = element.getBoundingClientRect()
     position.value = { x: bounds.left, y: bounds.top }
-    dock.value = null
     dragging.value = true
     suppressClick.value = true
   }
@@ -143,7 +129,11 @@ function moveDrag(event: PointerEvent) {
   event.preventDefault()
   const bounds = element.getBoundingClientRect()
   position.value = {
-    x: clamp(event.clientX - dragState.offsetX, 0, window.innerWidth - bounds.width),
+    x: clamp(
+      event.clientX - dragState.offsetX,
+      MIN_VIEWPORT_MARGIN,
+      window.innerWidth - bounds.width - MIN_VIEWPORT_MARGIN,
+    ),
     y: clamp(
       event.clientY - dragState.offsetY,
       MIN_VIEWPORT_MARGIN,
@@ -158,7 +148,6 @@ function endDrag(event: PointerEvent) {
   stopPointerTracking()
   if (dragging.value) {
     dragging.value = false
-    snapToEdge()
     window.setTimeout(() => {
       suppressClick.value = false
     }, 0)
@@ -166,18 +155,6 @@ function endDrag(event: PointerEvent) {
     suppressClick.value = false
   }
   dragState.pointerId = -1
-}
-
-function snapToEdge() {
-  const element = widgetElement.value
-  if (!element || !position.value) return
-
-  const bounds = element.getBoundingClientRect()
-  if (position.value.x <= EDGE_DISTANCE) {
-    dock.value = 'left'
-  } else if (window.innerWidth - (position.value.x + bounds.width) <= EDGE_DISTANCE) {
-    dock.value = 'right'
-  }
 }
 
 function stopPointerTracking() {
@@ -191,7 +168,11 @@ function keepWidgetInViewport() {
 
   const bounds = widgetElement.value.getBoundingClientRect()
   position.value = {
-    x: dock.value ? position.value.x : clamp(position.value.x, 0, window.innerWidth - bounds.width),
+    x: clamp(
+      position.value.x,
+      MIN_VIEWPORT_MARGIN,
+      window.innerWidth - bounds.width - MIN_VIEWPORT_MARGIN,
+    ),
     y: clamp(
       position.value.y,
       MIN_VIEWPORT_MARGIN,
