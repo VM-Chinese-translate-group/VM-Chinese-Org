@@ -150,7 +150,7 @@ export default defineConfig({
 
     Sitemap({
       hostname: 'https://v4.vmct-cn.top',
-      dynamicRoutes: getMarkdownRoutes(),
+      dynamicRoutes: [...getMarkdownRoutes(), '/translation-feedback'],
     }),
 
     compression({

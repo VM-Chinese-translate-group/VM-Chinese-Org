@@ -1,5 +1,5 @@
 <template>
-  <div ref="rootRef" class="select-menu" :class="{ open: isOpen }">
+  <div ref="rootRef" class="select-menu" :class="{ open: isOpen, flat: variant === 'flat' }">
     <button
       type="button"
       class="select-menu-trigger"
@@ -53,6 +53,7 @@ const props = defineProps<{
   ariaLabel: string
   modelValue: T
   options: readonly SelectOption<T>[]
+  variant?: 'default' | 'flat'
 }>()
 
 const emit = defineEmits<{
@@ -186,6 +187,23 @@ onUnmounted(() => document.removeEventListener('pointerdown', handleOutsidePoint
   outline: none;
   border-color: var(--btn-primary-bg);
   box-shadow: 0 0 0 2px var(--nav-shadow);
+}
+
+.select-menu.flat .select-menu-trigger {
+  height: 44px;
+  padding: 0 12px;
+  background: var(--bg-soft);
+  border: 0;
+  border-bottom: 2px solid var(--switcher-border);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.select-menu.flat .select-menu-trigger:hover,
+.select-menu.flat .select-menu-trigger:focus-visible,
+.select-menu.flat.open .select-menu-trigger {
+  border-bottom-color: var(--info-1);
+  box-shadow: none;
 }
 
 .select-menu-value {

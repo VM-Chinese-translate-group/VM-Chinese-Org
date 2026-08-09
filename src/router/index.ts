@@ -43,15 +43,16 @@ const routes: RouteRecordRaw[] = [
       { path: '', name: 'Home', component: Home },
       { path: 'modpacks', name: 'modpacks-list', component: () => import('@/pages/modpacks.vue') },
       { path: 'map', name: 'map-list', component: () => import('@/pages/map.vue') },
+      {
+        path: 'translation-feedback',
+        name: 'translation-feedback',
+        component: () => import('@/layout/TranslationFeedbackLayout.vue'),
+      },
       { path: 'join', name: 'join-redirect', redirect: '/community#加入我们' },
       {
         path: 'credits',
         name: 'credits',
         component: () => import('@/pages/credits.vue'),
-        meta: {
-          title: '贡献名单',
-          description: '按网页开发、外部贡献人员与 VM汉化组成员分类展示贡献名单。',
-        },
       },
 
       ...mdRoutes,

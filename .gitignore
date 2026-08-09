@@ -6,10 +6,22 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+worker/dist/
+worker/worker/dist/
+worker/.cover-dist/
+worker/worker/.cover-dist/
+worker/.dev.vars
 *.local
+node_modules/.cache/wrangler/
 
 .vscode/*
 !.vscode/extensions.json
 .idea
 
 *.tsbuildinfo
+.wrangler
+
+# Local planning notes are useful during development but are not release files.
+task_plan.md
+findings.md
+progress.md

@@ -1,5 +1,13 @@
 declare module 'markdown-it-table-of-contents'
 
+interface ImportMetaEnv {
+  readonly VITE_FEEDBACK_API_BASE?: string
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
+
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
   const component: DefineComponent<{}, {}, any>
@@ -38,9 +46,13 @@ declare module 'virtual:route-meta' {
 }
 
 declare module 'opencc-js/core' {
-  export function ConverterBuilder(preset: any): (options: { from: string; to: string }) => (text: string) => string
+  export function ConverterBuilder(
+    preset: any,
+  ): (options: { from: string; to: string }) => (text: string) => string
   export function ConverterFactory(from: any, to: any): (text: string) => string
-  export function CustomConverter(dict: readonly (readonly [string, string])[]): (text: string) => string
+  export function CustomConverter(
+    dict: readonly (readonly [string, string])[],
+  ): (text: string) => string
 }
 
 declare module 'opencc-js/preset' {
