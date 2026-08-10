@@ -76,6 +76,19 @@
         <div class="navbar-divider"></div>
 
         <div class="navbar-utils">
+          <router-link
+            class="navbar-feedback-link inline-flex min-w-0 max-w-[9.6rem] flex-[0_1_auto] box-border items-center justify-center gap-1.5 overflow-hidden rounded-lg border border-[color-mix(in_srgb,var(--nav-primary)_28%,transparent)] bg-[color-mix(in_srgb,var(--nav-primary)_10%,transparent)] px-[0.68rem] py-[0.38rem] text-[0.78rem] font-700 leading-[1.25] text-[var(--nav-primary)] no-underline text-ellipsis whitespace-nowrap transition-[color,background-color,border-color,transform] duration-200 ease-out hover:translate-y-[-1px] hover:border-[color-mix(in_srgb,var(--nav-primary)_48%,transparent)] hover:bg-[color-mix(in_srgb,var(--nav-primary)_17%,transparent)] focus-visible:outline-2 focus-visible:outline-[var(--nav-primary)] focus-visible:outline-offset-3 max-[1180px]:max-w-[8.2rem] max-[1180px]:px-2 max-[1180px]:text-[0.74rem] max-[860px]:min-h-11 max-[860px]:w-full max-[860px]:max-w-none max-[860px]:px-4 max-[860px]:py-[0.7rem] max-[860px]:text-base"
+            to="/translation-feedback"
+            :class="{
+              'translate-y-[-1px] border-[color-mix(in_srgb,var(--nav-primary)_48%,transparent)] bg-[color-mix(in_srgb,var(--nav-primary)_17%,transparent)]':
+                route.path === '/translation-feedback',
+            }"
+            :aria-label="$t('navbar.feedbackCta')"
+            @click="closeMenu"
+          >
+            <Icon class="h-4 w-4 shrink-0" icon="lucide:message-square-plus" aria-hidden="true" />
+            <span>{{ $t('navbar.feedbackCta') }}</span>
+          </router-link>
           <button type="button" class="search-box-trigger desktop-search" @click="openSearch">
             <Icon icon="lucide:search" class="search-icon" />
             <span class="search-text">{{ $t('search.placeholder') }}</span>

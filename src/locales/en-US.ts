@@ -10,6 +10,7 @@ export default {
     installGuide: 'Installation Guide',
     more: 'More',
     menu: 'Main menu',
+    feedbackCta: 'Give us a task',
   },
   search: {
     placeholder: 'Search...',
@@ -199,6 +200,8 @@ export default {
   translationFeedback: {
     widgetLabel: 'What should we translate?',
     widgetTooltip: 'Vote for translation projects or submit one you want us to translate.',
+    widgetClose: 'Hide the translation helper',
+    widgetRestore: 'Show the translation helper',
     dismiss: 'Dismiss the translation feedback entry',
     kicker: 'VM Translation Feedback',
     title: 'What should we translate next?',
@@ -215,8 +218,7 @@ export default {
     sourceUrlLabel: 'Source links',
     sourceUrlHint:
       'Only CurseForge, Modrinth, Planet Minecraft, Minecraft Maps, and MapVerse are supported.',
-    sourceUrlContact:
-      'If your project has none of these links, please contact us directly in our group.',
+    sourceUrlContact: 'If the project has none of these links, contact us through the group chat.',
     sourceUrlPlaceholder: 'Paste the project page URL',
     removeUrl: 'Remove this link',
     addUrl: 'Add another source link',

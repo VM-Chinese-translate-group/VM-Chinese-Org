@@ -40,25 +40,36 @@
             v-if="heroCarouselItem"
             :key="heroCarouselItem.link"
             :to="heroCarouselItem.link"
-            class="hero-main-card image-loading-frame"
+            class="hero-main-card flex flex-col"
           >
-            <img
-              :src="getResourceImage(heroCarouselItem, true)"
-              :alt="getDisplayName(heroCarouselItem)"
-              :loading="heroCarouselIndex === 0 ? 'eager' : 'lazy'"
-              :fetchpriority="heroCarouselIndex === 0 ? 'high' : 'auto'"
-              decoding="async"
-            />
-            <span class="hero-main-overlay"></span>
-            <span class="hero-main-content">
-              <strong>{{ getDisplayName(heroCarouselItem) }}</strong>
-              <small>
+            <span class="hero-main-image image-loading-frame min-h-0 flex-1">
+              <img
+                :src="getResourceImage(heroCarouselItem, true)"
+                :alt="getDisplayName(heroCarouselItem)"
+                :loading="heroCarouselIndex === 0 ? 'eager' : 'lazy'"
+                :fetchpriority="heroCarouselIndex === 0 ? 'high' : 'auto'"
+                decoding="async"
+              />
+              <span class="hero-main-overlay z-1"></span>
+            </span>
+            <span
+              class="grid shrink-0 gap-1 border-t border-[var(--home-border)] bg-[var(--home-surface-solid)] px-5 py-3.5 text-[var(--home-text)] lt-sm:px-3 lt-sm:py-3"
+            >
+              <strong class="text-[clamp(1.05rem,1.8vw,1.45rem)] font-850 leading-[1.2]">
+                {{ getDisplayName(heroCarouselItem) }}
+              </strong>
+              <small
+                class="line-clamp-2 text-[0.84rem] font-600 leading-[1.45] text-[var(--home-muted)]"
+              >
                 {{ heroCarouselItem.description || $t('main.homeHub.emptyFeaturedDesc') }}
               </small>
             </span>
           </RouterLink>
         </Transition>
-        <div v-if="heroCarouselItems.length > 1" class="hero-carousel-indicators">
+        <div
+          v-if="heroCarouselItems.length > 1"
+          class="hero-carousel-indicators top-4 max-[760px]:top-3"
+        >
           <button
             v-for="(item, index) in heroCarouselItems"
             :key="item.link"

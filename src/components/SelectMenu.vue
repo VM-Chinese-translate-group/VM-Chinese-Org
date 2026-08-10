@@ -3,6 +3,11 @@
     <button
       type="button"
       class="select-menu-trigger"
+      :class="
+        variant === 'flat'
+          ? ['feedback-select-trigger', isOpen ? 'border-[var(--info-1)]!' : '']
+          : ''
+      "
       aria-haspopup="listbox"
       :aria-expanded="isOpen"
       :aria-label="ariaLabel"
@@ -165,6 +170,7 @@ onUnmounted(() => document.removeEventListener('pointerdown', handleOutsidePoint
   gap: 10px;
   padding: 0 11px 0 12px;
   color: var(--text-1);
+  appearance: none;
   font: inherit;
   font-size: 14px;
   text-align: left;
@@ -178,6 +184,25 @@ onUnmounted(() => document.removeEventListener('pointerdown', handleOutsidePoint
     background-color 0.15s ease;
 }
 
+.select-menu.flat .select-menu-trigger,
+.select-menu.flat .select-menu-trigger:focus-visible,
+.select-menu.flat.open .select-menu-trigger {
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+.select-menu.flat .select-menu-trigger:focus-visible {
+  outline: 2px solid var(--info-1) !important;
+  outline-offset: 2px;
+}
+
+.select-menu.flat .select-menu-option,
+.select-menu.flat .select-menu-option:focus-visible {
+  appearance: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
 .select-menu-trigger:hover {
   border-color: color-mix(in srgb, var(--btn-primary-bg) 55%, var(--switcher-border));
 }
@@ -187,23 +212,6 @@ onUnmounted(() => document.removeEventListener('pointerdown', handleOutsidePoint
   outline: none;
   border-color: var(--btn-primary-bg);
   box-shadow: 0 0 0 2px var(--nav-shadow);
-}
-
-.select-menu.flat .select-menu-trigger {
-  height: 44px;
-  padding: 0 12px;
-  background: var(--bg-soft);
-  border: 0;
-  border-bottom: 2px solid var(--switcher-border);
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.select-menu.flat .select-menu-trigger:hover,
-.select-menu.flat .select-menu-trigger:focus-visible,
-.select-menu.flat.open .select-menu-trigger {
-  border-bottom-color: var(--info-1);
-  box-shadow: none;
 }
 
 .select-menu-value {

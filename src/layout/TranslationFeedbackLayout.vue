@@ -18,7 +18,7 @@
           </p>
         </div>
         <button
-          class="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-lg border-0 bg-[var(--btn-primary-bg)] px-5 py-3 font-inherit font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2 lt-sm:w-full disabled:cursor-wait disabled:opacity-60"
+          class="feedback-flat-control inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-lg border-0 bg-[var(--btn-primary-bg)] px-5 py-3 font-inherit font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2 lt-sm:w-full disabled:cursor-wait disabled:opacity-60"
           type="button"
           @click="showForm = !showForm"
         >
@@ -29,7 +29,12 @@
         </button>
       </section>
 
-      <Transition name="feedback-form">
+      <Transition
+        enter-active-class="grid-rows-[1fr] overflow-hidden opacity-100 transition-[grid-template-rows,opacity,margin-bottom,padding,border-width] duration-[280ms] ease-out motion-reduce:transition-none"
+        leave-active-class="grid-rows-[1fr] overflow-hidden opacity-100 transition-[grid-template-rows,opacity,margin-bottom,padding,border-width] duration-[280ms] ease-out motion-reduce:transition-none"
+        enter-from-class="grid-rows-[0fr] mb-0 border-0 py-0 opacity-0"
+        leave-to-class="grid-rows-[0fr] mb-0 border-0 py-0 opacity-0"
+      >
         <section
           v-if="showForm"
           class="feedback-form-panel mb-6 grid scroll-mt-20 rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-white)] p-6 lt-sm:p-4"
@@ -71,7 +76,7 @@
                   </span>
                   <input
                     v-model.trim="form.originalName"
-                    class="box-border min-h-11 w-full rounded-none border-0 bg-[var(--bg-soft)] px-3 py-2.5 font-inherit text-[var(--text-dark)] [border-bottom:2px_solid_var(--switcher-border)] transition-colors placeholder:text-[var(--text-muted)] hover:[border-bottom-color:var(--info-1)] focus:outline-none focus:[border-bottom-color:var(--info-1)]"
+                    class="feedback-field"
                     maxlength="120"
                     required
                     :placeholder="$t('translationFeedback.originalNamePlaceholder')"
@@ -80,29 +85,44 @@
                 </label>
 
                 <fieldset
-                  class="m-0 flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2 border-0 p-0 sm:col-span-2 lt-sm:grid lt-sm:grid-cols-2 lt-sm:gap-2"
+                  class="m-0 flex min-w-0 flex-wrap items-center gap-x-3 gap-y-3 border-0 p-0 leading-[1.45] sm:col-span-2 lt-sm:grid lt-sm:grid-cols-2 lt-sm:gap-x-3 lt-sm:gap-y-4"
                 >
                   <legend
-                    class="m-0 mb-1 w-full basis-full text-sm font-600 text-[var(--text-dark)] lt-sm:col-span-2"
+                    class="m-0 mb-1 w-full basis-full text-[0.94rem] font-600 text-[var(--text-dark)] lt-sm:col-span-2"
                   >
                     {{ $t('translationFeedback.typeLabel') }}
                   </legend>
                   <label
                     v-for="subtype in subtypeOptions"
                     :key="subtype"
-                    class="inline-flex min-h-8 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border border-transparent px-2.5 py-1 text-sm font-600 transition-colors focus-within:outline-2 focus-within:outline-[var(--info-1)] focus-within:outline-offset-2 lt-sm:w-full"
+                    class="feedback-flat-control feedback-type-option box-border inline-flex min-h-10 min-w-[7.5rem] cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-lg border px-3.5 py-1.5 text-center text-[0.94rem] font-600 text-[var(--text-dark)] focus-within:relative focus-within:z-1 focus-within:outline-2 focus-within:outline-[var(--info-1)] focus-within:outline-offset-0 lt-sm:min-w-0 lt-sm:w-full"
                     :class="
                       form.subtypes.includes(subtype)
-                        ? 'bg-transparent text-[var(--info-1)]'
-                        : 'bg-transparent text-[var(--text-medium)] hover:bg-[var(--switcher-item-hover)] hover:text-[var(--text-dark)]'
+                        ? 'border-[var(--info-1)] bg-[var(--info-soft)] font-700 text-[var(--info-1)]'
+                        : 'border-[color-mix(in_srgb,var(--switcher-border)_86%,transparent)] bg-transparent font-600 text-[var(--text-dark)] hover:border-[var(--info-1)] hover:bg-[var(--switcher-item-hover)]'
                     "
                   >
-                    <input
-                      v-model="form.subtypes"
-                      class="m-0 h-4 w-4 shrink-0 cursor-pointer appearance-auto accent-[var(--info-1)]"
-                      type="checkbox"
-                      :value="subtype"
-                    />
+                    <span
+                      class="relative grid size-4 shrink-0 place-items-center rounded-[3px] border transition-colors duration-150"
+                      :class="
+                        form.subtypes.includes(subtype)
+                          ? 'border-[var(--info-1)] bg-[var(--info-1)]'
+                          : 'border-[var(--text-muted)] bg-[var(--bg-white)]'
+                      "
+                    >
+                      <input
+                        v-model="form.subtypes"
+                        class="absolute inset-0 m-0 size-full cursor-pointer opacity-0"
+                        type="checkbox"
+                        :value="subtype"
+                      />
+                      <Icon
+                        v-if="form.subtypes.includes(subtype)"
+                        class="pointer-events-none size-3 text-white"
+                        icon="lucide:check"
+                        aria-hidden="true"
+                      />
+                    </span>
                     <span>{{ $t(`translationFeedback.types.${form.category}.${subtype}`) }}</span>
                   </label>
                 </fieldset>
@@ -119,7 +139,7 @@
                 <button
                   v-for="candidate in suggestions"
                   :key="candidate.id"
-                  class="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-alt)] px-3 py-3 text-left font-inherit text-[var(--text-dark)] transition-colors hover:border-[var(--info-1)]"
+                  class="feedback-flat-control flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-alt)] px-3 py-3 text-left font-inherit text-[var(--text-dark)] transition-colors hover:border-[var(--info-1)]"
                   :class="{
                     'border-[var(--info-1)] bg-[var(--info-soft)]':
                       form.selectedExistingItemId === candidate.id,
@@ -144,7 +164,7 @@
                 </button>
                 <button
                   v-if="form.selectedExistingItemId"
-                  class="inline-flex min-h-9 w-fit cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-[var(--switcher-border)] bg-transparent px-3 py-2 font-inherit text-sm font-600 text-[var(--info-1)] hover:border-[var(--info-1)]"
+                  class="feedback-flat-control inline-flex min-h-9 w-fit cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-[var(--switcher-border)] bg-transparent px-3 py-2 font-inherit text-sm font-600 text-[var(--info-1)] hover:border-[var(--info-1)]"
                   type="button"
                   @click="form.selectedExistingItemId = undefined"
                 >
@@ -164,7 +184,7 @@
                     </span>
                   </div>
                   <div
-                    class="flex items-start gap-2 rounded-md border-l-3 border-[var(--info-1)] bg-[var(--info-soft)] px-3 py-2.5 text-sm leading-relaxed text-[var(--text-dark)]"
+                    class="feedback-source-note flex items-start gap-2 rounded-lg px-3 py-2.5 text-sm leading-relaxed text-[var(--text-dark)]"
                     role="note"
                   >
                     <Icon
@@ -174,9 +194,9 @@
                     />
                     <div class="grid gap-1">
                       <strong>{{ $t('translationFeedback.sourceUrlHint') }}</strong>
-                      <strong class="text-sm leading-relaxed text-[var(--text-dark)]">
+                      <span class="text-sm leading-relaxed text-[var(--text-dark)]">
                         {{ $t('translationFeedback.sourceUrlContact') }}
-                      </strong>
+                      </span>
                     </div>
                   </div>
                   <div class="grid gap-2">
@@ -194,7 +214,7 @@
                       <div class="relative min-w-0 flex-1">
                         <input
                           v-model.trim="form.urls[index]"
-                          class="box-border min-h-11 w-full rounded-none border-0 bg-[var(--bg-soft)] px-3 py-2.5 font-inherit text-[var(--text-dark)] [border-bottom:2px_solid_var(--switcher-border)] transition-colors placeholder:text-[var(--text-muted)] hover:[border-bottom-color:var(--info-1)] focus:outline-none focus:[border-bottom-color:var(--info-1)]"
+                          class="feedback-field"
                           :class="{ 'pr-12': index > 0 }"
                           type="url"
                           :required="index === 0 && !form.selectedExistingItemId"
@@ -203,7 +223,7 @@
                         />
                         <button
                           v-if="index > 0"
-                          class="absolute inset-y-0 right-0 inline-flex w-11 cursor-pointer items-center justify-center border-0 bg-transparent p-0 text-red-600 transition-colors hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-red-500 focus-visible:outline-offset-[-2px] dark:text-red-400 dark:hover:bg-red-950/30"
+                          class="feedback-flat-control absolute inset-y-0 right-0 inline-flex w-11 cursor-pointer items-center justify-center border-0 bg-transparent p-0 text-red-600 transition-colors hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-red-500 focus-visible:outline-offset-[-2px] dark:text-red-400 dark:hover:bg-red-950/30"
                           type="button"
                           :aria-label="$t('translationFeedback.removeUrl')"
                           @click="removeUrl(index)"
@@ -215,7 +235,7 @@
                   </div>
                   <button
                     v-if="form.urls.length < 3"
-                    class="inline-flex min-h-9 w-fit cursor-pointer items-center justify-center gap-2 rounded-md border border-dashed border-[var(--switcher-border)] bg-transparent px-3 py-2 font-inherit text-sm font-600 text-[var(--info-1)] hover:border-[var(--info-1)]"
+                    class="feedback-flat-control inline-flex min-h-9 w-fit cursor-pointer items-center justify-center gap-2 rounded-md border border-dashed border-[var(--switcher-border)] bg-transparent px-3 py-2 font-inherit text-sm font-600 text-[var(--info-1)] hover:border-[var(--info-1)]"
                     type="button"
                     @click="form.urls.push('')"
                   >
@@ -230,7 +250,7 @@
                   </span>
                   <textarea
                     v-model.trim="form.note"
-                    class="box-border min-h-32 w-full resize-y rounded-none border-0 bg-[var(--bg-soft)] px-3 py-2.5 font-inherit text-[var(--text-dark)] [border-bottom:2px_solid_var(--switcher-border)] transition-colors placeholder:text-[var(--text-muted)] hover:[border-bottom-color:var(--info-1)] focus:outline-none focus:[border-bottom-color:var(--info-1)]"
+                    class="feedback-field feedback-note-field"
                     maxlength="500"
                     rows="4"
                     :placeholder="$t('translationFeedback.notePlaceholder')"
@@ -246,7 +266,7 @@
               </p>
 
               <button
-                class="inline-flex min-h-11 w-fit min-w-40 cursor-pointer items-center justify-center gap-2 rounded-lg border-0 bg-[var(--btn-primary-bg)] px-4 py-3 font-inherit font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2 lt-sm:w-full disabled:cursor-wait disabled:opacity-60"
+                class="feedback-flat-control inline-flex min-h-11 w-fit min-w-40 cursor-pointer items-center justify-center gap-2 rounded-lg border-0 bg-[var(--btn-primary-bg)] px-4 py-3 font-inherit font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2 lt-sm:w-full disabled:cursor-wait disabled:opacity-60"
                 type="submit"
                 :disabled="submitting"
               >
@@ -283,7 +303,7 @@
             {{ $t('translationFeedback.listTitle') }}
           </h2>
           <button
-            class="inline-flex h-9 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md border-0 bg-[var(--btn-primary-bg)] px-3 font-inherit text-sm font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2 disabled:cursor-wait disabled:opacity-60"
+            class="feedback-flat-control inline-flex h-9 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md border-0 bg-[var(--btn-primary-bg)] px-3 font-inherit text-sm font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2 disabled:cursor-wait disabled:opacity-60"
             type="button"
             :disabled="loading"
             :aria-busy="loading"
@@ -300,14 +320,14 @@
         </div>
 
         <div
-          class="mb-3 mt-5 inline-flex max-w-full flex-wrap gap-1 rounded-full bg-[var(--bg-soft)] p-1 lt-sm:grid lt-sm:w-full lt-sm:grid-cols-3"
+          class="feedback-tab-group mb-3 mt-5 lt-sm:grid lt-sm:w-full lt-sm:grid-cols-3"
           role="tablist"
           :aria-label="$t('translationFeedback.categoryLabel')"
         >
           <button
             v-for="category in categories"
             :key="category"
-            class="inline-flex min-h-9 cursor-pointer items-center justify-center rounded-full border-0 px-3 py-2 font-inherit transition-colors lt-sm:w-full lt-sm:px-2"
+            class="feedback-tab"
             :class="
               selectedCategory === category
                 ? 'bg-[var(--info-soft)] font-700 text-[var(--info-1)]'
@@ -323,18 +343,20 @@
         </div>
 
         <div
-          class="mb-3 ml-1 inline-flex max-w-full flex-wrap gap-1 rounded-full bg-[var(--bg-soft)] p-1 lt-sm:ml-0 lt-sm:grid lt-sm:w-full lt-sm:grid-cols-3"
+          class="feedback-tab-group mb-3 ml-1 lt-sm:ml-0 lt-sm:grid lt-sm:w-full lt-sm:grid-cols-3"
           role="tablist"
           :aria-label="$t('translationFeedback.typeLabel')"
         >
           <button
-            class="inline-flex min-h-9 cursor-pointer items-center justify-center rounded-full border-0 px-3 py-2 font-inherit transition-colors lt-sm:w-full lt-sm:px-2"
+            class="feedback-tab"
             :class="
               !selectedSubtype
                 ? 'bg-[var(--info-soft)] font-700 text-[var(--info-1)]'
                 : 'bg-transparent text-[var(--text-medium)] hover:bg-[var(--switcher-item-hover)] hover:text-[var(--info-1)]'
             "
             type="button"
+            role="tab"
+            :aria-selected="!selectedSubtype"
             @click="selectedSubtype = ''"
           >
             {{ $t('translationFeedback.allTypes') }}
@@ -342,13 +364,15 @@
           <button
             v-for="subtype in activeSubtypeOptions"
             :key="subtype"
-            class="inline-flex min-h-9 cursor-pointer items-center justify-center rounded-full border-0 px-3 py-2 font-inherit transition-colors lt-sm:w-full lt-sm:px-2"
+            class="feedback-tab"
             :class="
               selectedSubtype === subtype
                 ? 'bg-[var(--info-soft)] font-700 text-[var(--info-1)]'
                 : 'bg-transparent text-[var(--text-medium)] hover:bg-[var(--switcher-item-hover)] hover:text-[var(--info-1)]'
             "
             type="button"
+            role="tab"
+            :aria-selected="selectedSubtype === subtype"
             @click="selectedSubtype = subtype"
           >
             {{ $t(`translationFeedback.types.${selectedCategory}.${subtype}`) }}
@@ -423,7 +447,7 @@
                   {{ item.voteCount }}
                 </span>
                 <button
-                  class="inline-flex min-h-9 cursor-pointer items-center justify-center gap-2 rounded-lg border-0 bg-[var(--btn-primary-bg)] px-3 py-2 font-inherit text-sm font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] disabled:cursor-wait disabled:opacity-60"
+                  class="feedback-flat-control inline-flex min-h-9 cursor-pointer items-center justify-center gap-2 rounded-lg border-0 bg-[var(--btn-primary-bg)] px-3 py-2 font-inherit text-sm font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] disabled:cursor-wait disabled:opacity-60"
                   :class="{
                     'bg-[var(--tip-1)] hover:bg-[var(--tip-1)] dark:text-[#10251b]':
                       item.votedByCurrentVisitor,
@@ -465,7 +489,7 @@
           :aria-label="$t('translationFeedback.pagination')"
         >
           <button
-            class="inline-flex min-h-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-alt)] px-3 py-2 text-sm text-[var(--text-medium)] hover:border-[var(--btn-primary-bg)] hover:text-[var(--info-1)] lt-sm:px-2 disabled:cursor-not-allowed disabled:opacity-60"
+            class="feedback-flat-control inline-flex min-h-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-alt)] px-3 py-2 text-sm text-[var(--text-medium)] hover:border-[var(--btn-primary-bg)] hover:text-[var(--info-1)] lt-sm:px-2 disabled:cursor-not-allowed disabled:opacity-60"
             type="button"
             :disabled="currentPage === 1"
             :aria-label="$t('translationFeedback.previousPage')"
@@ -476,7 +500,7 @@
           <button
             v-for="page in pageCount"
             :key="page"
-            class="inline-flex min-h-9 min-w-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-alt)] px-2 py-2 text-sm text-[var(--text-medium)] hover:border-[var(--btn-primary-bg)] hover:text-[var(--info-1)]"
+            class="feedback-flat-control inline-flex min-h-9 min-w-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-alt)] px-2 py-2 text-sm text-[var(--text-medium)] hover:border-[var(--btn-primary-bg)] hover:text-[var(--info-1)]"
             :class="{
               'border-[var(--btn-primary-bg)] bg-[var(--info-soft)] text-[var(--info-1)]':
                 currentPage === page,
@@ -489,7 +513,7 @@
             {{ page }}
           </button>
           <button
-            class="inline-flex min-h-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-alt)] px-3 py-2 text-sm text-[var(--text-medium)] hover:border-[var(--btn-primary-bg)] hover:text-[var(--info-1)] lt-sm:px-2 disabled:cursor-not-allowed disabled:opacity-60"
+            class="feedback-flat-control inline-flex min-h-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-alt)] px-3 py-2 text-sm text-[var(--text-medium)] hover:border-[var(--btn-primary-bg)] hover:text-[var(--info-1)] lt-sm:px-2 disabled:cursor-not-allowed disabled:opacity-60"
             type="button"
             :disabled="currentPage === pageCount"
             :aria-label="$t('translationFeedback.nextPage')"
@@ -761,34 +785,3 @@ function onCoverError(event: Event) {
   if (!image.src.endsWith('/imgs/missing.png')) image.src = '/imgs/missing.png'
 }
 </script>
-
-<style scoped>
-.feedback-form-enter-active,
-.feedback-form-leave-active {
-  grid-template-rows: 1fr;
-  overflow: hidden;
-  opacity: 1;
-  transition:
-    grid-template-rows 280ms ease,
-    opacity 220ms ease,
-    margin-bottom 280ms ease,
-    padding 280ms ease,
-    border-width 280ms ease;
-}
-
-.feedback-form-enter-from,
-.feedback-form-leave-to {
-  grid-template-rows: 0fr;
-  margin-bottom: 0;
-  border-width: 0;
-  padding-block: 0;
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .feedback-form-enter-active,
-  .feedback-form-leave-active {
-    transition: none;
-  }
-}
-</style>
