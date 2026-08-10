@@ -1,55 +1,108 @@
 <template>
   <div
-    v-if="visible"
+    v-if="widgetVisible"
     ref="widgetElement"
-    class="group fixed bottom-[max(2rem,env(safe-area-inset-bottom))] right-[max(4rem,env(safe-area-inset-right))] z-30 h-14 w-14 cursor-grab touch-none select-none text-white shadow-[var(--vp-shadow-1)] transition-[box-shadow,opacity] hover:shadow-lg lt-sm:bottom-[max(1.5rem,env(safe-area-inset-bottom))] lt-sm:right-[max(2.5rem,env(safe-area-inset-right))]"
-    :class="dragging ? 'cursor-grabbing opacity-80 transition-none' : ''"
+    class="group fixed right-[max(1.15rem,env(safe-area-inset-right))] bottom-[max(1.05rem,env(safe-area-inset-bottom))] z-[1100] flex h-36 w-24 items-end justify-center overflow-visible cursor-grab touch-none select-none opacity-90 transition-opacity duration-[180ms] ease-out hover:opacity-100 focus-within:opacity-100 max-[640px]:right-[max(0.7rem,env(safe-area-inset-right))] max-[640px]:bottom-[max(0.75rem,env(safe-area-inset-bottom))] max-[640px]:h-32 max-[640px]:w-22 motion-reduce:transition-none"
+    :class="{ 'cursor-grabbing opacity-80': dragging, 'opacity-100': bubbleVisible }"
     :style="widgetStyle"
     @pointerdown="startDrag"
+    @mouseenter="handlePointerEnter"
+    @mouseleave="handlePointerLeave"
   >
     <button
-      class="block h-full w-full cursor-pointer overflow-hidden border-0 bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2"
+      class="feedback-widget-close group-hover:opacity-100 group-focus-within:opacity-100"
+      type="button"
+      :aria-label="$t('translationFeedback.widgetClose')"
+      :title="$t('translationFeedback.widgetClose')"
+      @pointerdown.stop
+      @click.stop="dismissWidget"
+    >
+      <Icon icon="lucide:x" aria-hidden="true" />
+    </button>
+
+    <TranslationFeedbackWidgetBubble :text="bubbleText" :visible="bubbleVisible" />
+
+    <button
+      class="feedback-flat-control grid h-full w-full cursor-[inherit] items-end justify-items-center border-0 bg-transparent p-0 text-inherit focus-visible:rounded-xl focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-3"
       type="button"
       :aria-label="$t('translationFeedback.widgetLabel')"
+      aria-describedby="translation-feedback-widget-bubble"
       @click="openPage"
+      @focus="handleFocus"
+      @blur="handleBlur"
     >
-      <img
-        class="h-full w-full object-cover [image-rendering:pixelated]"
-        src="/imgs/wulian.png"
-        alt=""
-        draggable="false"
-      />
+      <MinecraftPlayerModel :key="activityRevision" :activity="activity" />
     </button>
-    <span
-      class="pointer-events-none absolute bottom-[calc(100%+0.5rem)] left-1/2 z-40 w-max max-w-[min(18rem,calc(100vw_-_2rem))] -translate-x-1/2 rounded-lg border border-white/20 bg-[color-mix(in_srgb,var(--text-dark)_92%,transparent)] px-3 py-2 text-xs font-500 leading-snug text-white shadow-[var(--vp-shadow-1)] transition-opacity"
-      :class="
-        showIntro
-          ? 'visible opacity-100'
-          : 'invisible opacity-0 group-hover:visible group-hover:opacity-100'
-      "
-      role="tooltip"
-    >
-      {{ $t('translationFeedback.widgetLabel') }}
-    </span>
   </div>
+
+  <button
+    v-else-if="visible"
+    class="feedback-widget-restore"
+    type="button"
+    :aria-label="$t('translationFeedback.widgetRestore')"
+    @click="restoreWidget"
+  >
+    <Icon icon="lucide:rotate-ccw" aria-hidden="true" />
+    {{ $t('translationFeedback.widgetRestore') }}
+  </button>
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+
+import MinecraftPlayerModel from '@/components/MinecraftPlayerModel.vue'
+import TranslationFeedbackWidgetBubble from '@/components/TranslationFeedbackWidgetBubble.vue'
+import { getTranslationFeedbackWidgetCopy } from '@/locales/translationFeedbackWidget'
+import { isAprilFoolsSkippedPath } from '@/utils/aprilFools'
 
 const DRAG_THRESHOLD = 5
 const MIN_VIEWPORT_MARGIN = 8
+const IDLE_DELAY = 8_000
+const ACTIVITY_THROTTLE = 400
+const EVENT_COOLDOWN = 1_200
+const SCROLL_THROTTLE = 360
+const SCROLL_SETTLE_DELAY = 320
+const DISMISSED_STORAGE_KEY = 'vmct.translation-feedback-widget.dismissed'
 
+type WidgetActivity = 'idle' | 'wave' | 'walk' | 'jump' | 'cheer' | 'point'
+const ACTIVITY_DURATION: Record<Exclude<WidgetActivity, 'idle'>, number> = {
+  wave: 1_350,
+  walk: 2_600,
+  jump: 1_200,
+  cheer: 1_200,
+  point: 1_500,
+}
+
+const { t, locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const isFeedbackPage = computed(() => route.path === '/translation-feedback')
+const visible = computed(() => !isAprilFoolsSkippedPath(route.path) && !isFeedbackPage.value)
+const dismissed = ref(false)
+const widgetVisible = computed(() => visible.value && !dismissed.value)
 const widgetElement = ref<HTMLElement | null>(null)
 const dragging = ref(false)
 const suppressClick = ref(false)
-const showIntro = ref(false)
+const bubbleVisible = ref(false)
+const bubbleText = ref('')
+const activity = ref<WidgetActivity>('idle')
+const activityRevision = ref(0)
+const messageCount = ref(0)
 const position = ref<{ x: number; y: number } | null>(null)
-let introTimer: number | undefined
+const widgetCopy = computed(() => getTranslationFeedbackWidgetCopy(locale.value))
+const widgetMessages = computed(() => widgetCopy.value.messages.filter(Boolean))
+const idleActivities = ['walk', 'jump', 'point', 'cheer'] as const
+let idleActivityIndex = 0
+
+let bubbleTimer: number | undefined
+let idleTimer: number | undefined
+let activityTimer: number | undefined
+let scrollTimer: number | undefined
+let lastActivityAt = 0
+let lastEventAt = 0
+let lastScrollAt = 0
 
 const dragState = {
   pointerId: -1,
@@ -59,7 +112,6 @@ const dragState = {
   startY: 0,
 }
 
-const visible = computed(() => !isFeedbackPage.value)
 const widgetStyle = computed(() => {
   if (!position.value) return undefined
 
@@ -68,17 +120,214 @@ const widgetStyle = computed(() => {
 
 onMounted(() => {
   window.addEventListener('resize', keepWidgetInViewport)
-  showIntro.value = true
-  introTimer = window.setTimeout(() => {
-    showIntro.value = false
-  }, 3500)
+  window.addEventListener('pointermove', handleUserActivity, { passive: true })
+  window.addEventListener('pointerdown', handleUserActivity, { passive: true })
+  window.addEventListener('keydown', handleUserActivity, { passive: true })
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('online', handleOnline, { passive: true })
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+
+  dismissed.value = readDismissedState()
+
+  if (widgetVisible.value) {
+    showBubble()
+    resetIdleTimer()
+  }
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', keepWidgetInViewport)
-  if (introTimer !== undefined) window.clearTimeout(introTimer)
-  stopPointerTracking()
+  window.removeEventListener('pointermove', handleUserActivity)
+  window.removeEventListener('pointerdown', handleUserActivity)
+  window.removeEventListener('keydown', handleUserActivity)
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('online', handleOnline)
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
+  clearTimers()
+  cancelDrag()
 })
+
+watch(widgetVisible, (isVisible) => {
+  if (isVisible) {
+    showBubble()
+    resetIdleTimer()
+    return
+  }
+
+  bubbleVisible.value = false
+  clearTimers()
+  activity.value = 'idle'
+  cancelDrag()
+})
+
+watch(
+  () => route.path,
+  (path, previousPath) => {
+    if (path === '/translation-feedback' || previousPath === '/translation-feedback') {
+      return
+    }
+
+    triggerEvent('wave', ACTIVITY_DURATION.wave, true)
+  },
+)
+
+function showBubble(
+  nextActivity: WidgetActivity | null = 'wave',
+  duration = ACTIVITY_DURATION.wave,
+) {
+  const configuredMessages = widgetMessages.value
+  if (messageCount.value === 0) {
+    bubbleText.value = widgetCopy.value.first
+  } else {
+    const randomIndex = configuredMessages.length
+      ? Math.floor(Math.random() * configuredMessages.length)
+      : -1
+    bubbleText.value = configuredMessages[randomIndex] || t('translationFeedback.widgetLabel')
+  }
+
+  messageCount.value += 1
+  bubbleVisible.value = true
+  window.clearTimeout(bubbleTimer)
+  bubbleTimer = window.setTimeout(() => {
+    bubbleVisible.value = false
+  }, 4200)
+
+  if (nextActivity) setActivity(nextActivity, duration)
+}
+
+function handlePointerEnter() {
+  if (dragging.value) return
+  showBubble()
+  resetIdleTimer()
+}
+
+function handlePointerLeave() {
+  window.clearTimeout(bubbleTimer)
+  bubbleTimer = window.setTimeout(() => {
+    bubbleVisible.value = false
+  }, 1600)
+  resetIdleTimer()
+}
+
+function handleFocus() {
+  showBubble('cheer', ACTIVITY_DURATION.cheer)
+  resetIdleTimer()
+}
+
+function handleBlur() {
+  handlePointerLeave()
+}
+
+function handleUserActivity() {
+  if (!widgetVisible.value) return
+
+  const now = Date.now()
+  if (now - lastActivityAt < ACTIVITY_THROTTLE) return
+
+  lastActivityAt = now
+  resetIdleTimer()
+}
+
+function handleScroll() {
+  handleUserActivity()
+  const now = Date.now()
+
+  if (now - lastScrollAt >= SCROLL_THROTTLE) {
+    lastScrollAt = now
+    triggerEvent('walk', ACTIVITY_DURATION.walk)
+  }
+
+  window.clearTimeout(scrollTimer)
+  scrollTimer = window.setTimeout(() => {
+    lastScrollAt = 0
+    resetIdleTimer()
+  }, SCROLL_SETTLE_DELAY)
+}
+
+function handleVisibilityChange() {
+  if (document.visibilityState === 'visible') {
+    triggerEvent('wave', ACTIVITY_DURATION.wave, true)
+  }
+}
+
+function handleOnline() {
+  triggerEvent('cheer', ACTIVITY_DURATION.cheer, true)
+}
+
+function triggerEvent(nextActivity: WidgetActivity, duration: number, withBubble = false) {
+  if (!widgetVisible.value || dragging.value) return
+
+  const now = Date.now()
+  if (now - lastEventAt < EVENT_COOLDOWN) return
+
+  lastEventAt = now
+  if (withBubble) showBubble(nextActivity, duration)
+  else setActivity(nextActivity, duration)
+  resetIdleTimer()
+}
+
+function resetIdleTimer() {
+  window.clearTimeout(idleTimer)
+  if (!widgetVisible.value) return
+
+  idleTimer = window.setTimeout(() => {
+    const nextActivity = idleActivities[idleActivityIndex]
+    idleActivityIndex = (idleActivityIndex + 1) % idleActivities.length
+    showBubble(null)
+    setActivity(nextActivity, ACTIVITY_DURATION[nextActivity])
+    resetIdleTimer()
+  }, IDLE_DELAY)
+}
+
+function setActivity(nextActivity: WidgetActivity, duration: number) {
+  activity.value = nextActivity
+  activityRevision.value += 1
+  window.clearTimeout(activityTimer)
+  activityTimer = window.setTimeout(() => {
+    activity.value = 'idle'
+    activityRevision.value += 1
+  }, duration)
+}
+
+function clearTimers() {
+  window.clearTimeout(bubbleTimer)
+  window.clearTimeout(idleTimer)
+  window.clearTimeout(activityTimer)
+  window.clearTimeout(scrollTimer)
+  lastScrollAt = 0
+}
+
+function readDismissedState() {
+  try {
+    return window.localStorage.getItem(DISMISSED_STORAGE_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+function dismissWidget() {
+  dismissed.value = true
+  bubbleVisible.value = false
+  activity.value = 'idle'
+  clearTimers()
+  cancelDrag()
+
+  try {
+    window.localStorage.setItem(DISMISSED_STORAGE_KEY, '1')
+  } catch {
+    // Private browsing may disable localStorage; the in-memory dismissal still works.
+  }
+}
+
+function restoreWidget() {
+  dismissed.value = false
+
+  try {
+    window.localStorage.removeItem(DISMISSED_STORAGE_KEY)
+  } catch {
+    // Ignore storage failures and keep the widget available for this session.
+  }
+}
 
 function openPage() {
   if (suppressClick.value) {
@@ -121,6 +370,7 @@ function moveDrag(event: PointerEvent) {
     position.value = { x: bounds.left, y: bounds.top }
     dragging.value = true
     suppressClick.value = true
+    bubbleVisible.value = false
   }
 
   const element = widgetElement.value
@@ -148,6 +398,7 @@ function endDrag(event: PointerEvent) {
   stopPointerTracking()
   if (dragging.value) {
     dragging.value = false
+    triggerEvent('cheer', ACTIVITY_DURATION.cheer)
     window.setTimeout(() => {
       suppressClick.value = false
     }, 0)
@@ -161,6 +412,13 @@ function stopPointerTracking() {
   window.removeEventListener('pointermove', moveDrag)
   window.removeEventListener('pointerup', endDrag)
   window.removeEventListener('pointercancel', endDrag)
+}
+
+function cancelDrag() {
+  stopPointerTracking()
+  dragging.value = false
+  suppressClick.value = false
+  dragState.pointerId = -1
 }
 
 function keepWidgetInViewport() {

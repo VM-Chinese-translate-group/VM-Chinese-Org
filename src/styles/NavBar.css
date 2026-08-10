@@ -4,9 +4,9 @@
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: var(--nav-bg, rgba(247, 250, 249, 0.8));
-  backdrop-filter: saturate(140%) blur(18px);
-  -webkit-backdrop-filter: saturate(140%) blur(18px);
+  background: var(--nav-bg, rgba(247, 250, 249, 0.8));
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
   box-shadow: 0 1px 2px var(--nav-shadow, rgba(0, 0, 0, 0.05));
   z-index: 1000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -363,7 +363,9 @@
     left: 0;
     width: 100%;
     height: calc(100vh - 64px);
-    background-color: var(--nav-menu-bg, #f7faf9);
+    background: var(--nav-bg, rgba(247, 250, 249, 0.8));
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
@@ -413,10 +415,12 @@
   }
 
   .navbar-utils {
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.75rem;
     width: 100%;
   }
-
   .navbar-more,
   .navbar-measure {
     display: none;

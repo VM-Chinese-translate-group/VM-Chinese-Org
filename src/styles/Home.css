@@ -205,12 +205,11 @@
 
 .hero-main-card {
   position: relative;
-  display: block;
   width: 100%;
   height: 100%;
   min-width: 0;
   border-radius: 8px;
-  color: #ffffff;
+  color: var(--home-text);
   text-decoration: none;
 }
 
@@ -218,32 +217,6 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, transparent 24%, rgba(0, 0, 0, 0.7) 100%);
-}
-
-.hero-main-content {
-  position: absolute;
-  right: 22px;
-  bottom: 22px;
-  left: 22px;
-  display: grid;
-  gap: 8px;
-}
-
-.hero-main-content strong {
-  font-size: clamp(1.2rem, 2.1vw, 1.75rem);
-  line-height: 1.18;
-}
-
-.hero-main-content small {
-  display: -webkit-box;
-  overflow: hidden;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.94rem;
-  font-weight: 700;
-  line-height: 1.5;
-  -webkit-box-orient: vertical;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
 }
 
 .hero-slide-enter-active,
@@ -266,7 +239,6 @@
 .hero-carousel-indicators {
   position: absolute;
   right: 24px;
-  bottom: 20px;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -297,16 +269,6 @@
 .hero-carousel-indicators button:focus-visible {
   outline: 2px solid var(--home-accent);
   outline-offset: 3px;
-}
-
-.hero-main-content em {
-  width: fit-content;
-  padding: 5px 10px;
-  border-radius: 8px;
-  background: rgba(69, 160, 73, 0.86);
-  font-style: normal;
-  font-size: 0.78rem;
-  font-weight: 850;
 }
 
 .home-stats {
@@ -796,7 +758,6 @@
 
   .hero-carousel-indicators {
     right: 16px;
-    bottom: 14px;
     gap: 7px;
   }
 

@@ -10,6 +10,7 @@ export default {
     installGuide: '安裝教學',
     more: '更多',
     menu: '主選單',
+    feedbackCta: '給漢化組找事',
   },
   search: {
     placeholder: '搜尋...',
@@ -153,7 +154,7 @@ export default {
     packVersion: '適配版本',
     status: {
       maintaining: '持續跟進',
-      translating: '漢化進行中',
+      translating: '翻譯中',
       stopped: '暫不跟進更新',
     },
     statusDescription: {
@@ -193,6 +194,8 @@ export default {
   translationFeedback: {
     widgetLabel: '想讓我們漢化什麼？',
     widgetTooltip: '投票徵集漢化項目，也可以提交你想漢化的項目',
+    widgetClose: '關閉漢化小人',
+    widgetRestore: '顯示漢化小人',
     dismiss: '暫時關閉意見徵集入口',
     kicker: 'VM 漢化意見徵集',
     title: '你想讓我們漢化什麼？',
@@ -208,7 +211,7 @@ export default {
     originalNamePlaceholder: '例如：Create: Above and Beyond',
     sourceUrlLabel: '來源連結',
     sourceUrlHint: '僅支援 CurseForge、Modrinth、Planet Minecraft、Minecraft Maps、MapVerse',
-    sourceUrlContact: '如果想讓我們漢化的項目沒有這些連結，請單獨加群聯繫我們。',
+    sourceUrlContact: '如果項目沒有上述連結，請加群聯繫我們。',
     sourceUrlPlaceholder: '貼上項目頁面連結',
     removeUrl: '移除這個連結',
     addUrl: '新增另一個來源連結',
@@ -271,7 +274,7 @@ export default {
     status: {
       candidate: '候選中',
       planned: '已列入計畫',
-      translating: '漢化進行中',
+      translating: '翻譯中',
       completed: '已完成',
     },
   },

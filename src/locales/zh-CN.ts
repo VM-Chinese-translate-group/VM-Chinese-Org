@@ -10,6 +10,7 @@ export default {
     installGuide: '安装教程',
     more: '更多',
     menu: '主菜单',
+    feedbackCta: '给汉化组找事',
   },
   search: {
     placeholder: '搜索...',
@@ -152,7 +153,7 @@ export default {
     packVersion: '适配版本',
     status: {
       maintaining: '持续跟进',
-      translating: '汉化进行中',
+      translating: '翻译中',
       stopped: '暂不跟进更新',
     },
     statusDescription: {
@@ -192,6 +193,8 @@ export default {
   translationFeedback: {
     widgetLabel: '想让我们汉化什么？',
     widgetTooltip: '投票征集汉化项目，也可以提交你想汉化的项目',
+    widgetClose: '关闭汉化小人',
+    widgetRestore: '显示汉化小人',
     dismiss: '暂时关闭意见征集入口',
     kicker: 'VM 汉化意见征集',
     title: '你想让我们汉化什么？',
@@ -207,7 +210,7 @@ export default {
     originalNamePlaceholder: '例如：Create: Above and Beyond',
     sourceUrlLabel: '来源链接',
     sourceUrlHint: '仅支持 CurseForge、Modrinth、Planet Minecraft、Minecraft Maps、MapVerse',
-    sourceUrlContact: '如果想让我们汉化的项目没有这些链接，请单独加群联系我们。',
+    sourceUrlContact: '如果项目没有上述链接，请加群联系我们。',
     sourceUrlPlaceholder: '粘贴项目页面链接',
     removeUrl: '移除这个链接',
     addUrl: '添加另一个来源链接',
@@ -272,7 +275,7 @@ export default {
     status: {
       candidate: '候选中',
       planned: '已列入计划',
-      translating: '汉化进行中',
+      translating: '翻译中',
       completed: '已完成',
     },
   },
