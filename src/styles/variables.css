@@ -38,7 +38,7 @@
      =========================== */
   --nav-primary: #4f8cff;
   --nav-text: #000;
-  --nav-bg: rgba(247, 250, 249, 0.8);
+  --nav-bg: rgba(247, 250, 249, 0.68);
   --nav-menu-bg: #f7faf9;
   --nav-shadow: rgba(38, 64, 49, 0.1);
   --nav-hover-bg: #ffffff;
@@ -166,7 +166,7 @@
   --switcher-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
 
   /* --- NavBar --- */
-  --nav-bg: rgba(18, 20, 23, 0.94);
+  --nav-bg: rgba(18, 20, 23, 0.78);
   --nav-menu-bg: #18191d;
   --nav-text: #ebebf5;
   --nav-shadow: rgba(0, 0, 0, 0.5);

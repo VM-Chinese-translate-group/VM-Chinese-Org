@@ -20,27 +20,30 @@
         <button
           class="feedback-flat-control inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-lg border-0 bg-[var(--btn-primary-bg)] px-5 py-3 font-inherit font-700 text-white transition-colors hover:bg-[var(--btn-primary-hover)] focus-visible:outline-2 focus-visible:outline-[var(--info-1)] focus-visible:outline-offset-2 lt-sm:w-full disabled:cursor-wait disabled:opacity-60"
           type="button"
+          :aria-expanded="showForm"
+          aria-controls="translation-feedback-form"
           @click="showForm = !showForm"
         >
-          <Icon :icon="showForm ? 'lucide:chevron-up' : 'lucide:plus'" aria-hidden="true" />
+          <Icon
+            class="transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+            :class="showForm ? 'rotate-180' : 'rotate-0'"
+            icon="lucide:chevron-down"
+            aria-hidden="true"
+          />
           {{
             showForm ? $t('translationFeedback.closeForm') : $t('translationFeedback.submitButton')
           }}
         </button>
       </section>
 
-      <Transition
-        enter-active-class="grid-rows-[1fr] overflow-hidden opacity-100 transition-[grid-template-rows,opacity,margin-bottom,padding,border-width] duration-[280ms] ease-out motion-reduce:transition-none"
-        leave-active-class="grid-rows-[1fr] overflow-hidden opacity-100 transition-[grid-template-rows,opacity,margin-bottom,padding,border-width] duration-[280ms] ease-out motion-reduce:transition-none"
-        enter-from-class="grid-rows-[0fr] mb-0 border-0 py-0 opacity-0"
-        leave-to-class="grid-rows-[0fr] mb-0 border-0 py-0 opacity-0"
-      >
+      <Transition name="feedback-form">
         <section
           v-if="showForm"
+          id="translation-feedback-form"
           class="feedback-form-panel mb-6 grid scroll-mt-20 rounded-lg border border-[var(--switcher-border)] bg-[var(--bg-white)] p-6 lt-sm:p-4"
           aria-labelledby="feedback-form-title"
         >
-          <div class="feedback-form-content min-h-0 overflow-hidden">
+          <div class="feedback-form-content min-h-0">
             <div class="flex items-center justify-between gap-4 lt-sm:flex-col lt-sm:items-stretch">
               <div>
                 <p class="m-0 mb-1 text-xs font-700 uppercase tracking-wider text-[var(--info-1)]">
@@ -785,3 +788,34 @@ function onCoverError(event: Event) {
   if (!image.src.endsWith('/imgs/missing.png')) image.src = '/imgs/missing.png'
 }
 </script>
+
+<style scoped>
+.feedback-form-enter-active,
+.feedback-form-leave-active {
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  opacity: 1;
+  transition:
+    grid-template-rows 280ms ease,
+    opacity 220ms ease,
+    margin-bottom 280ms ease,
+    padding 280ms ease,
+    border-width 280ms ease;
+}
+
+.feedback-form-enter-from,
+.feedback-form-leave-to {
+  grid-template-rows: 0fr;
+  margin-bottom: 0;
+  border-width: 0;
+  padding-block: 0;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedback-form-enter-active,
+  .feedback-form-leave-active {
+    transition: none;
+  }
+}
+</style>

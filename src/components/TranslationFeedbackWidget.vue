@@ -54,7 +54,8 @@ import { useRoute, useRouter } from 'vue-router'
 
 import MinecraftPlayerModel from '@/components/MinecraftPlayerModel.vue'
 import TranslationFeedbackWidgetBubble from '@/components/TranslationFeedbackWidgetBubble.vue'
-import { getTranslationFeedbackWidgetCopy } from '@/config/translationFeedbackWidget'
+import { getTranslationFeedbackWidgetCopy } from '@/locales/translationFeedbackWidget'
+import { isAprilFoolsSkippedPath } from '@/utils/aprilFools'
 
 const DRAG_THRESHOLD = 5
 const MIN_VIEWPORT_MARGIN = 8
@@ -78,7 +79,7 @@ const { t, locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const isFeedbackPage = computed(() => route.path === '/translation-feedback')
-const visible = computed(() => !isFeedbackPage.value)
+const visible = computed(() => !isAprilFoolsSkippedPath(route.path) && !isFeedbackPage.value)
 const dismissed = ref(false)
 const widgetVisible = computed(() => visible.value && !dismissed.value)
 const widgetElement = ref<HTMLElement | null>(null)

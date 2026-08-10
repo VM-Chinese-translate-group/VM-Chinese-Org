@@ -153,7 +153,7 @@ export default {
     packVersion: '适配版本',
     status: {
       maintaining: '持续跟进',
-      translating: '汉化进行中',
+      translating: '翻译中',
       stopped: '暂不跟进更新',
     },
     statusDescription: {
@@ -275,7 +275,7 @@ export default {
     status: {
       candidate: '候选中',
       planned: '已列入计划',
-      translating: '汉化进行中',
+      translating: '翻译中',
       completed: '已完成',
     },
   },

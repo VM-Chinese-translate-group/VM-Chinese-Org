@@ -154,7 +154,7 @@ export default {
     packVersion: '適配版本',
     status: {
       maintaining: '持續跟進',
-      translating: '漢化進行中',
+      translating: '翻譯中',
       stopped: '暫不跟進更新',
     },
     statusDescription: {
@@ -274,7 +274,7 @@ export default {
     status: {
       candidate: '候選中',
       planned: '已列入計畫',
-      translating: '漢化進行中',
+      translating: '翻譯中',
       completed: '已完成',
     },
   },

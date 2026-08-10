@@ -27,7 +27,6 @@
           :style="faceStyle(part, face)"
         ></span>
       </span>
-      <span class="minecraft-player-model__shadow"></span>
     </span>
   </span>
 </template>
@@ -356,11 +355,12 @@ function faceStyle(part: SkinPart, skinFace: SkinFace): CSSProperties {
   height: calc(var(--part-height) * var(--skin-pixel));
   margin-top: calc(var(--part-height) * var(--skin-pixel) * -0.5);
   margin-left: calc(var(--part-width) * var(--skin-pixel) * -0.5);
-  transform: translate3d(
+  --part-transform: translate3d(
     calc(var(--part-x) * var(--skin-pixel)),
     calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
     calc(var(--part-z) * var(--skin-pixel))
   );
+  transform: var(--part-transform);
   transform-origin: center top;
   transform-style: preserve-3d;
 }
@@ -431,292 +431,93 @@ function faceStyle(part: SkinPart, skinFace: SkinFace): CSSProperties {
   transform: rotateX(-90deg) translateZ(calc(var(--part-height) * var(--skin-pixel) / 2));
 }
 
-.minecraft-player-model__shadow {
-  position: absolute;
-  right: 0.65rem;
-  bottom: 0.25rem;
-  left: 0.65rem;
-  display: block;
-  height: 0.75rem;
-  border-radius: 50%;
-  background: rgb(15 23 42 / 0.2);
-  filter: blur(2px);
-  transform: rotateX(70deg);
+.minecraft-player-model.is-idle .minecraft-player-model__stage,
+.minecraft-player-model.is-walk .minecraft-player-model__stage,
+.minecraft-player-model.is-jump .minecraft-player-model__stage,
+.minecraft-player-model.is-cheer .minecraft-player-model__stage {
+  --bob-y: -1px;
+  --bob-yaw: -12deg;
+  animation: minecraft-player-bob 1.2s ease-in-out 1 both;
 }
 
 .minecraft-player-model.is-idle .minecraft-player-model__stage {
-  animation: minecraft-player-breathe 3.6s ease-in-out infinite;
-}
-
-.minecraft-player-model.is-wave .minecraft-player-model__part--left-arm {
-  animation: minecraft-player-wave-left 1.35s ease-in-out 1 both;
-}
-
-.minecraft-player-model.is-wave .minecraft-player-model__part--head {
-  animation: minecraft-player-wave-look 1.35s ease-in-out 1 both;
+  animation-iteration-count: infinite;
+  animation-duration: 3.6s;
 }
 
 .minecraft-player-model.is-walk .minecraft-player-model__stage {
-  animation: minecraft-player-walk 2.6s linear 1 both;
+  --bob-y: -2px;
+  --bob-yaw: -14deg;
+  animation-duration: 2.6s;
+}
+
+.minecraft-player-model.is-jump .minecraft-player-model__stage {
+  --bob-y: -7px;
+  --bob-yaw: 8deg;
+}
+
+.minecraft-player-model.is-cheer .minecraft-player-model__stage {
+  --bob-y: -3px;
+  --bob-yaw: 5deg;
+}
+
+.minecraft-player-model.is-wave .minecraft-player-model__part--left-arm {
+  --limb-start: rotateZ(8deg);
+  --limb-end: rotateZ(140deg);
+  animation: minecraft-player-limb 1.35s ease-in-out 1 both;
 }
 
 .minecraft-player-model.is-walk .minecraft-player-model__part--right-arm,
 .minecraft-player-model.is-walk .minecraft-player-model__part--left-leg {
-  animation: minecraft-player-step-back 0.65s linear 4 both;
+  --limb-start: rotateX(26deg) rotateZ(18deg);
+  --limb-end: rotateX(-26deg) rotateZ(-18deg);
+  animation: minecraft-player-limb 0.65s linear 4 both;
 }
 
 .minecraft-player-model.is-walk .minecraft-player-model__part--left-arm,
 .minecraft-player-model.is-walk .minecraft-player-model__part--right-leg {
-  animation: minecraft-player-step-forward 0.65s linear 4 both;
-}
-
-.minecraft-player-model.is-jump .minecraft-player-model__stage {
-  animation: minecraft-player-jump 1.2s ease-in-out 1 both;
+  --limb-start: rotateX(-26deg) rotateZ(-18deg);
+  --limb-end: rotateX(26deg) rotateZ(18deg);
+  animation: minecraft-player-limb 0.65s linear 4 both;
 }
 
 .minecraft-player-model.is-point .minecraft-player-model__part--right-arm {
-  animation: minecraft-player-point 1.5s ease-in-out 1 both;
-}
-
-.minecraft-player-model.is-cheer .minecraft-player-model__stage {
-  animation: minecraft-player-cheer 1.2s ease-in-out 1 both;
+  --limb-start: rotateZ(-8deg);
+  --limb-end: rotateZ(-78deg);
+  animation: minecraft-player-limb 1.5s ease-in-out 1 both;
 }
 
 .minecraft-player-model.is-cheer .minecraft-player-model__part--right-arm {
-  animation: minecraft-player-cheer-right 1.2s ease-in-out 1 both;
+  --limb-start: rotateZ(-8deg);
+  --limb-end: rotateZ(-132deg);
+  animation: minecraft-player-limb 1.2s ease-in-out 1 both;
 }
 
 .minecraft-player-model.is-cheer .minecraft-player-model__part--left-arm {
-  animation: minecraft-player-cheer-left 1.2s ease-in-out 1 both;
+  --limb-start: rotateZ(8deg);
+  --limb-end: rotateZ(132deg);
+  animation: minecraft-player-limb 1.2s ease-in-out 1 both;
 }
 
-@keyframes minecraft-player-breathe {
+@keyframes minecraft-player-bob {
   0%,
   100% {
     transform: translateY(0) rotateY(-12deg) rotateX(1deg);
   }
 
   50% {
-    transform: translateY(-1px) rotateY(-12deg) rotateX(1deg);
+    transform: translateY(var(--bob-y)) rotateY(var(--bob-yaw)) rotateX(1deg);
   }
 }
 
-@keyframes minecraft-player-wave-left {
+@keyframes minecraft-player-limb {
   0%,
   100% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(8deg);
-  }
-
-  20% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(150deg);
-  }
-
-  40% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(112deg);
-  }
-
-  60% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(148deg);
-  }
-
-  80% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(116deg);
-  }
-}
-
-@keyframes minecraft-player-wave-look {
-  0%,
-  100% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateY(0deg);
-  }
-
-  28%,
-  76% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateY(-10deg);
-  }
-}
-
-@keyframes minecraft-player-walk {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotateY(-14deg) rotateX(2deg);
-  }
-
-  25% {
-    transform: translate3d(1px, -2px, 1px) rotateY(-14deg) rotateX(0deg);
+    transform: var(--part-transform) var(--limb-start);
   }
 
   50% {
-    transform: translate3d(0, 0, 0) rotateY(-14deg) rotateX(2deg);
-  }
-
-  75% {
-    transform: translate3d(-1px, -1px, -1px) rotateY(-14deg) rotateX(1deg);
-  }
-}
-
-@keyframes minecraft-player-step-forward {
-  0%,
-  100% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateX(-26deg) rotateZ(-18deg);
-  }
-
-  50% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateX(26deg) rotateZ(18deg);
-  }
-}
-
-@keyframes minecraft-player-step-back {
-  0%,
-  100% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateX(26deg) rotateZ(18deg);
-  }
-
-  50% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateX(-26deg) rotateZ(-18deg);
-  }
-}
-
-@keyframes minecraft-player-jump {
-  0%,
-  100% {
-    transform: translateY(0) rotateY(-12deg) rotateX(1deg);
-  }
-
-  45% {
-    transform: translateY(-7px) rotateY(8deg) rotateX(1deg);
-  }
-}
-
-@keyframes minecraft-player-point {
-  0%,
-  100% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(-8deg);
-  }
-
-  35%,
-  70% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(-78deg);
-  }
-}
-
-@keyframes minecraft-player-cheer {
-  0%,
-  100% {
-    transform: translateY(0) rotateY(-12deg) rotateX(1deg);
-  }
-
-  45% {
-    transform: translateY(-3px) rotateY(5deg) rotateX(1deg);
-  }
-}
-
-@keyframes minecraft-player-cheer-right {
-  0%,
-  100% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(-8deg);
-  }
-
-  45%,
-  75% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(-132deg);
-  }
-}
-
-@keyframes minecraft-player-cheer-left {
-  0%,
-  100% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(8deg);
-  }
-
-  45%,
-  75% {
-    transform: translate3d(
-        calc(var(--part-x) * var(--skin-pixel)),
-        calc((var(--part-y) + var(--part-height) / 2) * var(--skin-pixel)),
-        calc(var(--part-z) * var(--skin-pixel))
-      )
-      rotateZ(132deg);
+    transform: var(--part-transform) var(--limb-end);
   }
 }
 

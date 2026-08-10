@@ -1,5 +1,16 @@
 @import './variables.css';
 
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+html,
+body {
+  background-color: var(--bg-off-white);
+}
+
 body {
   margin: 0;
 }
