@@ -10,7 +10,7 @@ status:
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '12.3'
+  pack: '12.5'
 authors:
   - 'benbenlaw (作者)'
   - 'VM汉化组 (翻译)'

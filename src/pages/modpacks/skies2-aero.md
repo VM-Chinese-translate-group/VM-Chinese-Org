@@ -11,7 +11,7 @@ status:
 compatibility:
   loader: neoforge
   minecraft: '1.21.1'
-  pack: '1.3.0'
+  pack: '1.6.0'
 authors:
   - 'FTB (作者团队)'
   - 'VM汉化组 (翻译)'
