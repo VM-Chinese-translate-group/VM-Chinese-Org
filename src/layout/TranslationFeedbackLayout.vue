@@ -475,11 +475,24 @@
                 <a
                   v-for="source in item.sources"
                   :key="source.url"
-                  class="inline-flex min-h-7 items-center rounded border border-[var(--switcher-border)] bg-[var(--link-bg)] px-2 py-1 text-xs font-500 text-[var(--info-1)] no-underline hover:border-[var(--info-1)] hover:bg-[var(--link-bg-hover)]"
+                  class="inline-flex min-h-7 items-center gap-1.5 rounded border border-[var(--switcher-border)] bg-[var(--link-bg)] px-2 py-1 text-xs font-500 text-[var(--info-1)] no-underline hover:border-[var(--info-1)] hover:bg-[var(--link-bg-hover)]"
                   :href="source.url"
                   target="_blank"
                   rel="noopener"
                 >
+                  <img
+                    v-if="feedbackSourceIcon(source)"
+                    :src="feedbackSourceIcon(source)!"
+                    class="size-4 shrink-0 object-contain"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <Icon
+                    v-else
+                    class="size-4 shrink-0"
+                    icon="lucide:external-link"
+                    aria-hidden="true"
+                  />
                   {{ source.platform }}
                 </a>
               </div>
@@ -541,7 +554,12 @@ import {
   toggleFeedbackVote,
 } from '@/api/translationFeedback'
 import SelectMenu from '@/components/SelectMenu.vue'
-import type { FeedbackCandidate, FeedbackCategory, FeedbackItem } from '@/types/translationFeedback'
+import type {
+  FeedbackCandidate,
+  FeedbackCategory,
+  FeedbackItem,
+  FeedbackSource,
+} from '@/types/translationFeedback'
 
 const { t } = useI18n()
 
@@ -552,6 +570,34 @@ const subtypeMap: Record<FeedbackCategory, string[]> = {
   map: ['puzzle', 'minigame', 'adventure', 'horror', 'parkour', 'other'],
   other: ['other'],
 }
+
+const feedbackPlatformIcons = [
+  {
+    icon: '/imgs/svg/curseforge.svg',
+    names: ['curseforge'],
+    domains: ['curseforge.com'],
+  },
+  {
+    icon: '/imgs/svg/modrinth.svg',
+    names: ['modrinth'],
+    domains: ['modrinth.com'],
+  },
+  {
+    icon: '/imgs/svg/planetminecraft.svg',
+    names: ['planetminecraft'],
+    domains: ['planetminecraft.com'],
+  },
+  {
+    icon: '/imgs/svg/minecraftmaps.ico',
+    names: ['minecraftmaps'],
+    domains: ['minecraftmaps.com'],
+  },
+  {
+    icon: '/imgs/svg/mapverse.svg',
+    names: ['mapverse'],
+    domains: ['mapverse.net'],
+  },
+] as const
 
 const selectedCategory = ref<FeedbackCategory>('modpack')
 const selectedSubtype = ref('')
@@ -706,6 +752,23 @@ function removeUrl(index: number) {
 
 function suggestionReason(reason: FeedbackCandidate['reason']) {
   return t(`translationFeedback.suggestionReasons.${reason}`)
+}
+
+function feedbackSourceIcon(source: FeedbackSource) {
+  const normalizedPlatform = source.platform.toLowerCase().replace(/[^a-z0-9]/g, '')
+  let hostname = ''
+
+  try {
+    hostname = new URL(source.url).hostname.toLowerCase()
+  } catch {
+    // The API normally returns validated URLs; platform matching still provides a safe fallback.
+  }
+
+  return feedbackPlatformIcons.find(
+    ({ names, domains }) =>
+      names.some((name) => normalizedPlatform.includes(name)) ||
+      domains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`)),
+  )?.icon
 }
 
 async function submitForm() {
