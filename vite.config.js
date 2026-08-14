@@ -111,19 +111,19 @@ export default defineConfig({
           md.use(container, {
             name: type,
 
-            openRender: (tokens, index) => {
+            openRenderer: (tokens, index) => {
               const info = tokens[index].info
               const title =
                 info.length > type.length ? info.slice(type.length + 1) : type.toUpperCase()
 
               if (type === 'details') {
-                return `<details class="custom-block details"><summary>${title}</summary>\n`
+                return `<details class="custom-block details" open><summary>${md.utils.escapeHtml(title)}</summary>\n`
               }
 
-              return `<div class="custom-block ${type}"><p class="custom-block-title">${title}</p>\n`
+              return `<div class="custom-block ${type}"><p class="custom-block-title">${md.utils.escapeHtml(title)}</p>\n`
             },
 
-            closeRender: () => (type === 'details' ? '</details>\n' : '</div>\n'),
+            closeRenderer: () => (type === 'details' ? '</details>\n' : '</div>\n'),
           })
         })
       },

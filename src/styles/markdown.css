@@ -129,6 +129,25 @@ h4[id] {
   color: var(--warning-1);
 }
 
+/* Details */
+.custom-block.details {
+  border-left-color: var(--details-1);
+  background-color: var(--details-soft);
+}
+
+.custom-block.details > summary {
+  cursor: pointer;
+  color: var(--text-1);
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.custom-block.details > summary:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--nav-primary);
+  outline-offset: 3px;
+}
+
 @media (min-width: 960px) {
   .markdown-body [card-grid] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
