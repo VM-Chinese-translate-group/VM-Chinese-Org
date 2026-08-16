@@ -6,7 +6,7 @@ description: |
   这张大型的半开放世界CTM地图提供了超过50小时的游戏时间。与独特攻击的定制怪物搏斗，打造强大的物品，并深入至暗深渊以获取16颗水晶。
 updateDate: 2025-1-3
 status:
-  type: stopped
+  type: maintaining
 compatibility:
   loader: vanilla
   minecraft: '1.20.1'

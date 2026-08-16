@@ -6,7 +6,7 @@ description: |
   死亡竞速2是MC 1.20.1版本的一个小游戏地图。玩家必须在时间耗尽之前到达赛道的尽头！
 updateDate: 2024-4-14
 status:
-  type: stopped
+  type: maintaining
 compatibility:
   loader: vanilla
   minecraft: '1.20.1'

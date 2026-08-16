@@ -6,7 +6,7 @@ description: |
   在类银河恶魔城风格的冒险CTM地图中，探索二十世纪初的蒸汽朋克设施，揭秘流明综合体没落的原因。
 updateDate: 2024-5-20
 status:
-  type: stopped
+  type: maintaining
 compatibility:
   loader: vanilla
   minecraft: '1.20.2'

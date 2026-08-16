@@ -12,8 +12,8 @@ compatibility:
   minecraft: '1.14.4'
   pack: '1.0.2'
 authors:
-  - 'Mithey (作者)'
-  - 'VM汉化组 (翻译)'
+  - 'Mithey（作者）'
+  - '黑洞计划（翻译）'
 links:
   # - id: bilibili
   #   text: 介绍视频

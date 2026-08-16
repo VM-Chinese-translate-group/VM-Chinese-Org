@@ -6,7 +6,7 @@ description: |
   基于经典恐怖游戏玩具熊的五夜后宫4制作的Minecraft地图。午夜，黑暗，空荡荡的房子——一只手电筒和几扇普通的门，能帮你活下来吗？
 updateDate: 2025-8-13
 status:
-  type: stopped
+  type: maintaining
 compatibility:
   loader: vanilla
   minecraft: '1.21.4'

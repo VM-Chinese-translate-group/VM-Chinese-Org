@@ -6,7 +6,7 @@ description: |
   太阳守卫者2：搁浅是一张融合了艾尔登法环以及马里奥高尔夫：家庭巡回赛精髓的CTM地图。
 updateDate: 2025-5-15
 status:
-  type: stopped
+  type: maintaining
 compatibility:
   loader: vanilla
   minecraft: '1.20.4'
