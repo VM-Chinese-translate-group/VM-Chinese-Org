@@ -1,18 +1,19 @@
 ---
 title: 进击的大鹅汉化下载
-updateDate: 2026-08-16
+originalName: 'Tactical Gaggle'
+icon: /imgs/maps/tactical-gaggle.jpg
+description: |
+  进击的大鹅是一款以搞笑大鹅和致命枪械为主题的 FPS 独立小游戏
+updateDate: 2026-8-16
 status:
   type: maintaining
 compatibility:
   loader: vanilla
-  minecraft: 1.18.1
-  pack: "0.1"
+  minecraft: '1.18.1'
+  pack: '0.1'
 authors:
   - Brickmasons（作者）
   - 黑洞计划（翻译）
-originalName: Tactical Gaggle
-icon: /imgs/maps/tactical-gaggle.jpg
-description: 进击的大鹅是一款以搞笑大鹅和致命枪械为主题的 FPS 独立小游戏。
 links:
   - id: minecraftmaps
     text: 地图原帖

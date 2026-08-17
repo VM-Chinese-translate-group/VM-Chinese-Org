@@ -46,12 +46,17 @@ import type { DownloadMethodItem } from './downloadMethods'
 import type { DownloadQuestion } from '@/types/downloadQuestion'
 import { usePageScrollLock } from '@/composables/usePageScrollLock'
 
-const props = defineProps<{
-  items?: DownloadMethodItem[]
-  questions?: DownloadQuestion[]
-  questionLoader?: (() => Promise<DownloadQuestion[]>) | null
-  visible?: boolean
-}>()
+const props = withDefaults(
+  defineProps<{
+    items?: DownloadMethodItem[]
+    questions?: DownloadQuestion[]
+    questionLoader?: (() => Promise<DownloadQuestion[]>) | null
+    visible?: boolean
+  }>(),
+  {
+    visible: undefined,
+  },
+)
 
 const emit = defineEmits<{
   close: []

@@ -6,7 +6,7 @@ description: 这是一个正在进行中的项目
 <DocLayout :meta="frontmatter">
 
 ::: info
-还没做完，我们正在招贤纳士，欢迎看一看[更多-加入我们](/community#加入我们)！
+还没做完，我们正在招贤纳士，欢迎[加入我们](/community#加入汉化组)！
 :::
 
 # 鼓励我们的开发

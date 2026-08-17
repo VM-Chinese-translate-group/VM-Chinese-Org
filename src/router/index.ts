@@ -48,7 +48,7 @@ const routes: RouteRecordRaw[] = [
         name: 'translation-feedback',
         component: () => import('@/layout/TranslationFeedbackLayout.vue'),
       },
-      { path: 'join', name: 'join-redirect', redirect: '/community#加入我们' },
+      { path: 'join', name: 'join-redirect', redirect: '/community#加入汉化组' },
       {
         path: 'credits',
         name: 'credits',

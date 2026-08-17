@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!registerDownloadMethods && downloadMethods.length > 1">
+  <div v-if="!registerDownloadMethods">
     <DownloadModal :items="downloadMethods" />
   </div>
 </template>
