@@ -22,7 +22,6 @@ links:
     link: https://www.bilibili.com/video/BV1U2hwzmESy
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/FTB-Skies-2-Chinese
   - id: paratranz
     project: 15051

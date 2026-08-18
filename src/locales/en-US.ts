@@ -169,6 +169,7 @@ export default {
     relatedLinks: 'Related Links',
     links: {
       i18n: 'Download i18nUpdate Mod',
+      github: 'GitHub Repository',
     },
   },
   supportUs: {

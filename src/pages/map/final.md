@@ -22,7 +22,6 @@ links:
     text: 扩展包宣传片
     link: https://www.bilibili.com/video/BV1hq6UBXEKx/
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Final-Paradox-Simplified-Chinese
 ---
 

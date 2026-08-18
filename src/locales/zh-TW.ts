@@ -164,6 +164,7 @@ export default {
     relatedLinks: '相關連結',
     links: {
       i18n: '下載i18nUpdateMod',
+      github: 'GitHub 倉庫',
     },
   },
   supportUs: {

@@ -23,7 +23,6 @@ links:
     link: https://www.bilibili.com/video/BV1T2tszKEh4
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Cosmic-Frontiers-Chinese
   - id: paratranz
     project: 14073

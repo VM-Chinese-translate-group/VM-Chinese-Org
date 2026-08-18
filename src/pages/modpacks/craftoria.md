@@ -17,7 +17,6 @@ authors:
 links:
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Craftoria-Chinese
   - id: paratranz
     project: 15860

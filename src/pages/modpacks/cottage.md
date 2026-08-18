@@ -22,7 +22,6 @@ links:
     link: https://www.bilibili.com/video/BV1Qz421X7hp/
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Cottage-Witch
 ---
 

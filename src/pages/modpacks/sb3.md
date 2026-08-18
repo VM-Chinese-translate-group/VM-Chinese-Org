@@ -20,7 +20,6 @@ links:
     link: https://www.bilibili.com/read/cv21772959/
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/StoneBlock3
 ---
 

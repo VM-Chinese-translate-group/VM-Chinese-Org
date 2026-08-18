@@ -38,10 +38,10 @@
      =========================== */
   --nav-primary: #4f8cff;
   --nav-text: #000;
-  --nav-bg: rgba(247, 250, 249, 0.68);
-  --nav-menu-bg: #f7faf9;
+  --nav-bg: rgba(247, 250, 249, 0.72);
+  --nav-menu-bg: rgba(247, 250, 249, 0.86);
   --nav-shadow: rgba(38, 64, 49, 0.1);
-  --nav-hover-bg: #ffffff;
+  --nav-hover-bg: rgba(255, 255, 255, 0.72);
 
   /* NavBar Sizing */
   --nav-font-size-link: 0.95rem;
@@ -169,11 +169,11 @@
   --switcher-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
 
   /* --- NavBar --- */
-  --nav-bg: rgba(18, 20, 23, 0.78);
-  --nav-menu-bg: #18191d;
+  --nav-bg: rgba(18, 20, 23, 0.7);
+  --nav-menu-bg: rgba(24, 25, 29, 0.84);
   --nav-text: #ebebf5;
   --nav-shadow: rgba(0, 0, 0, 0.5);
-  --nav-hover-bg: #292a31;
+  --nav-hover-bg: rgba(41, 42, 49, 0.78);
 
   /* --- Footer --- */
   --footer-bg-gradient: linear-gradient(to bottom, #101813 0%, #17261c 100%);

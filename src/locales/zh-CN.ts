@@ -163,6 +163,7 @@ export default {
     relatedLinks: '相关链接',
     links: {
       i18n: '下载i18n模组',
+      github: 'GitHub仓库',
     },
   },
   supportUs: {

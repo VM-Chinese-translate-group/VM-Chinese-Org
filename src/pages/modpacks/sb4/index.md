@@ -23,7 +23,6 @@ links:
     link: https://www.bilibili.com/video/BV1mAyrBqEYj
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/StoneBlock4-Chinese
   - id: paratranz
     project: 16650

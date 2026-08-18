@@ -19,7 +19,6 @@ links:
     text: 介绍视频
     link: https://www.bilibili.com/video/BV1AKGg6AETB/
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/The-Terrace-3-SHATTERED-Chinese
   - id: minecraftmaps
     text: 地图原帖

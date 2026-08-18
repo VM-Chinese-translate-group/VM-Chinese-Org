@@ -20,7 +20,6 @@ links:
     link: https://www.bilibili.com/video/BV16uKNzVEMA/
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Integrated-MC
   - id: paratranz
     project: 13091

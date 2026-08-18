@@ -20,7 +20,6 @@ links:
     link: https://www.bilibili.com/video/BV1GcNheGE5X/
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Project-Architect-2
   - id: paratranz
     project: 13302

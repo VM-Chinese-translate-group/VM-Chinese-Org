@@ -21,7 +21,6 @@ links:
     link: https://www.bilibili.com/opus/1095991210601873410
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/DeceasedCraft-Chinese
   - id: paratranz
     project: 15705

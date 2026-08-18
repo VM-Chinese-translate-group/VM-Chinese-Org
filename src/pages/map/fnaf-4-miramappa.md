@@ -22,7 +22,6 @@ links:
     text: 预告片
     link: https://www.bilibili.com/video/BV17qGVzUEUg
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/FromTheShElves-Chinese
   - id: planetminecraft
     text: 地图原帖

@@ -23,7 +23,6 @@ links:
     text: 下载VP模组
     link: https://www.curseforge.com/api/v1/mods/967052/files/6482746/download
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Prominence-II-Chinese
   - id: paratranz
     project: 13782

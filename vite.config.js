@@ -117,7 +117,7 @@ export default defineConfig({
                 info.length > type.length ? info.slice(type.length + 1) : type.toUpperCase()
 
               if (type === 'details') {
-                return `<details class="custom-block details" open><summary>${md.utils.escapeHtml(title)}</summary>\n`
+                return `<details class="custom-block details"><summary>${md.utils.escapeHtml(title)}</summary>\n`
               }
 
               return `<div class="custom-block ${type}"><p class="custom-block-title">${md.utils.escapeHtml(title)}</p>\n`

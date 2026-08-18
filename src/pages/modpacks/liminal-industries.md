@@ -21,7 +21,6 @@ links:
     link: https://www.bilibili.com/video/BV1KyYYzMEkP/
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Liminal-Industries-Chinese
   - id: paratranz
     project: 15786

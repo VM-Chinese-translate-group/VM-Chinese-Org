@@ -19,7 +19,6 @@ links:
   #     text: 介绍视频
   #     link: https://www.bilibili.com/video/
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Tunnel-Rats-Chinese
   - id: xisumavoid
     text: 地图原帖

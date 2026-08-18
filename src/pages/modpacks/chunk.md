@@ -20,7 +20,6 @@ links:
     link: https://www.bilibili.com/video/BV1JNDrYEERd
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/Wulian233
   - id: paratranz
     project: 11916

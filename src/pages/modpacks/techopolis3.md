@@ -20,7 +20,6 @@ links:
     link: https://www.bilibili.com/video/BV1NDFSzaENL
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Techopolis-3
   - id: paratranz
     project: 14287

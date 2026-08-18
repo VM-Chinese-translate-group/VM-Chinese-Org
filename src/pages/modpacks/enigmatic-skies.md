@@ -21,7 +21,6 @@ links:
     link: https://www.bilibili.com/video/BV1t97b66ENA/
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Enigmatic-Skies-Chinese
   - id: paratranz
     project: 18919

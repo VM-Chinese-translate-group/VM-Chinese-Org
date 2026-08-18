@@ -20,7 +20,6 @@ links:
     link: https://www.bilibili.com/video/BV1WgF4zhEBw
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/create_astral_translation_zhcn
   - id: paratranz
     project: 11990

@@ -26,7 +26,6 @@ links:
     text: 下载硬编码汉化VP模组
     link: https://cdn.modrinth.com/data/NLV0Mnpu/versions/Z3IIqvHD/vaultpatcher-all-1.5.2.jar
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Infernal-Origins
   - id: paratranz
     project: 10136

@@ -18,7 +18,6 @@ authors:
 links:
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Vampires-Strike-Back-Chinese
   - id: paratranz
     project: 19520

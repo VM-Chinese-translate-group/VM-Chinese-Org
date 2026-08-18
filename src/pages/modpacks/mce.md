@@ -23,7 +23,6 @@ links:
     link: https://www.bilibili.com/read/cv21193646
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/MC-Eternal
 ---
 

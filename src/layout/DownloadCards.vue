@@ -138,7 +138,7 @@
             <SelectMenu
               v-model="sortKey"
               class="catalog-select sort-select"
-              :aria-label="$t('DownloadCards.sortBy')"
+              :ariaLabel="$t('DownloadCards.sortBy')"
               :options="sortOptions"
             />
           </div>
@@ -148,7 +148,7 @@
             <SelectMenu
               v-model="itemsPerPage"
               class="catalog-select page-count-select"
-              :aria-label="$t('DownloadCards.itemsPerPage')"
+              :ariaLabel="$t('DownloadCards.itemsPerPage')"
               :options="pageSizeOptions"
             />
           </div>
@@ -254,8 +254,8 @@
             :disabled="currentPage === 1"
             class="pagination-btn"
           >
-            {{ $t('DownloadCards.previousPage') }}
             <Icon icon="lucide:chevron-left" />
+            {{ $t('DownloadCards.previousPage') }}
           </button>
 
           <button

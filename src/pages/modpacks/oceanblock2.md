@@ -21,7 +21,6 @@ links:
     link: https://www.bilibili.com/video/BV1mCRbYBEc3
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/FTB-Oceanblock-2-Chinese
   - id: paratranz
     project: 13486

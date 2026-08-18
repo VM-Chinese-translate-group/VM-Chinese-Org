@@ -21,7 +21,6 @@ links:
     link: https://www.bilibili.com/read/cv28878702/
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Prey
 ---
 

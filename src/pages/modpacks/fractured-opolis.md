@@ -20,7 +20,6 @@ links:
     link: https://www.bilibili.com/video/BV1Ziuw6ZE9y
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/Fractured-Opolis-Chinese
   - id: paratranz
     project: 19875

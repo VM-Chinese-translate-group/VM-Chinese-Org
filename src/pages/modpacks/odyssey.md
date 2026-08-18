@@ -20,7 +20,6 @@ links:
     link: https://www.bilibili.com/video/BV1NWFvz9Ec5/
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/FTB-Sky-Odyssey/
 ---
 

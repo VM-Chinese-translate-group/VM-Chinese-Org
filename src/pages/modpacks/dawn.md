@@ -27,7 +27,6 @@ links:
     text: 下载VP模组
     link: https://cdn.modrinth.com/data/NLV0Mnpu/versions/B01OjFjZ/vaultpatcher-all-1.4.4+1.jar
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/dawncraft-Chinese-patch-Pack
 ---
 

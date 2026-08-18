@@ -21,7 +21,6 @@ links:
     link: https://www.bilibili.com/video/BV1vYKF6GEoC
   - id: i18n
   - id: github
-    text: GitHub仓库
     link: https://github.com/VM-Chinese-translate-group/FTB-Skies2-Aero
   - id: paratranz
     project: 19713

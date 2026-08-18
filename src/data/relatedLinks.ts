@@ -36,6 +36,10 @@ export const sharedRelatedLinks: Record<string, SharedRelatedLink> = {
     link: 'https://cdn.modrinth.com/data/PWERr14M/versions/4ihDUjWs/I18nUpdateMod-3.7.0-all.jar',
     icon: relatedLinkIcons.modrinth,
   },
+  github: {
+    textKey: 'pack.links.github',
+    icon: relatedLinkIcons.github,
+  },
   paratranz: {
     text: 'Paratranz',
     getLink: (item) => (item.project ? `https://paratranz.cn/projects/${item.project}` : ''),
