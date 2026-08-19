@@ -1,16 +1,16 @@
 ---
-title: 卓越2汉化下载
+title: 卓越 2汉化下载
 originalName: 'Prominence II RPG: Hasturian Era'
 icon: https://media.forgecdn.net/avatars/thumbnails/1112/755/64/64/638665111298705796_animated.gif
 description: |
   🔥 全面强化的整合包，战斗、探索、魔法与科技的完美平衡，还有丰富的自定义内容！
-updateDate: 2025-9-14
+updateDate: 2026-8-20
 status:
   type: maintaining
 compatibility:
   loader: fabric
   minecraft: '1.20.1'
-  pack: '3.9.0'
+  pack: '4.0.1'
 authors:
   - 'ElocinDev (作者)'
   - 'VM汉化组 (翻译)'
@@ -21,11 +21,14 @@ links:
   - id: i18n
   - id: modrinth
     text: 下载VP模组
-    link: https://www.curseforge.com/api/v1/mods/967052/files/6482746/download
+    link: https://cdn.modrinth.com/data/NLV0Mnpu/versions/oATpDq2Q/vaultpatcher-all-1.5.3-fix.jar
   - id: github
     link: https://github.com/VM-Chinese-translate-group/Prominence-II-Chinese
   - id: paratranz
     project: 13782
+  - id: wiki
+    text: 官方Wiki
+    link: https://rpg.prominence.wiki/ 
 ---
 
 <DownloadLayout :meta="frontmatter">
