@@ -4,7 +4,7 @@
 
 # VM汉化组官网 v4
 
-立即访问：<https://v4.vmct-cn.top/>
+立即访问：<https://vmct-cn.top/>
 
 ## 📖 使用与部署
 

@@ -50,7 +50,7 @@ desc: 使用我们的石头世界4和3整合包汉化
 ```card
 title: 沝沝DjKO
 link: https://space.bilibili.com/108078209
-logo: /imgs/friend-links/djk.jpg
+logo: /imgs/friend-links/djk.webp
 desc: 使用我们的宝藏猎人3整合包和狂乱之境4地图汉化
 ```
 

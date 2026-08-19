@@ -30,7 +30,7 @@ const gitEnv = getGitEnv()
 const repoPath =
   gitEnv.owner && gitEnv.name
     ? `${gitEnv.owner}/${gitEnv.name}`
-    : 'VM-Chinese-translate-group/VM-Chinese-Org'
+    : 'VM-Chinese-translate-group/vmct-website-v4'
 
 export default defineConfig({
   define: {
@@ -149,7 +149,7 @@ export default defineConfig({
     prerenderRoutesPlugin(),
 
     Sitemap({
-      hostname: 'https://v4.vmct-cn.top',
+      hostname: 'https://vmct-cn.top',
       dynamicRoutes: [...getMarkdownRoutes(), '/translation-feedback'],
     }),
 
