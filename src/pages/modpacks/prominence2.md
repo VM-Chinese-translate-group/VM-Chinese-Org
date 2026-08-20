@@ -1,5 +1,5 @@
 ---
-title: 卓越 2汉化下载
+title: 卓越 II 汉化下载
 originalName: 'Prominence II RPG: Hasturian Era'
 icon: https://media.forgecdn.net/avatars/thumbnails/1112/755/64/64/638665111298705796_animated.gif
 description: |
@@ -32,6 +32,12 @@ links:
 ---
 
 <DownloadLayout :meta="frontmatter">
+
+::: warning 重要提示
+下载后，一定要在启动器内将版本名中的 **™** 符号删除，否则无法启动游戏！
+
+必装I18n模组和Vault Patcher模组。
+:::
 
 🔥 **全面强化的整合包，战斗、探索、魔法与科技的完美平衡，还有丰富的自定义内容！**
 

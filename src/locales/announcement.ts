@@ -10,12 +10,12 @@ export const announcementConfig = {
   messages: {
     'zh-CN': {
       label: '站点公告',
-      body: '8月最新成果！卓越2汉化现已发布！',
+      body: '8月最新成果！卓越 II 汉化现已发布！',
       action: '查看',
     },
     'en-US': {
       label: 'Site announcement',
-      body: 'Latest August release: Prominence 2 localization is now available!',
+      body: 'Latest August release: Prominence II localization is now available!',
       action: 'View',
     },
   },
