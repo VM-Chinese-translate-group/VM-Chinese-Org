@@ -56,16 +56,23 @@ function insertDownload() {
 .markdown-editor {
   display: grid;
   gap: 6px;
+  align-content: start;
+  grid-template-rows: auto auto;
 }
 .toolbar {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
+  align-items: center;
+  align-self: start;
 }
 .toolbar span {
   flex: 1;
 }
 .toolbar button {
+  flex: 0 0 auto;
+  min-height: 34px;
+  line-height: 1;
   padding: 6px 9px;
   border: 1px solid var(--border-color);
   border-radius: 5px;
@@ -74,8 +81,10 @@ function insertDownload() {
   cursor: pointer;
 }
 .markdown-editor textarea {
+  align-self: start;
   width: 100%;
-  min-height: 520px;
+  min-height: 420px;
+  height: 520px;
   box-sizing: border-box;
   padding: 12px;
   border: 1px solid var(--border-color);

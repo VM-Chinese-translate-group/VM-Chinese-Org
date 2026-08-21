@@ -59,8 +59,16 @@ function nested(source: string, parent: string, key: string) {
       .replace(/^['"]|['"]$/g, '') || ''
   )
 }
-function listBlock(source: string, key: string) {
-  return source.match(new RegExp(`^${key}:\\s*\\n((?:  - .*\\n?)+)`, 'm'))?.[1] || ''
+function indentedBlock(source: string, key: string) {
+  const lines = source.replace(/\r\n/g, '\n').split('\n')
+  const start = lines.findIndex((line) => line === `${key}:`)
+  if (start < 0) return []
+  const block: string[] = []
+  for (const line of lines.slice(start + 1)) {
+    if (line && !/^\s/.test(line)) break
+    block.push(line)
+  }
+  return block
 }
 
 export function parseMetadata(source: string): ContentMetadata {
@@ -80,20 +88,23 @@ export function parseMetadata(source: string): ContentMetadata {
   meta.description = description
     ? description.replace(/^  /gm, '').trim()
     : value(source, 'description')
-  meta.authors = [...listBlock(source, 'authors').matchAll(/^  -\s*['"]?(.*?)['"]?\s*$/gm)]
-    .map((item) => item[1])
+  meta.authors = indentedBlock(source, 'authors')
+    .map((line) => line.match(/^\s*-\s*['"]?(.*?)['"]?\s*$/)?.[1] || '')
     .filter(Boolean)
-  const links = listBlock(source, 'links')
-    .split(/^  -\s*/m)
-    .filter(Boolean)
-  meta.links = links
-    .map((item) => ({
-      id: value(item, 'id'),
-      text: value(item, 'text'),
-      link: value(item, 'link'),
-      icon: value(item, 'icon'),
-    }))
-    .filter((item) => item.id || item.link)
+  const links: ContentLink[] = []
+  for (const line of indentedBlock(source, 'links')) {
+    const first = line.match(/^\s*-\s*id:\s*(.+)$/)
+    if (first) {
+      links.push({ id: first[1].trim().replace(/^['"]|['"]$/g, ''), text: '', link: '', icon: '' })
+      continue
+    }
+    const property = line.match(/^\s+(text|link|icon):\s*(.+)$/)
+    if (property && links.length)
+      links.at(-1)![property[1] as 'text' | 'link' | 'icon'] = property[2]
+        .trim()
+        .replace(/^['"]|['"]$/g, '')
+  }
+  meta.links = links.filter((item) => item.id || item.link)
   return meta
 }
 

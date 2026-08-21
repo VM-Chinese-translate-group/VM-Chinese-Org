@@ -58,6 +58,20 @@
         </aside>
         <section class="editor">
           <h2>{{ draft.id ? '编辑页面' : '新建页面' }}</h2>
+          <div class="actions editor-actions">
+            <button class="secondary" :disabled="busy || !canSave" @click="save">保存草稿</button>
+            <button class="publish" :disabled="busy || !canSave" @click="publish">
+              发布并完整构建
+            </button>
+            <button
+              v-if="draft.id && draft.state !== 'archived'"
+              class="danger"
+              :disabled="busy"
+              @click="archive"
+            >
+              下线
+            </button>
+          </div>
           <label>
             页面路径
             <input v-model="draft.path" placeholder="例如 map/evergrowth" />
@@ -69,20 +83,6 @@
               <MarkdownEditor v-model="draft.body" />
             </div>
             <MarkdownPreview :body="draft.body" />
-          </div>
-          <div class="actions">
-            <button class="secondary" :disabled="busy || !canSave" @click="save">保存草稿</button>
-            <button class="primary" :disabled="busy || !canSave" @click="publish">
-              发布并完整构建
-            </button>
-            <button
-              v-if="draft.id && draft.state !== 'archived'"
-              class="danger"
-              :disabled="busy"
-              @click="archive"
-            >
-              下线
-            </button>
           </div>
         </section>
       </div>
@@ -273,7 +273,8 @@ onMounted(async () => {
 .content-admin {
   width: min(1500px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 110px 0 70px;
+  padding: 104px 0 70px;
+  color: var(--text-color, #17211b);
 }
 .content-admin header,
 .actions,
@@ -295,6 +296,7 @@ h3 {
   letter-spacing: 0.1em;
 }
 .notice {
+  margin: 14px 0;
   padding: 10px 12px;
   border-radius: 7px;
 }
@@ -320,9 +322,14 @@ h3 {
 }
 .settings {
   margin: 18px 0;
-  padding: 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+  padding: 14px;
+  border: 1px solid var(--border-color, #d6ddd8);
+  border-radius: 10px;
+  background: var(--bg-off-white, #f7faf8);
+}
+.settings summary {
+  cursor: pointer;
+  font-weight: 700;
 }
 .settings p {
   color: var(--text-secondary);
@@ -333,16 +340,21 @@ h3 {
 }
 .workspace {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  overflow: hidden;
+  grid-template-columns: 290px minmax(0, 1fr);
+  align-items: start;
+  border: 1px solid var(--border-color, #d6ddd8);
+  border-radius: 12px;
+  background: var(--bg-color, #fff);
 }
 .workspace aside {
-  min-height: 600px;
+  position: sticky;
+  top: 86px;
+  max-height: calc(100vh - 106px);
+  overflow-y: auto;
   padding: 10px;
-  background: var(--bg-off-white);
-  border-right: 1px solid var(--border-color);
+  background: var(--bg-off-white, #f7faf8);
+  border-right: 1px solid var(--border-color, #d6ddd8);
+  border-radius: 12px 0 0 12px;
 }
 .page-row {
   display: flex;
@@ -381,6 +393,7 @@ h3 {
 .editor {
   display: grid;
   gap: 18px;
+  min-width: 0;
   padding: 24px;
 }
 .editor > label {
@@ -398,6 +411,8 @@ h3 {
 .content-grid > div:first-child {
   display: grid;
   gap: 8px;
+  align-content: start;
+  align-self: start;
 }
 input {
   width: 100%;
@@ -437,17 +452,38 @@ button:disabled {
   color: #b42318;
   background: #fee2e2;
 }
+.editor-actions {
+  position: sticky;
+  bottom: 12px;
+  z-index: 2;
+  padding: 12px;
+  border: 1px solid var(--border-color, #d6ddd8);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg-color, #fff) 94%, transparent);
+  box-shadow: 0 6px 20px #00000012;
+}
+.publish {
+  background: linear-gradient(135deg, #0b7a48, #159b61);
+  color: #fff;
+  box-shadow: 0 4px 12px #0b7a4840;
+}
+.publish:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
 @media (max-width: 900px) {
   .workspace,
   .content-grid {
     grid-template-columns: 1fr;
   }
   .workspace aside {
-    min-height: auto;
+    position: relative;
+    top: auto;
     max-height: 230px;
     overflow: auto;
     border-right: 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color, #d6ddd8);
+    border-radius: 12px 12px 0 0;
   }
 }
 @media (max-width: 600px) {

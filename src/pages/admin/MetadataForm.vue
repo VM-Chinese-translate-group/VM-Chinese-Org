@@ -4,52 +4,54 @@
     <div class="fields">
       <label>
         标题
-        <input v-model="model.title" />
+        <input v-model="model.title" class="cms-field" />
       </label>
       <label>
         原始名称
-        <input v-model="model.originalName" />
+        <input v-model="model.originalName" class="cms-field" />
       </label>
       <label>
         封面 / 图标 URL
-        <input v-model="model.icon" type="url" />
+        <input v-model="model.icon" class="cms-field" type="url" />
       </label>
       <label>
         更新日期
-        <input v-model="model.updateDate" type="date" />
+        <input v-model="calendarDate" class="cms-field" type="date" />
       </label>
       <label>
         发布状态
-        <select v-model="model.statusType">
-          <option value="">未设置</option>
-          <option value="maintaining">维护中</option>
-          <option value="completed">已完成</option>
-          <option value="paused">暂停维护</option>
-        </select>
+        <SelectMenu
+          :model-value="model.statusType"
+          :options="statusOptions"
+          aria-label="发布状态"
+          variant="flat"
+          style="--select-width: 100%; --select-menu-min-width: 100%"
+          @update:model-value="model.statusType = $event"
+        />
       </label>
       <label>
         加载器
-        <select v-model="model.loader">
-          <option value="">未设置</option>
-          <option value="vanilla">原版</option>
-          <option value="forge">Forge</option>
-          <option value="neoforge">NeoForge</option>
-          <option value="fabric">Fabric</option>
-          <option value="quilt">Quilt</option>
-        </select>
+        <SelectMenu
+          :model-value="model.loader"
+          :options="loaderOptions"
+          aria-label="加载器"
+          variant="flat"
+          style="--select-width: 100%; --select-menu-min-width: 100%"
+          @update:model-value="model.loader = $event"
+        />
       </label>
       <label>
         Minecraft 版本
-        <input v-model="model.minecraft" placeholder="例如 1.21.1" />
+        <input v-model="model.minecraft" class="cms-field" placeholder="例如 1.21.1" />
       </label>
       <label>
         整合包版本
-        <input v-model="model.pack" placeholder="例如 2.3.1" />
+        <input v-model="model.pack" class="cms-field" placeholder="例如 2.3.1" />
       </label>
     </div>
     <label>
       简介
-      <textarea v-model="model.description" rows="3" />
+      <textarea v-model="model.description" class="cms-field" rows="3" />
     </label>
     <div class="switches">
       <label>
@@ -72,6 +74,7 @@
           v-for="(_, index) in model.authors"
           :key="index"
           v-model="model.authors[index]"
+          class="cms-field"
           placeholder="作者名称"
         />
         <button type="button" @click="model.authors.push('')">＋ 添加作者</button>
@@ -88,20 +91,59 @@
         </button>
       </div>
       <div v-for="(link, index) in model.links" :key="index" class="link-row">
-        <select v-model="link.id">
-          <option v-for="id in linkIds" :key="id" :value="id">{{ id }}</option>
-        </select>
-        <input v-model="link.text" placeholder="显示文字（可选）" />
-        <input v-model="link.link" type="url" placeholder="https://..." />
+        <div class="link-platform">
+          <SelectMenu
+            :model-value="selectedLinkPlatform(link.id)"
+            :options="linkOptions"
+            aria-label="链接平台"
+            variant="flat"
+            style="--select-width: 100%; --select-menu-min-width: 100%"
+            @update:model-value="updateLinkPlatform(link, $event)"
+          />
+          <input
+            v-if="selectedLinkPlatform(link.id) === '__custom__'"
+            v-model="link.id"
+            class="cms-field"
+            placeholder="自定义平台标识"
+          />
+        </div>
+        <input v-model="link.text" class="cms-field" placeholder="显示文字（必填）" />
+        <input v-model="link.link" class="cms-field" type="url" placeholder="https://..." />
         <button type="button" @click="model.links.splice(index, 1)">删除</button>
       </div>
     </div>
   </section>
 </template>
 <script setup lang="ts">
-import type { ContentMetadata } from './types'
+import { computed } from 'vue'
+import SelectMenu from '@/components/SelectMenu.vue'
+import type { ContentLink, ContentMetadata } from './types'
 const model = defineModel<ContentMetadata>({ required: true })
-const linkIds = [
+const calendarDate = computed({
+  get: () => {
+    const match = model.value.updateDate.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)
+    return match ? `${match[1]}-${match[2].padStart(2, '0')}-${match[3].padStart(2, '0')}` : ''
+  },
+  set: (value) => {
+    const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/)
+    model.value.updateDate = match ? `${match[1]}-${Number(match[2])}-${Number(match[3])}` : ''
+  },
+})
+const statusOptions = [
+  { value: '', label: '未设置' },
+  { value: 'maintaining', label: '维护中' },
+  { value: 'completed', label: '已完成' },
+  { value: 'paused', label: '暂停维护' },
+]
+const loaderOptions = [
+  { value: '', label: '未设置' },
+  { value: 'vanilla', label: '原版' },
+  { value: 'forge', label: 'Forge' },
+  { value: 'neoforge', label: 'NeoForge' },
+  { value: 'fabric', label: 'Fabric' },
+  { value: 'quilt', label: 'Quilt' },
+]
+const linkOptions = [
   'curseforge',
   'modrinth',
   'github',
@@ -110,8 +152,14 @@ const linkIds = [
   'lazy',
   'vmtu',
   'website',
-  'other',
-]
+].map((value) => ({ value, label: value }))
+linkOptions.push({ value: '__custom__', label: '自定义平台' })
+function selectedLinkPlatform(id: string) {
+  return linkOptions.some((option) => option.value === id) ? id : '__custom__'
+}
+function updateLinkPlatform(link: ContentLink, value: string) {
+  link.id = value === '__custom__' ? '' : value
+}
 </script>
 <style scoped>
 .metadata {
@@ -137,7 +185,6 @@ const linkIds = [
   color: var(--text-secondary);
 }
 input,
-select,
 textarea {
   width: 100%;
   box-sizing: border-box;
@@ -146,6 +193,24 @@ textarea {
   border-radius: 6px;
   background: var(--bg-color);
   color: var(--text-color);
+}
+.cms-field {
+  min-height: 44px;
+  border-color: var(--switcher-border, #d8dfda);
+  border-radius: 8px;
+  background: var(--bg-white, #fff);
+  box-shadow: inset 0 1px 1px #00000008;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+.cms-field:focus {
+  outline: 0;
+  border-color: var(--info-1, #168153);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--info-1, #168153) 16%, transparent);
+}
+textarea.cms-field {
+  min-height: 96px;
 }
 .switches,
 .chips,
@@ -172,8 +237,13 @@ textarea {
 }
 .link-row {
   display: grid;
-  grid-template-columns: 130px 1fr 2fr auto;
+  grid-template-columns: 150px minmax(10rem, 1fr) minmax(16rem, 2fr) auto;
   gap: 6px;
+}
+.link-platform {
+  display: grid;
+  gap: 6px;
+  align-content: start;
 }
 button {
   padding: 7px 10px;

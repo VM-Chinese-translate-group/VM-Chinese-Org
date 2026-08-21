@@ -158,6 +158,18 @@ export default defineConfig({
     }),
   ],
 
+  // Pages Functions do not run inside Vite. In development, keep the browser
+  // on localhost while proxying CMS requests to the deployed Pages Function.
+  server: {
+    proxy: {
+      '/api/content': {
+        target: 'https://vmct-cn.top',
+        changeOrigin: true,
+        headers: { Origin: 'https://vmct-cn.top' },
+      },
+    },
+  },
+
   build: {
     rolldownOptions: {
       output: {

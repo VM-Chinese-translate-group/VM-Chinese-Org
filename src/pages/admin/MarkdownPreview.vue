@@ -9,19 +9,21 @@ import { computed } from 'vue'
 import MarkdownIt from 'markdown-it'
 const props = defineProps<{ body: string }>()
 const md = new MarkdownIt({ html: false, breaks: true, linkify: true })
-const rendered = computed(() =>
-  md.render(
-    props.body
-      .replace(
-        /::: (warning|info|tip) (.*)\n([\s\S]*?)\n:::/g,
-        '<blockquote><strong>$2</strong><br>$3</blockquote>',
-      )
-      .replace(
-        /<DownloadLinks[\s\S]*?\/>/g,
-        '<blockquote><strong>下载方式组件</strong><br>将在正式页面中显示下载按钮。</blockquote>',
-      ),
-  ),
-)
+function previewSource(body: string) {
+  return body
+    .replace(/<DownloadLayout\b[^>]*>/g, '')
+    .replace(/<\/DownloadLayout>/g, '')
+    .replace(
+      /<DocSupport\s*\/>/g,
+      '> **支持 VM 汉化组**\n> 正式页面会在这里显示项目支持与反馈组件。',
+    )
+    .replace(
+      /<DownloadLinks[\s\S]*?\/>/g,
+      '> **下载方式**\n> 正式页面会在这里显示对应平台的下载按钮。',
+    )
+    .replace(/::: (warning|info|tip|details) (.*)\n([\s\S]*?)\n:::/g, '> **$2**\n> $3')
+}
+const rendered = computed(() => md.render(previewSource(props.body)))
 </script>
 <style scoped>
 .preview {
