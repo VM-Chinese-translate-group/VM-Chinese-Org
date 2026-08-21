@@ -6,6 +6,7 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+src/generated-pages/
 worker/dist/
 worker/worker/dist/
 worker/.cover-dist/

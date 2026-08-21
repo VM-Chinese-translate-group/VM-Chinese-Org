@@ -3,8 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build && vite build --ssr src/entry-server.ts --outDir dist/server && node scripts/prerender.mjs",
+    "build": "node scripts/sync-content.mjs && vite build && vite build --ssr src/entry-server.ts --outDir dist/server && node scripts/prerender.mjs",
     "dev": "vite",
+    "content:pull": "node scripts/sync-content.mjs",
+    "content:migrate": "node scripts/migrate-legacy-content.mjs",
     "format": "prettier --write src/",
     "type-check": "vue-tsc --build",
     "upgrade-deps": "taze patch -I"
