@@ -7,6 +7,7 @@
     "dev": "vite",
     "content:pull": "node scripts/sync-content.mjs",
     "content:migrate": "node scripts/migrate-legacy-content.mjs",
+    "content:export": "node scripts/export-content.mjs",
     "format": "prettier --write src/",
     "type-check": "vue-tsc --build",
     "upgrade-deps": "taze patch -I"

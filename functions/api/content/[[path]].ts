@@ -372,6 +372,13 @@ async function exportContent(context: any) {
   return json({ pages: result.results || [] })
 }
 
+async function exportAllContent(context: any) {
+  const result = await context.env.CONTENT_DB.prepare(
+    'SELECT id, path, draft_frontmatter AS draftFrontmatter, draft_body AS draftBody, published_frontmatter AS publishedFrontmatter, published_body AS publishedBody, state, published_revision AS publishedRevision, created_at AS createdAt, updated_at AS updatedAt, published_at AS publishedAt FROM content_pages ORDER BY path ASC',
+  ).all()
+  return json({ pages: result.results || [] })
+}
+
 async function importContent(context: any) {
   requireSameOrigin(context.request)
   const payload = await readJson(context.request)
@@ -457,6 +464,8 @@ export const onRequest = async (context: any) => {
       return await getSettings(context)
     if (path === 'admin/settings' && context.request.method === 'PUT')
       return await saveSettings(context)
+    if (path === 'admin/export' && context.request.method === 'GET')
+      return await exportAllContent(context)
     if (path === 'admin/pages' && context.request.method === 'GET') return await listPages(context)
     if (path === 'admin/pages' && context.request.method === 'POST')
       return await createPage(context)

@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import DefaultLayout from '@/layout/DefaultLayout.vue'
 import Home from '@/layout/HomeLayout.vue'
-import ContentAdmin from '@/pages/admin.vue'
+import ContentAdmin from '@/pages/admin/index.vue'
 import { routeMeta } from 'virtual:route-meta'
 
 const mdComponents = {

@@ -7,6 +7,7 @@ node_modules
 dist
 dist-ssr
 src/generated-pages/
+content-export/
 worker/dist/
 worker/worker/dist/
 worker/.cover-dist/

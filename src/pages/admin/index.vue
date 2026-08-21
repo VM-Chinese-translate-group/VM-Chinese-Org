@@ -20,9 +20,8 @@
         </button>
       </form>
     </section>
-
     <template v-else>
-      <header class="header">
+      <header>
         <div>
           <p class="eyebrow">CONTENT CMS</p>
           <h1>页面内容管理</h1>
@@ -33,19 +32,15 @@
         </div>
       </header>
       <p v-if="notice" class="notice" :class="noticeKind">{{ notice }}</p>
-
       <details class="settings">
         <summary>部署设置</summary>
-        <p>
-          粘贴 Cloudflare Pages 的 Production Deploy Hook URL。发布内容时会自动触发一次完整构建。
-        </p>
-        <div class="settings-row">
+        <p>粘贴 Cloudflare Pages 的 Production Deploy Hook URL。发布时只触发一次完整构建。</p>
+        <div>
           <input v-model="deployHook" type="url" placeholder="https://api.cloudflare.com/..." />
           <button class="secondary" @click="saveSettings">保存</button>
         </div>
       </details>
-
-      <div class="grid">
+      <div class="workspace">
         <aside>
           <button class="page-row" :class="{ active: !draft.id }" @click="newPage">
             ＋ 新页面
@@ -65,16 +60,16 @@
           <h2>{{ draft.id ? '编辑页面' : '新建页面' }}</h2>
           <label>
             页面路径
-            <input v-model="draft.path" placeholder="例如 modpacks/example" />
+            <input v-model="draft.path" placeholder="例如 map/evergrowth" />
           </label>
-          <label>
-            Frontmatter（不含 ---）
-            <textarea v-model="draft.frontmatter" class="frontmatter" spellcheck="false" />
-          </label>
-          <label>
-            Markdown 正文
-            <textarea v-model="draft.body" class="markdown" spellcheck="false" />
-          </label>
+          <MetadataForm v-model="draft.metadata" />
+          <div class="content-grid">
+            <div>
+              <h3>Markdown 正文</h3>
+              <MarkdownEditor v-model="draft.body" />
+            </div>
+            <MarkdownPreview :body="draft.body" />
+          </div>
           <div class="actions">
             <button class="secondary" :disabled="busy || !canSave" @click="save">保存草稿</button>
             <button class="primary" :disabled="busy || !canSave" @click="publish">
@@ -94,7 +89,6 @@
     </template>
   </main>
 </template>
-
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import {
@@ -113,45 +107,44 @@ import {
   type ContentPage,
   type ContentPageSummary,
 } from '@/api/contentAdmin'
-
-const loggedIn = ref(false)
-const needsSetup = ref(false)
-const password = ref('')
-const busy = ref(false)
-const notice = ref('')
-const noticeKind = ref<'success' | 'error'>('success')
-const pages = ref<ContentPageSummary[]>([])
-const deployHook = ref('')
+import MarkdownEditor from './MarkdownEditor.vue'
+import MarkdownPreview from './MarkdownPreview.vue'
+import MetadataForm from './MetadataForm.vue'
+import { emptyMetadata, parseMetadata, stringifyMetadata } from './types'
+const loggedIn = ref(false),
+  needsSetup = ref(false),
+  password = ref(''),
+  busy = ref(false),
+  notice = ref(''),
+  noticeKind = ref<'success' | 'error'>('success'),
+  pages = ref<ContentPageSummary[]>([]),
+  deployHook = ref('')
 const draft = reactive({
   id: '',
   path: '',
-  frontmatter: '',
+  metadata: emptyMetadata(),
   body: '',
   state: '' as ContentPage['state'] | '',
 })
 const canSave = computed(() => Boolean(draft.path.trim() && draft.body.trim()))
-
-function show(message: string, kind: 'success' | 'error' = 'success') {
+const show = (message: string, kind: 'success' | 'error' = 'success') => {
   notice.value = message
   noticeKind.value = kind
 }
-function label(state: string) {
-  return (
-    ({ draft: '草稿', published: '已发布', archived: '已下线' } as Record<string, string>)[state] ||
-    state
-  )
-}
+const label = (state: string) =>
+  (({ draft: '草稿', published: '已发布', archived: '已下线' }) as Record<string, string>)[state] ||
+  state
 function apply(page: ContentPage) {
   draft.id = page.id
   draft.path = page.path
-  draft.frontmatter = page.draftFrontmatter
+  draft.metadata = parseMetadata(page.draftFrontmatter)
   draft.body = page.draftBody
   draft.state = page.state
 }
 function newPage() {
   draft.id = ''
   draft.path = ''
-  draft.frontmatter = ''
+  draft.metadata = emptyMetadata()
   draft.body = ''
   draft.state = ''
 }
@@ -200,7 +193,11 @@ async function saveSettings() {
 async function save() {
   busy.value = true
   try {
-    const input = { path: draft.path, frontmatter: draft.frontmatter, body: draft.body }
+    const input = {
+      path: draft.path,
+      frontmatter: stringifyMetadata(draft.metadata),
+      body: draft.body,
+    }
     apply(
       (draft.id ? await saveContentDraft(draft.id, input) : await createContentPage(input)).page,
     )
@@ -272,23 +269,23 @@ onMounted(async () => {
   }
 })
 </script>
-
 <style scoped>
 .content-admin {
-  width: min(1400px, calc(100% - 32px));
+  width: min(1500px, calc(100% - 32px));
   margin: 0 auto;
   padding: 110px 0 70px;
 }
-.header,
+.content-admin header,
 .actions,
-.settings-row {
+.settings > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
 }
 .eyebrow {
@@ -301,11 +298,11 @@ h2 {
   padding: 10px 12px;
   border-radius: 7px;
 }
-.notice.success {
+.success {
   color: #166534;
   background: #e6f6eb;
 }
-.notice.error {
+.error {
   color: #b42318;
   background: #feecec;
 }
@@ -331,17 +328,17 @@ h2 {
   color: var(--text-secondary);
   font-size: 14px;
 }
-.settings-row input {
+.settings input {
   flex: 1;
 }
-.grid {
+.workspace {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   border: 1px solid var(--border-color);
   border-radius: 10px;
   overflow: hidden;
 }
-.grid aside {
+.workspace aside {
   min-height: 600px;
   padding: 10px;
   background: var(--bg-off-white);
@@ -357,6 +354,7 @@ h2 {
   border-radius: 6px;
   background: transparent;
   text-align: left;
+  color: var(--text-color);
   cursor: pointer;
 }
 .page-row.active,
@@ -381,39 +379,39 @@ h2 {
   color: #59636e;
 }
 .editor {
+  display: grid;
+  gap: 18px;
   padding: 24px;
 }
-.editor label {
+.editor > label {
   display: grid;
   gap: 6px;
-  margin: 16px 0;
   color: var(--text-secondary);
   font-size: 14px;
   font-weight: 600;
 }
-input,
-textarea {
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.7fr);
+  gap: 18px;
+}
+.content-grid > div:first-child {
+  display: grid;
+  gap: 8px;
+}
+input {
   width: 100%;
   box-sizing: border-box;
+  padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: 7px;
   background: var(--bg-color);
   color: var(--text-color);
-  padding: 10px;
   font:
     14px/1.5 ui-monospace,
     SFMono-Regular,
     Consolas,
     monospace;
-}
-textarea {
-  resize: vertical;
-}
-.frontmatter {
-  min-height: 120px;
-}
-.markdown {
-  min-height: 380px;
 }
 button {
   border: 0;
@@ -428,7 +426,7 @@ button:disabled {
 }
 .primary {
   background: var(--theme-color);
-  color: white;
+  color: #fff;
 }
 .secondary {
   border: 1px solid var(--border-color);
@@ -439,27 +437,31 @@ button:disabled {
   color: #b42318;
   background: #fee2e2;
 }
-@media (max-width: 800px) {
-  .content-admin {
-    width: min(100% - 20px, 1400px);
-    padding-top: 88px;
-  }
-  .grid {
+@media (max-width: 900px) {
+  .workspace,
+  .content-grid {
     grid-template-columns: 1fr;
   }
-  .grid aside {
+  .workspace aside {
     min-height: auto;
     max-height: 230px;
     overflow: auto;
     border-right: 0;
     border-bottom: 1px solid var(--border-color);
   }
-  .editor {
-    padding: 18px;
+}
+@media (max-width: 600px) {
+  .content-admin {
+    width: min(100% - 20px, 1500px);
+    padding-top: 88px;
   }
-  .settings-row {
+  .settings > div,
+  .content-admin header {
     align-items: stretch;
     flex-direction: column;
+  }
+  .editor {
+    padding: 14px;
   }
 }
 </style>

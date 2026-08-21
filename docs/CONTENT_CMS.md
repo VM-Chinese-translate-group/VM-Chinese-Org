@@ -1,7 +1,5 @@
 # D1 内容管理
 
-这个版本不使用 Cloudflare Access、不需要任何 Cloudflare 环境变量，也不需要 GitHub 内容提交。
-
 内容保存在 D1；管理员访问 `/admin` 使用单一 6 位数字密码登录。发布内容时，后台从 D1 读取你保存的 Pages Deploy Hook URL，并触发一次完整构建。
 
 ## 只需配置三步
@@ -30,6 +28,12 @@ pnpm content:migrate
 
 脚本会在终端要求输入后台 6 位密码，随后导入 `src/pages/**/*.md` 并触发完整构建。确认线上页面正常后，再删除旧 Markdown。
 
-## 安全提示
+## 从 D1 还原 Markdown
 
-6 位数字密码比强密码弱得多。后台实现了单 IP 连续失败 5 次锁定 15 分钟、PBKDF2 密码哈希和安全 Cookie，但这不能替代长密码或额外访问保护。不要把后台密码或 Pages Deploy Hook URL 发给任何人。
+在任意需要恢复页面的本地副本中运行：
+
+```bash
+pnpm content:export
+```
+
+输入后台 6 位密码后，所有页面（草稿及已发布版本优先恢复草稿）会写入未纳入 Git 的 `content-export/` 目录。已有目录不会被覆盖；可通过 `pnpm content:export -- --output my-backup` 指定新的输出目录。
