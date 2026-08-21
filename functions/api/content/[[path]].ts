@@ -7,9 +7,8 @@ const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
 }
 const encoder = new TextEncoder()
-const PASSWORD_ITERATIONS = 310_000
+const PASSWORD_ITERATIONS = 10
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 14
-const SITE_ORIGIN = 'https://vmct-cn.top'
 
 class ApiError extends Error {
   constructor(
